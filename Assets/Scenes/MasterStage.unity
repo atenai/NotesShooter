@@ -513,6 +513,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274245424}
   m_CullTransparentMesh: 0
+--- !u!1 &455494047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455494049}
+  - component: {fileID: 455494048}
+  m_Layer: 0
+  m_Name: GitHubTest2GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &455494048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455494047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb727920a08aea04bbde66c70ce4b4ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &455494049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455494047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -35, y: 60, z: 60}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &483900843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5602457669895335193, guid: 9fd8da02ed0550f4fa06c727769cd57d,
@@ -1885,6 +1928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d5a2a96d7b9e447ab3598555fd98c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletNumReset: 20
   ReloadTime: 0
   ReloadTimeDefine: 100
   BulletSEPrefab: {fileID: 9110255550956096348, guid: c2b04dffa24d64f43b4c3fecfb3c33db,
@@ -1910,6 +1954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68aa9329fd9c02345b1cd781a587938d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletNumReset: 20
   ReloadTime: 0
   ReloadTimeDefine: 100
   BulletSEPrefab: {fileID: 9110255550956096348, guid: c2b04dffa24d64f43b4c3fecfb3c33db,
@@ -2060,9 +2105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alfa: 0
   speed: 0.01
-  red: 0
-  green: 0
-  blue: 0
   b_Fade: 0
 --- !u!114 &1539205007
 MonoBehaviour:
@@ -13515,6 +13557,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4512044458072720034, guid: 9fd8da02ed0550f4fa06c727769cd57d,
+        type: 3}
+      propertyPath: CubeObject1
+      value: 
+      objectReference: {fileID: 964925432}
+    - target: {fileID: 4512044458072720034, guid: 9fd8da02ed0550f4fa06c727769cd57d,
+        type: 3}
+      propertyPath: CubeObject2
+      value: 
+      objectReference: {fileID: 1091323741}
     - target: {fileID: 4512044457520624670, guid: 9fd8da02ed0550f4fa06c727769cd57d,
         type: 3}
       propertyPath: SE_Endtime
@@ -13559,16 +13611,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
         type: 3}
-    - target: {fileID: 4512044458072720034, guid: 9fd8da02ed0550f4fa06c727769cd57d,
-        type: 3}
-      propertyPath: CubeObject1
-      value: 
-      objectReference: {fileID: 964925432}
-    - target: {fileID: 4512044458072720034, guid: 9fd8da02ed0550f4fa06c727769cd57d,
-        type: 3}
-      propertyPath: CubeObject2
-      value: 
-      objectReference: {fileID: 1091323741}
     m_RemovedComponents:
     - {fileID: 5602457669895335174, guid: 9fd8da02ed0550f4fa06c727769cd57d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9fd8da02ed0550f4fa06c727769cd57d, type: 3}
