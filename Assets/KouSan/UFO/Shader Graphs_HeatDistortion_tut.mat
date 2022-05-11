@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_HeatDistortion_tut
+  m_Shader: {fileID: -6465566751694194690, guid: 411f258138c1c874d97433bfb8af2655,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_7D67B4B2:
+        m_Texture: {fileID: 2800000, guid: 0f4fc474592e42943937e638aaeb616e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4E0DD6AC: 22.68
+    - Vector1_4FF99612: 13.29
+    - Vector1_C3BD6E0: 1
+    - Vector1_EBE28D26: 0.902
+    m_Colors:
+    - Color_A315BEF9: {r: 0, g: 1.1137255, b: 2, a: 0}
