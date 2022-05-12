@@ -11,6 +11,8 @@ public class GitHubTest : MonoBehaviour
     void Start()
     {
         Debug.Log(s_GitHub);
+        Debug.Log("s_GitHubTest2");
+        Debug.Log("SSHを設定していないのに何故か上手くいく");
     }
 
     // Update is called once per frame

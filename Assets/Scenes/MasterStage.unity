@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 455494049}
   - component: {fileID: 455494048}
   m_Layer: 0
-  m_Name: GitHubTest2GameObject
+  m_Name: GitHubTestGameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 455494047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb727920a08aea04bbde66c70ce4b4ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 687fb330a81834241baf23d8daf84948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &455494049
