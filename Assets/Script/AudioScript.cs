@@ -6,24 +6,24 @@ public class AudioScript : MonoBehaviour
 {
 
     public AudioClip getSE;
-    AudioSource aud;
+    AudioSource audioSource;
 
-    private bool b_SE = true;
+    private bool b_SEActive = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.aud = GetComponent<AudioSource>();
-        b_SE = true;
+        this.audioSource = GetComponent<AudioSource>();
+        b_SEActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (b_SE == true)
+        if (b_SEActive == true)
         {
-            this.aud.PlayOneShot(this.getSE);
-            b_SE = false;
+            this.audioSource.PlayOneShot(this.getSE);
+            b_SEActive = false;
         }
     }
 }
