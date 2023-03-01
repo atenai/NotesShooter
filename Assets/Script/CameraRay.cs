@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraRay : MonoBehaviour
 {
@@ -8,7 +6,6 @@ public class CameraRay : MonoBehaviour
     public GameObject RedHitImage;
     public GameObject BlueHitImage;
 
-    // Start is called before the first frame update
     void Start()
     {
         PurpleHitImage.SetActive(false);
@@ -18,8 +15,6 @@ public class CameraRay : MonoBehaviour
 
     void Update()
     {
-        
-
         Ray ray = new Ray(this.transform.position, this.transform.forward);
         RaycastHit hit;
 

@@ -15,8 +15,4 @@ public class GitHubTest : MonoBehaviour
         Debug.Log("GitHubTest_2022_07_21");
     }
 
-    void Update()
-    {
-
-    }
 }

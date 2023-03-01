@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AudioScript : MonoBehaviour
 {
@@ -10,14 +8,12 @@ public class AudioScript : MonoBehaviour
 
     private bool b_SEActive = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         this.audioSource = GetComponent<AudioSource>();
         b_SEActive = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (b_SEActive == true)

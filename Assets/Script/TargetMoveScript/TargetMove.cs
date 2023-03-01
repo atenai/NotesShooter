@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 //基底クラス//
-//派生クラスのリスト(UnderRaxtuka・RightRaxtuka・LeftRaxtuka)
+//派生クラスのリスト(LeftUnderMove・TargetRightMove・TargetLeftMove)
 public class TargetMove : MonoBehaviour
 {
-
     public float dropSpeed;
 
 }

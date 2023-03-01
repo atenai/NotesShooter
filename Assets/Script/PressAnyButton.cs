@@ -1,24 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PressAnyButton : MonoBehaviour
 {
-    bool b_Start = false;
+    bool isStart = false;
 
     Text PressAnyKey_text;
 
-    private float alfa = 0.0f;//テキスト・α値
-    private const float max = 1.0f;
-    private const float min = 0.0f;
-    bool b_alfa = false;
-    [SerializeField] private float plas_alfa = 0.015f;
+    float alfa = 0.0f;//テキスト・α値
+    const float max = 1.0f;
+    const float min = 0.0f;
+    bool isAlfa = false;
+    [SerializeField] float plas_alfa = 0.015f;
 
-    // Start is called before the first frame update
     void Start()
     {
-        b_Start = false;
+        isStart = false;
 
         //Textコンポーネント取得
         PressAnyKey_text = GameObject.Find("Press Any Key").GetComponent<Text>();
@@ -29,15 +26,14 @@ public class PressAnyButton : MonoBehaviour
         plas_alfa = 0.015f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.anyKeyDown)
         {
-            b_Start = true;
+            isStart = true;
         }
 
-        if (b_Start == false)
+        if (isStart == false)
         {
             PressAnyKey_text.text = "Press Any Button";
         }
@@ -48,14 +44,14 @@ public class PressAnyButton : MonoBehaviour
 
         if (alfa >= max)
         {
-            b_alfa = true;
+            isAlfa = true;
         }
         if (alfa <= min)
         {
-            b_alfa = false;
+            isAlfa = false;
         }
 
-        if (b_alfa == true)
+        if (isAlfa == true)
         {
             alfa -= plas_alfa;
         }

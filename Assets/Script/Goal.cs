@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
     public static bool b_Goal = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         b_Goal = false;

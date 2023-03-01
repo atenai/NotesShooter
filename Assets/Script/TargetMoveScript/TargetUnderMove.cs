@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class TargetUnderMove : TargetMove
 {
-    // Start is called before the first frame update
     void Start()
     {
         dropSpeed = -0.05f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(0, this.dropSpeed, 0);

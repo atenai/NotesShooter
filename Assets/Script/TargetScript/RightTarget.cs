@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 //RightTarget（派生クラス）Target（基底クラス）
 public class RightTarget : Target

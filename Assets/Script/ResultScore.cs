@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ResultScore : MonoBehaviour
 {
     Text score_text;
     //トータルスコア
-    private int ResultScoreNum;
+    int ResultScoreNum;
 
-    // Start is called before the first frame update
     void Start()
     {
         ResultScoreNum = 0;//スコア初期化
@@ -19,7 +16,6 @@ public class ResultScore : MonoBehaviour
         score_text.text = ResultScoreNum.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ResultScoreNum = Score.ScoreNum;

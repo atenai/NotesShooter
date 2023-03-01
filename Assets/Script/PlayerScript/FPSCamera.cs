@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FPSCamera : MonoBehaviour
 {
     //横回転(Y)はプレイヤーキャラクターの座標位置を使っている(Player)
     //縦回転(X)はカメラの座標位置を使っている(FPSCamera)
-
 
     public GameObject Camera;
     private Transform PlayerTransform;
@@ -20,16 +17,12 @@ public class FPSCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         PlayerTransform = transform.parent;
         CameraTransform = GetComponent<Transform>();
-
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         float X_Rotation = Input.GetAxis("Mouse X");

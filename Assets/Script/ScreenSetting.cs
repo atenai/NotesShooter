@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScreenSetting : MonoBehaviour
 {
-
     private void Awake()
     {
         //マウスカーソルを消す
@@ -13,14 +10,12 @@ public class ScreenSetting : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Screen.SetResolution(1920, 1080, true, 60);//解像度の設定
         Application.targetFrameRate = 60;//フレームレートの設定
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -47,10 +42,10 @@ public class ScreenSetting : MonoBehaviour
     //ゲーム終了
     void Quit()
     {
-        #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-        #elif UNITY_STANDALONE
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
                               UnityEngine.Application.Quit();
-        #endif
+#endif
     }
 }

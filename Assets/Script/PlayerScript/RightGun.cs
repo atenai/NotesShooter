@@ -1,13 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 //RightGun（派生クラス）Gun（基底クラス）
 public class RightGun : Gun
 {
-    //シリアライズフィールド尚化
     public GameObject RightBullet;
 
     public static int RightBulletNum;//残弾数
@@ -15,7 +10,6 @@ public class RightGun : Gun
 
     delegate int ReloadTimeReset();
 
-    // Start is called before the first frame update
     void Start()
     {
         RightBulletNum = BulletNumReset;//残弾数
@@ -24,7 +18,6 @@ public class RightGun : Gun
         b_RightReloadTime = false;//リロードのオン/オフ
     }
 
-    // Update is called once per frame
     void Update()
     {
         ReloadTimeReset reloadTimeReset = () => 0;
