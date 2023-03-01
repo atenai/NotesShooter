@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class FadeTitle : Fade
 {
-    //サウンド
-    public AudioClip StartSound;
-    AudioSource audioSource;
+    [SerializeField] AudioClip StartSound;
+    [SerializeField] AudioSource audioSource;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
         alfa = 0.0f;
         speed = 0.025f;
         isFade = false;
@@ -22,9 +19,7 @@ public class FadeTitle : Fade
         if (Input.anyKeyDown && isFade == false)
         {
             //SE再生
-            //音(GOALSound)を鳴らす
             audioSource.PlayOneShot(StartSound);
-
             isFade = true;
         }
 
@@ -34,10 +29,9 @@ public class FadeTitle : Fade
             alfa += speed;
         }
 
-        if (alfa >= 1)
+        if (1 <= alfa)
         {
-            //ステージ１シーンへ
-            SceneManager.LoadScene("MasterStage");
+            SceneChange(sceneName);
             isFade = false;
         }
     }

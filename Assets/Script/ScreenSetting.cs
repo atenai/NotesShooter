@@ -18,7 +18,6 @@ public class ScreenSetting : MonoBehaviour
 
     void Update()
     {
-
         //Cキーでマウスカーソルを出す
         if (Input.GetKeyDown(KeyCode.C))
         {
