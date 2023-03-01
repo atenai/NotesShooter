@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class UI : MonoBehaviour
 {
     public float fadeSpeed = 0.05f; //フェードのスピード
-    public Color ReloadColor = new Color(255.0f, 255.0f, 255.0f);　　//Area1ディレクターテキストのカラー変数
+    public Color ReloadColor = new Color(255.0f, 255.0f, 255.0f);//Area1ディレクターテキストのカラー変数
     public GameObject ImageReload_object;// オブジェクトの取得
 
     public Text BulletNum_text;

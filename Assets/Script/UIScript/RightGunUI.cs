@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class RightGunUI : UI
 {
-    // Start is called before the first frame update
     void Start()
     {
         // オブジェクトの取得
@@ -19,7 +15,6 @@ public class RightGunUI : UI
         BulletNum_text.text = RightGun.RightBulletNum.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (RightGun.b_RightReloadTime == true)

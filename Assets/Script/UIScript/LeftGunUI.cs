@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class LeftGunUI : UI
 {
-    // Start is called before the first frame update
     void Start()
     {
         // オブジェクトの取得
@@ -19,7 +15,6 @@ public class LeftGunUI : UI
         BulletNum_text.text = LeftGun.LeftBulletNum.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (LeftGun.b_LeftReloadTime == true)
