@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 
-#pragma warning disable 618
-[RequireComponent(typeof (Image))]
+using UnityEngine.UI; // 追加
+
+[RequireComponent(typeof(Image))] // 変更 GUITexture -> Image
 public class ForcedReset : MonoBehaviour
 {
     private void Update()
