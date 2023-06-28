@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23245de35b43eda4580996912854a39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSpeed: 1
+  dropSpeed: 0.5
 --- !u!114 &1809376345742940947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90c3101e9951d544ba76ef9216c4508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSpeed: 1
+  dropSpeed: 0.5
 --- !u!1 &6697888180514285266
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubeObject1: {fileID: 6157759542543669198}
-  CubeObject2: {fileID: 0}
+  CubeObject2: {fileID: 1777159814121360132}
 --- !u!1001 &6697888180580822846
 PrefabInstance:
   m_ObjectHideFlags: 0

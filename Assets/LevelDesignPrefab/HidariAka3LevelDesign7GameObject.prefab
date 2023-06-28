@@ -10538,7 +10538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90c3101e9951d544ba76ef9216c4508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSpeed: 0
+  dropSpeed: 0.1
 --- !u!114 &6729832692114111676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10551,7 +10551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90c3101e9951d544ba76ef9216c4508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSpeed: 0
+  dropSpeed: 0.1
 --- !u!114 &3656274171543552024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10564,7 +10564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90c3101e9951d544ba76ef9216c4508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSpeed: 0
+  dropSpeed: 0.1
 --- !u!1001 &6426380884028313313
 PrefabInstance:
   m_ObjectHideFlags: 0

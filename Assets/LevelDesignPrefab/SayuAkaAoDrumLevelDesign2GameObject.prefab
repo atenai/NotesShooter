@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90c3101e9951d544ba76ef9216c4508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSpeed: 0
+  dropSpeed: 0.1
 --- !u!65 &4833860983299361035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23245de35b43eda4580996912854a39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSpeed: 0
+  dropSpeed: 0.1
 --- !u!1001 &4441182773537035525
 PrefabInstance:
   m_ObjectHideFlags: 0
