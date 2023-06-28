@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TargetRightMove : TargetMove
 {
-    void Update()
+    public virtual void Update()
     {
         transform.Translate(this.dropSpeed, 0, 0);
         if (50.0f < transform.position.x)

@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5478956059150496338
+--- !u!114 &7764601789536793106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,11 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1777159814121360132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23245de35b43eda4580996912854a39d, type: 3}
+  m_Script: {fileID: 11500000, guid: e663c1fb531d16544ba5c95c66213d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSpeed: 0.5
---- !u!114 &1809376345742940947
+  dropSpeed: 1
+--- !u!114 &9124417344317440670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,10 +55,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6157759542543669198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90c3101e9951d544ba76ef9216c4508, type: 3}
+  m_Script: {fileID: 11500000, guid: 77fac2b104d4f334e8526500f6d217e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSpeed: 0.5
+  dropSpeed: 1
 --- !u!1 &6697888180514285266
 GameObject:
   m_ObjectHideFlags: 0
