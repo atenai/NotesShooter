@@ -1,38 +1,55 @@
 ﻿using UnityEngine;
 
-//基底クラス//
-//派生クラスのリスト(RightGun・LeftGun)
+/// <summary>
+/// //基底クラス//
+/// //派生クラスのリスト(RightGun・LeftGun)
+/// </summary>
 public class Gun : MonoBehaviour
 {
-
-    public int BulletNumReset = 20;
-    public int ReloadTime = 0;//リロードタイム
-    public int ReloadTimeDefine = 100;
+    /// <summary>
+    /// リロード
+    /// </summary>
+    protected int BulletNumReset = 20;
+    protected float reloadTime = 0.0f;//リロードタイム
+    protected const float ReloadTimeDefine = 2.0f;
     protected const int reloadTimeReset = 0;
 
-    //弾発射のSE
+    /// <summary>
+    /// 弾発射のSE
+    /// </summary>
     public GameObject BulletSEPrefab;
-    public float BulletSE_Endtime;
+    private float BulletSE_Endtime = 1.0f;
 
-    public void BulletSE()
+    protected void BulletSE()
     {
         //SEオブジェクトを生成する
         GameObject BulletSE = Instantiate(BulletSEPrefab, this.gameObject.transform.position, Quaternion.identity);
         Destroy(BulletSE, BulletSE_Endtime);//SEをSE_Endtime後削除
     }
 
-    //薬莢プレファブ生成
+    /// <summary>
+    /// 薬莢プレファブ生成
+    /// </summary>
     public GameObject GunCartridgePrefab;
-    public float GunCartridgeDestroyTime;
+    protected float GunCartridgeDestroyTime = 3.0f;
 
-    //リロードのSE
+    /// <summary>
+    /// リロードのSE
+    /// </summary>
     public GameObject ReloadSEPrefab;
-    public float ReloadSE_Endtime;
+    private float ReloadSE_Endtime = 1.0f;
+    protected bool isReloadSE = false;
 
-    public void ReloadSE()
+    protected void ReloadSE()
     {
         //SEオブジェクトを生成する
         GameObject ReloadSE = Instantiate(ReloadSEPrefab, this.gameObject.transform.position, Quaternion.identity);
         Destroy(ReloadSE, ReloadSE_Endtime);//SEをSE_Endtime後削除
+    }
+
+    protected void Start()
+    {
+        Debug.Log("GunのStart()");
+        reloadTime = reloadTimeReset;
     }
 }

@@ -4,6 +4,6 @@
 //派生クラスのリスト(LeftUnderMove・TargetRightMove・TargetLeftMove)
 public class TargetMove : MonoBehaviour
 {
-    public float dropSpeed = 0.1f;
+    protected float dropSpeed = 6.0f;
 
 }

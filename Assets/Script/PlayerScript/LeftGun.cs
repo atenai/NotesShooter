@@ -8,10 +8,10 @@ public class LeftGun : Gun
     public static int leftBulletNum;//残弾数
     public static bool isLeftReloadTime = false;//リロードのオン/オフ
 
-    void Start()
+    new void Start()
     {
+        base.Start();
         leftBulletNum = BulletNumReset;//残弾数
-        ReloadTime = reloadTimeReset;
         isLeftReloadTime = false;//リロードのオン/オフ
     }
 
@@ -44,24 +44,26 @@ public class LeftGun : Gun
         }
 
         //リロードシステム
-        if (leftBulletNum == 0 || (leftBulletNum != BulletNumReset && Input.GetKey(KeyCode.Q)))
+        if ((leftBulletNum == 0 || (leftBulletNum != BulletNumReset && Input.GetKey(KeyCode.Q))) && isLeftReloadTime == false)
         {
             isLeftReloadTime = true;//リロードのオン
+            isReloadSE = true;
         }
 
         if (isLeftReloadTime == true)//リロードがオンになったら
         {
-            if (ReloadTime == 0)
+            if (isReloadSE == true)
             {
                 //SEオブジェクトを生成する
                 ReloadSE();
+                isReloadSE = false;
             }
-            //リロード中画像
-            ReloadTime++;//リロードタイムをプラス
-            if (ReloadTime == ReloadTimeDefine)//リロードタイムが100になったら
+
+            reloadTime = reloadTime + Time.deltaTime;//リロードタイムをプラス
+            if (ReloadTimeDefine <= reloadTime)//リロードタイムがReloadTimeDefineより大きくなったら
             {
                 leftBulletNum = BulletNumReset;//弾リセット
-                ReloadTime = reloadTimeReset;//リロードタイムをリセット
+                reloadTime = reloadTimeReset;//リロードタイムをリセット
                 isLeftReloadTime = false;//リロードのオフ
             }
         }
