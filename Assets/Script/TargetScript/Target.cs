@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 
-//基底クラス//
-//派生クラスのリスト(RightTarget・LeftTarget・PurpleTarget・Doramu・WallTarget)
+/// <summary>
+/// 基底クラス
+/// 派生クラスのリスト(RightTarget・LeftTarget・PurpleTarget・Doramu・WallTarget)
+/// </summary>
 public class Target : MonoBehaviour
 {
-
-    //爆発エフェクト
+    [Header("爆発エフェクト")]
     public GameObject HitEffectPrefab;
     public float HitEffectDestroyTime;
 
@@ -16,7 +17,7 @@ public class Target : MonoBehaviour
         Destroy(HitEffect, HitEffectDestroyTime);//エフェクトをEffectDestroyTime後削除
     }
 
-    //爆発SE
+    [Header("爆発SE")]
     public GameObject HitSEPrefab;
     public float HitSE_Endtime;
 
@@ -27,7 +28,7 @@ public class Target : MonoBehaviour
         Destroy(HitSE, HitSE_Endtime);//SEをSE_Endtime後削除
     }
 
-    //スコアUIのオブジェクトを生成
+    [Header("スコアUIのオブジェクトを生成")]
     public int ScoreNum;
     public GameObject ScoreUIPrefab;
     public float ScoreUI_Endtime;
@@ -49,7 +50,7 @@ public class Target : MonoBehaviour
         Destroy(ScoreUIText, ScoreUI_Endtime);//ScoreTextをSxoreText_Endtime後削除
     }
 
-    //パーティクルエフェクト
+    [Header("パーティクルエフェクト")]
     public GameObject AppearanceParticleEffectPrefab;
     public float AppearanceParticleEffectDestroyTime;
 
@@ -60,7 +61,7 @@ public class Target : MonoBehaviour
         Destroy(AppearanceParticleEffect, AppearanceParticleEffectDestroyTime);//エフェクトをDestroyTime後削除
     }
 
-    //パーティクルSE
+    [Header("パーティクルSE")]
     public GameObject AppearanceParticleSEPrefab;
     public float AppearanceParticleSE_Endtime;
 

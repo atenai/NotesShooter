@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-//Doramu（派生クラス）Target（基底クラス）
+/// <summary>
+/// Doramu（派生クラス）Target（基底クラス）
+/// </summary>
 public class DoramuTarget : Target
 {
     //爆発のあたり判定オブジェクトを生成

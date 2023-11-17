@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-//WallTarget（派生クラス）Target（基底クラス）
+/// <summary>
+/// WallTarget（派生クラス）Target（基底クラス）
+/// </summary>
 public class WallTarget : Target
 {
     //トリガーとの接触時に呼ばれるコールバック

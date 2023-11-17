@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-//PurpleTarget（派生クラス）Target（基底クラス）
+/// <summary>
+/// PurpleTarget（派生クラス）Target（基底クラス）
+/// </summary>
 public class PurpleTarget : Target
 {
     Score score;
@@ -13,7 +15,6 @@ public class PurpleTarget : Target
     public GameObject lifeDamageSEPrefab;
     public float lifeDamageSE_Endtime;
 
-    // Start is called before the first frame update
     void Start()
     {
         score = GameObject.Find("Canvas").GetComponent<Score>();//ゲームオブジェクトのGameControllerの中にあるコンポーネントのScoreを見つける
@@ -25,7 +26,6 @@ public class PurpleTarget : Target
         AppearanceParticleEffect();
     }
 
-    // Update is called once per frame
     void Update()
     {
         //lifeを文字列にして3D_UIで表示

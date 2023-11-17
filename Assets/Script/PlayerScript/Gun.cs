@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// //基底クラス//
-/// //派生クラスのリスト(RightGun・LeftGun)
+/// 基底クラス
+/// 派生クラスのリスト(RightGun・LeftGun)
 /// </summary>
 public class Gun : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     /// </summary>
     protected int BulletNumReset = 20;
     protected float reloadTime = 0.0f;//リロードタイム
-    protected const float ReloadTimeDefine = 2.0f;
+    protected const float ReloadTimeDefine = 1.0f;
     protected const int reloadTimeReset = 0;
 
     /// <summary>

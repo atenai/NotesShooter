@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-//RightTarget（派生クラス）Target（基底クラス）
+/// <summary>
+/// RightTarget（派生クラス）Target（基底クラス）
+/// </summary>
 public class RightTarget : Target
 {
     Score score;
