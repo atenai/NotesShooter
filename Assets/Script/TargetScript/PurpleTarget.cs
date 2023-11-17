@@ -5,19 +5,21 @@
 /// </summary>
 public class PurpleTarget : Target
 {
+    [Header("スコア")]
     Score score;
 
-    //紫キューブの体力
+    [Header("紫キューブの体力")]
     public int life = 5;
     public TextMesh LifeText;
 
-    //ヒットのSE
+    [Header("ヒットのSE")]
     public GameObject lifeDamageSEPrefab;
     public float lifeDamageSE_Endtime;
 
     void Start()
     {
-        score = GameObject.Find("Canvas").GetComponent<Score>();//ゲームオブジェクトのGameControllerの中にあるコンポーネントのScoreを見つける
+        //ゲームオブジェクトのGameControllerの中にあるコンポーネントのScoreを見つける
+        score = GameObject.Find("Canvas").GetComponent<Score>();
 
         //SEオブジェクトを生成する
         AppearanceParticleSE();
@@ -86,7 +88,7 @@ public class PurpleTarget : Target
         }
     }
 
-    public override void ScoreUIText()
+    protected override void ScoreUIText()
     {
         //ScoreUITextオブジェクトの生成位置を取得する
         float CubePositionX = this.gameObject.transform.position.x;

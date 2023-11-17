@@ -5,11 +5,13 @@
 /// </summary>
 public class RightTarget : Target
 {
+    [Header("スコア")]
     Score score;
 
     void Start()
     {
-        score = GameObject.Find("Canvas").GetComponent<Score>();//ゲームオブジェクトのGameControllerの中にあるコンポーネントのScoreを見つける
+        //ゲームオブジェクトのGameControllerの中にあるコンポーネントのScoreを見つける
+        score = GameObject.Find("Canvas").GetComponent<Score>();
 
         //SEオブジェクトを生成する
         AppearanceParticleSE();

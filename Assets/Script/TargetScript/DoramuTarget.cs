@@ -5,7 +5,7 @@
 /// </summary>
 public class DoramuTarget : Target
 {
-    //爆発のあたり判定オブジェクトを生成
+    [Header("爆発のあたり判定オブジェクトを生成")]
     public GameObject DoramuColliderPrefab;
     public float DoramuColliderDestroyTime;
 

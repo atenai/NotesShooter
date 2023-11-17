@@ -8,7 +8,7 @@ public class Target : MonoBehaviour
 {
     [Header("爆発エフェクト")]
     public GameObject HitEffectPrefab;
-    public float HitEffectDestroyTime;
+    protected float HitEffectDestroyTime = 3.0f;
 
     public void HitEffect()
     {
@@ -19,7 +19,7 @@ public class Target : MonoBehaviour
 
     [Header("爆発SE")]
     public GameObject HitSEPrefab;
-    public float HitSE_Endtime;
+    protected float HitSE_Endtime = 1.0f;
 
     public void HitSE()
     {
@@ -31,9 +31,9 @@ public class Target : MonoBehaviour
     [Header("スコアUIのオブジェクトを生成")]
     public int ScoreNum;
     public GameObject ScoreUIPrefab;
-    public float ScoreUI_Endtime;
+    protected float ScoreUI_Endtime = 1.0f;
 
-    public virtual void ScoreUIText()
+    protected virtual void ScoreUIText()
     {
         //ScoreUITextオブジェクトの生成位置を取得する
         float CubePositionX = this.gameObject.transform.position.x;
@@ -52,9 +52,9 @@ public class Target : MonoBehaviour
 
     [Header("パーティクルエフェクト")]
     public GameObject AppearanceParticleEffectPrefab;
-    public float AppearanceParticleEffectDestroyTime;
+    protected float AppearanceParticleEffectDestroyTime = 3.0f;
 
-    public void AppearanceParticleEffect()
+    protected void AppearanceParticleEffect()
     {
         //パーティクルオブジェクトを生成する	
         GameObject AppearanceParticleEffect = Instantiate(AppearanceParticleEffectPrefab, this.gameObject.transform.position, Quaternion.identity);
@@ -63,9 +63,9 @@ public class Target : MonoBehaviour
 
     [Header("パーティクルSE")]
     public GameObject AppearanceParticleSEPrefab;
-    public float AppearanceParticleSE_Endtime;
+    protected float AppearanceParticleSE_Endtime = 1.0f;
 
-    public void AppearanceParticleSE()
+    protected void AppearanceParticleSE()
     {
         //SEオブジェクトを生成する
         GameObject AppearanceParticleSE = Instantiate(AppearanceParticleSEPrefab, this.gameObject.transform.position, Quaternion.identity);
