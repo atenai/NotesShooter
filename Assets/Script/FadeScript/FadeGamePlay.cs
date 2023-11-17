@@ -1,33 +1,33 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class FadeGamePlay : Fade
 {
-    void Start()
+    Goal goal;
+
+    new void Start()
     {
-        alfa = 0.0f;
-        speed = 0.01f;
-        isFade = false;
+        base.Start();
+
+        goal = GameObject.Find("Goal").GetComponent<Goal>();
     }
 
     void Update()
     {
-        if (Goal.b_Goal == true)
+        if (goal.isGoal == true)
         {
             isFade = true;
         }
 
         if (isFade == true)
         {
-            GetComponent<Image>().color = new Color(GetComponent<Image>().color.r, GetComponent<Image>().color.g, GetComponent<Image>().color.b, alfa);
-            alfa += speed;
+            this.GetComponent<Image>().color = new Color(GetComponent<Image>().color.r, GetComponent<Image>().color.g, GetComponent<Image>().color.b, alfa);
+            alfa += speed * Time.deltaTime;
         }
 
-        if (alfa >= 1)
+        if (1.0f <= alfa)
         {
-            //ステージ１シーンへ
-            SceneManager.LoadScene("Result");
+            SceneChange("Result");
             isFade = false;
         }
     }

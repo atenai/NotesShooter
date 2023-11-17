@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class FadeResult : Fade
 {
@@ -8,13 +7,11 @@ public class FadeResult : Fade
     public AudioClip StartSound;
     AudioSource audioSource;
 
-    void Start()
+    new void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        base.Start();
 
-        alfa = 0.0f;
-        speed = 0.025f;
-        isFade = false;
+        audioSource = this.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -22,21 +19,19 @@ public class FadeResult : Fade
         if (Input.anyKeyDown && isFade == false)
         {
             //SE再生
-            //音(GOALSound)を鳴らす
             audioSource.PlayOneShot(StartSound);
-
             isFade = true;
         }
 
         if (isFade == true)
         {
-            GetComponent<Image>().color = new Color(GetComponent<Image>().color.r, GetComponent<Image>().color.g, GetComponent<Image>().color.b, alfa);
-            alfa += speed;
+            this.GetComponent<Image>().color = new Color(GetComponent<Image>().color.r, GetComponent<Image>().color.g, GetComponent<Image>().color.b, alfa);
+            alfa += speed * Time.deltaTime;
         }
 
-        if (alfa >= 1)
+        if (1.0f <= alfa)
         {
-            SceneManager.LoadScene("Title");
+            SceneChange("Title");
             isFade = false;
         }
     }

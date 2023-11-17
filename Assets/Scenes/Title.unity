@@ -319,7 +319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &353749159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,19 +376,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!114 &406733579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4590527945439398651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69eaf623c5f18b643853b74912f63641, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plas_alfa: 0.015
 --- !u!224 &443657411
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1284,10 +1271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c363f30ef877bc41a7a7e646c5c5a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alfa: 0
-  speed: 0
-  isFade: 0
-  sceneName: MasterStage
   StartSound: {fileID: 8300000, guid: 50d885d821f431545a7b16dc7f5b2821, type: 3}
   audioSource: {fileID: 1830390851}
 --- !u!82 &1830390851
@@ -2831,7 +2814,6 @@ GameObject:
   - component: {fileID: 4590527945439398652}
   - component: {fileID: 4590527945439398653}
   - component: {fileID: 406733578}
-  - component: {fileID: 406733579}
   m_Layer: 5
   m_Name: Press Any Key
   m_TagString: Untagged

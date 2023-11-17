@@ -2,11 +2,11 @@
 
 public class Goal : MonoBehaviour
 {
-    public static bool b_Goal = false;
+    public bool isGoal = false;
 
     void Start()
     {
-        b_Goal = false;
+        isGoal = false;
     }
 
     void OnTriggerEnter(Collider hit)
@@ -14,7 +14,7 @@ public class Goal : MonoBehaviour
         //接触対象はPlayerタグですか？
         if (hit.CompareTag("Player"))
         {
-            b_Goal = true;
+            isGoal = true;
         }
     }
 }

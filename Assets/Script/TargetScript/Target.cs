@@ -8,13 +8,14 @@ public class Target : MonoBehaviour
 {
     [Header("爆発エフェクト")]
     public GameObject HitEffectPrefab;
-    protected float HitEffectDestroyTime = 3.0f;
 
     protected void HitEffect()
     {
+        float hitEffectDestroyTime = HitEffectPrefab.GetComponent<ParticleSystem>().duration;
+        //Debug.Log("hitEffectDestroyTime : " + hitEffectDestroyTime);
         //爆発エフェクトオブジェクトを生成する	
-        GameObject HitEffect = Instantiate(HitEffectPrefab, this.gameObject.transform.position, Quaternion.identity);
-        Destroy(HitEffect, HitEffectDestroyTime);//エフェクトをEffectDestroyTime後削除
+        GameObject hitEffect = Instantiate(HitEffectPrefab, this.gameObject.transform.position, Quaternion.identity);
+        Destroy(hitEffect, hitEffectDestroyTime);//エフェクトをEffectDestroyTime後削除
     }
 
     [Header("爆発SE")]

@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 
 public class FadeTitle : Fade
 {
     [SerializeField] AudioClip StartSound;
     [SerializeField] AudioSource audioSource;
 
-    void Start()
+    Text text;
+    float textAlfa = 0.0f;
+    bool isAlfa = false;
+    float textSpeed = 1.0f;
+
+    new void Start()
     {
-        alfa = 0.0f;
-        speed = 0.025f;
-        isFade = false;
+        base.Start();
+
+        text = GameObject.Find("PressAnyKey").GetComponent<Text>();
     }
 
     void Update()
@@ -25,14 +29,50 @@ public class FadeTitle : Fade
 
         if (isFade == true)
         {
-            GetComponent<Image>().color = new Color(GetComponent<Image>().color.r, GetComponent<Image>().color.g, GetComponent<Image>().color.b, alfa);
-            alfa += speed;
+            this.GetComponent<Image>().color = new Color(GetComponent<Image>().color.r, GetComponent<Image>().color.g, GetComponent<Image>().color.b, alfa);
+            alfa += speed * Time.deltaTime;
         }
 
-        if (1 <= alfa)
+        if (1.0f <= alfa)
         {
-            SceneChange(sceneName);
+            SceneChange("MasterStage");
             isFade = false;
         }
+
+        PressAnyButton();
+    }
+
+    void PressAnyButton()
+    {
+        if (isFade == false)
+        {
+            text.text = "Press Any Button";
+        }
+        else if (isFade == true)
+        {
+            text.text = "";
+        }
+
+        const float max = 1.0f;
+        if (max <= textAlfa)
+        {
+            isAlfa = true;
+        }
+        const float min = 0.0f;
+        if (textAlfa <= min)
+        {
+            isAlfa = false;
+        }
+
+        if (isAlfa == true)
+        {
+            textAlfa -= textSpeed * Time.deltaTime;
+        }
+        else if (isAlfa == false)
+        {
+            textAlfa += textSpeed * Time.deltaTime;
+        }
+
+        text.color = new Color(0.0f, 255.0f, 255.0f, textAlfa);
     }
 }
