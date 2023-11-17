@@ -2,12 +2,9 @@
 
 public class Goal : MonoBehaviour
 {
-    public bool isGoal = false;
+    bool isGoal = false;
+    public bool IsGoal => isGoal;
 
-    void Start()
-    {
-        isGoal = false;
-    }
 
     void OnTriggerEnter(Collider hit)
     {

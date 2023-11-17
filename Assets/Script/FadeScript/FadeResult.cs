@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class FadeResult : Fade
 {
-    //サウンド
     public AudioClip StartSound;
     AudioSource audioSource;
 
@@ -31,7 +30,7 @@ public class FadeResult : Fade
 
         if (1.0f <= alfa)
         {
-            SceneChange("Title");
+            SceneChange(sceneName);
             isFade = false;
         }
     }

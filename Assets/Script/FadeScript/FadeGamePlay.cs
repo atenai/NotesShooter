@@ -14,7 +14,7 @@ public class FadeGamePlay : Fade
 
     void Update()
     {
-        if (goal.isGoal == true)
+        if (goal.IsGoal == true)
         {
             isFade = true;
         }
@@ -27,7 +27,7 @@ public class FadeGamePlay : Fade
 
         if (1.0f <= alfa)
         {
-            SceneChange("Result");
+            SceneChange(sceneName);
             isFade = false;
         }
     }

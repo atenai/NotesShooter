@@ -5,8 +5,8 @@ public class FadeTitle : Fade
 {
     [SerializeField] AudioClip StartSound;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] Text textPressAnyKey;
 
-    Text text;
     float textAlfa = 0.0f;
     bool isAlfa = false;
     float textSpeed = 1.0f;
@@ -14,8 +14,6 @@ public class FadeTitle : Fade
     new void Start()
     {
         base.Start();
-
-        text = GameObject.Find("PressAnyKey").GetComponent<Text>();
     }
 
     void Update()
@@ -35,7 +33,7 @@ public class FadeTitle : Fade
 
         if (1.0f <= alfa)
         {
-            SceneChange("MasterStage");
+            SceneChange(sceneName);
             isFade = false;
         }
 
@@ -46,11 +44,11 @@ public class FadeTitle : Fade
     {
         if (isFade == false)
         {
-            text.text = "Press Any Button";
+            textPressAnyKey.text = "Press Any Key";
         }
         else if (isFade == true)
         {
-            text.text = "";
+            textPressAnyKey.text = "";
         }
 
         const float max = 1.0f;
@@ -73,6 +71,6 @@ public class FadeTitle : Fade
             textAlfa += textSpeed * Time.deltaTime;
         }
 
-        text.color = new Color(0.0f, 255.0f, 255.0f, textAlfa);
+        textPressAnyKey.color = new Color(0.0f, 255.0f, 255.0f, textAlfa);
     }
 }

@@ -1196,7 +1196,7 @@ GameObject:
   - component: {fileID: 1700100063}
   - component: {fileID: 1700100062}
   m_Layer: 5
-  m_Name: Member
+  m_Name: Text_Member
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1271,8 +1271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c363f30ef877bc41a7a7e646c5c5a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: MasterStage
   StartSound: {fileID: 8300000, guid: 50d885d821f431545a7b16dc7f5b2821, type: 3}
   audioSource: {fileID: 1830390851}
+  textPressAnyKey: {fileID: 4590527945439398653}
 --- !u!82 &1830390851
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2758,7 +2760,7 @@ GameObject:
   - component: {fileID: 4096892172629917936}
   - component: {fileID: 838140253}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Text_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2815,7 +2817,7 @@ GameObject:
   - component: {fileID: 4590527945439398653}
   - component: {fileID: 406733578}
   m_Layer: 5
-  m_Name: Press Any Key
+  m_Name: Text_PressAnyKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4305,7 +4307,7 @@ GameObject:
   - component: {fileID: 6854651462555924565}
   - component: {fileID: 7492732530099730936}
   m_Layer: 5
-  m_Name: GameQuitText
+  m_Name: Text_GameQuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
