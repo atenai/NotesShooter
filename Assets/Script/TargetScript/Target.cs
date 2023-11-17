@@ -10,7 +10,7 @@ public class Target : MonoBehaviour
     public GameObject HitEffectPrefab;
     protected float HitEffectDestroyTime = 3.0f;
 
-    public void HitEffect()
+    protected void HitEffect()
     {
         //爆発エフェクトオブジェクトを生成する	
         GameObject HitEffect = Instantiate(HitEffectPrefab, this.gameObject.transform.position, Quaternion.identity);
@@ -21,7 +21,7 @@ public class Target : MonoBehaviour
     public GameObject HitSEPrefab;
     protected float HitSE_Endtime = 1.0f;
 
-    public void HitSE()
+    protected void HitSE()
     {
         //SEオブジェクトを生成する
         GameObject HitSE = Instantiate(HitSEPrefab, this.gameObject.transform.position, Quaternion.identity);

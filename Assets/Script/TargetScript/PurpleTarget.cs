@@ -9,12 +9,12 @@ public class PurpleTarget : Target
     Score score;
 
     [Header("紫キューブの体力")]
-    public int life = 5;
+    int life = 5;
     public TextMesh LifeText;
 
     [Header("ヒットのSE")]
     public GameObject lifeDamageSEPrefab;
-    public float lifeDamageSE_Endtime;
+    float lifeDamageSE_Endtime = 1.0f;
 
     void Start()
     {

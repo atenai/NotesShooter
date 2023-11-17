@@ -7,8 +7,8 @@ public class LeftGun : Gun
 {
     public GameObject LeftBullet;
 
-    public static int leftBulletNum;//残弾数
-    public static bool isLeftReloadTime = false;//リロードのオン/オフ
+    public int leftBulletNum;//残弾数
+    public bool isLeftReloadTime = false;//リロードのオン/オフ
 
     new void Start()
     {

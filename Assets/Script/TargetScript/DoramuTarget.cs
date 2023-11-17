@@ -7,7 +7,7 @@ public class DoramuTarget : Target
 {
     [Header("爆発のあたり判定オブジェクトを生成")]
     public GameObject DoramuColliderPrefab;
-    public float DoramuColliderDestroyTime;
+    float DoramuColliderDestroyTime = 1.0f;
 
     //トリガーとの接触時に呼ばれるコールバック
     void OnTriggerEnter(Collider hit)

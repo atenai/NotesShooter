@@ -3,21 +3,24 @@ using UnityEngine.UI;
 
 public class LeftGunUI : UI
 {
+    LeftGun leftGun;
+
     void Start()
     {
         // オブジェクトの取得
         ImageReload_object = GameObject.Find("LeftReloadImage");
         ImageReload_object.GetComponent<RawImage>().color = ReloadColor;
 
+        leftGun = GameObject.Find("FPSCamera").GetComponent<LeftGun>();
+
         //Textコンポーネント取得
         BulletNum_text = GameObject.Find("LeftBulletText").GetComponent<Text>();
-        //テキストに残段数の文字をstringに変換して入力
-        BulletNum_text.text = LeftGun.leftBulletNum.ToString();
+        BulletNum_text.text = leftGun.leftBulletNum.ToString();
     }
 
     void Update()
     {
-        if (LeftGun.isLeftReloadTime == true)
+        if (leftGun.isLeftReloadTime == true)
         {
             ReloadColor.a = FadeIn(ReloadColor.a);
 
@@ -25,7 +28,7 @@ public class LeftGunUI : UI
             ImageReload_object.GetComponent<RawImage>().color = ReloadColor; //画像の透明度を変える   
         }
 
-        if (LeftGun.isLeftReloadTime == false)
+        if (leftGun.isLeftReloadTime == false)
         {
             ReloadColor.a = FadeOut(ReloadColor.a);
 
@@ -33,7 +36,6 @@ public class LeftGunUI : UI
             ImageReload_object.GetComponent<RawImage>().color = ReloadColor; //画像の透明度を変える
         }
 
-        //テキストに残段数の文字をstringに変換して入力
-        BulletNum_text.text = LeftGun.leftBulletNum.ToString();
+        BulletNum_text.text = leftGun.leftBulletNum.ToString();
     }
 }
