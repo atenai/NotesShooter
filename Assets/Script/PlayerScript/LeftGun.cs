@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-//LeftGun（派生クラス）Gun（基底クラス）
+/// <summary>
+/// LeftGun（派生クラス）Gun（基底クラス）
+/// </summary>
 public class LeftGun : Gun
 {
     public GameObject LeftBullet;
@@ -16,6 +18,16 @@ public class LeftGun : Gun
     }
 
     void Update()
+    {
+        ShotSystem();
+
+        ReloadSystem();
+    }
+
+    /// <summary>
+    /// ショットシステム
+    /// </summary>
+    void ShotSystem()
     {
         if (Input.GetMouseButtonDown(0) && (leftBulletNum != 0) && isLeftReloadTime == false)//マウス左クリックが押されたときかつ(tamaが0じゃないとき)
         {
@@ -42,15 +54,22 @@ public class LeftGun : Gun
 
             Destroy(newBullet, 3.0f);//3秒後に消す 
         }
+    }
 
-        //リロードシステム
+    /// <summary>
+    /// リロードシステム
+    /// </summary>
+    void ReloadSystem()
+    {
+        //リロードのトリガー
         if ((leftBulletNum == 0 || (leftBulletNum != BulletNumReset && Input.GetKey(KeyCode.Q))) && isLeftReloadTime == false)
         {
             isLeftReloadTime = true;//リロードのオン
             isReloadSE = true;
         }
 
-        if (isLeftReloadTime == true)//リロードがオンになったら
+        //リロードがオンになったら
+        if (isLeftReloadTime == true)
         {
             if (isReloadSE == true)
             {
@@ -67,6 +86,5 @@ public class LeftGun : Gun
                 isLeftReloadTime = false;//リロードのオフ
             }
         }
-        //リロードシステム
     }
 }

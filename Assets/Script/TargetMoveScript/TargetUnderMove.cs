@@ -4,7 +4,7 @@ public class TargetUnderMove : TargetMove
 {
     void Start()
     {
-        dropSpeed = -2.0f;
+        dropSpeed = -3.0f;
     }
 
     void Update()

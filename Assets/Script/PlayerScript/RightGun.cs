@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-//RightGun（派生クラス）Gun（基底クラス）
+/// <summary>
+/// RightGun（派生クラス）Gun（基底クラス）
+/// </summary>
 public class RightGun : Gun
 {
     public GameObject RightBullet;
@@ -16,6 +18,16 @@ public class RightGun : Gun
     }
 
     void Update()
+    {
+        ShotSystem();
+
+        ReloadSystem();
+    }
+
+    /// <summary>
+    /// ショットシステム
+    /// </summary>
+    void ShotSystem()
     {
         if (Input.GetMouseButtonDown(1) && (rightBulletNum != 0) && isRightReloadTime == false)//マウス右クリックが押されたときかつ(RigthTamaが0じゃないとき)
         {
@@ -42,15 +54,22 @@ public class RightGun : Gun
 
             Destroy(newBullet, 3.0f);//3秒後に消す 
         }
+    }
 
-        //リロードシステム
+    /// <summary>
+    /// リロードシステム
+    /// </summary>
+    void ReloadSystem()
+    {
+        //リロードのトリガー
         if ((rightBulletNum == 0 || (rightBulletNum != BulletNumReset && Input.GetKey(KeyCode.E))) && isRightReloadTime == false)
         {
             isRightReloadTime = true;//リロードのオン
             isReloadSE = true;
         }
 
-        if (isRightReloadTime == true)//リロードがオンになったら
+        //リロードがオンになったら
+        if (isRightReloadTime == true)
         {
             if (isReloadSE == true)
             {
@@ -68,6 +87,5 @@ public class RightGun : Gun
                 isRightReloadTime = false;//リロードのオフ
             }
         }
-        //リロードシステム
     }
 }
