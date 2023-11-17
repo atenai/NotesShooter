@@ -8,6 +8,7 @@ public class Gun : MonoBehaviour
     public int BulletNumReset = 20;
     public int ReloadTime = 0;//リロードタイム
     public int ReloadTimeDefine = 100;
+    protected const int reloadTimeReset = 0;
 
     //弾発射のSE
     public GameObject BulletSEPrefab;
@@ -34,5 +35,4 @@ public class Gun : MonoBehaviour
         GameObject ReloadSE = Instantiate(ReloadSEPrefab, this.gameObject.transform.position, Quaternion.identity);
         Destroy(ReloadSE, ReloadSE_Endtime);//SEをSE_Endtime後削除
     }
-
 }

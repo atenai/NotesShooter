@@ -5,26 +5,21 @@ public class RightGun : Gun
 {
     public GameObject RightBullet;
 
-    public static int RightBulletNum;//残弾数
-    public static bool b_RightReloadTime = false;//リロードのオン/オフ
-
-    delegate int ReloadTimeReset();
+    public static int rightBulletNum;//残弾数
+    public static bool isRightReloadTime = false;//リロードのオン/オフ
 
     void Start()
     {
-        RightBulletNum = BulletNumReset;//残弾数
-        ReloadTimeReset reloadTimeReset = () => 0;
-        ReloadTime = reloadTimeReset();//リロードタイム
-        b_RightReloadTime = false;//リロードのオン/オフ
+        rightBulletNum = BulletNumReset;//残弾数
+        ReloadTime = reloadTimeReset;//リロードタイム
+        isRightReloadTime = false;//リロードのオン/オフ
     }
 
     void Update()
     {
-        ReloadTimeReset reloadTimeReset = () => 0;
-
-        if (Input.GetMouseButtonDown(1) && (RightBulletNum != 0) && b_RightReloadTime == false)//マウス右クリックが押されたときかつ(RigthTamaが0じゃないとき)
+        if (Input.GetMouseButtonDown(1) && (rightBulletNum != 0) && isRightReloadTime == false)//マウス右クリックが押されたときかつ(RigthTamaが0じゃないとき)
         {
-            RightBulletNum = RightBulletNum - 1;//残弾数を-1する
+            rightBulletNum = rightBulletNum - 1;//残弾数を-1する
 
             //SEオブジェクトを生成する
             BulletSE();
@@ -49,14 +44,14 @@ public class RightGun : Gun
         }
 
         //リロードシステム
-        if (RightBulletNum == 0 || (RightBulletNum != BulletNumReset && Input.GetKey(KeyCode.E)))
+        if (rightBulletNum == 0 || (rightBulletNum != BulletNumReset && Input.GetKey(KeyCode.E)))
         {
-            b_RightReloadTime = true;//リロードのオン
+            isRightReloadTime = true;//リロードのオン
         }
 
-        if (b_RightReloadTime == true)//リロードがオンになったら
+        if (isRightReloadTime == true)//リロードがオンになったら
         {
-            if (ReloadTime == reloadTimeReset())
+            if (ReloadTime == 0)
             {
                 //SEオブジェクトを生成する
                 ReloadSE();
@@ -65,9 +60,9 @@ public class RightGun : Gun
             ReloadTime++;//リロードタイムをプラス
             if (ReloadTime == ReloadTimeDefine)//リロードタイムが100になったら
             {
-                RightBulletNum = BulletNumReset;//弾リセット
-                ReloadTime = reloadTimeReset();//リロードタイムをリセット
-                b_RightReloadTime = false;//リロードのオフ
+                rightBulletNum = BulletNumReset;//弾リセット
+                ReloadTime = reloadTimeReset;//リロードタイムをリセット
+                isRightReloadTime = false;//リロードのオフ
             }
         }
         //リロードシステム

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 //基底クラス//
 //派生クラスのリスト(LeftGunUI・RightGunUI)

@@ -12,12 +12,12 @@ public class LeftGunUI : UI
         //Textコンポーネント取得
         BulletNum_text = GameObject.Find("LeftBulletText").GetComponent<Text>();
         //テキストに残段数の文字をstringに変換して入力
-        BulletNum_text.text = LeftGun.LeftBulletNum.ToString();
+        BulletNum_text.text = LeftGun.leftBulletNum.ToString();
     }
 
     void Update()
     {
-        if (LeftGun.b_LeftReloadTime == true)
+        if (LeftGun.isLeftReloadTime == true)
         {
             ReloadColor.a = FadeIn(ReloadColor.a);
 
@@ -25,7 +25,7 @@ public class LeftGunUI : UI
             ImageReload_object.GetComponent<RawImage>().color = ReloadColor; //画像の透明度を変える   
         }
 
-        if (LeftGun.b_LeftReloadTime == false)
+        if (LeftGun.isLeftReloadTime == false)
         {
             ReloadColor.a = FadeOut(ReloadColor.a);
 
@@ -34,6 +34,6 @@ public class LeftGunUI : UI
         }
 
         //テキストに残段数の文字をstringに変換して入力
-        BulletNum_text.text = LeftGun.LeftBulletNum.ToString();
+        BulletNum_text.text = LeftGun.leftBulletNum.ToString();
     }
 }
