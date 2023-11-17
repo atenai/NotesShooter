@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 61384595}
   - component: {fileID: 61384594}
   m_Layer: 5
-  m_Name: FadeImage
+  m_Name: Image_FadeResult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Title
-  StartSound: {fileID: 8300000, guid: 50d885d821f431545a7b16dc7f5b2821, type: 3}
+  audioClip: {fileID: 8300000, guid: 50d885d821f431545a7b16dc7f5b2821, type: 3}
+  audioSource: {fileID: 61384595}
+  image: {fileID: 61384596}
 --- !u!82 &61384595
 AudioSource:
   m_ObjectHideFlags: 0
@@ -416,7 +418,7 @@ GameObject:
   - component: {fileID: 232394472}
   - component: {fileID: 232394471}
   m_Layer: 5
-  m_Name: BackImage
+  m_Name: Image_Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -931,7 +933,7 @@ GameObject:
   - component: {fileID: 2086829917}
   - component: {fileID: 2086829918}
   m_Layer: 5
-  m_Name: Result
+  m_Name: Text_Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -989,7 +991,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Result
+  m_Text: Score
 --- !u!222 &2086829916
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1010,6 +1012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f193399704101b4f923bda0c6557bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 2086829915}
 --- !u!114 &2086829918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,7 +1083,7 @@ GameObject:
   - component: {fileID: 5296455663346489546}
   - component: {fileID: 8168368522045806951}
   m_Layer: 5
-  m_Name: GameQuitText
+  m_Name: Text_GameQuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

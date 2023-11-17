@@ -2,24 +2,23 @@
 
 public class AudioScript : MonoBehaviour
 {
-
     public AudioClip getSE;
     AudioSource audioSource;
 
-    private bool b_SEActive = true;
+    bool isActive = true;
 
     void Start()
     {
         this.audioSource = GetComponent<AudioSource>();
-        b_SEActive = true;
+        isActive = true;
     }
 
     void Update()
     {
-        if (b_SEActive == true)
+        if (isActive == true)
         {
-            this.audioSource.PlayOneShot(this.getSE);
-            b_SEActive = false;
+            this.audioSource.PlayOneShot(getSE);
+            isActive = false;
         }
     }
 }

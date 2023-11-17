@@ -11,6 +11,6 @@ public class Score : MonoBehaviour
 
     public void AddScore(int add_score)
     {
-        ScoreNum += add_score;//キューブを壊した際にスコアを+する処理
+        ScoreNum += add_score;//スコアを+する処理
     }
 }

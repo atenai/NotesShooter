@@ -7831,7 +7831,7 @@ GameObject:
   - component: {fileID: 1539205007}
   - component: {fileID: 1539205006}
   m_Layer: 5
-  m_Name: FadeGoal
+  m_Name: Image_FadeGamePlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7869,6 +7869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Result
+  image: {fileID: 1539205007}
 --- !u!114 &1539205007
 MonoBehaviour:
   m_ObjectHideFlags: 0

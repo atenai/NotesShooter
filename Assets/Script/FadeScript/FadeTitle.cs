@@ -3,39 +3,17 @@ using UnityEngine.UI;
 
 public class FadeTitle : Fade
 {
-    [SerializeField] AudioClip StartSound;
-    [SerializeField] AudioSource audioSource;
     [SerializeField] Text textPressAnyKey;
 
     float textAlfa = 0.0f;
     bool isAlfa = false;
     float textSpeed = 1.0f;
 
-    new void Start()
-    {
-        base.Start();
-    }
-
     void Update()
     {
-        if (Input.anyKeyDown && isFade == false)
-        {
-            //SE再生
-            audioSource.PlayOneShot(StartSound);
-            isFade = true;
-        }
+        FadeTrigger();
 
-        if (isFade == true)
-        {
-            this.GetComponent<Image>().color = new Color(GetComponent<Image>().color.r, GetComponent<Image>().color.g, GetComponent<Image>().color.b, alfa);
-            alfa += speed * Time.deltaTime;
-        }
-
-        if (1.0f <= alfa)
-        {
-            SceneChange(sceneName);
-            isFade = false;
-        }
+        FadeOut();
 
         PressAnyButton();
     }
