@@ -2,15 +2,11 @@
 
 public class Score : MonoBehaviour
 {
-    public static int ScoreNum = 0;
-
-    void Start()
-    {
-        ScoreNum = 0;
-    }
+    int scoreNum = 0;
+    public int ScoreNum => scoreNum;
 
     public void AddScore(int add_score)
     {
-        ScoreNum += add_score;//スコアを+する処理
+        scoreNum += add_score;//スコアを+する処理
     }
 }

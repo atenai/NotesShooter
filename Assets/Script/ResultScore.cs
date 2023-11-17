@@ -5,11 +5,8 @@ public class ResultScore : MonoBehaviour
 {
     [SerializeField] Text scoreText;
 
-    int resultScoreNum = 0;
-
     void Start()
     {
-        resultScoreNum = Score.ScoreNum;
-        scoreText.text = resultScoreNum.ToString();
+        scoreText.text = PlayerPrefs.GetInt("SCORE", 0).ToString();
     }
 }

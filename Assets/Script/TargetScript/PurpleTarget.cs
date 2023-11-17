@@ -18,7 +18,6 @@ public class PurpleTarget : Target
 
     void Start()
     {
-        //ゲームオブジェクトのGameControllerの中にあるコンポーネントのScoreを見つける
         score = GameObject.Find("Canvas").GetComponent<Score>();
 
         //SEオブジェクトを生成する
