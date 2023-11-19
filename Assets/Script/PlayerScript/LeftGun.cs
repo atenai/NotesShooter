@@ -9,8 +9,10 @@ public class LeftGun : Gun
     public static LeftGun singletonInstance = null;
 
     public GameObject LeftBullet;
-    public int leftBulletNum;//残弾数
-    public bool isLeftReloadTime = false;//リロードのオン/オフ
+    [Tooltip("残弾数")]
+    public int leftBulletNum;
+    [Tooltip("リロードのオン/オフ")]
+    public bool isLeftReloadTime = false;
 
     void Awake()
     {

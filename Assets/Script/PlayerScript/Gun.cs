@@ -10,7 +10,8 @@ public class Gun : MonoBehaviour
     /// リロード
     /// </summary>
     protected int BulletNumReset = 20;
-    protected float reloadTime = 0.0f;//リロードタイム
+    [Tooltip("リロードタイム")]
+    protected float reloadTime = 0.0f;
     protected const float ReloadTimeDefine = 1.0f;
     protected const int reloadTimeReset = 0;
 
