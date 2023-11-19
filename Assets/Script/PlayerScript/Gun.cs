@@ -54,7 +54,7 @@ public class Gun : MonoBehaviour
 
     protected void Start()
     {
-        Debug.Log("GunのStart()");
+        //Debug.Log("GunのStart()");
         reloadTime = reloadTimeReset;
         bulletNum = bulletNumReset;//残弾数
         isReloadTime = false;//リロードのオン/オフ
