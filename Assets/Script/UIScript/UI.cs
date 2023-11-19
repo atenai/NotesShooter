@@ -7,11 +7,11 @@ using UnityEngine.UI;
 /// </summary>
 public class UI : MonoBehaviour
 {
+    [SerializeField] protected RawImage imageReload;// オブジェクトの取得
+    [SerializeField] protected Text textBulletNum;
+
     float fadeSpeed = 1.0f; //フェードのスピード
     protected Color ReloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
-    public GameObject ImageReload_object;// オブジェクトの取得
-
-    public Text BulletNum_text;
     protected int BulletNum;
 
     void Awake()
@@ -19,10 +19,15 @@ public class UI : MonoBehaviour
         ReloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
     }
 
+    protected void Start()
+    {
+        imageReload.color = ReloadColor;
+    }
+
     protected float FadeIn(float ReloadColorAlpha)
     {
         //リロード画像を回転
-        ImageReload_object.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, -5.0f);
+        imageReload.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, -5.0f);
 
         if (ReloadColorAlpha <= 1)
         {
@@ -34,7 +39,7 @@ public class UI : MonoBehaviour
     protected float FadeOut(float ReloadColorAlpha)
     {
         //リロード画像を回転
-        ImageReload_object.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, -5.0f);
+        imageReload.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, -5.0f);
 
         if (ReloadColorAlpha >= 0)
         {

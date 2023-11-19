@@ -18,6 +18,7 @@ public class ScreenSetting : MonoBehaviour
 
     void Update()
     {
+#if UNITY_EDITOR
         //Cキーでマウスカーソルを出す
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -36,6 +37,7 @@ public class ScreenSetting : MonoBehaviour
         {
             SceneManager.LoadScene("Title");
         }
+#endif
     }
 
     //ゲーム終了
@@ -44,7 +46,7 @@ public class ScreenSetting : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_STANDALONE
-                              UnityEngine.Application.Quit();
+        UnityEngine.Application.Quit();
 #endif
     }
 }

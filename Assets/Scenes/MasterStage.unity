@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 16168774}
   - component: {fileID: 16168773}
   m_Layer: 5
-  m_Name: LeftReloadImage
+  m_Name: Image_LeftReload
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3591,7 +3591,7 @@ GameObject:
   - component: {fileID: 725711598}
   - component: {fileID: 725711597}
   m_Layer: 5
-  m_Name: LeftBulletText
+  m_Name: Text_LeftBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4330,7 +4330,7 @@ GameObject:
   - component: {fileID: 809515539}
   - component: {fileID: 809515538}
   m_Layer: 5
-  m_Name: RightReloadImage
+  m_Name: Image_RightReload
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7868,8 +7868,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eefd763a8085014d8953887684431de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Result
   image: {fileID: 1539205007}
+  audioClip: {fileID: 0}
+  audioSource: {fileID: 0}
+  sceneName: Result
 --- !u!114 &1539205007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8730,7 +8732,7 @@ GameObject:
   - component: {fileID: 1783542635}
   - component: {fileID: 1783542634}
   m_Layer: 5
-  m_Name: RightBulletText
+  m_Name: Text_RightBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9500,8 +9502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79ff183ce1f3b044b65cc1fec12bf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImageReload_object: {fileID: 0}
-  BulletNum_text: {fileID: 0}
+  imageReload: {fileID: 16168773}
+  textBulletNum: {fileID: 725711597}
 --- !u!114 &1902696356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9514,8 +9516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89bc8dc98a7e7f4dbd3b695a6f95372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImageReload_object: {fileID: 0}
-  BulletNum_text: {fileID: 0}
+  imageReload: {fileID: 809515538}
+  textBulletNum: {fileID: 1783542634}
 --- !u!1001 &1918646202
 PrefabInstance:
   m_ObjectHideFlags: 0
