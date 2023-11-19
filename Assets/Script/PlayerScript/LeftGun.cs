@@ -8,7 +8,7 @@ public class LeftGun : Gun
     //シングルトンで作成（ゲーム中に１つのみにする）
     public static LeftGun singletonInstance = null;
 
-    public GameObject LeftBullet;
+    [SerializeField] LeftBullet leftBullet;
 
     void Awake()
     {
@@ -26,8 +26,6 @@ public class LeftGun : Gun
     new void Start()
     {
         base.Start();
-        bulletNum = BulletNumReset;//残弾数
-        isReloadTime = false;//リロードのオン/オフ
     }
 
     void Update()
@@ -60,7 +58,7 @@ public class LeftGun : Gun
             newCartridge.GetComponent<Rigidbody>().AddForce(transform.up * 100.0f);//速すぎるとすり抜けてしまう
             newCartridge.GetComponent<Rigidbody>().AddForce(transform.right * -200.0f);//速すぎるとすり抜けてしまう
 
-            GameObject newBullet = Instantiate(LeftBullet, transform.position, transform.rotation);
+            GameObject newBullet = Instantiate(leftBullet.gameObject, transform.position, transform.rotation);
 
             //前方向に飛ばす 
             newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 7000.0f);//速すぎるとすり抜けてしまう
@@ -75,7 +73,7 @@ public class LeftGun : Gun
     void ReloadSystem()
     {
         //リロードのトリガー
-        if ((bulletNum == 0 || (bulletNum != BulletNumReset && Input.GetKey(KeyCode.Q))) && isReloadTime == false)
+        if ((bulletNum == 0 || (bulletNum != bulletNumReset && Input.GetKey(KeyCode.Q))) && isReloadTime == false)
         {
             isReloadTime = true;//リロードのオン
             isReloadSE = true;
@@ -92,9 +90,9 @@ public class LeftGun : Gun
             }
 
             reloadTime = reloadTime + Time.deltaTime;//リロードタイムをプラス
-            if (ReloadTimeDefine <= reloadTime)//リロードタイムがReloadTimeDefineより大きくなったら
+            if (reloadTimeDefine <= reloadTime)//リロードタイムがReloadTimeDefineより大きくなったら
             {
-                bulletNum = BulletNumReset;//弾リセット
+                bulletNum = bulletNumReset;//弾リセット
                 reloadTime = reloadTimeReset;//リロードタイムをリセット
                 isReloadTime = false;//リロードのオフ
             }

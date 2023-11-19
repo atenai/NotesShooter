@@ -8,7 +8,7 @@ public class RightGun : Gun
     //シングルトンで作成（ゲーム中に１つのみにする）
     public static RightGun singletonInstance = null;
 
-    public GameObject RightBullet;
+    [SerializeField] RightBullet rightBullet;
 
     void Awake()
     {
@@ -26,8 +26,6 @@ public class RightGun : Gun
     new void Start()
     {
         base.Start();
-        bulletNum = BulletNumReset;//残弾数
-        isReloadTime = false;//リロードのオン/オフ
     }
 
     void Update()
@@ -60,7 +58,7 @@ public class RightGun : Gun
             newCartridge.GetComponent<Rigidbody>().AddForce(transform.up * 100.0f);//速すぎるとすり抜けてしまう
             newCartridge.GetComponent<Rigidbody>().AddForce(transform.right * 200.0f);//速すぎるとすり抜けてしまう
 
-            GameObject newBullet = Instantiate(RightBullet, transform.position, transform.rotation);
+            GameObject newBullet = Instantiate(rightBullet.gameObject, transform.position, transform.rotation);
 
             //前方向に飛ばす 
             newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 7000.0f);//速すぎるとすり抜けてしまう
@@ -75,7 +73,7 @@ public class RightGun : Gun
     void ReloadSystem()
     {
         //リロードのトリガー
-        if ((bulletNum == 0 || (bulletNum != BulletNumReset && Input.GetKey(KeyCode.E))) && isReloadTime == false)
+        if ((bulletNum == 0 || (bulletNum != bulletNumReset && Input.GetKey(KeyCode.E))) && isReloadTime == false)
         {
             isReloadTime = true;//リロードのオン
             isReloadSE = true;
@@ -92,10 +90,9 @@ public class RightGun : Gun
             }
 
             reloadTime = reloadTime + Time.deltaTime;//リロードタイムをプラス
-            //Debug.Log("reloadTIme : " + reloadTime);
-            if (ReloadTimeDefine <= reloadTime)//リロードタイムがReloadTimeDefineより大きくなったら
+            if (reloadTimeDefine <= reloadTime)//リロードタイムがReloadTimeDefineより大きくなったら
             {
-                bulletNum = BulletNumReset;//弾リセット
+                bulletNum = bulletNumReset;//弾リセット
                 reloadTime = reloadTimeReset;//リロードタイムをリセット
                 isReloadTime = false;//リロードのオフ
             }
