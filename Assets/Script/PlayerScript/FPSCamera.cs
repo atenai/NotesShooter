@@ -8,7 +8,7 @@ public class FPSCamera : MonoBehaviour
     public GameObject Camera;
     private Transform PlayerTransform;
     private Transform CameraTransform;
-    private float ii;
+    private float cameraAngles;
 
     private void Awake()
     {
@@ -29,18 +29,17 @@ public class FPSCamera : MonoBehaviour
         float Y_Rotation = Input.GetAxis("Mouse Y");
         PlayerTransform.transform.Rotate(0, X_Rotation, 0);
 
-        ii = Camera.transform.localEulerAngles.x;
-        if (ii > 324 && ii < 360 || ii > -10 && 79 > ii)//ここの各左の数字を変えればカメラの上下の止まる限界値が変わる
+        cameraAngles = Camera.transform.localEulerAngles.x;
+        if (324 < cameraAngles && cameraAngles < 360 || -10 < cameraAngles && cameraAngles < 79)//ここの各左の数字を変えればカメラの上下の止まる限界値が変わる
         {
+
             CameraTransform.transform.Rotate(-Y_Rotation, 0, 0);
-            float kk = Y_Rotation;
+
         }
         else
         {
-
-            if (ii > 300)
+            if (300 < cameraAngles)
             {
-
                 if (Input.GetAxis("Mouse Y") < 0)
                 {
 
@@ -50,7 +49,7 @@ public class FPSCamera : MonoBehaviour
             }
             else
             {
-                if (Input.GetAxis("Mouse Y") > 0)
+                if (0 < Input.GetAxis("Mouse Y"))
                 {
 
                     CameraTransform.transform.Rotate(-Y_Rotation, 0, 0);
