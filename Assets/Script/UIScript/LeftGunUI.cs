@@ -15,7 +15,6 @@ public class LeftGunUI : UI
         {
             ReloadColor.a = FadeIn(ReloadColor.a);
 
-            // 画像の透明度を変える
             imageReload.color = ReloadColor; //画像の透明度を変える   
         }
 
@@ -23,7 +22,6 @@ public class LeftGunUI : UI
         {
             ReloadColor.a = FadeOut(ReloadColor.a);
 
-            // 画像の透明度を変える
             imageReload.color = ReloadColor; //画像の透明度を変える
         }
 

@@ -5,9 +5,6 @@
 /// </summary>
 public class PurpleTarget : Target
 {
-    [Header("スコア")]
-    Score score;
-
     [Header("紫キューブの体力")]
     int life = 5;
     public TextMesh LifeText;
@@ -18,8 +15,6 @@ public class PurpleTarget : Target
 
     void Start()
     {
-        score = GameObject.Find("Canvas").GetComponent<Score>();
-
         //SEオブジェクトを生成する
         AppearanceParticleSE();
 
@@ -59,7 +54,7 @@ public class PurpleTarget : Target
                 //ScoreUITextオブジェクトを生成する
                 ScoreUIText();
 
-                score.AddScore(ScoreNum);//スコアを+する
+                Score.singletonInstance.AddScore(ScoreNum);//スコアを+する
 
                 Destroy(this.gameObject);//このオブジェクトを削除
             }
@@ -80,7 +75,7 @@ public class PurpleTarget : Target
             //ScoreUITextオブジェクトを生成する
             ScoreUIText();
 
-            score.AddScore(ScoreNum);//スコアを+する
+            Score.singletonInstance.AddScore(ScoreNum);//スコアを+する
 
             Destroy(this.gameObject);//このオブジェクトを削除
 

@@ -5,13 +5,8 @@
 /// </summary>
 public class LeftTarget : Target
 {
-    [Header("スコア")]
-    Score score;
-
     void Start()
     {
-        score = GameObject.Find("Canvas").GetComponent<Score>();
-
         //SEオブジェクトを生成する
         AppearanceParticleSE();
 
@@ -38,7 +33,7 @@ public class LeftTarget : Target
             //ScoreTextオブジェクトを生成する
             ScoreUIText();
 
-            score.AddScore(ScoreNum);//スコアを+する
+            Score.singletonInstance.AddScore(ScoreNum);//スコアを+する
 
             Destroy(this.gameObject);//このオブジェクトを削除
         }

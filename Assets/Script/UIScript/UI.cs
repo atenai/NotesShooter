@@ -10,9 +10,9 @@ public class UI : MonoBehaviour
     [SerializeField] protected RawImage imageReload;// オブジェクトの取得
     [SerializeField] protected Text textBulletNum;
 
-    float fadeSpeed = 1.0f; //フェードのスピード
     protected Color ReloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
     protected int BulletNum;
+    float fadeSpeed = 1.0f; //フェードのスピード
 
     void Awake()
     {

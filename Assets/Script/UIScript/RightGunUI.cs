@@ -6,7 +6,6 @@ public class RightGunUI : UI
     new void Start()
     {
         base.Start();
-
         textBulletNum.text = RightGun.singletonInstance.rightBulletNum.ToString();
     }
 
@@ -16,7 +15,6 @@ public class RightGunUI : UI
         {
             ReloadColor.a = FadeIn(ReloadColor.a);
 
-            // 画像の透明度を変える
             imageReload.color = ReloadColor; //画像の透明度を変える
         }
 
@@ -24,7 +22,6 @@ public class RightGunUI : UI
         {
             ReloadColor.a = FadeOut(ReloadColor.a);
 
-            // 画像の透明度を変える
             imageReload.color = ReloadColor; //画像の透明度を変える
         }
 
