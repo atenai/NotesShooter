@@ -2,7 +2,7 @@
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] float MoveNum = 12.0f;
+    const float MoveNum = 12.0f;
 
     void Update()
     {

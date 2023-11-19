@@ -9,8 +9,7 @@ public class LeftBullet : MonoBehaviour
         if (hit.CompareTag("LeftTarget") || hit.CompareTag("PurpleTarget") || hit.CompareTag("Wall") || hit.CompareTag("Drum"))
         {
             //Debug.Log("LeftBulletに当たったよ");
-            //何らかの処理
-            //このコンポーネントを持つGameObjectを破棄する
+
             Destroy(gameObject);
         }
     }

@@ -9,10 +9,6 @@ public class LeftGun : Gun
     public static LeftGun singletonInstance = null;
 
     public GameObject LeftBullet;
-    [Tooltip("残弾数")]
-    public int leftBulletNum;
-    [Tooltip("リロードのオン/オフ")]
-    public bool isLeftReloadTime = false;
 
     void Awake()
     {
@@ -30,8 +26,8 @@ public class LeftGun : Gun
     new void Start()
     {
         base.Start();
-        leftBulletNum = BulletNumReset;//残弾数
-        isLeftReloadTime = false;//リロードのオン/オフ
+        bulletNum = BulletNumReset;//残弾数
+        isReloadTime = false;//リロードのオン/オフ
     }
 
     void Update()
@@ -46,9 +42,9 @@ public class LeftGun : Gun
     /// </summary>
     void ShotSystem()
     {
-        if (Input.GetMouseButtonDown(0) && (leftBulletNum != 0) && isLeftReloadTime == false)//マウス左クリックが押されたときかつ(tamaが0じゃないとき)
+        if (Input.GetMouseButtonDown(0) && (bulletNum != 0) && isReloadTime == false)//マウス左クリックが押されたときかつ(tamaが0じゃないとき)
         {
-            leftBulletNum = leftBulletNum - 1;//残弾数を-1する
+            bulletNum = bulletNum - 1;//残弾数を-1する
 
             //SEオブジェクトを生成する
             BulletSE();
@@ -79,14 +75,14 @@ public class LeftGun : Gun
     void ReloadSystem()
     {
         //リロードのトリガー
-        if ((leftBulletNum == 0 || (leftBulletNum != BulletNumReset && Input.GetKey(KeyCode.Q))) && isLeftReloadTime == false)
+        if ((bulletNum == 0 || (bulletNum != BulletNumReset && Input.GetKey(KeyCode.Q))) && isReloadTime == false)
         {
-            isLeftReloadTime = true;//リロードのオン
+            isReloadTime = true;//リロードのオン
             isReloadSE = true;
         }
 
         //リロードがオンになったら
-        if (isLeftReloadTime == true)
+        if (isReloadTime == true)
         {
             if (isReloadSE == true)
             {
@@ -98,9 +94,9 @@ public class LeftGun : Gun
             reloadTime = reloadTime + Time.deltaTime;//リロードタイムをプラス
             if (ReloadTimeDefine <= reloadTime)//リロードタイムがReloadTimeDefineより大きくなったら
             {
-                leftBulletNum = BulletNumReset;//弾リセット
+                bulletNum = BulletNumReset;//弾リセット
                 reloadTime = reloadTimeReset;//リロードタイムをリセット
-                isLeftReloadTime = false;//リロードのオフ
+                isReloadTime = false;//リロードのオフ
             }
         }
     }

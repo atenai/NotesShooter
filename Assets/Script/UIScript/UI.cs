@@ -7,12 +7,13 @@ using UnityEngine.UI;
 /// </summary>
 public class UI : MonoBehaviour
 {
-    [SerializeField] protected RawImage imageReload;// オブジェクトの取得
+    [SerializeField] protected RawImage imageReload;
     [SerializeField] protected Text textBulletNum;
 
     protected Color ReloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
     protected int BulletNum;
-    float fadeSpeed = 1.0f; //フェードのスピード
+    [Tooltip("フェードのスピード")]
+    float fadeSpeed = 2.0f;
 
     void Awake()
     {
@@ -31,7 +32,7 @@ public class UI : MonoBehaviour
 
         if (ReloadColorAlpha <= 1)
         {
-            ReloadColorAlpha += fadeSpeed * Time.deltaTime; //アルファ値を徐々に＋する
+            ReloadColorAlpha += fadeSpeed * Time.deltaTime; //アルファ値を徐々に+する
         }
         return ReloadColorAlpha;
     }

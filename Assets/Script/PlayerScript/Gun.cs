@@ -9,11 +9,15 @@ public class Gun : MonoBehaviour
     /// <summary>
     /// リロード
     /// </summary>
+    [Tooltip("残弾数")]
+    public int bulletNum;
     protected int BulletNumReset = 20;
     [Tooltip("リロードタイム")]
     protected float reloadTime = 0.0f;
     protected const float ReloadTimeDefine = 1.0f;
     protected const int reloadTimeReset = 0;
+    [Tooltip("リロードのオン/オフ")]
+    public bool isReloadTime = false;
 
     /// <summary>
     /// 弾発射のSE
