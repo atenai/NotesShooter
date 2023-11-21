@@ -11,16 +11,16 @@ public class RightGunUI : UI
     {
         if (RightGun.singletonInstance.isReloadTime == true)
         {
-            ReloadColor.a = FadeIn(ReloadColor.a);
+            reloadColor.a = FadeIn(reloadColor.a);
 
-            imageReload.color = ReloadColor; //画像の透明度を変える
+            imageReload.color = reloadColor; //画像の透明度を変える
         }
 
         if (RightGun.singletonInstance.isReloadTime == false)
         {
-            ReloadColor.a = FadeOut(ReloadColor.a);
+            reloadColor.a = FadeOut(reloadColor.a);
 
-            imageReload.color = ReloadColor; //画像の透明度を変える
+            imageReload.color = reloadColor; //画像の透明度を変える
         }
 
         textBulletNum.text = RightGun.singletonInstance.bulletNum.ToString();

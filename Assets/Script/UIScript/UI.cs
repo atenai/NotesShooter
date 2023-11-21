@@ -10,42 +10,42 @@ public class UI : MonoBehaviour
     [SerializeField] protected RawImage imageReload;
     [SerializeField] protected Text textBulletNum;
 
-    protected Color ReloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
-    protected int BulletNum;
+    protected Color reloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
     [Tooltip("フェードのスピード")]
     float fadeSpeed = 2.0f;
+    float imageReloadRotateSpeed = -500.0f;
 
     void Awake()
     {
-        ReloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
+        reloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
     }
 
     protected void Start()
     {
-        imageReload.color = ReloadColor;
+        imageReload.color = reloadColor;
     }
 
-    protected float FadeIn(float ReloadColorAlpha)
+    protected float FadeIn(float reloadColorAlpha)
     {
         //リロード画像を回転
-        imageReload.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, -5.0f);
+        imageReload.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, imageReloadRotateSpeed * Time.deltaTime);
 
-        if (ReloadColorAlpha <= 1)
+        if (reloadColorAlpha <= 1)
         {
-            ReloadColorAlpha += fadeSpeed * Time.deltaTime; //アルファ値を徐々に+する
+            reloadColorAlpha += fadeSpeed * Time.deltaTime; //アルファ値を徐々に+する
         }
-        return ReloadColorAlpha;
+        return reloadColorAlpha;
     }
 
-    protected float FadeOut(float ReloadColorAlpha)
+    protected float FadeOut(float reloadColorAlpha)
     {
         //リロード画像を回転
-        imageReload.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, -5.0f);
+        imageReload.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, imageReloadRotateSpeed * Time.deltaTime);
 
-        if (ReloadColorAlpha >= 0)
+        if (reloadColorAlpha >= 0)
         {
-            ReloadColorAlpha -= fadeSpeed * Time.deltaTime; //アルファ値を徐々に-する
+            reloadColorAlpha -= fadeSpeed * Time.deltaTime; //アルファ値を徐々に-する
         }
-        return ReloadColorAlpha;
+        return reloadColorAlpha;
     }
 }
