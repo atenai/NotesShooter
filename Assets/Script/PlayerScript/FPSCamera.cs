@@ -2,32 +2,38 @@
 
 public class FPSCamera : MonoBehaviour
 {
-    //縦回転(X)はカメラの座標位置を使っている(FPSCamera)
-    //横回転(Y)はプレイヤーキャラクターの座標位置を使っている(Player)
-
-
     [SerializeField] public float cameraSpeedX = 100;
     [SerializeField] public float cameraSpeedY = 100;
 
-    private GameObject cameraGameObject;
+    [Tooltip("横回転(Y)はプレイヤーキャラクターの座標位置を使っている(Player_RotY)")]
     private Transform playerTransform;
+    [Tooltip("縦回転(X)はカメラの座標位置を使っている(FPSCamera_RotX)")]
     private Transform cameraTransform;
     private float cameraAngles;
+    float x_Rotation;
+    float y_Rotation;
 
     void Start()
     {
-        cameraGameObject = this.gameObject;
         playerTransform = transform.parent;
         cameraTransform = this.GetComponent<Transform>();
+
+        //↓ゲームプレイ時にカメラの回転軸の数値がおかしくなるバグがあるため、一通り初期化
+        Vector3 localAngle = new Vector3(0.0f, 0.0f, 0.0f);
+        cameraTransform.transform.localEulerAngles = localAngle; // 回転角度を設定
+        playerTransform.transform.localEulerAngles = localAngle;
+        x_Rotation = 0.01f;//+にして置けば反転する心配がないはず
+        y_Rotation = 0.01f;//+にして置けば反転する心配がないはず
+        //↑ゲームプレイ時にカメラの回転軸の数値がおかしくなるバグがあるため、一通り初期化
     }
 
     void Update()
     {
-        float x_Rotation = Input.GetAxis("Mouse X");
-        float y_Rotation = Input.GetAxis("Mouse Y");
+        x_Rotation = Input.GetAxis("Mouse X");
+        y_Rotation = Input.GetAxis("Mouse Y");
         playerTransform.transform.Rotate(0, x_Rotation * cameraSpeedX * Time.deltaTime, 0);
 
-        cameraAngles = cameraGameObject.transform.localEulerAngles.x;
+        cameraAngles = cameraTransform.transform.localEulerAngles.x;
         if (324 < cameraAngles && cameraAngles < 360 || -10 < cameraAngles && cameraAngles < 79)//ここの各左の数字を変えればカメラの上下の止まる限界値が変わる
         {
 
