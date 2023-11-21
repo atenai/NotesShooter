@@ -2,8 +2,10 @@
 
 public class FPSCamera : MonoBehaviour
 {
-    [SerializeField] public float cameraSpeedX = 100;
-    [SerializeField] public float cameraSpeedY = 100;
+    // 最小値は50、最大値は150としてスライダーを表示
+    [Range(50, 150)] public float cameraSpeedX = 100;
+    // 最小値は50、最大値は150としてスライダーを表示
+    [Range(50, 150)] public float cameraSpeedY = 100;
 
     [Tooltip("横回転(Y)はプレイヤーキャラクターの座標位置を使っている(Player_RotY)")]
     private Transform playerTransform;
