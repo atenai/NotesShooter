@@ -6214,7 +6214,7 @@ GameObject:
   - component: {fileID: 1129617290}
   - component: {fileID: 1129617289}
   m_Layer: 11
-  m_Name: Player
+  m_Name: Player_RotY
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7446,7 +7446,7 @@ GameObject:
   - component: {fileID: 1485730215}
   - component: {fileID: 1485730211}
   m_Layer: 11
-  m_Name: FPSCamera
+  m_Name: FPSCamera_RotX
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7620,7 +7620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c70e0f6905d12468bf1c362cdc2bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 1485730207}
+  cameraSpeedX: 100
+  cameraSpeedY: 100
 --- !u!1001 &1506114916
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,27 +10,17 @@ public class FPSCamera : MonoBehaviour
     [Tooltip("縦回転(X)はカメラの座標位置を使っている(FPSCamera_RotX)")]
     private Transform cameraTransform;
     private float cameraAngles;
-    float x_Rotation;
-    float y_Rotation;
 
     void Start()
     {
         playerTransform = transform.parent;
         cameraTransform = this.GetComponent<Transform>();
-
-        //↓ゲームプレイ時にカメラの回転軸の数値がおかしくなるバグがあるため、一通り初期化
-        Vector3 localAngle = new Vector3(0.0f, 0.0f, 0.0f);
-        cameraTransform.transform.localEulerAngles = localAngle; // 回転角度を設定
-        playerTransform.transform.localEulerAngles = localAngle;
-        x_Rotation = 0.01f;//+にして置けば反転する心配がないはず
-        y_Rotation = 0.01f;//+にして置けば反転する心配がないはず
-        //↑ゲームプレイ時にカメラの回転軸の数値がおかしくなるバグがあるため、一通り初期化
     }
 
     void Update()
     {
-        x_Rotation = Input.GetAxis("Mouse X");
-        y_Rotation = Input.GetAxis("Mouse Y");
+        float x_Rotation = Input.GetAxis("Mouse X");
+        float y_Rotation = Input.GetAxis("Mouse Y");
         playerTransform.transform.Rotate(0, x_Rotation * cameraSpeedX * Time.deltaTime, 0);
 
         cameraAngles = cameraTransform.transform.localEulerAngles.x;
@@ -62,6 +52,5 @@ public class FPSCamera : MonoBehaviour
 
             }
         }
-
     }
 }
