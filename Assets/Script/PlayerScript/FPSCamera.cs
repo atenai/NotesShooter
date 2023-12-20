@@ -11,7 +11,6 @@ public class FPSCamera : MonoBehaviour
     private Transform playerTransform;
     [Tooltip("縦回転(X)はカメラの座標位置を使っている(FPSCamera_RotX)")]
     private Transform cameraTransform;
-    private float cameraAngles;
 
     void Start()
     {
@@ -26,12 +25,13 @@ public class FPSCamera : MonoBehaviour
         //マウスXの入力量 × カメラのスピード × 時間 = の値をX回転の量にする
         playerTransform.transform.Rotate(0, x_Rotation * cameraSpeedX * Time.deltaTime, 0);
 
-        cameraAngles = cameraTransform.transform.localEulerAngles.x;
-        if (324 < cameraAngles && cameraAngles < 360 || -10 < cameraAngles && cameraAngles < 79)//ここの各左の数字を変えればカメラの上下の止まる限界値が変わる
+        float cameraAngles = cameraTransform.transform.localEulerAngles.x;
+        const float lookingDownLimit = 79.0f;
+        const float lookingUpLimit = 360.0f;
+        if (324 < cameraAngles && cameraAngles < lookingUpLimit || -10 < cameraAngles && cameraAngles < lookingDownLimit)//ここの各左の数字を変えればカメラの上下の止まる限界値が変わる
         {
             //マウスYの入力量 × カメラのスピード × 時間 = の値をY回転の量にする
             cameraTransform.transform.Rotate(-y_Rotation * cameraSpeedY * Time.deltaTime, 0, 0);
-
         }
         else
         {
@@ -41,7 +41,6 @@ public class FPSCamera : MonoBehaviour
                 {
                     //マウスYの入力量 × カメラのスピード × 時間 = の値をY回転の量にする
                     cameraTransform.transform.Rotate(-y_Rotation * cameraSpeedY * Time.deltaTime, 0, 0);
-
                 }
             }
             else
@@ -50,10 +49,10 @@ public class FPSCamera : MonoBehaviour
                 {
                     //マウスYの入力量 × カメラのスピード × 時間 = の値をY回転の量にする
                     cameraTransform.transform.Rotate(-y_Rotation * cameraSpeedY * Time.deltaTime, 0, 0);
-
                 }
 
             }
         }
+
     }
 }
