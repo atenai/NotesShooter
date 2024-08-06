@@ -18,18 +18,18 @@ public class ScreenSetting : MonoBehaviour
 
     void Update()
     {
+        //Escapeキーでゲーム終了
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Quit();//ゲーム終了
+        }
+
 #if UNITY_EDITOR
         //Cキーでマウスカーソルを出す
         if (Input.GetKeyDown(KeyCode.C))
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-        }
-
-        //Escapeキーでゲーム終了
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Quit();//ゲーム終了
         }
 
         //タイトルシーンへ
