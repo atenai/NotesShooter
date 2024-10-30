@@ -8,12 +8,11 @@ using UnityEngine.UI;
 public class UI : MonoBehaviour
 {
     [SerializeField] protected RawImage imageReload;
-    [SerializeField] protected Text textBulletNum;
-
     protected Color reloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
     [Tooltip("フェードのスピード")]
     float fadeSpeed = 2.0f;
     float imageReloadRotateSpeed = -500.0f;
+    [SerializeField] protected Text textBulletNum;
 
     void Awake()
     {
@@ -23,6 +22,11 @@ public class UI : MonoBehaviour
     protected void Start()
     {
         imageReload.color = reloadColor;
+    }
+
+    protected void Update()
+    {
+
     }
 
     protected float FadeIn(float reloadColorAlpha)

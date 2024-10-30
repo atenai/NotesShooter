@@ -7,8 +7,10 @@ public class LeftGunUI : UI
         textBulletNum.text = LeftGun.singletonInstance.bulletNum.ToString();
     }
 
-    void Update()
+    new void Update()
     {
+        base.Update();
+
         if (LeftGun.singletonInstance.isReloadTime == true)
         {
             reloadColor.a = FadeIn(reloadColor.a);
