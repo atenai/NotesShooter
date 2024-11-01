@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// PurpleTarget（派生クラス）Target（基底クラス）
@@ -7,7 +8,7 @@ public class PurpleTarget : Target
 {
     [Header("紫キューブの体力")]
     int life = 5;
-    public TextMesh LifeText;
+    [SerializeField] TextMeshPro lifeText;
 
     [Header("ヒットのSE")]
     public GameObject lifeDamageSEPrefab;
@@ -24,16 +25,12 @@ public class PurpleTarget : Target
 
     void Update()
     {
-        //lifeを文字列にして3D_UIで表示
-        LifeText.text = life.ToString();
+        lifeText.text = life.ToString();
     }
 
-    //必ずリジットボディーをアタッチする事！
-    //トリガーとの接触時に呼ばれるコールバック
-    void OnTriggerEnter(Collider hit)
+    void OnTriggerEnter(Collider collider)
     {
-        //接触対象はRightBulletまたはLeftBulletタグですか？
-        if (hit.CompareTag("RightBullet") || hit.CompareTag("LeftBullet"))
+        if (collider.CompareTag("LeftBullet") || collider.CompareTag("RightBullet"))
         {
             //Debug.Log("BulletがPurpleCubeに当たったよ");
 
@@ -45,41 +42,34 @@ public class PurpleTarget : Target
 
             if (life <= 0)
             {
-                //爆発エフェクトオブジェクトを生成する	
-                HitEffect();
-
-                //SEオブジェクトを生成する
-                HitSE();
-
-                //ScoreUITextオブジェクトを生成する
-                ScoreUIText();
-
-                Score.singletonInstance.AddScore(ScoreNum);//スコアを+する
-
-                Destroy(this.gameObject);//このオブジェクトを削除
+                TargetDestroy();
             }
         }
 
         //接触対象はRightBulletまたはLeftBulletタグですか？
-        if (hit.CompareTag("DrumCollider"))
+        if (collider.CompareTag("DrumCollider"))
         {
             //Debug.Log("DrumColliderがPurpleCubeに当たったよ");
 
-
-            //爆発エフェクトオブジェクトを生成する	
-            HitEffect();
-
-            //SEオブジェクトを生成する
-            HitSE();
-
-            //ScoreUITextオブジェクトを生成する
-            ScoreUIText();
-
-            Score.singletonInstance.AddScore(ScoreNum);//スコアを+する
-
-            Destroy(this.gameObject);//このオブジェクトを削除
-
+            TargetDestroy();
         }
+    }
+
+    void TargetDestroy()
+    {
+
+        //爆発エフェクトオブジェクトを生成する	
+        HitEffect();
+
+        //SEオブジェクトを生成する
+        HitSE();
+
+        //ScoreUITextオブジェクトを生成する
+        ScoreUIText();
+
+        Score.singletonInstance.AddScore(ScoreNum);//スコアを+する
+
+        Destroy(this.gameObject);//このオブジェクトを削除
     }
 
     protected override void ScoreUIText()

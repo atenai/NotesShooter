@@ -14,14 +14,10 @@ public class LeftTarget : Target
         AppearanceParticleEffect();
     }
 
-    //トリガーとの接触時に呼ばれるコールバック
     void OnTriggerEnter(Collider hit)
     {
-
-        //接触対象はRightBulletまたはLeftBulletタグですか？
         if (hit.CompareTag("LeftBullet") || hit.CompareTag("DrumCollider"))
         {
-
             //Debug.Log("LeftCubeに当たったよ");
 
             //爆発エフェクトオブジェクトを生成する	
