@@ -319,16 +319,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48232ead85bd1f47b388bc5f3ad72a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitEffectPrefab: {fileID: 6717044111185450015, guid: 38b90465201e92e4981a22912040b829,
+  hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
-  HitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
+  hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
-  ScoreNum: 500
-  ScoreUIPrefab: {fileID: 3597981674705915771, guid: c671939b6c0cf944dbb6c1169208b6d5,
+  scoreNum: 1000
+  scoreUITextPrefab: {fileID: 5598273134330882156, guid: 87802047eb92e4447902ef6ada8fdc11,
     type: 3}
-  AppearanceParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+  scoreUITextPosX: 4
+  scoreUITextPosY: 4
+  spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
     type: 3}
-  AppearanceParticleSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
+  spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
   lifeText: {fileID: 6332640250339557639}
   lifeDamageSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,

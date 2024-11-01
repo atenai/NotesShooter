@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// 基底クラス
@@ -7,69 +8,72 @@
 public class Target : MonoBehaviour
 {
     [Header("爆発エフェクト")]
-    public GameObject HitEffectPrefab;
+    public GameObject hitEffectPrefab;
 
     protected void HitEffect()
     {
-        float hitEffectDestroyTime = HitEffectPrefab.GetComponent<ParticleSystem>().duration;
-        //Debug.Log("hitEffectDestroyTime : " + hitEffectDestroyTime);
-        //爆発エフェクトオブジェクトを生成する	
-        GameObject hitEffect = Instantiate(HitEffectPrefab, this.gameObject.transform.position, Quaternion.identity);
+        float hitEffectDestroyTime = hitEffectPrefab.GetComponent<ParticleSystem>().duration;
+        GameObject hitEffect = Instantiate(hitEffectPrefab, this.gameObject.transform.position, Quaternion.identity);
         Destroy(hitEffect, hitEffectDestroyTime);//エフェクトをEffectDestroyTime後削除
     }
 
-    [Header("爆発SE")]
-    public GameObject HitSEPrefab;
-    protected float HitSE_Endtime = 1.0f;
+    [Tooltip("ヒットSE")]
+    [SerializeField] protected GameObject hitSEPrefab;
+    protected float hitSeEndtime = 1.0f;
 
     protected void HitSE()
     {
-        //SEオブジェクトを生成する
-        GameObject HitSE = Instantiate(HitSEPrefab, this.gameObject.transform.position, Quaternion.identity);
-        Destroy(HitSE, HitSE_Endtime);//SEをSE_Endtime後削除
+        GameObject hitSe = Instantiate(hitSEPrefab, this.gameObject.transform.position, Quaternion.identity);
+        Destroy(hitSe, hitSeEndtime);
     }
 
-    [Header("スコアUIのオブジェクトを生成")]
-    public int ScoreNum;
-    public GameObject ScoreUIPrefab;
-    protected float ScoreUI_Endtime = 1.0f;
+    [Tooltip("スコア数")]
+    [SerializeField] protected int scoreNum;
+    [Tooltip("スコアUIテキストプレファブ")]
+    [SerializeField] protected GameObject scoreUITextPrefab;
+    [Tooltip("スコアUIテキストをどれくらいでデストロイするか？の時間")]
+    protected float scoreUIendtime = 1.0f;
+    [Tooltip("スコアUIテキストの生成位置Xをどれくらいずらすか？")]
+    [SerializeField] protected float scoreUITextPosX = 2.0f;
+    [Tooltip("スコアUIテキストの生成位置Yをどれくらいずらすか？")]
+    [SerializeField] protected float scoreUITextPosY = 2.0f;
 
+    /// <summary>
+    /// スコアUIテキストのオブジェクトを生成
+    /// </summary>
     protected virtual void ScoreUIText()
     {
-        //ScoreUITextオブジェクトの生成位置を取得する
-        float CubePositionX = this.gameObject.transform.position.x;
-        float CubePositionY = this.gameObject.transform.position.y;
-        float CubePositionZ = this.gameObject.transform.position.z;
-        Vector3 p = new Vector3(CubePositionX + 2.0f, CubePositionY + 2.0f, CubePositionZ);
-
-        //ScoreNumを文字列にして3D_UIで表示
-        ScoreUIPrefab.GetComponent<TextMesh>().text = ScoreNum.ToString();
-
-        //ScoreUITextオブジェクトを生成する
-        GameObject ScoreUIText = Instantiate(ScoreUIPrefab, p, Quaternion.identity);
-
-        Destroy(ScoreUIText, ScoreUI_Endtime);//ScoreTextをSxoreText_Endtime後削除
+        Vector3 pos = new Vector3(this.gameObject.transform.position.x + scoreUITextPosX, this.gameObject.transform.position.y + scoreUITextPosY, this.gameObject.transform.position.z);
+        scoreUITextPrefab.GetComponent<TextMeshPro>().text = scoreNum.ToString();
+        GameObject scoreUIText = Instantiate(scoreUITextPrefab, pos, Quaternion.identity);
+        Destroy(scoreUIText, scoreUIendtime);
     }
 
-    [Header("パーティクルエフェクト")]
-    public GameObject AppearanceParticleEffectPrefab;
-    protected float AppearanceParticleEffectDestroyTime = 3.0f;
+    [Header("スポーン")]
 
-    protected void AppearanceParticleEffect()
+    [Tooltip("スポーンパーティクルエフェクト")]
+    [SerializeField] GameObject spawnParticleEffectPrefab;
+    protected float spawnParticleEffectDestroyTime = 3.0f;
+
+    /// <summary>
+    /// スポーンパーティクルオブジェクトを生成する	
+    /// </summary>
+    protected void SpawnParticleEffect()
     {
-        //パーティクルオブジェクトを生成する	
-        GameObject AppearanceParticleEffect = Instantiate(AppearanceParticleEffectPrefab, this.gameObject.transform.position, Quaternion.identity);
-        Destroy(AppearanceParticleEffect, AppearanceParticleEffectDestroyTime);//エフェクトをDestroyTime後削除
+        GameObject spawnParticleEffect = Instantiate(spawnParticleEffectPrefab, this.gameObject.transform.position, Quaternion.identity);
+        Destroy(spawnParticleEffect, spawnParticleEffectDestroyTime);//エフェクトをDestroyTime後削除
     }
 
-    [Header("パーティクルSE")]
-    public GameObject AppearanceParticleSEPrefab;
-    protected float AppearanceParticleSE_Endtime = 1.0f;
+    [Tooltip("スポーンSE")]
+    [SerializeField] GameObject spawnSEPrefab;
+    protected float spawnSeEndtime = 1.0f;
 
-    protected void AppearanceParticleSE()
+    /// <summary>
+    /// スポーンSEオブジェクトを生成する
+    /// </summary>
+    protected void SpawnSE()
     {
-        //SEオブジェクトを生成する
-        GameObject AppearanceParticleSE = Instantiate(AppearanceParticleSEPrefab, this.gameObject.transform.position, Quaternion.identity);
-        Destroy(AppearanceParticleSE, AppearanceParticleSE_Endtime);//SEをSE_Endtime後削除
+        GameObject spawnParticleSE = Instantiate(spawnSEPrefab, this.gameObject.transform.position, Quaternion.identity);
+        Destroy(spawnParticleSE, spawnSeEndtime);
     }
 }

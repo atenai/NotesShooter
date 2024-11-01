@@ -121,13 +121,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0202cc438afa05f46844abd75a4f4fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitEffectPrefab: {fileID: 6717044111185450015, guid: 38b90465201e92e4981a22912040b829,
+  hitEffectPrefab: {fileID: 6717044111185450015, guid: 38b90465201e92e4981a22912040b829,
     type: 3}
-  HitSEPrefab: {fileID: 1770336899112142468, guid: c4a15df76cb2ac54fbe1cbc2f2f99723,
+  hitSEPrefab: {fileID: 1770336899112142468, guid: c4a15df76cb2ac54fbe1cbc2f2f99723,
     type: 3}
-  ScoreNum: 0
-  ScoreUIPrefab: {fileID: 0}
-  AppearanceParticleEffectPrefab: {fileID: 0}
-  AppearanceParticleSEPrefab: {fileID: 0}
+  scoreNum: 0
+  scoreUITextPrefab: {fileID: 0}
+  scoreUITextPosX: 2
+  scoreUITextPosY: 2
+  spawnParticleEffectPrefab: {fileID: 0}
+  spawnSEPrefab: {fileID: 0}
   doramuColliderPrefab: {fileID: 3630428680462284048, guid: b5489b785d1174d499ad9f0960d1bc8f,
     type: 3}

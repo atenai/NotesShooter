@@ -7,20 +7,17 @@ using TMPro;
 public class PurpleTarget : Target
 {
     [Header("紫キューブの体力")]
-    int life = 5;
     [SerializeField] TextMeshPro lifeText;
+    int life = 5;
 
     [Header("ヒットのSE")]
-    public GameObject lifeDamageSEPrefab;
-    float lifeDamageSE_Endtime = 1.0f;
+    [SerializeField] GameObject lifeDamageSEPrefab;
+    float lifeDamageSeEndtime = 1.0f;
 
     void Start()
     {
-        //SEオブジェクトを生成する
-        AppearanceParticleSE();
-
-        //パーティクルオブジェクトを生成する	
-        AppearanceParticleEffect();
+        SpawnSE();
+        SpawnParticleEffect();
     }
 
     void Update()
@@ -38,7 +35,7 @@ public class PurpleTarget : Target
 
             //SEオブジェクトを生成する
             GameObject lifeDamageSE = Instantiate(lifeDamageSEPrefab, this.gameObject.transform.position, Quaternion.identity);
-            Destroy(lifeDamageSE, lifeDamageSE_Endtime);//SEをSE_Endtime後削除
+            Destroy(lifeDamageSE, lifeDamageSeEndtime);//SEをSE_Endtime後削除
 
             if (life <= 0)
             {
@@ -67,25 +64,8 @@ public class PurpleTarget : Target
         //ScoreUITextオブジェクトを生成する
         ScoreUIText();
 
-        Score.singletonInstance.AddScore(ScoreNum);//スコアを+する
+        Score.singletonInstance.AddScore(scoreNum);
 
-        Destroy(this.gameObject);//このオブジェクトを削除
-    }
-
-    protected override void ScoreUIText()
-    {
-        //ScoreUITextオブジェクトの生成位置を取得する
-        float CubePositionX = this.gameObject.transform.position.x;
-        float CubePositionY = this.gameObject.transform.position.y;
-        float CubePositionZ = this.gameObject.transform.position.z;
-        Vector3 p = new Vector3(CubePositionX + 10.0f, CubePositionY + 4.0f, CubePositionZ);
-
-        //ScoreNumを文字列にして3D_UIで表示
-        ScoreUIPrefab.GetComponent<TextMesh>().text = ScoreNum.ToString();
-
-        //ScoreUITextオブジェクトを生成する
-        GameObject ScoreUIText = Instantiate(ScoreUIPrefab, p, Quaternion.identity);
-
-        Destroy(ScoreUIText, ScoreUI_Endtime);//ScoreTextをSxoreText_Endtime後削除
+        Destroy(this.gameObject);
     }
 }

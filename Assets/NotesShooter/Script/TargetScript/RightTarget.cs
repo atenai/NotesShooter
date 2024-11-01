@@ -7,11 +7,8 @@ public class RightTarget : Target
 {
     void Start()
     {
-        //SEオブジェクトを生成する
-        AppearanceParticleSE();
-
-        //パーティクルオブジェクトを生成する	
-        AppearanceParticleEffect();
+        SpawnSE();
+        SpawnParticleEffect();
     }
 
     void OnTriggerEnter(Collider hit)
@@ -29,9 +26,9 @@ public class RightTarget : Target
             //ScoreTextオブジェクトを生成する
             ScoreUIText();
 
-            Score.singletonInstance.AddScore(ScoreNum);//スコアを+する
+            Score.singletonInstance.AddScore(scoreNum);
 
-            Destroy(this.gameObject);//このオブジェクトを削除
+            Destroy(this.gameObject);
         }
     }
 

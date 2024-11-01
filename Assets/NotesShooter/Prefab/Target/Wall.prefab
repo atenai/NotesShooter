@@ -27,12 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2549954386466274924}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &7521888130582754889
 MeshFilter:
@@ -53,9 +54,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -67,6 +71,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -79,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &5783377386842761057
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87,9 +93,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2549954386466274924}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.02, y: 0.02, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7072655515920609295
@@ -105,14 +119,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitEffectPrefab: {fileID: 0}
-  HitEffectDestroyTime: 0
-  HitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
+  hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
-  HitSE_Endtime: 1
-  ScoreNum: 0
-  ScoreUIPrefab: {fileID: 0}
-  ScoreUI_Endtime: 0
-  AppearanceParticleEffectPrefab: {fileID: 0}
-  AppearanceParticleEffectDestroyTime: 0
-  AppearanceParticleSEPrefab: {fileID: 0}
-  AppearanceParticleSE_Endtime: 0
+  scoreNum: 0
+  scoreUITextPrefab: {fileID: 0}
+  scoreUITextPosX: 2
+  scoreUITextPosY: 2
+  spawnParticleEffectPrefab: {fileID: 0}
+  spawnSEPrefab: {fileID: 0}
