@@ -7,9 +7,12 @@ using TMPro;
 /// </summary>
 public class Target : MonoBehaviour
 {
-    [Header("爆発エフェクト")]
-    public GameObject hitEffectPrefab;
+    [Tooltip("ヒットエフェクト")]
+    [SerializeField] protected GameObject hitEffectPrefab;
 
+    /// <summary>
+    /// ヒットエフェクトオブジェクトを生成
+    /// </summary>
     protected void HitEffect()
     {
         float hitEffectDestroyTime = hitEffectPrefab.GetComponent<ParticleSystem>().duration;
@@ -21,6 +24,9 @@ public class Target : MonoBehaviour
     [SerializeField] protected GameObject hitSEPrefab;
     protected float hitSeEndtime = 1.0f;
 
+    /// <summary>
+    /// ヒットSEオブジェクトを生成
+    /// </summary> 
     protected void HitSE()
     {
         GameObject hitSe = Instantiate(hitSEPrefab, this.gameObject.transform.position, Quaternion.identity);
@@ -39,7 +45,7 @@ public class Target : MonoBehaviour
     [SerializeField] protected float scoreUITextPosY = 2.0f;
 
     /// <summary>
-    /// スコアUIテキストのオブジェクトを生成
+    /// スコアUIテキストオブジェクトを生成
     /// </summary>
     protected virtual void ScoreUIText()
     {
