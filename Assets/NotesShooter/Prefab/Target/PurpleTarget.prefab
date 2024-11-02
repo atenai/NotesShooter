@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2914353507837972317}
   - component: {fileID: 6465724866872859836}
   - component: {fileID: 6332640250339557639}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Text (TMP)_LifeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,8 +185,8 @@ GameObject:
   - component: {fileID: -3768175434939504916}
   - component: {fileID: 2460322557226913027}
   - component: {fileID: 2460322557226913053}
-  m_Layer: 10
-  m_Name: PurpleTargetCube
+  m_Layer: 0
+  m_Name: PurpleTarget
   m_TagString: PurpleTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

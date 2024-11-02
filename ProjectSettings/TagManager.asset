@@ -4,30 +4,29 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bullet
   - Target
-  - RightBullet
-  - RightTarget
-  - LeftBullet
-  - LeftTarget
   - PurpleTarget
   - Wall
   - Drum
   - DrumCollider
+  - RedTarget
+  - BlueTarget
+  - RedBullet
+  - BlueBullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
   - 
-  - RedCube
-  - BlueCube
-  - PurpleCube
-  - Player
-  - Drum
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

@@ -8,7 +8,7 @@ public class WallTarget : Target
     //トリガーとの接触時に呼ばれるコールバック
     void OnTriggerEnter(Collider hit)
     {
-        if (hit.CompareTag("LeftBullet") || hit.CompareTag("RightBullet") || hit.CompareTag("DrumCollider"))
+        if (hit.CompareTag("BlueBullet") || hit.CompareTag("RedBullet") || hit.CompareTag("DrumCollider"))
         {
 
             //Debug.Log("壁に当たったよ");

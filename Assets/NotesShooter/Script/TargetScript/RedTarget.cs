@@ -3,7 +3,7 @@
 /// <summary>
 /// RightTarget（派生クラス）Target（基底クラス）
 /// </summary>
-public class RightTarget : Target
+public class RedTarget : Target
 {
     void Start()
     {
@@ -13,7 +13,7 @@ public class RightTarget : Target
 
     void OnTriggerEnter(Collider hit)
     {
-        if (hit.CompareTag("RightBullet") || hit.CompareTag("DrumCollider"))
+        if (hit.CompareTag("RedBullet") || hit.CompareTag("DrumCollider"))
         {
             //Debug.Log("RightCubeに当たったよ");
 

@@ -11,7 +11,7 @@ public class DoramuTarget : Target
 
     void OnTriggerEnter(Collider hit)
     {
-        if (hit.CompareTag("LeftBullet") || hit.CompareTag("RightBullet"))
+        if (hit.CompareTag("BlueBullet") || hit.CompareTag("RedBullet"))
         {
             //爆発エフェクトオブジェクトを生成する	
             HitEffect();

@@ -27,7 +27,7 @@ public class PurpleTarget : Target
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("LeftBullet") || collider.CompareTag("RightBullet"))
+        if (collider.CompareTag("BlueBullet") || collider.CompareTag("RedBullet"))
         {
             //Debug.Log("BulletがPurpleCubeに当たったよ");
 

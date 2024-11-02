@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e2f262132cade44a2bed09a6fdc860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0

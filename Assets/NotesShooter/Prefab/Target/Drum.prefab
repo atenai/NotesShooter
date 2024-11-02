@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3688069509186334318}
   - component: {fileID: 6355595810792700062}
   - component: {fileID: 6355595810792700049}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Drum
   m_TagString: Drum
   m_Icon: {fileID: 0}

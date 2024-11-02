@@ -67,7 +67,7 @@ public class FPSCamera : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, range) == true) // もしRayを投射して何らかのコライダーに衝突したら
         {
-            if (hit.collider.gameObject.CompareTag("LeftTarget") || hit.collider.gameObject.CompareTag("PurpleTarget") || hit.collider.gameObject.CompareTag("RightTarget"))//※間違ってオブジェクトの設定にレイヤーとタグを間違えるなよおれｗ
+            if (hit.collider.gameObject.CompareTag("BlueTarget") || hit.collider.gameObject.CompareTag("PurpleTarget") || hit.collider.gameObject.CompareTag("RedTarget"))//※間違ってオブジェクトの設定にレイヤーとタグを間違えるなよおれｗ
             {
                 //カメラの速さを遅くする
                 localCameraSpeedX = cameraSpeedX / slowDownCameraSpeed;
