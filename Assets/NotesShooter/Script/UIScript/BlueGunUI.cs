@@ -1,10 +1,10 @@
 ﻿
-public class LeftGunUI : UI
+public class BlueGunUI : BaseGunUI
 {
     new void Start()
     {
         base.Start();
-        textBulletNum.text = LeftGun.singletonInstance.bulletNum.ToString();
+        textBullet.text = LeftGun.singletonInstance.bulletNum.ToString();
     }
 
     new void Update()
@@ -25,6 +25,6 @@ public class LeftGunUI : UI
             imageReload.color = reloadColor; //画像の透明度を変える
         }
 
-        textBulletNum.text = LeftGun.singletonInstance.bulletNum.ToString();
+        textBullet.text = LeftGun.singletonInstance.bulletNum.ToString();
     }
 }

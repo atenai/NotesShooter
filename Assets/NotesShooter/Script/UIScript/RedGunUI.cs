@@ -1,10 +1,10 @@
 ﻿
-public class RightGunUI : UI
+public class RedGunUI : BaseGunUI
 {
     new void Start()
     {
         base.Start();
-        textBulletNum.text = RightGun.singletonInstance.bulletNum.ToString();
+        textBullet.text = RightGun.singletonInstance.bulletNum.ToString();
     }
 
     new void Update()
@@ -25,6 +25,6 @@ public class RightGunUI : UI
             imageReload.color = reloadColor; //画像の透明度を変える
         }
 
-        textBulletNum.text = RightGun.singletonInstance.bulletNum.ToString();
+        textBullet.text = RightGun.singletonInstance.bulletNum.ToString();
     }
 }
