@@ -27,7 +27,6 @@ public class Gun : MonoBehaviour
     /// </summary>
     protected void BulletSE()
     {
-        //SEオブジェクトを生成する
         GameObject BulletSE = Instantiate(bulletSEPrefab, this.gameObject.transform.position, Quaternion.identity);
         Destroy(BulletSE, bulletSeEndtime);
     }
@@ -45,15 +44,13 @@ public class Gun : MonoBehaviour
     /// </summary>
     protected void ReloadSE()
     {
-        //SEオブジェクトを生成する
         GameObject ReloadSE = Instantiate(reloadSEPrefab, this.gameObject.transform.position, Quaternion.identity);
         Destroy(ReloadSE, reloadSeEndtime);//SEをSE_Endtime後削除
     }
 
     protected void Start()
     {
-        //Debug.Log("GunのStart()");
-        reloadTime = reloadTimeReset;
+        reloadTime = reloadTimeReset;//リロードタイムをリセット
         currentBullet = resetBulletNumber;//残弾数をリセット
         isReloadTime = false;//リロードのオン/オフ
     }

@@ -40,30 +40,36 @@ public class RedGun : Gun
     /// </summary>
     void ShotSystem()
     {
-        if (Input.GetMouseButtonDown(1) && (currentBullet != 0) && isReloadTime == false)//マウス右クリックが押されたときかつ(RigthTamaが0じゃないとき)
+        if (Input.GetMouseButtonDown(1))
         {
-            currentBullet = currentBullet - 1;//残弾数を-1する
+            if (currentBullet != 0)
+            {
+                if (isReloadTime == false)
+                {
+                    currentBullet = currentBullet - 1;//残弾数を-1する
 
-            //SEオブジェクトを生成する
-            BulletSE();
+                    //SEオブジェクトを生成する
+                    BulletSE();
 
-            //薬莢
-            Vector3 v3_Cartridge = new Vector3(this.gameObject.transform.position.x + 0.5f, this.gameObject.transform.position.y, this.gameObject.transform.position.z + 0.5f);
+                    //薬莢
+                    Vector3 v3_Cartridge = new Vector3(this.gameObject.transform.position.x + 0.5f, this.gameObject.transform.position.y, this.gameObject.transform.position.z + 0.5f);
 
-            //薬莢オブジェクトを生成する	
-            GameObject newCartridge = Instantiate(gunCartridgePrefab, v3_Cartridge, Quaternion.identity);
-            Destroy(newCartridge, gunCartridgeDestroyTime);
+                    //薬莢オブジェクトを生成する	
+                    GameObject newCartridge = Instantiate(gunCartridgePrefab, v3_Cartridge, Quaternion.identity);
+                    Destroy(newCartridge, gunCartridgeDestroyTime);
 
-            newCartridge.GetComponent<Rigidbody>().AddForce(transform.forward * 250.0f);//速すぎるとすり抜けてしまう
-            newCartridge.GetComponent<Rigidbody>().AddForce(transform.up * 100.0f);//速すぎるとすり抜けてしまう
-            newCartridge.GetComponent<Rigidbody>().AddForce(transform.right * 200.0f);//速すぎるとすり抜けてしまう
+                    newCartridge.GetComponent<Rigidbody>().AddForce(transform.forward * 250.0f);//速すぎるとすり抜けてしまう
+                    newCartridge.GetComponent<Rigidbody>().AddForce(transform.up * 100.0f);//速すぎるとすり抜けてしまう
+                    newCartridge.GetComponent<Rigidbody>().AddForce(transform.right * 200.0f);//速すぎるとすり抜けてしまう
 
-            GameObject newBullet = Instantiate(redBullet.gameObject, transform.position, transform.rotation);
+                    GameObject newBullet = Instantiate(redBullet.gameObject, transform.position, transform.rotation);
 
-            //前方向に飛ばす 
-            newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 7000.0f);//速すぎるとすり抜けてしまう
+                    //前方向に飛ばす 
+                    newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 7000.0f);//速すぎるとすり抜けてしまう
 
-            Destroy(newBullet, 3.0f);
+                    Destroy(newBullet, 3.0f);
+                }
+            }
         }
     }
 
