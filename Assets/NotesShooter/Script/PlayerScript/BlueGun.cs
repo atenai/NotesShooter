@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// LeftGun（派生クラス）Gun（基底クラス）
+/// BlueGun（派生クラス）Gun（基底クラス）
 /// </summary>
-public class LeftGun : Gun
+public class BlueGun : Gun
 {
     //シングルトンで作成（ゲーム中に１つのみにする）
-    public static LeftGun singletonInstance = null;
+    public static BlueGun singletonInstance = null;
 
-    [SerializeField] LeftBullet leftBullet;
+    [SerializeField] BlueBullet blueBullet;
 
     void Awake()
     {
@@ -40,9 +40,9 @@ public class LeftGun : Gun
     /// </summary>
     void ShotSystem()
     {
-        if (Input.GetMouseButtonDown(0) && (bulletNum != 0) && isReloadTime == false)//マウス左クリックが押されたときかつ(tamaが0じゃないとき)
+        if (Input.GetMouseButtonDown(0) && (currentBullet != 0) && isReloadTime == false)//マウス左クリックが押されたときかつ(tamaが0じゃないとき)
         {
-            bulletNum = bulletNum - 1;//残弾数を-1する
+            currentBullet = currentBullet - 1;//残弾数を-1する
 
             //SEオブジェクトを生成する
             BulletSE();
@@ -51,19 +51,19 @@ public class LeftGun : Gun
             Vector3 v3_Cartridge = new Vector3(this.gameObject.transform.position.x - 0.5f, this.gameObject.transform.position.y, this.gameObject.transform.position.z + 0.5f);
 
             //薬莢オブジェクトを生成する	
-            GameObject newCartridge = Instantiate(GunCartridgePrefab, v3_Cartridge, Quaternion.identity);
-            Destroy(newCartridge, GunCartridgeDestroyTime);//3秒後に消す 
+            GameObject newCartridge = Instantiate(gunCartridgePrefab, v3_Cartridge, Quaternion.identity);
+            Destroy(newCartridge, gunCartridgeDestroyTime);
 
             newCartridge.GetComponent<Rigidbody>().AddForce(transform.forward * 250.0f);//速すぎるとすり抜けてしまう
             newCartridge.GetComponent<Rigidbody>().AddForce(transform.up * 100.0f);//速すぎるとすり抜けてしまう
             newCartridge.GetComponent<Rigidbody>().AddForce(transform.right * -200.0f);//速すぎるとすり抜けてしまう
 
-            GameObject newBullet = Instantiate(leftBullet.gameObject, transform.position, transform.rotation);
+            GameObject newBullet = Instantiate(blueBullet.gameObject, transform.position, transform.rotation);
 
             //前方向に飛ばす 
             newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 7000.0f);//速すぎるとすり抜けてしまう
 
-            Destroy(newBullet, 3.0f);//3秒後に消す 
+            Destroy(newBullet, 3.0f);
         }
     }
 
@@ -73,7 +73,7 @@ public class LeftGun : Gun
     void ReloadSystem()
     {
         //リロードのトリガー
-        if ((bulletNum == 0 || (bulletNum != bulletNumReset && Input.GetKey(KeyCode.Q))) && isReloadTime == false)
+        if ((currentBullet == 0 || (currentBullet != resetBulletNumber && Input.GetKey(KeyCode.Q))) && isReloadTime == false)
         {
             isReloadTime = true;//リロードのオン
             isReloadSE = true;
@@ -92,7 +92,7 @@ public class LeftGun : Gun
             reloadTime = reloadTime + Time.deltaTime;//リロードタイムをプラス
             if (reloadTimeDefine <= reloadTime)//リロードタイムがReloadTimeDefineより大きくなったら
             {
-                bulletNum = bulletNumReset;//弾リセット
+                currentBullet = resetBulletNumber;//残弾数をリセット
                 reloadTime = reloadTimeReset;//リロードタイムをリセット
                 isReloadTime = false;//リロードのオフ
             }

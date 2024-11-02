@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2339667758111152116}
   - component: {fileID: 8603179597173681902}
   m_Layer: 0
-  m_Name: CartridgeBullet
+  m_Name: GunCartridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

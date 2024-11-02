@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// LeftTarget（派生クラス）Target（基底クラス）
+/// BlueTarget（派生クラス）Target（基底クラス）
 /// </summary>
 public class BlueTarget : Target
 {

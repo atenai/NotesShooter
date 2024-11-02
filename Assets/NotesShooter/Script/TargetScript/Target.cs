@@ -3,7 +3,7 @@ using TMPro;
 
 /// <summary>
 /// 基底クラス
-/// 派生クラスのリスト(RightTarget・LeftTarget・PurpleTarget・Doramu・WallTarget)
+/// 派生クラスのリスト(RedTarget・BlueTarget・PurpleTarget・Doramu・WallTarget)
 /// </summary>
 public class Target : MonoBehaviour
 {

@@ -4,27 +4,27 @@ public class BlueGunUI : BaseGunUI
     new void Start()
     {
         base.Start();
-        textBullet.text = LeftGun.singletonInstance.bulletNum.ToString();
+        textBullet.text = BlueGun.singletonInstance.CurrentBullet.ToString();
     }
 
     new void Update()
     {
         base.Update();
 
-        if (LeftGun.singletonInstance.isReloadTime == true)
+        if (BlueGun.singletonInstance.IsReloadTime == true)
         {
             reloadColor.a = FadeIn(reloadColor.a);
 
             imageReload.color = reloadColor; //画像の透明度を変える   
         }
 
-        if (LeftGun.singletonInstance.isReloadTime == false)
+        if (BlueGun.singletonInstance.IsReloadTime == false)
         {
             reloadColor.a = FadeOut(reloadColor.a);
 
             imageReload.color = reloadColor; //画像の透明度を変える
         }
 
-        textBullet.text = LeftGun.singletonInstance.bulletNum.ToString();
+        textBullet.text = BlueGun.singletonInstance.CurrentBullet.ToString();
     }
 }

@@ -6,57 +6,55 @@
 /// </summary>
 public class Gun : MonoBehaviour
 {
-    /// <summary>
-    /// リロード
-    /// </summary>
     [Tooltip("残弾数")]
-    public int bulletNum;
-    protected int bulletNumReset = 20;
+    protected int currentBullet;
+    public int CurrentBullet => currentBullet;
+    [Tooltip("リロード後の弾のリセットした際の数")]
+    protected int resetBulletNumber = 20;
     [Tooltip("リロードタイム")]
     protected float reloadTime = 0.0f;
     protected const float reloadTimeDefine = 1.0f;
     protected const int reloadTimeReset = 0;
     [Tooltip("リロードのオン/オフ")]
-    public bool isReloadTime = false;
+    protected bool isReloadTime = false;
+    public bool IsReloadTime => isReloadTime;
 
+
+    [SerializeField] GameObject bulletSEPrefab;
+    private float bulletSeEndtime = 1.0f;
     /// <summary>
     /// 弾発射のSE
     /// </summary>
-    public GameObject BulletSEPrefab;
-    private float BulletSE_Endtime = 1.0f;
-
     protected void BulletSE()
     {
         //SEオブジェクトを生成する
-        GameObject BulletSE = Instantiate(BulletSEPrefab, this.gameObject.transform.position, Quaternion.identity);
-        Destroy(BulletSE, BulletSE_Endtime);//SEをSE_Endtime後削除
+        GameObject BulletSE = Instantiate(bulletSEPrefab, this.gameObject.transform.position, Quaternion.identity);
+        Destroy(BulletSE, bulletSeEndtime);
     }
 
-    /// <summary>
-    /// 薬莢プレファブ生成
-    /// </summary>
-    public GameObject GunCartridgePrefab;
-    protected float GunCartridgeDestroyTime = 3.0f;
+    [Tooltip("薬莢プレファブ")]
+    [SerializeField] protected GameObject gunCartridgePrefab;
+    protected float gunCartridgeDestroyTime = 3.0f;
 
+
+    [SerializeField] GameObject reloadSEPrefab;
+    private float reloadSeEndtime = 1.0f;
+    protected bool isReloadSE = false;
     /// <summary>
     /// リロードのSE
     /// </summary>
-    public GameObject ReloadSEPrefab;
-    private float ReloadSE_Endtime = 1.0f;
-    protected bool isReloadSE = false;
-
     protected void ReloadSE()
     {
         //SEオブジェクトを生成する
-        GameObject ReloadSE = Instantiate(ReloadSEPrefab, this.gameObject.transform.position, Quaternion.identity);
-        Destroy(ReloadSE, ReloadSE_Endtime);//SEをSE_Endtime後削除
+        GameObject ReloadSE = Instantiate(reloadSEPrefab, this.gameObject.transform.position, Quaternion.identity);
+        Destroy(ReloadSE, reloadSeEndtime);//SEをSE_Endtime後削除
     }
 
     protected void Start()
     {
         //Debug.Log("GunのStart()");
         reloadTime = reloadTimeReset;
-        bulletNum = bulletNumReset;//残弾数
+        currentBullet = resetBulletNumber;//残弾数をリセット
         isReloadTime = false;//リロードのオン/オフ
     }
 }

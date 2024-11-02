@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// RightTarget（派生クラス）Target（基底クラス）
+/// RedTarget（派生クラス）Target（基底クラス）
 /// </summary>
 public class RedTarget : Target
 {
