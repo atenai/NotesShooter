@@ -13,7 +13,9 @@ public class PlayerUI : MonoBehaviour
     [Tooltip("ポーズ")]
     bool isPause = false;
     public bool IsPause => isPause;
+    [Tooltip("ポーズ画像")]
     [SerializeField] GameObject panelPause;
+    [SerializeField] AudioSource audioSource;
 
     void Start()
     {
@@ -51,11 +53,15 @@ public class PlayerUI : MonoBehaviour
         {
             Time.timeScale = 0f;
             panelPause.SetActive(true);
+            // 一時停止
+            audioSource.Pause();
         }
         else
         {
             Time.timeScale = 1f;
             panelPause.SetActive(false);
+            // 一時停止解除
+            audioSource.UnPause();
         }
     }
 }

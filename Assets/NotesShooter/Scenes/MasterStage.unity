@@ -10186,6 +10186,7 @@ MonoBehaviour:
   imageReticle: {fileID: 84880038}
   imageCrossHair: {fileID: 221730855}
   panelPause: {fileID: 2121794788}
+  audioSource: {fileID: 1902696352}
 --- !u!114 &1902696358
 MonoBehaviour:
   m_ObjectHideFlags: 0
