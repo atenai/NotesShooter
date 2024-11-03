@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FadeGamePlay : Fade
+public class GamePlayManager : BaseSceneManager
 {
     new void Start()
     {

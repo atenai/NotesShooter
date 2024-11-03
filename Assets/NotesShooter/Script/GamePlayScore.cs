@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class Score : MonoBehaviour
+public class GamePlayScore : MonoBehaviour
 {
     //シングルトンで作成（ゲーム中に１つのみにする）
-    public static Score singletonInstance = null;
+    public static GamePlayScore singletonInstance = null;
 
     int scoreNum = 0;
     public int ScoreNum => scoreNum;

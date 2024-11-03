@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class FadeTitle : Fade
+public class TitleManager : BaseSceneManager
 {
     [SerializeField] Text textPressAnyKey;
 

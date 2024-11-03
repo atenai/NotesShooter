@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 /// 基底クラス
 /// 派生クラスのリスト(FadeTitle・FadeGamePlay・FadeResult)
 /// </summary>
-public class Fade : MonoBehaviour
+public class BaseSceneManager : MonoBehaviour
 {
     [SerializeField] protected Image image;
     [SerializeField] protected AudioClip audioClip;

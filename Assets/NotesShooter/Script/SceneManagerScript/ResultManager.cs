@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FadeResult : Fade
+public class ResultManager : BaseSceneManager
 {
     void Update()
     {

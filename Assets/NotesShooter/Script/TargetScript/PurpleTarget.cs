@@ -64,7 +64,7 @@ public class PurpleTarget : Target
         //ScoreUITextオブジェクトを生成する
         ScoreUIText();
 
-        Score.singletonInstance.AddScore(scoreNum);
+        GamePlayScore.singletonInstance.AddScore(scoreNum);
 
         Destroy(this.gameObject);
     }

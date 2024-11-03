@@ -26,7 +26,7 @@ public class BlueTarget : Target
             //ScoreTextオブジェクトを生成する
             ScoreUIText();
 
-            Score.singletonInstance.AddScore(scoreNum);
+            GamePlayScore.singletonInstance.AddScore(scoreNum);
 
             Destroy(this.gameObject);
         }
