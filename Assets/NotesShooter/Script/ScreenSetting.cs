@@ -3,12 +3,30 @@ using UnityEngine.SceneManagement;
 
 public class ScreenSetting : MonoBehaviour
 {
+    [Tooltip("マウスカーソルのオン/オフ")]
+    [SerializeField] bool isCursor = false;
+    [Tooltip("フレームレート")]
     int frameCount;
     float prevTime;
     float fps = 0.0f;
 
     private void Awake()
     {
+#if UNITY_ANDROID//端末がAndroidだった場合の処理
+
+#endif //終了
+
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
+
+        Screen.SetResolution(1920, 1080, true, 60);
+        Application.targetFrameRate = 60;//フレームレートの設定
+
+#endif //終了
+
+#if UNITY_STANDALONE_WIN//端末がPCだった場合の処理
+        CursorActive();
+#endif //終了
+
         //マウスカーソルを消す
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -16,12 +34,12 @@ public class ScreenSetting : MonoBehaviour
 
     void Start()
     {
-        Screen.SetResolution(1920, 1080, true, 60);//解像度の設定
-        Application.targetFrameRate = 60;//フレームレートの設定
-
         StartFPS();
     }
 
+    /// <summary>
+    /// フレームレートの初期化処理
+    /// </summary> 
     void StartFPS()
     {
         frameCount = 0;
@@ -30,28 +48,52 @@ public class ScreenSetting : MonoBehaviour
 
     void Update()
     {
+
+        UpdateFPS();
+
+#if UNITY_EDITOR//Unityエディター上での処理
+        //Tキーでマウスカーソルを出すorマウスカーソルを消す
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            isCursor = isCursor ? false : true;
+            CursorActive();
+        }
+#endif //終了   
+
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
         //Escapeキーでゲーム終了
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Quit();//ゲーム終了
         }
-
-        UpdateFPS();
+#endif //終了  
 
 #if UNITY_EDITOR
-        //Cキーでマウスカーソルを出す
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-
         //タイトルシーンへ
-        if (Input.GetKey(KeyCode.T))
+        if (Input.GetKey(KeyCode.Y))
         {
             SceneManager.LoadScene("Title");
         }
 #endif
+    }
+
+    /// <summary>
+    /// マウスカーソルのオン/オフ処理 
+    /// </summary>
+    void CursorActive()
+    {
+        if (isCursor == false)
+        {
+            //マウスカーソルを消す
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else if (isCursor == true)
+        {
+            //マウスカーソルを出す
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     /// <summary>
