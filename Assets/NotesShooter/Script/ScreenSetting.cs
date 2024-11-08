@@ -127,6 +127,7 @@ public class ScreenSetting : MonoBehaviour
 
     void OnGUI()
     {
+#if UNITY_EDITOR
         GUIStyle styleGreen = new GUIStyle();
         styleGreen.fontSize = 30;
         GUIStyleState styleStateGreen = new GUIStyleState();
@@ -135,5 +136,6 @@ public class ScreenSetting : MonoBehaviour
 
         GUI.Box(new Rect(10, 10, 100, 100), "フレームレート : ", styleGreen);
         GUI.Box(new Rect(250, 10, 100, 100), fps.ToString(), styleGreen);
+#endif
     }
 }
