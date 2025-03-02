@@ -7,11 +7,14 @@ public class StageSelectManager : MonoBehaviour
 {
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private GameObject content;
-    [SerializeField] private GameObject stageSelectButtonPrefab;  // ステージボタンのプレハブ
+    [Tooltip("ステージボタンのプレハブ")]
+    [SerializeField] private GameObject stageSelectButtonPrefab;
     [SerializeField] private GameObject bonusStageSelectButtonPrefab;
     int totalStageCount = 4;
     List<StageSelectButton> stageSelectButtons = new List<StageSelectButton>();
     BonusStageSelectButton bonusStageSelectButton;
+
+    public static int playCount = 1;
 
     void Start()
     {
@@ -25,27 +28,27 @@ public class StageSelectManager : MonoBehaviour
             // プレハブからボタンをInstantiateしてContentの子オブジェクトに配置
             GameObject stageSelectButtonGameObject = Instantiate(stageSelectButtonPrefab, new Vector3(0, 0, 0), Quaternion.identity, content.transform);
             StageSelectButton stageSelectButton = stageSelectButtonGameObject.GetComponent<StageSelectButton>();
-            stageSelectButton.Initialize(i, totalStageCount);
+            stageSelectButton.Initialize(i, totalStageCount, playCount);
             stageSelectButtons.Add(stageSelectButton);
         }
 
         GameObject bonusStageSelectButtonGameObject = Instantiate(bonusStageSelectButtonPrefab, new Vector3(0, 0, 0), Quaternion.identity, content.transform);
         bonusStageSelectButton = bonusStageSelectButtonGameObject.GetComponent<BonusStageSelectButton>();
-        bonusStageSelectButton.Initialize(totalStageCount, totalStageCount);
+        bonusStageSelectButton.Initialize(totalStageCount, totalStageCount, playCount);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            bonusStageSelectButton.Reduction();
-            //stageSelectButtons[1].Reduction();
+            //bonusStageSelectButton.Reduction();
+            stageSelectButtons[1].Reduction();
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            bonusStageSelectButton.Expansion();
-            //stageSelectButtons[1].Expansion();
+            //bonusStageSelectButton.Expansion();
+            stageSelectButtons[1].Expansion();
         }
     }
 }

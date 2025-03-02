@@ -3,23 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StageSelectButton : MonoBehaviour
 {
     [SerializeField] GameObject stageSelectButton;
     [SerializeField] GameObject verticalBar;
+    [SerializeField] Image main;
     [SerializeField] GameObject buttonGameObject;
     [SerializeField] Button button;
     [SerializeField] private TextMeshProUGUI buttonText;
-    // 完了マークを表示/非表示するためのUI（アイコン画像など）をアタッチ
+    [Tooltip("完了マーク")]
     [SerializeField] private GameObject completeMarkGameObject;
-
     int buttonNumber;
 
-    public void Initialize(int buttonNumber, int totalNumber)
+    /// <summary>
+    /// 初期化
+    /// </summary>
+    /// <param name="buttonNumber"></param>
+    /// <param name="totalNumber"></param>
+    public void Initialize(int buttonNumber, int totalNumber, int playCount)
     {
         this.buttonNumber = buttonNumber;
         SetButtonText(buttonNumber.ToString());
+        Reduction();
+        SetMainColor(Color.gray);
+
+        //現在の日なら
+        if (buttonNumber == playCount)
+        {
+            Expansion();
+            SetMainColor(Color.white);
+        }
+
+        //前の日なら
+        if (buttonNumber < playCount)
+        {
+            SetMainColor(Color.gray);
+            SetCompleteMark(true);
+        }
 
         if (buttonNumber == totalNumber)
         {
@@ -27,22 +49,45 @@ public class StageSelectButton : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 縦棒を消す
+    /// </summary>
     public void HideVerticalBar()
     {
         verticalBar.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// メイン画像のカラーを設定
+    /// </summary>
+    /// <param name="color"></param>
+    public void SetMainColor(Color color)
+    {
+        main.color = color;
+    }
+
+    /// <summary>
+    /// ボタンの表示/非表示
+    /// </summary>
+    /// <param name="isActive"></param>
     public void SetButtonGameObject(bool isActive)
     {
         buttonGameObject.SetActive(isActive);
     }
 
+    /// <summary>
+    /// ボタンのテキストに文字をセット
+    /// </summary>
+    /// <param name="text"></param>
     public void SetButtonText(string text)
     {
         buttonText.text = text;
     }
 
-    // クリア済みマークの表示/非表示
+    /// <summary>
+    /// クリア済みマークの表示/非表示
+    /// </summary>
+    /// <param name="isCompleted"></param>
     public void SetCompleteMark(bool isCompleted)
     {
         completeMarkGameObject.SetActive(isCompleted);
@@ -80,6 +125,9 @@ public class StageSelectButton : MonoBehaviour
     void OnClick()
     {
         Debug.Log(buttonNumber);
+
+        StageSelectManager.playCount++;
+        SceneManager.LoadScene("StageSelect");
     }
 
     void Update()

@@ -8,17 +8,37 @@ public class BonusStageSelectButton : MonoBehaviour
 {
     [SerializeField] GameObject bonusStageSelectButton;
     [SerializeField] GameObject verticalBar;
+    [SerializeField] Image main;
     [SerializeField] GameObject buttonGameObject;
     [SerializeField] Button button;
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] GameObject mark;
-
     int buttonNumber;
 
-    public void Initialize(int buttonNumber, int totalNumber)
+    /// <summary>
+    /// 初期化
+    /// </summary>
+    /// <param name="buttonNumber"></param>
+    /// <param name="totalNumber"></param>
+    public void Initialize(int buttonNumber, int totalNumber, int playCount)
     {
         this.buttonNumber = buttonNumber;
         SetButtonText(buttonNumber.ToString());
+        Reduction();
+        SetMainColor(Color.gray);
+
+        //現在の日なら
+        if (buttonNumber == playCount)
+        {
+            Expansion();
+            SetMainColor(Color.white);
+        }
+
+        //前の日なら
+        if (buttonNumber < playCount)
+        {
+            SetMainColor(Color.gray);
+        }
 
         if (buttonNumber == totalNumber)
         {
@@ -26,16 +46,36 @@ public class BonusStageSelectButton : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 縦棒を消す
+    /// </summary>
     public void HideVerticalBar()
     {
         verticalBar.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// メイン画像のカラーを設定
+    /// </summary>
+    /// <param name="color"></param>
+    public void SetMainColor(Color color)
+    {
+        main.color = color;
+    }
+
+    /// <summary>
+    /// ボタンの表示/非表示
+    /// </summary>
+    /// <param name="isActive"></param>
     public void SetButtonGameObject(bool isActive)
     {
         buttonGameObject.SetActive(isActive);
     }
 
+    /// <summary>
+    /// ボタンのテキストに文字をセット
+    /// </summary>
+    /// <param name="text"></param>
     public void SetButtonText(string text)
     {
         buttonText.text = text;

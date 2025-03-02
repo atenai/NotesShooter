@@ -244,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageSelectButton: {fileID: 2876003156051555001}
   verticalBar: {fileID: 1815102294656142638}
+  main: {fileID: 6611970009437636238}
   buttonGameObject: {fileID: 2998234508213469992}
   button: {fileID: 1851752703726402574}
   buttonText: {fileID: 5890820089523321094}
