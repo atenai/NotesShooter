@@ -9,6 +9,7 @@ public class StageSelectButton : MonoBehaviour
 {
     [SerializeField] GameObject stageSelectButton;
     [SerializeField] GameObject verticalBar;
+    [SerializeField] Image frameLine;
     [SerializeField] Image main;
     [SerializeField] GameObject buttonGameObject;
     [SerializeField] Button button;
@@ -27,12 +28,14 @@ public class StageSelectButton : MonoBehaviour
         this.buttonNumber = buttonNumber;
         SetButtonText(buttonNumber.ToString());
         Reduction();
+        SetFrameLineColor(Color.clear);
         SetMainColor(Color.gray);
 
         //現在の日なら
         if (buttonNumber == playCount)
         {
             Expansion();
+            SetFrameLineColor(Color.red);
             SetMainColor(Color.white);
         }
 
@@ -55,6 +58,15 @@ public class StageSelectButton : MonoBehaviour
     public void HideVerticalBar()
     {
         verticalBar.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 枠線画像のカラーを設定
+    /// </summary>
+    /// <param name="color"></param>
+    public void SetFrameLineColor(Color color)
+    {
+        frameLine.color = color;
     }
 
     /// <summary>

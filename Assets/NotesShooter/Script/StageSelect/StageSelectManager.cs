@@ -19,6 +19,9 @@ public class StageSelectManager : MonoBehaviour
     void Start()
     {
         CreateStageButtons();
+
+        //以下演出
+        //scrollRect.verticalNormalizedPosition = playCount / totalStageCount;
     }
 
     void CreateStageButtons()
