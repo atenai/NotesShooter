@@ -6,6 +6,7 @@ using TMPro;
 
 public class StageSelectButton : MonoBehaviour
 {
+    [SerializeField] GameObject stageSelectButton;
     [SerializeField] GameObject verticalBar;
     [SerializeField] GameObject buttonGameObject;
     [SerializeField] Button button;
@@ -31,6 +32,11 @@ public class StageSelectButton : MonoBehaviour
         verticalBar.gameObject.SetActive(false);
     }
 
+    public void SetButtonGameObject(bool isActive)
+    {
+        buttonGameObject.SetActive(isActive);
+    }
+
     public void SetButtonText(string text)
     {
         buttonText.text = text;
@@ -40,6 +46,30 @@ public class StageSelectButton : MonoBehaviour
     public void SetCompleteMark(bool isCompleted)
     {
         completeMarkGameObject.SetActive(isCompleted);
+    }
+
+    /// <summary>
+    /// 縮小
+    /// </summary>
+    public void Reduction()
+    {
+        Vector2 sizeDelta = stageSelectButton.GetComponent<RectTransform>().sizeDelta;
+        sizeDelta.y = 200;
+        stageSelectButton.GetComponent<RectTransform>().sizeDelta = sizeDelta;
+
+        SetButtonGameObject(false);
+    }
+
+    /// <summary>
+    /// 拡大
+    /// </summary>
+    public void Expansion()
+    {
+        Vector2 sizeDelta = stageSelectButton.GetComponent<RectTransform>().sizeDelta;
+        sizeDelta.y = 300;
+        stageSelectButton.GetComponent<RectTransform>().sizeDelta = sizeDelta;
+
+        SetButtonGameObject(true);
     }
 
     void Start()

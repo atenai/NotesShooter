@@ -36,6 +36,16 @@ public class StageSelectManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            bonusStageSelectButton.Reduction();
+            //stageSelectButtons[1].Reduction();
+        }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            bonusStageSelectButton.Expansion();
+            //stageSelectButtons[1].Expansion();
+        }
     }
 }

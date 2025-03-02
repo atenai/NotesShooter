@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250}
-  m_SizeDelta: {x: 50, y: 500}
+  m_AnchoredPosition: {x: 0, y: 200}
+  m_SizeDelta: {x: 50, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7618679127971454185
 CanvasRenderer:
@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0fb0d9473a09844b72f30177d8286f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageSelectButton: {fileID: 2876003156051555001}
   verticalBar: {fileID: 1815102294656142638}
   buttonGameObject: {fileID: 2998234508213469992}
   button: {fileID: 1851752703726402574}

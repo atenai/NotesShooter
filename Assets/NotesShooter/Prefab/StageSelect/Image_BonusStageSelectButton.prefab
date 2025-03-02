@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250}
-  m_SizeDelta: {x: 50, y: 500}
+  m_AnchoredPosition: {x: 0, y: 200}
+  m_SizeDelta: {x: 50, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7618679127971454185
 CanvasRenderer:
@@ -167,10 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7caa23472d0cdc946916023ecb8ecef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bonusStageSelectButton: {fileID: 2876003156051555001}
   verticalBar: {fileID: 1815102294656142638}
   buttonGameObject: {fileID: 2998234508213469992}
   button: {fileID: 1851752703726402574}
   buttonText: {fileID: 5890820089523321094}
+  mark: {fileID: 5514834621887414288}
 --- !u!1 &2998234508213469992
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +440,7 @@ GameObject:
   - component: {fileID: 8559938544142068873}
   - component: {fileID: 6180289987679644811}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image_Mark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
