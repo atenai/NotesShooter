@@ -53,5 +53,10 @@ public class StageSelectManager : MonoBehaviour
             //bonusStageSelectButton.Expansion();
             stageSelectButtons[1].Expansion();
         }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            bonusStageSelectButton.AdvanceUnlock();
+        }
     }
 }

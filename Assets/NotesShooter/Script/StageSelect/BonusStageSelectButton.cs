@@ -121,6 +121,15 @@ public class BonusStageSelectButton : MonoBehaviour
         SetButtonGameObject(true);
     }
 
+    /// <summary>
+    /// 前倒しアンロック 
+    /// </summary>
+    public void AdvanceUnlock()
+    {
+        Expansion();
+        SetMainColor(Color.white);
+    }
+
     void Start()
     {
         button.onClick.AddListener(OnClick);
