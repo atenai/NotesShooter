@@ -42,6 +42,7 @@ public class StageSelectButton : MonoBehaviour
         //前の日なら
         if (buttonNumber < playCount)
         {
+            SetFrameLineColor(Color.red);
             SetMainColor(Color.gray);
             SetCompleteMark(true);
         }
