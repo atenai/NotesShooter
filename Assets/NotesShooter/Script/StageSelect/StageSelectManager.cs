@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,9 @@ public class StageSelectManager : MonoBehaviour
         CreateStageButtons();
 
         //以下演出
-        //scrollRect.verticalNormalizedPosition = playCount / totalStageCount;
+        scrollRect.verticalNormalizedPosition = 0 / totalStageCount;
+
+        StartCoroutine(Direction());
     }
 
     void CreateStageButtons()
@@ -58,5 +61,29 @@ public class StageSelectManager : MonoBehaviour
         {
             bonusStageSelectButton.AdvanceUnlock();
         }
+    }
+
+    IEnumerator Direction()
+    {
+        if (playCount < totalStageCount)
+        {
+            StageSelectButton currentButton = stageSelectButtons[playCount - 1];
+
+            Debug.Log("start");
+
+            int i = 0;
+            yield return new WaitWhile(() =>
+            {
+                Debug.Log("i : " + i);
+                i++;
+                currentButton.SetVerticalBarGauge(i);
+
+                return i < 100;
+            });
+
+            Debug.Log("end");
+        }
+
+        yield return null;
     }
 }
