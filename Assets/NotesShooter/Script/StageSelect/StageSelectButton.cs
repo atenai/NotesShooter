@@ -5,12 +5,11 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class StageSelectButton : MonoBehaviour
+public class StageSelectButton : StageSelectButtonBase
 {
     [SerializeField] GameObject stageSelectButton;
     [SerializeField] GameObject verticalBar;
     [SerializeField] Image frameLine;
-    [SerializeField] Image main;
     [SerializeField] GameObject buttonGameObject;
     [SerializeField] Button button;
     [SerializeField] private TextMeshProUGUI buttonText;
@@ -28,28 +27,30 @@ public class StageSelectButton : MonoBehaviour
         this.buttonNumber = buttonNumber;
         SetButtonText(buttonNumber.ToString());
         Reduction();
-        SetFrameLineColor(Color.clear);
-        SetMainColor(Color.gray);
+        SetVerticalBarGauge(0);
+        SetFrameLineColor(Color.gray);
+        SetBackgroundColor(Color.white);
 
         //現在の日なら
         if (buttonNumber == playCount)
         {
             Expansion();
             SetFrameLineColor(Color.red);
-            SetMainColor(Color.white);
         }
 
         //前の日なら
         if (buttonNumber < playCount)
         {
+            SetVerticalBarGauge(100);
             SetFrameLineColor(Color.red);
-            SetMainColor(Color.gray);
             SetCompleteMark(true);
         }
 
+        //最後の日なら
         if (buttonNumber == totalNumber)
         {
             HideVerticalBar();
+            SetVerticalBarGauge(0);
         }
     }
 
@@ -68,15 +69,6 @@ public class StageSelectButton : MonoBehaviour
     public void SetFrameLineColor(Color color)
     {
         frameLine.color = color;
-    }
-
-    /// <summary>
-    /// メイン画像のカラーを設定
-    /// </summary>
-    /// <param name="color"></param>
-    public void SetMainColor(Color color)
-    {
-        main.color = color;
     }
 
     /// <summary>
@@ -107,15 +99,16 @@ public class StageSelectButton : MonoBehaviour
     }
 
     /// <summary>
-    /// 縮小
+    /// ボタンのサイズをセット
     /// </summary>
-    public void Reduction()
+    /// <param name="x">横幅</param>
+    /// <param name="y">縦幅</param>
+    public void SetStageSelectButtonSize(float x = 500, float y = 300)
     {
         Vector2 sizeDelta = stageSelectButton.GetComponent<RectTransform>().sizeDelta;
-        sizeDelta.y = 200;
+        sizeDelta.x = x;
+        sizeDelta.y = y;
         stageSelectButton.GetComponent<RectTransform>().sizeDelta = sizeDelta;
-
-        SetButtonGameObject(false);
     }
 
     /// <summary>
@@ -123,11 +116,19 @@ public class StageSelectButton : MonoBehaviour
     /// </summary>
     public void Expansion()
     {
-        Vector2 sizeDelta = stageSelectButton.GetComponent<RectTransform>().sizeDelta;
-        sizeDelta.y = 300;
-        stageSelectButton.GetComponent<RectTransform>().sizeDelta = sizeDelta;
+        SetStageSelectButtonSize(y: 300);
 
         SetButtonGameObject(true);
+    }
+
+    /// <summary>
+    /// 縮小
+    /// </summary>
+    public void Reduction()
+    {
+        SetStageSelectButtonSize(450, 200);
+
+        SetButtonGameObject(false);
     }
 
     void Start()

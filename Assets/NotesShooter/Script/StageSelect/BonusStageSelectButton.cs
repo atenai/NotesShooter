@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BonusStageSelectButton : MonoBehaviour
+public class BonusStageSelectButton : StageSelectButtonBase
 {
     [SerializeField] GameObject bonusStageSelectButton;
     [SerializeField] GameObject verticalBar;
     [SerializeField] Image frameLine;
-    [SerializeField] Image main;
     [SerializeField] GameObject buttonGameObject;
     [SerializeField] Button button;
     [SerializeField] private TextMeshProUGUI buttonText;
-    [SerializeField] GameObject mark;
+    [SerializeField] GameObject icon;
     int buttonNumber;
 
     /// <summary>
@@ -26,27 +25,29 @@ public class BonusStageSelectButton : MonoBehaviour
         this.buttonNumber = buttonNumber;
         SetButtonText(buttonNumber.ToString());
         Reduction();
-        SetFrameLineColor(Color.clear);
-        SetMainColor(Color.gray);
+        SetVerticalBarGauge(0);
+        SetFrameLineColor(Color.gray);
+        SetBackgroundColor(Color.white);
 
         //現在の日なら
         if (buttonNumber == playCount)
         {
             Expansion();
             SetFrameLineColor(Color.red);
-            SetMainColor(Color.white);
         }
 
         //前の日なら
         if (buttonNumber < playCount)
         {
+            SetVerticalBarGauge(100);
             SetFrameLineColor(Color.red);
-            SetMainColor(Color.gray);
         }
 
+        //最後の日なら
         if (buttonNumber == totalNumber)
         {
             HideVerticalBar();
+            SetVerticalBarGauge(0);
         }
     }
 
@@ -68,15 +69,6 @@ public class BonusStageSelectButton : MonoBehaviour
     }
 
     /// <summary>
-    /// メイン画像のカラーを設定
-    /// </summary>
-    /// <param name="color"></param>
-    public void SetMainColor(Color color)
-    {
-        main.color = color;
-    }
-
-    /// <summary>
     /// ボタンの表示/非表示
     /// </summary>
     /// <param name="isActive"></param>
@@ -95,19 +87,27 @@ public class BonusStageSelectButton : MonoBehaviour
     }
 
     /// <summary>
-    /// 縮小
+    /// ボタンのサイズをセット
     /// </summary>
-    public void Reduction()
+    /// <param name="x">横幅</param>
+    /// <param name="y">縦幅</param>
+    public void SetBonusStageSelectButtonSize(float x = 500, float y = 400)
     {
         Vector2 sizeDelta = bonusStageSelectButton.GetComponent<RectTransform>().sizeDelta;
-        sizeDelta.y = 200;
+        sizeDelta.y = 400;
         bonusStageSelectButton.GetComponent<RectTransform>().sizeDelta = sizeDelta;
+    }
 
-        Vector2 pos = mark.GetComponent<RectTransform>().anchoredPosition;
-        pos.y = 25;
-        mark.GetComponent<RectTransform>().anchoredPosition = pos;
 
-        SetButtonGameObject(false);
+    /// <summary>
+    /// アイコンの座標をセット
+    /// </summary>
+    /// <param name="y"></param>
+    public void SetIconPos(float y)
+    {
+        Vector2 pos = icon.GetComponent<RectTransform>().anchoredPosition;
+        pos.y = y;
+        icon.GetComponent<RectTransform>().anchoredPosition = pos;
     }
 
     /// <summary>
@@ -115,11 +115,23 @@ public class BonusStageSelectButton : MonoBehaviour
     /// </summary>
     public void Expansion()
     {
-        Vector2 sizeDelta = bonusStageSelectButton.GetComponent<RectTransform>().sizeDelta;
-        sizeDelta.y = 400;
-        bonusStageSelectButton.GetComponent<RectTransform>().sizeDelta = sizeDelta;
+        SetBonusStageSelectButtonSize(y: 400);
+
+        SetIconPos(75);
 
         SetButtonGameObject(true);
+    }
+
+    /// <summary>
+    /// 縮小
+    /// </summary>
+    public void Reduction()
+    {
+        SetBonusStageSelectButtonSize(450, 200);
+
+        SetIconPos(25);
+
+        SetButtonGameObject(false);
     }
 
     /// <summary>
@@ -128,7 +140,7 @@ public class BonusStageSelectButton : MonoBehaviour
     public void AdvanceUnlock()
     {
         Expansion();
-        SetMainColor(Color.white);
+        SetBackgroundColor(Color.white);
     }
 
     void Start()
