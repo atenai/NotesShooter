@@ -16,6 +16,7 @@ public class StageSelectButton : StageSelectButtonBase
     [Tooltip("完了マーク")]
     [SerializeField] private GameObject completeMarkGameObject;
     int buttonNumber;
+    public int ButtonNumber => buttonNumber;
 
     /// <summary>
     /// 初期化
@@ -105,10 +106,7 @@ public class StageSelectButton : StageSelectButtonBase
     /// <param name="y">縦幅</param>
     public void SetStageSelectButtonSize(float x = 500, float y = 300)
     {
-        Vector2 sizeDelta = stageSelectButton.GetComponent<RectTransform>().sizeDelta;
-        sizeDelta.x = x;
-        sizeDelta.y = y;
-        stageSelectButton.GetComponent<RectTransform>().sizeDelta = sizeDelta;
+        stageSelectButton.GetComponent<RectTransform>().sizeDelta = new Vector2(x, y);
     }
 
     /// <summary>

@@ -65,10 +65,10 @@ public class StageSelectManager : MonoBehaviour
 
     IEnumerator Direction()
     {
-        if (playCount < totalStageCount)
-        {
-            StageSelectButton currentButton = stageSelectButtons[playCount - 1];
+        StageSelectButton currentButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount);
 
+        if (currentButton != null)
+        {
             Debug.Log("start");
 
             int i = 0;
@@ -82,6 +82,12 @@ public class StageSelectManager : MonoBehaviour
             });
 
             Debug.Log("end");
+
+            StageSelectButton nextButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount + 1);
+            if (nextButton != null)
+            {
+                nextButton.SetFrameLineColor(Color.red);
+            }
         }
 
         yield return null;

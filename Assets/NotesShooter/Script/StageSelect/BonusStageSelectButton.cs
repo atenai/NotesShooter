@@ -93,9 +93,7 @@ public class BonusStageSelectButton : StageSelectButtonBase
     /// <param name="y">縦幅</param>
     public void SetBonusStageSelectButtonSize(float x = 500, float y = 400)
     {
-        Vector2 sizeDelta = bonusStageSelectButton.GetComponent<RectTransform>().sizeDelta;
-        sizeDelta.y = 400;
-        bonusStageSelectButton.GetComponent<RectTransform>().sizeDelta = sizeDelta;
+        bonusStageSelectButton.GetComponent<RectTransform>().sizeDelta = new Vector2(x, y);
     }
 
 
