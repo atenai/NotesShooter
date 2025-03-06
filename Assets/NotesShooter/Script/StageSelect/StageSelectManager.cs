@@ -69,23 +69,20 @@ public class StageSelectManager : MonoBehaviour
 
         if (currentButton != null)
         {
-            Debug.Log("start");
+            scrollRect.ScrollToCentering(currentButton.gameObject, 1);
 
             int i = 0;
             yield return new WaitWhile(() =>
             {
-                Debug.Log("i : " + i);
                 i++;
                 currentButton.SetVerticalBarGauge(i);
-
                 return i < 100;
             });
-
-            Debug.Log("end");
 
             StageSelectButton nextButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount + 1);
             if (nextButton != null)
             {
+                scrollRect.ScrollToCentering(nextButton.gameObject, 1);
                 nextButton.SetFrameLineColor(Color.red);
             }
         }
