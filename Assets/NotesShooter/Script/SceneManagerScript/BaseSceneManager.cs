@@ -8,49 +8,48 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class BaseSceneManager : MonoBehaviour
 {
-    [SerializeField] protected Image image;
-    [SerializeField] protected AudioClip audioClip;
-    [SerializeField] protected AudioSource audioSource;
-    [SerializeField] protected string sceneName = "";
+	[SerializeField] protected Image image;
+	[SerializeField] protected AudioClip audioClip;
+	[SerializeField] protected AudioSource audioSource;
+	[SerializeField] protected string sceneName = "";
 
-    protected float alfa = 0.0f;
-    protected float speed = 2.5f;
-    protected bool isFade = false;
+	protected float alfa = 0.0f;
+	protected float speed = 2.5f;
+	protected bool isFade = false;
 
-    protected void Start()
-    {
-        alfa = 0.0f;
-        isFade = false;
-    }
+	protected void Start()
+	{
+		alfa = 0.0f;
+		isFade = false;
+	}
 
-    protected void FadeTrigger()
-    {
-        if (Input.anyKeyDown && isFade == false)
-        {
-            //SE再生
-            audioSource.PlayOneShot(audioClip);
-            isFade = true;
-        }
-    }
+	protected void FadeTrigger()
+	{
+		if (Input.anyKeyDown && isFade == false)
+		{
+			isFade = true;
+			audioSource.PlayOneShot(audioClip);
+		}
+	}
 
-    protected void FadeOut()
-    {
-        if (isFade == true)
-        {
-            image.color = new Color(image.color.r, image.color.g, image.color.b, alfa);
-            alfa += speed * Time.deltaTime;
-        }
+	protected void FadeOut()
+	{
+		if (isFade == true)
+		{
+			image.color = new Color(image.color.r, image.color.g, image.color.b, alfa);
+			alfa += speed * Time.deltaTime;
+		}
 
-        if (1.0f <= alfa)
-        {
-            SceneChange(sceneName);
-            isFade = false;
-        }
-    }
+		const float max = 1.0f;
+		if (max <= alfa)
+		{
+			isFade = false;
+			SceneChange(sceneName);
+		}
+	}
 
-    protected void SceneChange(string name)
-    {
-        SceneManager.LoadScene(name);
-    }
-
+	protected void SceneChange(string name)
+	{
+		SceneManager.LoadScene(name);
+	}
 }

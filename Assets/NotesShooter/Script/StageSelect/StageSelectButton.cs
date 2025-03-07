@@ -7,143 +7,122 @@ using UnityEngine.SceneManagement;
 
 public class StageSelectButton : StageSelectButtonBase
 {
-    [SerializeField] GameObject stageSelectButton;
-    [SerializeField] GameObject verticalBar;
-    [SerializeField] Image frameLine;
-    [SerializeField] GameObject buttonGameObject;
-    [SerializeField] Button button;
-    [SerializeField] private TextMeshProUGUI buttonText;
-    [Tooltip("完了マーク")]
-    [SerializeField] private GameObject completeMarkGameObject;
-    int buttonNumber;
-    public int ButtonNumber => buttonNumber;
+	[SerializeField] GameObject stageSelectButton;
+	[SerializeField] GameObject buttonGameObject;
+	[SerializeField] Button button;
+	[SerializeField] private TextMeshProUGUI buttonText;
+	[Tooltip("完了マーク")]
+	[SerializeField] private GameObject completeMarkGameObject;
 
-    /// <summary>
-    /// 初期化
-    /// </summary>
-    /// <param name="buttonNumber"></param>
-    /// <param name="totalNumber"></param>
-    public void Initialize(int buttonNumber, int totalNumber, int playCount)
-    {
-        this.buttonNumber = buttonNumber;
-        SetButtonText(buttonNumber.ToString());
-        Reduction();
-        SetVerticalBarGauge(0);
-        SetFrameLineColor(Color.gray);
-        SetBackgroundColor(Color.white);
+	/// <summary>
+	/// 初期化
+	/// </summary>
+	/// <param name="buttonNumber"></param>
+	/// <param name="totalNumber"></param>
+	public void Initialize(int buttonNumber, int totalNumber, int playCount)
+	{
+		this.buttonNumber = buttonNumber;
 
-        //現在の日なら
-        if (buttonNumber == playCount)
-        {
-            Expansion();
-            SetFrameLineColor(Color.red);
-        }
+		Reduction();
+		SetVerticalBarGauge(0);
+		SetFrameLineColor(Color.gray);
+		SetBackgroundColor(Color.white);
+		SetCompleteMark(false);
+		SetButtonText(buttonNumber.ToString());
 
-        //前の日なら
-        if (buttonNumber < playCount)
-        {
-            SetVerticalBarGauge(100);
-            SetFrameLineColor(Color.red);
-            SetCompleteMark(true);
-        }
+		//現在の日なら
+		if (buttonNumber == playCount)
+		{
+			Expansion();
+		}
 
-        //最後の日なら
-        if (buttonNumber == totalNumber)
-        {
-            HideVerticalBar();
-            SetVerticalBarGauge(0);
-        }
-    }
+		//前の日なら
+		if (buttonNumber < playCount)
+		{
+			SetFrameLineColor(Color.red);
+			SetCompleteMark(true);
+		}
 
-    /// <summary>
-    /// 縦棒を消す
-    /// </summary>
-    public void HideVerticalBar()
-    {
-        verticalBar.gameObject.SetActive(false);
-    }
+		//前の日なら
+		if (buttonNumber < playCount - 1)
+		{
+			SetVerticalBarGauge(100);
+			SetFrameLineColor(Color.red);
+			SetCompleteMark(true);
+		}
 
-    /// <summary>
-    /// 枠線画像のカラーを設定
-    /// </summary>
-    /// <param name="color"></param>
-    public void SetFrameLineColor(Color color)
-    {
-        frameLine.color = color;
-    }
+		//最後の日なら
+		if (buttonNumber == totalNumber)
+		{
+			HideVerticalBar();
+		}
+	}
 
-    /// <summary>
-    /// ボタンの表示/非表示
-    /// </summary>
-    /// <param name="isActive"></param>
-    public void SetButtonGameObject(bool isActive)
-    {
-        buttonGameObject.SetActive(isActive);
-    }
+	/// <summary>
+	/// ボタンの表示/非表示
+	/// </summary>
+	/// <param name="isActive"></param>
+	public void SetButtonGameObject(bool isActive)
+	{
+		buttonGameObject.SetActive(isActive);
+	}
 
-    /// <summary>
-    /// ボタンのテキストに文字をセット
-    /// </summary>
-    /// <param name="text"></param>
-    public void SetButtonText(string text)
-    {
-        buttonText.text = text;
-    }
+	/// <summary>
+	/// ボタンのテキストに文字をセット
+	/// </summary>
+	/// <param name="text"></param>
+	public void SetButtonText(string text)
+	{
+		buttonText.text = text;
+	}
 
-    /// <summary>
-    /// クリア済みマークの表示/非表示
-    /// </summary>
-    /// <param name="isCompleted"></param>
-    public void SetCompleteMark(bool isCompleted)
-    {
-        completeMarkGameObject.SetActive(isCompleted);
-    }
+	/// <summary>
+	/// クリア済みマークの表示/非表示
+	/// </summary>
+	/// <param name="isCompleted"></param>
+	public void SetCompleteMark(bool isCompleted)
+	{
+		completeMarkGameObject.SetActive(isCompleted);
+	}
 
-    /// <summary>
-    /// ボタンのサイズをセット
-    /// </summary>
-    /// <param name="x">横幅</param>
-    /// <param name="y">縦幅</param>
-    public void SetStageSelectButtonSize(float x = 500, float y = 300)
-    {
-        stageSelectButton.GetComponent<RectTransform>().sizeDelta = new Vector2(x, y);
-    }
+	/// <summary>
+	/// ボタンのサイズをセット
+	/// </summary>
+	/// <param name="x">横幅</param>
+	/// <param name="y">縦幅</param>
+	public void SetStageSelectButtonSize(float x = 500, float y = 300)
+	{
+		stageSelectButton.GetComponent<RectTransform>().sizeDelta = new Vector2(x, y);
+	}
 
-    /// <summary>
-    /// 拡大
-    /// </summary>
-    public void Expansion()
-    {
-        SetStageSelectButtonSize(y: 300);
+	/// <summary>
+	/// 拡大
+	/// </summary>
+	public void Expansion()
+	{
+		SetStageSelectButtonSize(y: 300);
+		SetButtonGameObject(true);
+	}
 
-        SetButtonGameObject(true);
-    }
+	/// <summary>
+	/// 縮小
+	/// </summary>
+	public void Reduction()
+	{
+		SetStageSelectButtonSize(450, 200);
+		SetButtonGameObject(false);
+	}
 
-    /// <summary>
-    /// 縮小
-    /// </summary>
-    public void Reduction()
-    {
-        SetStageSelectButtonSize(450, 200);
+	void Start()
+	{
+		button.onClick.AddListener(OnClick);
+	}
 
-        SetButtonGameObject(false);
-    }
+	void OnClick()
+	{
+		Debug.Log(buttonNumber);
 
-    void Start()
-    {
-        button.onClick.AddListener(OnClick);
-    }
-
-    void OnClick()
-    {
-        Debug.Log(buttonNumber);
-
-        StageSelectManager.playCount++;
-        SceneManager.LoadScene("StageSelect");
-    }
-
-    void Update()
-    {
-
-    }
+		StageSelectManager.playCount++;
+		SceneManager.LoadScene("StageSelect");
+	}
 }

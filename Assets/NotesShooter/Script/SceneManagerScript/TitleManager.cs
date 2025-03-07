@@ -3,52 +3,37 @@ using UnityEngine.UI;
 
 public class TitleManager : BaseSceneManager
 {
-    [SerializeField] Text textPressAnyKey;
+	[SerializeField] Text textPressAnyKey;
 
-    float textAlfa = 0.0f;
-    bool isAlfa = false;
-    float textSpeed = 1.0f;
+	float textAlfa = 0.0f;
+	bool isAlfa = false;
+	float textSpeed = 1.0f;
 
-    void Update()
-    {
-        FadeTrigger();
+	void Update()
+	{
+		FadeTrigger();
+		FadeOut();
+		PressAnyButton();
+	}
 
-        FadeOut();
+	void PressAnyButton()
+	{
+		string text = (isFade == true) ? textPressAnyKey.text = "" : textPressAnyKey.text = "Press Any Key";
 
-        PressAnyButton();
-    }
+		const float max = 1.0f;
+		if (max <= textAlfa)
+		{
+			isAlfa = true;
+		}
 
-    void PressAnyButton()
-    {
-        if (isFade == false)
-        {
-            textPressAnyKey.text = "Press Any Key";
-        }
-        else if (isFade == true)
-        {
-            textPressAnyKey.text = "";
-        }
+		const float min = 0.0f;
+		if (textAlfa <= min)
+		{
+			isAlfa = false;
+		}
 
-        const float max = 1.0f;
-        if (max <= textAlfa)
-        {
-            isAlfa = true;
-        }
-        const float min = 0.0f;
-        if (textAlfa <= min)
-        {
-            isAlfa = false;
-        }
+		var result = (isAlfa == true) ? textAlfa -= textSpeed * Time.deltaTime : textAlfa += textSpeed * Time.deltaTime;
 
-        if (isAlfa == true)
-        {
-            textAlfa -= textSpeed * Time.deltaTime;
-        }
-        else if (isAlfa == false)
-        {
-            textAlfa += textSpeed * Time.deltaTime;
-        }
-
-        textPressAnyKey.color = new Color(0.0f, 255.0f, 255.0f, textAlfa);
-    }
+		textPressAnyKey.color = new Color(0.0f, 255.0f, 255.0f, textAlfa);
+	}
 }

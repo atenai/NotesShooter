@@ -10,11 +10,10 @@ public class StageSelectManager : MonoBehaviour
 	[SerializeField] private GameObject content;
 	[Tooltip("ステージボタンのプレハブ")]
 	[SerializeField] private GameObject stageSelectButtonPrefab;
+	[Tooltip("ボーナスステージボタンのプレハブ")]
 	[SerializeField] private GameObject bonusStageSelectButtonPrefab;
+	List<StageSelectButtonBase> stageSelectButtons = new List<StageSelectButtonBase>();
 	int totalStageCount = 4;
-	List<StageSelectButton> stageSelectButtons = new List<StageSelectButton>();
-	BonusStageSelectButton bonusStageSelectButton;
-
 	public static int playCount = 1;
 
 	void Start()
@@ -22,8 +21,6 @@ public class StageSelectManager : MonoBehaviour
 		CreateStageButtons();
 
 		//以下演出
-		scrollRect.verticalNormalizedPosition = 0 / totalStageCount;
-
 		StartCoroutine(Direction());
 	}
 
@@ -34,16 +31,18 @@ public class StageSelectManager : MonoBehaviour
 	{
 		for (int i = 1; i <= totalStageCount - 1; i++)
 		{
-			// プレハブからボタンをInstantiateしてContentの子オブジェクトに配置
+			// プレハブからステージボタンをInstantiateしてContentの子オブジェクトに配置
 			GameObject stageSelectButtonGameObject = Instantiate(stageSelectButtonPrefab, new Vector3(0, 0, 0), Quaternion.identity, content.transform);
 			StageSelectButton stageSelectButton = stageSelectButtonGameObject.GetComponent<StageSelectButton>();
 			stageSelectButton.Initialize(i, totalStageCount, playCount);
 			stageSelectButtons.Add(stageSelectButton);
 		}
 
+		// プレハブからボーナスステージボタンをInstantiateしてContentの子オブジェクトに配置
 		GameObject bonusStageSelectButtonGameObject = Instantiate(bonusStageSelectButtonPrefab, new Vector3(0, 0, 0), Quaternion.identity, content.transform);
-		bonusStageSelectButton = bonusStageSelectButtonGameObject.GetComponent<BonusStageSelectButton>();
+		BonusStageSelectButton bonusStageSelectButton = bonusStageSelectButtonGameObject.GetComponent<BonusStageSelectButton>();
 		bonusStageSelectButton.Initialize(totalStageCount, totalStageCount, playCount);
+		stageSelectButtons.Add(bonusStageSelectButton);
 	}
 
 	void Update()
@@ -51,18 +50,18 @@ public class StageSelectManager : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.R))
 		{
 			//bonusStageSelectButton.Reduction();
-			stageSelectButtons[1].Reduction();
+			//stageSelectButtons[1].Reduction();
 		}
 
 		if (Input.GetKeyDown(KeyCode.E))
 		{
 			//bonusStageSelectButton.Expansion();
-			stageSelectButtons[1].Expansion();
+			//stageSelectButtons[1].Expansion();
 		}
 
 		if (Input.GetKeyDown(KeyCode.U))
 		{
-			bonusStageSelectButton.AdvanceUnlock();
+			stageSelectButtons[totalStageCount].GetComponent<BonusStageSelectButton>().AdvanceUnlock();
 		}
 	}
 
@@ -72,37 +71,38 @@ public class StageSelectManager : MonoBehaviour
 	/// <returns></returns>
 	private IEnumerator Direction()
 	{
-		StageSelectButton currentButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount);
+		scrollRect.verticalNormalizedPosition = 0 / totalStageCount;
 
-		if (currentButton != null)
+		StageSelectButtonBase oldButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount - 1);
+		if (oldButton != null)
 		{
-			bool isCurrentButtonCompleted = false;
-			scrollRect.ScrollToCentering(currentButton.gameObject, 1, () =>
+			bool isoldButtonScrollCompleted = false;
+			scrollRect.ScrollToCentering(oldButton.gameObject, 1, () =>
 			{
-				isCurrentButtonCompleted = true;
+				isoldButtonScrollCompleted = true;
 			});
-			yield return new WaitUntil(() => isCurrentButtonCompleted);
+			yield return new WaitUntil(() => isoldButtonScrollCompleted);
 
-			int i = 0;
+			float i = 0;
 			yield return new WaitWhile(() =>
 			{
 				i++;
-				currentButton.SetVerticalBarGauge(i);
+				oldButton.SetVerticalBarGauge(i);
 				return i < 100;
 			});
+		}
 
-			StageSelectButton nextButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount + 1);
-			if (nextButton != null)
+		StageSelectButtonBase currentButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount);
+		if (currentButton != null)
+		{
+			bool isCurrentScrollButtonCompleted = false;
+			scrollRect.ScrollToCentering(currentButton.gameObject, 1, () =>
 			{
-				bool isNextButtonCompleted = false;
-				scrollRect.ScrollToCentering(nextButton.gameObject, 1, () =>
-				{
-					isNextButtonCompleted = true;
-				});
-				yield return new WaitUntil(() => isNextButtonCompleted);
+				isCurrentScrollButtonCompleted = true;
+			});
+			yield return new WaitUntil(() => isCurrentScrollButtonCompleted);
 
-				nextButton.SetFrameLineColor(Color.red);
-			}
+			currentButton.SetFrameLineColor(Color.red);
 		}
 
 		yield return null;
