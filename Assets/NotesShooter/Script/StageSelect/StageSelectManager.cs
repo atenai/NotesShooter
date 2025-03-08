@@ -61,7 +61,7 @@ public class StageSelectManager : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.U))
 		{
-			stageSelectButtons[totalStageCount].GetComponent<BonusStageSelectButton>().AdvanceUnlock();
+			//stageSelectButtons[totalStageCount - 1].GetComponent<BonusStageSelectButton>().AdvanceUnlock();
 		}
 	}
 
