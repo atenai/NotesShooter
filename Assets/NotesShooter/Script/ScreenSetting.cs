@@ -23,15 +23,9 @@ public class ScreenSetting : MonoBehaviour
 		Screen.SetResolution(1920, 1080, true, 60);
 		Application.targetFrameRate = 60;//フレームレートの設定
 
-#endif //終了
-
-#if UNITY_STANDALONE_WIN//端末がPCだった場合の処理
 		CursorActive();
-#endif //終了
 
-		//マウスカーソルを消す
-		Cursor.visible = false;
-		Cursor.lockState = CursorLockMode.Locked;
+#endif //終了
 	}
 
 	void Start()
@@ -78,13 +72,9 @@ public class ScreenSetting : MonoBehaviour
 		//Escapeキーでゲーム終了
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			Quit();//ゲーム終了
+			Quit();
 		}
 #endif //終了  
-
-#if UNITY_EDITOR
-
-#endif
 	}
 
 	/// <summary>
