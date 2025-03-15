@@ -243,11 +243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0fb0d9473a09844b72f30177d8286f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 6611970009437636238}
-  verticalBarGauge: {fileID: 2124387414892697030}
-  stageSelectButton: {fileID: 2876003156051555001}
   verticalBar: {fileID: 1815102294656142638}
+  verticalBarGauge: {fileID: 2124387414892697030}
   frameLine: {fileID: 5865713615457211591}
+  background: {fileID: 6611970009437636238}
+  stageSelectButton: {fileID: 2876003156051555001}
   buttonGameObject: {fileID: 2998234508213469992}
   button: {fileID: 1851752703726402574}
   buttonText: {fileID: 5890820089523321094}

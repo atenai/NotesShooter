@@ -168,11 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7caa23472d0cdc946916023ecb8ecef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 5619061087559218401}
-  verticalBarGauge: {fileID: 1191154647783644848}
-  bonusStageSelectButton: {fileID: 2876003156051555001}
   verticalBar: {fileID: 1815102294656142638}
+  verticalBarGauge: {fileID: 1191154647783644848}
   frameLine: {fileID: 2249390148387616628}
+  background: {fileID: 5619061087559218401}
+  bonusStageSelectButton: {fileID: 2876003156051555001}
   buttonGameObject: {fileID: 2998234508213469992}
   button: {fileID: 1851752703726402574}
   buttonText: {fileID: 5890820089523321094}
