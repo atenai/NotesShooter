@@ -349,8 +349,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 1000
-    m_Bottom: 1000
+    m_Top: 100
+    m_Bottom: 100
   m_ChildAlignment: 4
   m_Spacing: 100
   m_ChildForceExpandWidth: 1
@@ -936,8 +936,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1285163820}
   m_HandleRect: {fileID: 1285163819}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.54
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1108,6 +1108,7 @@ MonoBehaviour:
     type: 3}
   bonusStageSelectButtonPrefab: {fileID: 2876003156051555001, guid: db8b82f88b299f94da41b85f1c188f45,
     type: 3}
+  verticalLayoutGroup: {fileID: 330042660}
 --- !u!114 &1934589601
 MonoBehaviour:
   m_ObjectHideFlags: 0

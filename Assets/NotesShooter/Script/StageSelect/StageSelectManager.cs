@@ -12,6 +12,7 @@ public class StageSelectManager : MonoBehaviour
 	[SerializeField] private GameObject stageSelectButtonPrefab;
 	[Tooltip("ボーナスステージボタンのプレハブ")]
 	[SerializeField] private GameObject bonusStageSelectButtonPrefab;
+	[SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
 	List<StageSelectButtonBase> stageSelectButtons = new List<StageSelectButtonBase>();
 	int totalStageCount = 4;
 	public static int playCount = 1;
@@ -71,6 +72,9 @@ public class StageSelectManager : MonoBehaviour
 	/// <returns></returns>
 	private IEnumerator Direction()
 	{
+		verticalLayoutGroup.padding.top = 1000;
+		verticalLayoutGroup.padding.bottom = 1000;
+
 		scrollRect.verticalNormalizedPosition = 0 / totalStageCount;
 
 		StageSelectButtonBase oldButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount - 1);
@@ -104,6 +108,13 @@ public class StageSelectManager : MonoBehaviour
 
 			currentButton.SetFrameLineColor(Color.red);
 		}
+
+		yield return new WaitForSeconds(1.0f);
+
+		verticalLayoutGroup.padding.top = 100;
+		verticalLayoutGroup.padding.bottom = 100;
+		// レイアウト更新を即座に反映
+		LayoutRebuilder.ForceRebuildLayoutImmediate(verticalLayoutGroup.GetComponent<RectTransform>());
 
 		yield return null;
 	}
