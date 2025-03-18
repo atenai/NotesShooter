@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class StageSelectManager : MonoBehaviour
 {
+	private const int First_Stage = 1;
+	private const int Total_Stage = 4;
+
 	[SerializeField] private ScrollRect scrollRect;
 	[SerializeField] private GameObject content;
 	[Tooltip("ステージボタンのプレハブ")]
@@ -14,15 +17,31 @@ public class StageSelectManager : MonoBehaviour
 	[SerializeField] private GameObject bonusStageSelectButtonPrefab;
 	[SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
 	List<StageSelectButtonBase> stageSelectButtons = new List<StageSelectButtonBase>();
-	int totalStageCount = 4;
+
 	public static int playCount = 1;
 
 	void Start()
 	{
+		InitVerticalLayoutGroupPadding();
 		CreateStageButtons();
 
 		//以下演出
 		StartCoroutine(Direction());
+	}
+
+	void InitVerticalLayoutGroupPadding()
+	{
+		if (playCount == First_Stage)
+		{
+			verticalLayoutGroup.padding.bottom = 1000;
+		}
+		else if (playCount == Total_Stage)
+		{
+			verticalLayoutGroup.padding.top = 1000;
+		}
+
+		// レイアウト更新を即座に反映
+		//LayoutRebuilder.ForceRebuildLayoutImmediate(verticalLayoutGroup.GetComponent<RectTransform>());
 	}
 
 	/// <summary>
@@ -30,19 +49,19 @@ public class StageSelectManager : MonoBehaviour
 	/// </summary>
 	void CreateStageButtons()
 	{
-		for (int i = 1; i <= totalStageCount - 1; i++)
+		for (int i = First_Stage; i <= Total_Stage - 1; i++)
 		{
 			// プレハブからステージボタンをInstantiateしてContentの子オブジェクトに配置
 			GameObject stageSelectButtonGameObject = Instantiate(stageSelectButtonPrefab, new Vector3(0, 0, 0), Quaternion.identity, content.transform);
 			StageSelectButton stageSelectButton = stageSelectButtonGameObject.GetComponent<StageSelectButton>();
-			stageSelectButton.Initialize(i, totalStageCount, playCount);
+			stageSelectButton.Initialize(i, Total_Stage, playCount);
 			stageSelectButtons.Add(stageSelectButton);
 		}
 
 		// プレハブからボーナスステージボタンをInstantiateしてContentの子オブジェクトに配置
 		GameObject bonusStageSelectButtonGameObject = Instantiate(bonusStageSelectButtonPrefab, new Vector3(0, 0, 0), Quaternion.identity, content.transform);
 		BonusStageSelectButton bonusStageSelectButton = bonusStageSelectButtonGameObject.GetComponent<BonusStageSelectButton>();
-		bonusStageSelectButton.Initialize(totalStageCount, totalStageCount, playCount);
+		bonusStageSelectButton.Initialize(Total_Stage, Total_Stage, playCount);
 		stageSelectButtons.Add(bonusStageSelectButton);
 	}
 
@@ -72,10 +91,7 @@ public class StageSelectManager : MonoBehaviour
 	/// <returns></returns>
 	private IEnumerator Direction()
 	{
-		verticalLayoutGroup.padding.top = 1000;
-		verticalLayoutGroup.padding.bottom = 1000;
-
-		scrollRect.verticalNormalizedPosition = 0 / totalStageCount;
+		scrollRect.verticalNormalizedPosition = 0 / Total_Stage;
 
 		StageSelectButtonBase oldButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount - 1);
 		if (oldButton != null)
@@ -107,14 +123,9 @@ public class StageSelectManager : MonoBehaviour
 			yield return new WaitUntil(() => isCurrentScrollButtonCompleted);
 
 			currentButton.SetFrameLineColor(Color.red);
+
+			yield return new WaitForSeconds(1.0f);
 		}
-
-		yield return new WaitForSeconds(1.0f);
-
-		verticalLayoutGroup.padding.top = 100;
-		verticalLayoutGroup.padding.bottom = 100;
-		// レイアウト更新を即座に反映
-		LayoutRebuilder.ForceRebuildLayoutImmediate(verticalLayoutGroup.GetComponent<RectTransform>());
 
 		yield return null;
 	}
