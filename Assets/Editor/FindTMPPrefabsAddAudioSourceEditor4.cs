@@ -20,12 +20,12 @@ public class FindTMPPrefabsAddAudioSourceEditor4 : EditorWindow
 	private string targetFolderPath = "Assets/";
 
 	// Unityエディタのメニューに「TMP付きPrefabを検索」を追加
-	[MenuItem("Kashiwabara/特定フォルダー内のTextMeshProコンポーネント（TextMeshProまたはTextMeshProUGUI）が付いているPrefabを検索")]
+	[MenuItem("Kashiwabara/特定フォルダー内のTextMeshProコンポーネントが付いているPrefabを検索し、チェックをつけたものにAudioSourceコンポーネントを自動追加する")]
 	private static void Init()
 	{
 		// ウィンドウを作成して表示する
 		FindTMPPrefabsAddAudioSourceEditor4 window = GetWindow<FindTMPPrefabsAddAudioSourceEditor4>();
-		window.titleContent = new GUIContent("TMP付きPrefab検索");
+		window.titleContent = new GUIContent("特定フォルダー内のTextMeshProコンポーネントが付いているPrefabを検索し、チェックをつけたものにAudioSourceコンポーネントを自動追加する");
 		window.Show();
 	}
 

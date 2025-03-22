@@ -17,12 +17,12 @@ public class FindTMPPrefabsAddAudioSourceEditor3 : EditorWindow
 	private Dictionary<GameObject, bool> prefabSelection = new Dictionary<GameObject, bool>();
 
 	// Unityエディタのメニューに「TMP付きPrefabを検索」を追加
-	[MenuItem("Kashiwabara/TMP付きPrefabを検索しチェックをつけたものにAudioSourceコンポーネントを自動追加する")]
+	[MenuItem("Kashiwabara/TextMeshProコンポーネントが付いているPrefabを検索し、チェックをつけたものにAudioSourceコンポーネントを自動追加する")]
 	private static void Init()
 	{
 		// ウィンドウを作成して表示する
 		FindTMPPrefabsAddAudioSourceEditor3 window = GetWindow<FindTMPPrefabsAddAudioSourceEditor3>();
-		window.titleContent = new GUIContent("TMP付きPrefab検索");
+		window.titleContent = new GUIContent("TextMeshProコンポーネントが付いているPrefabを検索し、チェックをつけたものにAudioSourceコンポーネントを自動追加する");
 		window.Show();
 	}
 
