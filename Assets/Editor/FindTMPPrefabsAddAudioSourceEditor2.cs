@@ -4,37 +4,45 @@ using TMPro;
 using System.Collections.Generic;
 
 /// <summary>
-/// TextMeshProコンポーネントが付いているPrefabを検索するエディター拡張
+/// TextMeshProコンポーネント（TextMeshProまたはTextMeshProUGUI）が付いているPrefabを検索・表示し、
+/// それらのオブジェクトにAudioSourceコンポーネントを自動追加するエディター拡張
 /// </summary>
-public class FindTMPPrefabsEditor : EditorWindow
+public class FindTMPPrefabsAddAudioSourceEditor2 : EditorWindow
 {
 	// スクロールビューのスクロール位置を保持する変数
 	private Vector2 scrollPos;
+
 	// 検索結果として見つかったPrefabを格納するリスト
 	private List<GameObject> tmpPrefabs = new List<GameObject>();
 
 	/// <summary>
 	/// Unityエディタのメニューに「TMP付きPrefabを検索」を追加
 	/// </summary>
-	[MenuItem("Kashiwabara/TextMeshProコンポーネントが付いているPrefabを検索する")]
+	[MenuItem("Kashiwabara/TMP付きPrefabを検索しAudioSourceコンポーネントを追加する")]
 	private static void Init()
 	{
 		// ウィンドウを作成して表示する
-		FindTMPPrefabsEditor window = GetWindow<FindTMPPrefabsEditor>();
-		window.titleContent = new GUIContent("TextMeshProコンポーネントが付いているPrefabを検索する");
+		FindTMPPrefabsAddAudioSourceEditor2 window = GetWindow<FindTMPPrefabsAddAudioSourceEditor2>();
+		window.titleContent = new GUIContent("TMP付きPrefabを検索しAudioSourceコンポーネントを追加する");
 		window.Show();
 	}
 
 	/// <summary>
-	/// エディターウィンドウの表示処理
+	/// エディターウィンドウの描画処理
 	/// </summary>
 	private void OnGUI()
 	{
 		// 検索を開始するためのボタン
-		if (GUILayout.Button("TextMeshProコンポーネントが付いているPrefabを検索する"))
+		if (GUILayout.Button("TMP付きPrefabを検索"))
 		{
 			// ボタンが押されたらPrefab検索処理を実行
 			FindTMPPrefabs();
+		}
+
+		// AudioSourceコンポーネントを追加するためのボタン
+		if (GUILayout.Button("AudioSourceを自動追加"))
+		{
+			AddAudioSourceToTMPPrefabs();
 		}
 
 		// 見つかったPrefabの数を表示する
@@ -57,6 +65,7 @@ public class FindTMPPrefabsEditor : EditorWindow
 				EditorGUIUtility.PingObject(prefab);
 			}
 		}
+
 		EditorGUILayout.EndScrollView();
 	}
 
@@ -67,6 +76,7 @@ public class FindTMPPrefabsEditor : EditorWindow
 	{
 		// 前回の検索結果をクリア
 		tmpPrefabs.Clear();
+
 		// プロジェクト内のすべてのPrefabのアセットGUIDを取得
 		string[] guids = AssetDatabase.FindAssets("t:Prefab", new[] { "Assets" });
 
@@ -91,6 +101,35 @@ public class FindTMPPrefabsEditor : EditorWindow
 		}
 
 		// コンソールに検索結果の件数を表示
-		Debug.Log($"TMPが含まれるPrefabが {tmpPrefabs.Count} 個見つかりました。");
+		Debug.Log($"TMP付きPrefabが {tmpPrefabs.Count} 個見つかりました。");
+	}
+
+	/// <summary>
+	/// 見つかったPrefab内のTMP付きオブジェクトにAudioSourceを追加する関数
+	/// </summary>
+	private void AddAudioSourceToTMPPrefabs()
+	{
+		foreach (GameObject prefab in tmpPrefabs)
+		{
+			// Prefabを編集可能な状態にする
+			GameObject prefabInstance = PrefabUtility.LoadPrefabContents(AssetDatabase.GetAssetPath(prefab));
+
+			// TMPコンポーネントを持つすべてのオブジェクトを取得
+			TMP_Text[] tmpObjects = prefabInstance.GetComponentsInChildren<TMP_Text>(true);
+			foreach (TMPro.TMP_Text tmp in tmpObjects)
+			{
+				// AudioSourceが既に存在しない場合のみ追加
+				if (tmp.GetComponent<AudioSource>() == null)
+				{
+					tmp.gameObject.AddComponent<AudioSource>();
+				}
+			}
+
+			// 編集したPrefabを保存して閉じる
+			PrefabUtility.SaveAsPrefabAsset(prefabInstance, AssetDatabase.GetAssetPath(prefab));
+			PrefabUtility.UnloadPrefabContents(prefabInstance);
+		}
+
+		Debug.Log("AudioSourceコンポーネントの追加が完了しました。");
 	}
 }

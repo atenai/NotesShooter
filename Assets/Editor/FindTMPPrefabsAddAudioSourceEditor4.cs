@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 // 特定フォルダー内のTextMeshProコンポーネント（TextMeshProまたはTextMeshProUGUI）が付いているPrefabを検索・表示し、
 // チェックを付けたPrefabだけAudioSourceコンポーネントを自動追加するエディター拡張
-public class TMPAudioSourcePrefabSelector : EditorWindow
+public class FindTMPPrefabsAddAudioSourceEditor4 : EditorWindow
 {
 	// スクロールビューのスクロール位置を保持する変数
 	private Vector2 scrollPos;
@@ -24,7 +24,7 @@ public class TMPAudioSourcePrefabSelector : EditorWindow
 	private static void Init()
 	{
 		// ウィンドウを作成して表示する
-		TMPAudioSourcePrefabSelector window = GetWindow<TMPAudioSourcePrefabSelector>();
+		FindTMPPrefabsAddAudioSourceEditor4 window = GetWindow<FindTMPPrefabsAddAudioSourceEditor4>();
 		window.titleContent = new GUIContent("TMP付きPrefab検索");
 		window.Show();
 	}
