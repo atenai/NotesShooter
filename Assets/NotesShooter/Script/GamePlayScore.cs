@@ -3,7 +3,8 @@
 public class GamePlayScore : MonoBehaviour
 {
     //シングルトンで作成（ゲーム中に１つのみにする）
-    public static GamePlayScore singletonInstance = null;
+    private static GamePlayScore singletonInstance = null;
+    public static GamePlayScore SingletonInstance => singletonInstance;
 
     int scoreNum = 0;
     public int ScoreNum => scoreNum;

@@ -29,7 +29,7 @@ public class Goal : MonoBehaviour
             isGoal = true;
 
             //「SCORE」というキーで、Int値の「score.ScoreNum」を保存
-            PlayerPrefs.SetInt("SCORE", GamePlayScore.singletonInstance.ScoreNum);
+            PlayerPrefs.SetInt("SCORE", GamePlayScore.SingletonInstance.ScoreNum);
             PlayerPrefs.Save();
         }
     }

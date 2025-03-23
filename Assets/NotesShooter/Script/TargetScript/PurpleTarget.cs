@@ -33,6 +33,8 @@ public class PurpleTarget : Target
 
             life = life - 1;
 
+            PlayerUI.SingletonInstance.PurpleGunUI.IsHitReticule = true;
+
             //SEオブジェクトを生成する
             GameObject lifeDamageSE = Instantiate(lifeDamageSEPrefab, this.gameObject.transform.position, Quaternion.identity);
             Destroy(lifeDamageSE, lifeDamageSeEndtime);//SEをSE_Endtime後削除
@@ -47,6 +49,8 @@ public class PurpleTarget : Target
         if (collider.CompareTag("DrumCollider"))
         {
             //Debug.Log("DrumColliderがPurpleCubeに当たったよ");
+
+            PlayerUI.SingletonInstance.PurpleGunUI.IsHitReticule = true;
 
             TargetDestroy();
         }
@@ -64,7 +68,7 @@ public class PurpleTarget : Target
         //ScoreUITextオブジェクトを生成する
         ScoreUIText();
 
-        GamePlayScore.singletonInstance.AddScore(scoreNum);
+        GamePlayScore.SingletonInstance.AddScore(scoreNum);
 
         Destroy(this.gameObject);
     }

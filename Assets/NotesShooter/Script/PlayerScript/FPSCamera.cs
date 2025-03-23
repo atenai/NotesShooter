@@ -3,23 +3,23 @@
 public class FPSCamera : MonoBehaviour
 {
     //シングルトンで作成（ゲーム中に１つのみにする）
-    static FPSCamera singletonInstance = null;
+    private static FPSCamera singletonInstance = null;
     public static FPSCamera SingletonInstance => singletonInstance;
 
     [Tooltip("X軸のカメラの回転スピード")]
-    [Range(50, 150)] public float cameraSpeedX = 100;
+    [Range(50, 150)][SerializeField] private float cameraSpeedX = 100;
     [Tooltip("Y軸のカメラの回転スピード")]
-    [Range(50, 150)] public float cameraSpeedY = 100;
+    [Range(50, 150)][SerializeField] private float cameraSpeedY = 100;
     [Tooltip("ローカルで計算する為のX軸のカメラの回転スピード")]
-    float localCameraSpeedX;
+    private float localCameraSpeedX;
     [Tooltip("ローカルで計算する為のY軸のカメラの回転スピード")]
-    float localCameraSpeedY;
+    private float localCameraSpeedY;
     [Tooltip("カメラのスピードを遅くする")]
-    [Range(1.0f, 4.0f)] float slowDownCameraSpeed = 2.0f;
+    [Range(1.0f, 4.0f)] private float slowDownCameraSpeed = 2.0f;
     [Tooltip("レイの長さ")]
-    [SerializeField] float range = 100.0f;
+    [SerializeField] private float range = 100.0f;
     [Tooltip("レティクルの中心点（レイキャスト）にターゲットがヒットしてるか？")]
-    bool isTargethit = false;
+    private bool isTargethit = false;
     public bool IsTargethit => isTargethit;
     [Tooltip("横回転(Y)はプレイヤーキャラクターの座標位置を使っている(Player_RotY)")]
     private Transform playerTransform;

@@ -17,6 +17,8 @@ public class BlueTarget : Target
         {
             //Debug.Log("LeftCubeに当たったよ");
 
+            PlayerUI.SingletonInstance.BlueGunUI.IsHitReticule = true;
+
             //爆発エフェクトオブジェクトを生成する	
             HitEffect();
 
@@ -26,7 +28,7 @@ public class BlueTarget : Target
             //ScoreTextオブジェクトを生成する
             ScoreUIText();
 
-            GamePlayScore.singletonInstance.AddScore(scoreNum);
+            GamePlayScore.SingletonInstance.AddScore(scoreNum);
 
             Destroy(this.gameObject);
         }

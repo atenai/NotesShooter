@@ -17,6 +17,8 @@ public class RedTarget : Target
         {
             //Debug.Log("RightCubeに当たったよ");
 
+            PlayerUI.SingletonInstance.RedGunUI.IsHitReticule = true;
+
             //爆発エフェクトオブジェクトを生成する	
             HitEffect();
 
@@ -26,7 +28,7 @@ public class RedTarget : Target
             //ScoreTextオブジェクトを生成する
             ScoreUIText();
 
-            GamePlayScore.singletonInstance.AddScore(scoreNum);
+            GamePlayScore.SingletonInstance.AddScore(scoreNum);
 
             Destroy(this.gameObject);
         }
