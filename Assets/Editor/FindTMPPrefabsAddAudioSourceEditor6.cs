@@ -3,6 +3,7 @@ using UnityEditor;
 using TMPro;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 // 特定フォルダー内のTextMeshProコンポーネント（TextMeshProまたはTextMeshProUGUI）が付いているPrefabを検索・表示し、
 // チェックを付けたPrefabだけAudioSourceコンポーネントを自動追加するエディター拡張
@@ -138,13 +139,13 @@ public class FindTMPPrefabsAddAudioSourceEditor6 : EditorWindow
 	// GUI内でPrefabを直接ロードしないようにする（既存のまま）
 	private void ExportPrefabsAndTMPObjectsToCSV()
 	{
-		using (StreamWriter sw = new StreamWriter(csvFilePath, false))
+		using (StreamWriter sw = new StreamWriter(csvFilePath, false, Encoding.UTF8))
 		{
-			sw.Write("PrefabName");
+			sw.Write("プレハブ名");
 
 			for (int i = 1; i <= maxTMPCount; i++)
 			{
-				sw.Write($",TextMeshProGameObject{i}");
+				sw.Write($",テキストメッシュプロゲームオブジェクト : {i}");
 			}
 			sw.WriteLine();
 
