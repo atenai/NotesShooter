@@ -111,11 +111,10 @@ public class FindTMPPrefabsAddAudioSourceEditor6 : EditorWindow
 			string path = AssetDatabase.GUIDToAssetPath(guid);
 			GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
 
-			if (prefab != null && (prefab.GetComponentInChildren<TextMeshProUGUI>(true) != null ||
-								   prefab.GetComponentInChildren<TextMeshPro>(true) != null))
+			if (prefab != null && (prefab.GetComponentInChildren<TextMeshProUGUI>(true) != null || prefab.GetComponentInChildren<TextMeshPro>(true) != null))
 			{
 				tmpPrefabs.Add(prefab);
-				prefabSelection[prefab] = false;
+				prefabSelection.Add(prefab, false);
 
 				GameObject instance = PrefabUtility.LoadPrefabContents(path);
 				TMP_Text[] tmpObjects = instance.GetComponentsInChildren<TMP_Text>(true);
@@ -124,11 +123,13 @@ public class FindTMPPrefabsAddAudioSourceEditor6 : EditorWindow
 				{
 					tmpNames.Add(tmp.gameObject.name);
 				}
+				prefabTMPNames.Add(prefab, tmpNames);
 
-				if (tmpNames.Count > maxTMPCount)
+				if (maxTMPCount < tmpNames.Count)
+				{
 					maxTMPCount = tmpNames.Count;
+				}
 
-				prefabTMPNames[prefab] = tmpNames;
 				PrefabUtility.UnloadPrefabContents(instance);
 			}
 		}
@@ -136,7 +137,6 @@ public class FindTMPPrefabsAddAudioSourceEditor6 : EditorWindow
 		Debug.Log($"TMP付きPrefabが {tmpPrefabs.Count} 個見つかりました。");
 	}
 
-	// GUI内でPrefabを直接ロードしないようにする（既存のまま）
 	private void ExportPrefabsAndTMPObjectsToCSV()
 	{
 		using (StreamWriter sw = new StreamWriter(csvFilePath, false, Encoding.UTF8))
@@ -145,7 +145,7 @@ public class FindTMPPrefabsAddAudioSourceEditor6 : EditorWindow
 
 			for (int i = 1; i <= maxTMPCount; i++)
 			{
-				sw.Write($",テキストメッシュプロゲームオブジェクト : {i}");
+				sw.Write($",テキストメッシュプロが付いたゲームオブジェクト : {i}");
 			}
 			sw.WriteLine();
 
@@ -166,6 +166,7 @@ public class FindTMPPrefabsAddAudioSourceEditor6 : EditorWindow
 				sw.WriteLine();
 			}
 		}
+
 		AssetDatabase.Refresh();
 		Debug.Log("PrefabとTMPオブジェクト名をCSVに書き出しました: " + csvFilePath);
 	}
