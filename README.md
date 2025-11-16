@@ -1,4 +1,4 @@
-# NotesShooter_Git
+# NotesShooter
 
 「ノーツシューター」
 
