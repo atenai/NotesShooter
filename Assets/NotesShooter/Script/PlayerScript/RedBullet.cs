@@ -16,7 +16,7 @@ public class RedBullet : MonoBehaviour
 	{
 		if (hit.CompareTag("RedTarget") || hit.CompareTag("PurpleTarget") || hit.CompareTag("Wall") || hit.CompareTag("Drum"))
 		{
-			Destroy(gameObject);
+			Destroy(this.gameObject);
 		}
 	}
 }
