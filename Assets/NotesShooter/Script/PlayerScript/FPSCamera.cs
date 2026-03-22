@@ -47,17 +47,20 @@ public class FPSCamera : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		//float x_Rotation = Input.GetAxis("Mouse X");
-		//float y_Rotation = Input.GetAxis("Mouse Y");
-		float x_Rotation = PlayerUI.SingletonInstance.FloatingJoystick.Horizontal;
-		float y_Rotation = PlayerUI.SingletonInstance.FloatingJoystick.Vertical;
-		MouseCamera(new Vector2(x_Rotation, y_Rotation));
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
+		float xRotation = Input.GetAxis("Mouse X");
+		float yRotation = Input.GetAxis("Mouse Y");
+#elif UNITY_ANDROID//端末がAndroidだった場合の処理
+		float xRotation = PlayerUI.SingletonInstance.FloatingJoystick.Horizontal;
+		float yRotation = PlayerUI.SingletonInstance.FloatingJoystick.Vertical;
+#endif //終了
+		MouseCamera(new Vector2(xRotation, yRotation));
 	}
 
 	void MouseCamera(Vector2 angles)
 	{
-		float x_Rotation = angles.x;
-		float y_Rotation = angles.y;
+		float xRotation = angles.x;
+		float yRotation = angles.y;
 
 		localCameraSpeedX = cameraSpeedX;
 		localCameraSpeedY = cameraSpeedY;
@@ -79,7 +82,7 @@ public class FPSCamera : MonoBehaviour
 		}
 
 		//マウスXの入力量 × カメラのスピード × 時間 = の値をX回転の量にする
-		playerTransform.transform.Rotate(0, x_Rotation * localCameraSpeedX * Time.deltaTime, 0);
+		playerTransform.transform.Rotate(0, xRotation * localCameraSpeedX * Time.deltaTime, 0);
 
 		float cameraAngles = cameraTransform.transform.localEulerAngles.x;
 		const float lookingUpLimit = 360.0f;//変えてはいけない数値
@@ -90,24 +93,24 @@ public class FPSCamera : MonoBehaviour
 		if (lookingUp < cameraAngles && cameraAngles < lookingUpLimit || lookingDownLimit < cameraAngles && cameraAngles < lookingDown)//ここの数値を変えればカメラの上下の止まる限界値が変わる
 		{
 			//マウスYの入力量 × カメラのスピード × 時間 = の値をY回転の量にする
-			cameraTransform.transform.Rotate(-y_Rotation * localCameraSpeedY * Time.deltaTime, 0, 0);
+			cameraTransform.transform.Rotate(-yRotation * localCameraSpeedY * Time.deltaTime, 0, 0);
 		}
 		else
 		{
 			if (300 < cameraAngles)
 			{
-				if (Input.GetAxis("Mouse Y") < 0)
+				if (yRotation < 0)
 				{
 					//マウスYの入力量 × カメラのスピード × 時間 = の値をY回転の量にする
-					cameraTransform.transform.Rotate(-y_Rotation * localCameraSpeedY * Time.deltaTime, 0, 0);
+					cameraTransform.transform.Rotate(-yRotation * localCameraSpeedY * Time.deltaTime, 0, 0);
 				}
 			}
 			else
 			{
-				if (0 < Input.GetAxis("Mouse Y"))
+				if (0 < yRotation)
 				{
 					//マウスYの入力量 × カメラのスピード × 時間 = の値をY回転の量にする
-					cameraTransform.transform.Rotate(-y_Rotation * localCameraSpeedY * Time.deltaTime, 0, 0);
+					cameraTransform.transform.Rotate(-yRotation * localCameraSpeedY * Time.deltaTime, 0, 0);
 				}
 
 			}
