@@ -27,30 +27,37 @@ public class RedGun : Gun
 	new void Start()
 	{
 		base.Start();
+		PlayerUI.SingletonInstance.RedShotButton.onClick.AddListener(ShotSystem);
+		PlayerUI.SingletonInstance.RedReloadButton.onClick.AddListener(ManualReloadTrigger);
 	}
 
 	void Update()
 	{
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
 		//マウス右クリックが押されたとき
 		if (Input.GetMouseButtonDown(1))
 		{
 			ShotSystem();
 		}
+#endif//終了
 
 		AutoReloadTrigger();
 
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
 		//Eキーが押されたとき
 		if (Input.GetKey(KeyCode.E))
 		{
 			ManualReloadTrigger();
 		}
+#endif//終了
+
 		ReloadSystem();
 	}
 
 	/// <summary>
 	/// ショットシステム
 	/// </summary>
-	void ShotSystem()
+	public void ShotSystem()
 	{
 		if (currentBullet == 0)
 		{
@@ -95,7 +102,7 @@ public class RedGun : Gun
 	/// <summary>
 	/// 手動リロードトリガー
 	/// </summary>
-	void ManualReloadTrigger()
+	public void ManualReloadTrigger()
 	{
 		//残弾数が満タンで無いとき、かつリロード中で無いとき
 		if (currentBullet != resetBulletNumber && isReloadTime == false)

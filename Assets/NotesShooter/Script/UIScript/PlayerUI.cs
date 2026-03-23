@@ -42,6 +42,15 @@ public class PlayerUI : MonoBehaviour
 		set { purpleGunUI = value; }
 	}
 
+	[SerializeField] Button redShotButton;
+	public Button RedShotButton => redShotButton;
+	[SerializeField] Button redReloadButton;
+	public Button RedReloadButton => redReloadButton;
+	[SerializeField] Button blueShotButton;
+	public Button BlueShotButton => blueShotButton;
+	[SerializeField] Button blueReloadButton;
+	public Button BlueReloadButton => blueReloadButton;
+
 	[Tooltip("ジョイスティック")]
 	[SerializeField] FloatingJoystick floatingJoystick;
 	public FloatingJoystick FloatingJoystick => floatingJoystick;

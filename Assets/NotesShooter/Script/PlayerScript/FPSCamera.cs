@@ -53,7 +53,7 @@ public class FPSCamera : MonoBehaviour
 #elif UNITY_ANDROID//端末がAndroidだった場合の処理
 		float xRotation = PlayerUI.SingletonInstance.FloatingJoystick.Horizontal;
 		float yRotation = PlayerUI.SingletonInstance.FloatingJoystick.Vertical;
-#endif //終了
+#endif//終了
 		MouseCamera(new Vector2(xRotation, yRotation));
 	}
 

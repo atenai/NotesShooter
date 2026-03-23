@@ -27,23 +27,29 @@ public class BlueGun : Gun
 	new void Start()
 	{
 		base.Start();
+		PlayerUI.SingletonInstance.BlueShotButton.onClick.AddListener(ShotSystem);
+		PlayerUI.SingletonInstance.BlueReloadButton.onClick.AddListener(ManualReloadTrigger);
 	}
 
 	void Update()
 	{
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
 		//マウス左クリックが押されたとき
 		if (Input.GetMouseButtonDown(0))
 		{
 			ShotSystem();
 		}
+#endif//終了
 
 		AutoReloadTrigger();
 
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
 		//Qキーが押されたらとき
 		if (Input.GetKey(KeyCode.Q))
 		{
 			ManualReloadTrigger();
 		}
+#endif//終了
 
 		ReloadSystem();
 	}
@@ -51,7 +57,7 @@ public class BlueGun : Gun
 	/// <summary>
 	/// ショットシステム
 	/// </summary>
-	void ShotSystem()
+	public void ShotSystem()
 	{
 		if (currentBullet == 0)//残弾数が0じゃないとき
 		{
@@ -94,7 +100,7 @@ public class BlueGun : Gun
 	/// <summary>
 	/// 手動リロードトリガー
 	/// </summary>
-	void ManualReloadTrigger()
+	public void ManualReloadTrigger()
 	{
 		//残弾数が満タンで無いとき、かつリロード中で無いとき
 		if (currentBullet != resetBulletNumber && isReloadTime == false)
