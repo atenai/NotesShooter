@@ -42,6 +42,9 @@ public class PlayerUI : MonoBehaviour
 		set { purpleGunUI = value; }
 	}
 
+	[SerializeField] Image redPanel;
+	[SerializeField] Image bluePanel;
+
 	[SerializeField] Button redShotButton;
 	public Button RedShotButton => redShotButton;
 	[SerializeField] Button redReloadButton;
@@ -50,6 +53,7 @@ public class PlayerUI : MonoBehaviour
 	public Button BlueShotButton => blueShotButton;
 	[SerializeField] Button blueReloadButton;
 	public Button BlueReloadButton => blueReloadButton;
+	[SerializeField] Button pauseButton;
 
 	[Tooltip("ジョイスティック")]
 	[SerializeField] FloatingJoystick floatingJoystick;
@@ -73,6 +77,18 @@ public class PlayerUI : MonoBehaviour
 	{
 		imageReticle.color = new Color(255.0f, 255.0f, 255.0f, 150);
 		imageCrossHair.color = new Color(255.0f, 255.0f, 255.0f, 150);
+
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
+		redShotButton.gameObject.SetActive(false);
+		redReloadButton.gameObject.SetActive(false);
+		blueShotButton.gameObject.SetActive(false);
+		blueReloadButton.gameObject.SetActive(false);
+		pauseButton.gameObject.SetActive(false);
+#elif UNITY_ANDROID//端末がAndroidだった場合の処理
+		pauseButton.onClick.AddListener(Pause);
+		redPanel.gameObject.SetActive(false);
+		bluePanel.gameObject.SetActive(false);
+#endif//終了
 	}
 
 	void Update()
@@ -88,10 +104,12 @@ public class PlayerUI : MonoBehaviour
 			imageCrossHair.color = new Color(255, 255, 255, 150);
 		}
 
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
 		if (Input.GetKeyDown(KeyCode.P))
 		{
 			Pause();
 		}
+#endif//終了
 	}
 
 	/// <summary>

@@ -4,7 +4,7 @@ public class BlueGunUI : BaseGunUI
 	new void Start()
 	{
 		base.Start();
-		textBullet.text = BlueGun.SingletonInstance.CurrentBullet.ToString();
+		UpdateBulletText();
 	}
 
 	new void Update()
@@ -25,6 +25,18 @@ public class BlueGunUI : BaseGunUI
 			imageReload.color = reloadColor; //画像の透明度を変える
 		}
 
-		textBullet.text = BlueGun.SingletonInstance.CurrentBullet.ToString();
+		UpdateBulletText();
+	}
+
+	/// <summary>
+	/// 残弾数テキストを更新
+	/// </summary>
+	void UpdateBulletText()
+	{
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
+		textBulletWindows.text = BlueGun.SingletonInstance.CurrentBullet.ToString();
+#elif UNITY_ANDROID//端末がAndroidだった場合の処理
+		textBulletAndroid.text = BlueGun.SingletonInstance.CurrentBullet.ToString();
+#endif//終了
 	}
 }
