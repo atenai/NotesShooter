@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 /// <summary>
 /// PHPからデータを取得するテストスクリプト
 /// </summary>
-public class TestPHP1 : MonoBehaviour
+public class WebPHP : MonoBehaviour
 {
     string url = "http://localhost/OZ007/GetDate.php";//localhost はその端末自身を指すホスト名
     //string url = "http://127.0.0.1/OZ007/GetDate.php";//127.0.0.1 はその端末自身を指しすIPアドレス
