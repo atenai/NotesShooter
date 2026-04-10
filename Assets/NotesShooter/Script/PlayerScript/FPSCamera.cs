@@ -25,6 +25,8 @@ public class FPSCamera : MonoBehaviour
 	private Transform playerTransform;
 	[Tooltip("縦回転(X)はカメラの座標位置を使っている(FPSCamera_RotX)")]
 	private Transform cameraTransform;
+	[Tooltip("縦回転の現在角度を保持する")]
+	private float cameraPitch; // カメラの上下回転角度を保持し、Clampで制限するための変数
 
 	void Awake()
 	{
@@ -43,6 +45,14 @@ public class FPSCamera : MonoBehaviour
 	{
 		playerTransform = transform.parent;
 		cameraTransform = this.GetComponent<Transform>();
+
+		// localEulerAngles.x は 0〜360 の範囲で返るため、-180〜180 に変換して扱いやすくする
+		float startX = cameraTransform.localEulerAngles.x;
+		if (180.0f < startX)
+		{
+			startX -= 360.0f;
+		}
+		cameraPitch = startX; // 初期縦回転角度を cameraPitch に保持
 	}
 
 	void FixedUpdate()
@@ -59,8 +69,8 @@ public class FPSCamera : MonoBehaviour
 
 	void MouseCamera(Vector2 angles)
 	{
-		float xRotation = angles.x;
-		float yRotation = angles.y;
+		float cameraRotationX = angles.x;
+		float cameraRotationY = angles.y;
 
 		localCameraSpeedX = cameraSpeedX;
 		localCameraSpeedY = cameraSpeedY;
@@ -82,38 +92,17 @@ public class FPSCamera : MonoBehaviour
 		}
 
 		//マウスXの入力量 × カメラのスピード × 時間 = の値をX回転の量にする
-		playerTransform.transform.Rotate(0, xRotation * localCameraSpeedX * Time.deltaTime, 0);
+		playerTransform.transform.Rotate(0, cameraRotationX * localCameraSpeedX * Time.deltaTime, 0);
 
-		float cameraAngles = cameraTransform.transform.localEulerAngles.x;
-		const float lookingUpLimit = 360.0f;//変えてはいけない数値
-		float lookingUp = 324.0f;//減らしていくほど上を見れる範囲が広がる
-		const float lookingDownLimit = -10.0f;//変えてはいけない数値
-		float lookingDown = 79.0f;//増やしていくほど下を見れる範囲が広がる
+		const float lookingUpAngle = 36.0f;// 上を向ける最大角度
+		const float lookingDownAngle = 79.0f;// 下を向ける最大角度
 
-		if (lookingUp < cameraAngles && cameraAngles < lookingUpLimit || lookingDownLimit < cameraAngles && cameraAngles < lookingDown)//ここの数値を変えればカメラの上下の止まる限界値が変わる
-		{
-			//マウスYの入力量 × カメラのスピード × 時間 = の値をY回転の量にする
-			cameraTransform.transform.Rotate(-yRotation * localCameraSpeedY * Time.deltaTime, 0, 0);
-		}
-		else
-		{
-			if (300 < cameraAngles)
-			{
-				if (yRotation < 0)
-				{
-					//マウスYの入力量 × カメラのスピード × 時間 = の値をY回転の量にする
-					cameraTransform.transform.Rotate(-yRotation * localCameraSpeedY * Time.deltaTime, 0, 0);
-				}
-			}
-			else
-			{
-				if (0 < yRotation)
-				{
-					//マウスYの入力量 × カメラのスピード × 時間 = の値をY回転の量にする
-					cameraTransform.transform.Rotate(-yRotation * localCameraSpeedY * Time.deltaTime, 0, 0);
-				}
+		// 入力に応じた縦回転量を計算し、現在の cameraPitch に加算する
+		float deltaPitch = -cameraRotationY * localCameraSpeedY * Time.deltaTime;
+		// ここで上下の最大角度を超えないように Clamp する
+		cameraPitch = Mathf.Clamp(cameraPitch + deltaPitch, -lookingUpAngle, lookingDownAngle);
 
-			}
-		}
+		Vector3 localEuler = cameraTransform.localEulerAngles;
+		cameraTransform.localEulerAngles = new Vector3(cameraPitch, localEuler.y, localEuler.z);
 	}
 }
