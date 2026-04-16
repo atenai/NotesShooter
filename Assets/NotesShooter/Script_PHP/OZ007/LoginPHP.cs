@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
+using UnityEngine.SceneManagement;
 
 public class LoginPHP : MonoBehaviour
 {
@@ -74,6 +76,8 @@ public class LoginPHP : MonoBehaviour
                 {
                     infoText.text = "ログインに成功しました！";
                     infoText.color = Color.blue;
+                    yield return new WaitForSeconds(1.0f); // 成功メッセージを表示するための短い遅延
+                    SceneManager.LoadScene("Title");
                 }
                 else
                 {
