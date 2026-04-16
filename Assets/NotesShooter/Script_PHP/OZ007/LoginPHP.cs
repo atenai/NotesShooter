@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine.SceneManagement;
 
 public class LoginPHP : MonoBehaviour
