@@ -16,7 +16,7 @@ public class WebPHP : MonoBehaviour
         //StartCoroutine(GetDate());
         //StartCoroutine(GetUsers());
         //StartCoroutine(Login("testuser1", "12345"));
-        StartCoroutine(RegisterUser("testuser3", "12345"));
+        //StartCoroutine(RegisterUser("testuser3", "12345"));
     }
 
     IEnumerator GetDate()

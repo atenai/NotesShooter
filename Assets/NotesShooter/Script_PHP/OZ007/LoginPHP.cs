@@ -9,7 +9,7 @@ public class LoginPHP : MonoBehaviour
     [SerializeField] InputField userNameInput;
     [SerializeField] InputField passwordInput;
     [SerializeField] Button loginButton;
-
+    [SerializeField] Text infoText;
 
     void Start()
     {
@@ -40,12 +40,53 @@ public class LoginPHP : MonoBehaviour
             //string location = www.GetResponseHeader("Location");
             //Debug.Log("Location    : " + location);
 
-            if (www.result != UnityWebRequest.Result.Success)
+            switch (www.result)
             {
-                yield break;
+                case UnityWebRequest.Result.InProgress:
+                    Debug.Log("リクエスト中");
+                    break;
+
+                case UnityWebRequest.Result.Success:
+                    Debug.Log("リクエスト成功");
+                    break;
+
+                case UnityWebRequest.Result.ConnectionError:
+                    Debug.Log(@"サーバとの通信に失敗。リクエストが接続できなかった、セキュリティで保護されたチャネルを確立できなかったなど。");
+                    break;
+
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.Log(@"サーバがエラー応答を返した。サーバとの通信には成功したが、接続プロトコルで定義されているエラーを受け取った。");
+                    break;
+
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.Log(@"データの処理中にエラーが発生。リクエストはサーバとの通信に成功したが、受信したデータの処理中にエラーが発生。データが破損しているか、正しい形式ではないなど。");
+                    break;
             }
 
             Debug.Log("受信: " + www.downloadHandler.text);
+
+            // サーバーからの応答をトリムして、余分な空白を削除
+            string resp = www.downloadHandler.text.Trim();
+            bool registered = false;
+            if (bool.TryParse(resp, out registered))
+            {
+                if (registered == true)
+                {
+                    infoText.text = "ログインに成功しました！";
+                    infoText.color = Color.blue;
+                }
+                else
+                {
+                    infoText.text = "ユーザー名またはパスワードが正しくありません！";
+                    infoText.color = Color.red;
+                }
+            }
+            else
+            {
+                infoText.text = "サーバーの応答が不正です。";
+                infoText.color = Color.red;
+                Debug.LogWarning("Unexpected response: " + resp);
+            }
         }
     }
 }

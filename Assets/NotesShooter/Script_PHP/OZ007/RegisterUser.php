@@ -25,22 +25,30 @@ $sql = "SELECT username FROM users WHERE username = '" . $loginUser . "'";
 $result = $conn->query($sql);
 
 // 処理開始メッセージ（デバッグ用）
-echo "受信：接続に成功しました。ユーザーを登録します。<br>";
+//echo "受信：接続に成功しました。ユーザーを登録します。";
+// レスポンスは JSON の真偽値を返す（クライアントが bool を受け取れるようにする）
+header('Content-Type: application/json; charset=utf-8');
 
 // クエリ結果の行数で存在判定を行う
 if ($result->num_rows > 0) {
 	// 既に同じユーザー名が登録されている場合の処理
-	echo "受信：ユーザーは既に存在します。";
+	//echo "受信：ユーザーは既に存在します。";
+	// クライアント側で false を受け取れるように JSON エンコードして返す
+	echo json_encode(false);
 } else {
 	// 存在しない場合はINSERTで新規登録
 	// 注意: ここでは値を直接連結しているためSQLインジェクションの危険がある
 	$sql2 = "INSERT INTO users (username, password) VALUES ('" . $loginUser . "', '" . $loginPass . "')";
 	if ($conn->query($sql2) === TRUE) {
 		// 登録成功時のメッセージ
-		echo "受信：ユーザーの登録に成功しました。";
+		//echo "受信：ユーザーの登録に成功しました。";
+		// クライアント側で true を受け取れるように JSON エンコードして返す
+		echo json_encode(true);
 	} else {
 		// 登録失敗時のメッセージ
-		echo "受信：ユーザーの登録に失敗しました。";
+		//echo "受信：ユーザーの登録に失敗しました。";
+		//クライアント側で false を受け取れるように JSON エンコードして返す
+		echo json_encode(false);
 	}
 }
 
