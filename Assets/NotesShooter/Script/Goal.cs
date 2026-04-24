@@ -45,6 +45,7 @@ public class Goal : MonoBehaviour
         }
     }
 
+    //TODO : 多重で登録されている
     /// <summary>
     /// スコアを登録する
     /// </summary>
