@@ -16,6 +16,10 @@ echo "<br>";
 echo "<br>";
 echo "<br>";
 
+// usersからusernameとlevelを取得して表示
+// 注意: ここでは値を直接連結しているためSQLインジェクションの危険がある
+// 例: $sql = "SELECT username, level FROM users WHERE username = '" . $someUserInput . "'";
+// ここでは単純に全ユーザーのusernameとlevelを取得して表示する例を示す
 $sql = "SELECT username, level FROM users";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
