@@ -20,7 +20,11 @@ public class ResultScore : MonoBehaviour
 
     IEnumerator GetScore()
     {
-        using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/NotesShooter/GetRankingData.php"))
+        //ローカルサーバー
+        const string localServer = "http://localhost/NotesShooter/GetRankingData.php";
+        //AWSサーバー
+        const string awsServer = "http://54.250.202.178/GetRankingData.php";
+        using (UnityWebRequest www = UnityWebRequest.Get(awsServer))
         {
             www.redirectLimit = 0;
             www.timeout = 10;

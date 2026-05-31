@@ -29,7 +29,7 @@ public class Goal : MonoBehaviour
     void Start()
     {
         //テスト
-        //StartCoroutine(RegisterScore(3000));
+        //StartCoroutine(RegisterScore(777));
     }
 
     void OnTriggerEnter(Collider hit)
@@ -56,7 +56,11 @@ public class Goal : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("score", score);
 
-        using (UnityWebRequest www = UnityWebRequest.Post($"http://localhost/NotesShooter/RegisterRankingData.php", form))
+        //ローカルサーバー
+        const string localServer = "http://localhost/NotesShooter/RegisterRankingData.php";
+        //AWSサーバー
+        const string awsServer = "http://54.250.202.178/RegisterRankingData.php";
+        using (UnityWebRequest www = UnityWebRequest.Post(awsServer, form))
         {
             www.redirectLimit = 0;
             www.timeout = 10;
