@@ -75,11 +75,11 @@ public class RedGun : Gun
 		BulletSE();
 
 		//薬莢オブジェクトを生成して飛ばす
-		GameObject newCartridge = Instantiate(gunCartridgePrefab, new Vector3(this.gameObject.transform.position.x + 0.5f, this.gameObject.transform.position.y, this.gameObject.transform.position.z + 0.5f), Quaternion.identity);
-		Destroy(newCartridge, gunCartridgeDestroyTime);
-		newCartridge.GetComponent<Rigidbody>().AddForce(this.transform.forward * 250.0f);//速すぎるとすり抜けてしまう
-		newCartridge.GetComponent<Rigidbody>().AddForce(this.transform.up * 100.0f);//速すぎるとすり抜けてしまう
-		newCartridge.GetComponent<Rigidbody>().AddForce(this.transform.right * 200.0f);//速すぎるとすり抜けてしまう
+		// GameObject newCartridge = Instantiate(gunCartridgePrefab, new Vector3(this.gameObject.transform.position.x + 0.5f, this.gameObject.transform.position.y, this.gameObject.transform.position.z + 0.5f), Quaternion.identity);
+		// Destroy(newCartridge, gunCartridgeDestroyTime);
+		// newCartridge.GetComponent<Rigidbody>().AddForce(this.transform.forward * 250.0f);//速すぎるとすり抜けてしまう
+		// newCartridge.GetComponent<Rigidbody>().AddForce(this.transform.up * 100.0f);//速すぎるとすり抜けてしまう
+		// newCartridge.GetComponent<Rigidbody>().AddForce(this.transform.right * 200.0f);//速すぎるとすり抜けてしまう
 
 		//弾オブジェクトを生成して前方向に飛ばす 
 		GameObject newBullet = Instantiate(redBullet.gameObject, this.transform.position, this.transform.rotation);
