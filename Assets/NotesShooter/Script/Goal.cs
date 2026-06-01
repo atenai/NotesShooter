@@ -59,7 +59,9 @@ public class Goal : MonoBehaviour
         //ローカルサーバー
         const string localServer = "http://localhost/NotesShooter/RegisterRankingData.php";
         //AWSサーバー
-        const string awsServer = "http://54.250.202.178/RegisterRankingData.php";
+        //パブリック IPv4 アドレス
+        string awsServerPublicIPv4Address = "35.78.65.237";
+        string awsServer = "http://" + awsServerPublicIPv4Address + "/RegisterRankingData.php";
         using (UnityWebRequest www = UnityWebRequest.Post(awsServer, form))
         {
             www.redirectLimit = 0;

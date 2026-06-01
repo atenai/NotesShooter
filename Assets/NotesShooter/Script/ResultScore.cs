@@ -23,7 +23,9 @@ public class ResultScore : MonoBehaviour
         //ローカルサーバー
         const string localServer = "http://localhost/NotesShooter/GetRankingData.php";
         //AWSサーバー
-        const string awsServer = "http://54.250.202.178/GetRankingData.php";
+        //パブリック IPv4 アドレス
+        string awsServerPublicIPv4Address = "35.78.65.237";
+        string awsServer = "http://" + awsServerPublicIPv4Address + "/GetRankingData.php";
         using (UnityWebRequest www = UnityWebRequest.Get(awsServer))
         {
             www.redirectLimit = 0;
