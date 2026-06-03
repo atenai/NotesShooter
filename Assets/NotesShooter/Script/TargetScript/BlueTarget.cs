@@ -17,7 +17,7 @@ public class BlueTarget : Target
         {
             //Debug.Log("LeftCubeに当たったよ");
 
-            PlayerUI.SingletonInstance.BlueGunUI.IsHitReticule = true;
+            PlayerUI.SingletonInstance.LeftGunUI.IsHitReticule = true;
 
             //爆発エフェクトオブジェクトを生成する	
             HitEffect();

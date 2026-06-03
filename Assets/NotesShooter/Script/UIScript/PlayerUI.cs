@@ -21,18 +21,18 @@ public class PlayerUI : MonoBehaviour
 	[SerializeField] GameObject panelPause;
 	[SerializeField] AudioSource audioSource;
 
-	[SerializeField] BaseGunUI redGunUI;
-	public BaseGunUI RedGunUI
+	[SerializeField] BaseGunUI rightGunUI;
+	public BaseGunUI RightGunUI
 	{
-		get { return redGunUI; }
-		set { redGunUI = value; }
+		get { return rightGunUI; }
+		set { rightGunUI = value; }
 	}
 
-	[SerializeField] BaseGunUI blueGunUI;
-	public BaseGunUI BlueGunUI
+	[SerializeField] BaseGunUI leftGunUI;
+	public BaseGunUI LeftGunUI
 	{
-		get { return blueGunUI; }
-		set { blueGunUI = value; }
+		get { return leftGunUI; }
+		set { leftGunUI = value; }
 	}
 
 	[SerializeField] BaseGunUI purpleGunUI;
@@ -42,17 +42,17 @@ public class PlayerUI : MonoBehaviour
 		set { purpleGunUI = value; }
 	}
 
-	[SerializeField] Image redPanel;
-	[SerializeField] Image bluePanel;
+	[SerializeField] Image rightPanel;
+	[SerializeField] Image leftPanel;
 
-	[SerializeField] Button redShotButton;
-	public Button RedShotButton => redShotButton;
-	[SerializeField] Button redReloadButton;
-	public Button RedReloadButton => redReloadButton;
-	[SerializeField] Button blueShotButton;
-	public Button BlueShotButton => blueShotButton;
-	[SerializeField] Button blueReloadButton;
-	public Button BlueReloadButton => blueReloadButton;
+	[SerializeField] Button rightShotButton;
+	public Button RightShotButton => rightShotButton;
+	[SerializeField] Button rightReloadButton;
+	public Button RightReloadButton => rightReloadButton;
+	[SerializeField] Button leftShotButton;
+	public Button LeftShotButton => leftShotButton;
+	[SerializeField] Button leftReloadButton;
+	public Button LeftReloadButton => leftReloadButton;
 	[SerializeField] Button pauseButton;
 
 	[Tooltip("ジョイスティック")]
@@ -79,15 +79,15 @@ public class PlayerUI : MonoBehaviour
 		imageCrossHair.color = new Color(255.0f, 255.0f, 255.0f, 150);
 
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
-		redShotButton.gameObject.SetActive(false);
-		redReloadButton.gameObject.SetActive(false);
-		blueShotButton.gameObject.SetActive(false);
-		blueReloadButton.gameObject.SetActive(false);
+		rightShotButton.gameObject.SetActive(false);
+		rightReloadButton.gameObject.SetActive(false);
+		leftShotButton.gameObject.SetActive(false);
+		leftReloadButton.gameObject.SetActive(false);
 		pauseButton.gameObject.SetActive(false);
 #elif UNITY_ANDROID//端末がAndroidだった場合の処理
 		pauseButton.onClick.AddListener(Pause);
-		redPanel.gameObject.SetActive(false);
-		bluePanel.gameObject.SetActive(false);
+		rightPanel.gameObject.SetActive(false);
+		leftPanel.gameObject.SetActive(false);
 #endif//終了
 	}
 

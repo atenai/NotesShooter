@@ -3,61 +3,54 @@
 /// <summary>
 /// BlueGun（派生クラス）Gun（基底クラス）
 /// </summary>
-public class BlueGun : Gun
+public class BlueGun : IGun
 {
-	//シングルトンで作成（ゲーム中に１つのみにする）
-	static BlueGun singletonInstance = null;
-	public static BlueGun SingletonInstance => singletonInstance;
+	BlueBullet bullet;
 
-	[SerializeField] BlueBullet blueBullet;
+	[Header("残弾数")]
+	int currentBullet;
+	public int CurrentBullet => currentBullet;
 
-	void Awake()
+	[Header("バレットSE")]
+	GameObject bulletSEPrefab;
+	float bulletSeEndtime = 1.0f;
+
+	[Header("薬莢")]
+	GameObject gunCartridgePrefab;
+	float gunCartridgeDestroyTime = 3.0f;
+
+	[Header("リロード")]
+	[Tooltip("リロード後の弾のリセットした際の数")]
+	int resetBulletNumber = 20;
+	[Tooltip("リロードタイム")]
+	float reloadTime = 0.0f;
+	const float reloadTimeDefine = 1.0f;
+	const int reloadTimeReset = 0;
+	[Tooltip("リロードのオン/オフ")]
+	bool isReloadTime = false;
+	public bool IsReloadTime => isReloadTime;
+
+	[Header("リロードSE")]
+	GameObject reloadSEPrefab;
+	float reloadSeEndtime = 1.0f;
+	bool isReloadSE = false;
+
+	public BlueGun(BlueBullet bullet, GameObject bulletSEPrefab, GameObject gunCartridgePrefab, GameObject reloadSEPrefab)
 	{
-		//staticな変数instanceはメモリ領域は確保されていますが、初回では中身が入っていないので、中身を入れます。
-		if (singletonInstance == null)
-		{
-			singletonInstance = this;//thisというのは自分自身のインスタンスという意味になります。この場合、Playerのインスタンスという意味になります。
-		}
-		else
-		{
-			Destroy(this.gameObject);//中身がすでに入っていた場合、自身のインスタンスがくっついているゲームオブジェクトを破棄します。
-		}
-	}
+		this.bullet = bullet;
+		this.bulletSEPrefab = bulletSEPrefab;
+		this.gunCartridgePrefab = gunCartridgePrefab;
+		this.reloadSEPrefab = reloadSEPrefab;
 
-	new void Start()
-	{
-		base.Start();
-		PlayerUI.SingletonInstance.BlueShotButton.onClick.AddListener(ShotSystem);
-		PlayerUI.SingletonInstance.BlueReloadButton.onClick.AddListener(ManualReloadTrigger);
-	}
-
-	void Update()
-	{
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
-		//マウス左クリックが押されたとき
-		if (Input.GetMouseButtonDown(0))
-		{
-			ShotSystem();
-		}
-#endif//終了
-
-		AutoReloadTrigger();
-
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
-		//Qキーが押されたらとき
-		if (Input.GetKey(KeyCode.Q))
-		{
-			ManualReloadTrigger();
-		}
-#endif//終了
-
-		ReloadSystem();
+		currentBullet = resetBulletNumber;//残弾数をリセット
+		reloadTime = reloadTimeReset;//リロードタイムをリセット
+		isReloadTime = false;//リロードのオフ
 	}
 
 	/// <summary>
 	/// ショットシステム
 	/// </summary>
-	public void ShotSystem()
+	public void ShotSystem(GameObject gunObject)
 	{
 		if (currentBullet == 0)//残弾数が0じゃないとき
 		{
@@ -70,24 +63,38 @@ public class BlueGun : Gun
 		currentBullet = currentBullet - 1;//残弾数を-1する
 
 		//SEオブジェクトを生成する
-		BulletSE();
-
-		//薬莢オブジェクトを生成して飛ばす
-		// GameObject newGunCartridge = Instantiate(gunCartridgePrefab, new Vector3(this.gameObject.transform.position.x - 0.5f, this.gameObject.transform.position.y, this.gameObject.transform.position.z + 0.5f), Quaternion.identity);
-		// Destroy(newGunCartridge, gunCartridgeDestroyTime);
-		// newGunCartridge.GetComponent<Rigidbody>().AddForce(this.transform.forward * 250.0f);//速すぎるとすり抜けてしまう
-		// newGunCartridge.GetComponent<Rigidbody>().AddForce(this.transform.up * 100.0f);//速すぎるとすり抜けてしまう
-		// newGunCartridge.GetComponent<Rigidbody>().AddForce(this.transform.right * -200.0f);//速すぎるとすり抜けてしまう
+		BulletSE(gunObject.transform);
 
 		//弾オブジェクトを生成して前方向に飛ばす 
-		GameObject newBullet = Instantiate(blueBullet.gameObject, this.transform.position, this.transform.rotation);
-		newBullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * 7000.0f);//速すぎるとすり抜けてしまう
+		GameObject newBullet = UnityEngine.Object.Instantiate(bullet.gameObject, gunObject.transform.position, gunObject.transform.rotation);
+		newBullet.GetComponent<Rigidbody>().AddForce(gunObject.transform.forward * 7000.0f);//速すぎるとすり抜けてしまう
+	}
+
+	/// <summary>
+	/// 薬莢オブジェクトを生成して飛ばす
+	/// </summary>
+	void CreateGunCartridge(Transform gunTransform)
+	{
+		GameObject newGunCartridge = UnityEngine.Object.Instantiate(gunCartridgePrefab, new Vector3(gunTransform.position.x - 0.5f, gunTransform.position.y, gunTransform.position.z + 0.5f), Quaternion.identity);
+		UnityEngine.Object.Destroy(newGunCartridge, gunCartridgeDestroyTime);
+		newGunCartridge.GetComponent<Rigidbody>().AddForce(gunTransform.forward * 250.0f);//速すぎるとすり抜けてしまう
+		newGunCartridge.GetComponent<Rigidbody>().AddForce(gunTransform.up * 100.0f);//速すぎるとすり抜けてしまう
+		newGunCartridge.GetComponent<Rigidbody>().AddForce(gunTransform.right * -200.0f);//速すぎるとすり抜けてしまう
+	}
+
+	/// <summary>
+	/// 弾発射のSE
+	/// </summary>
+	void BulletSE(Transform gunTransform)
+	{
+		GameObject BulletSE = UnityEngine.Object.Instantiate(bulletSEPrefab, gunTransform.position, Quaternion.identity);
+		UnityEngine.Object.Destroy(BulletSE, bulletSeEndtime);
 	}
 
 	/// <summary>
 	/// 自動リロードトリガー
 	/// </summary>
-	void AutoReloadTrigger()
+	public void AutoReloadTrigger()
 	{
 		//リロード中で無く、かつ残弾数が0になったらリロード開始
 		if (currentBullet == 0 && isReloadTime == false)
@@ -113,7 +120,7 @@ public class BlueGun : Gun
 	/// <summary>
 	/// リロードシステム
 	/// </summary>
-	void ReloadSystem()
+	public void ReloadSystem(GameObject gunObject)
 	{
 		//リロードがオンになったら
 		if (isReloadTime == true)
@@ -121,7 +128,7 @@ public class BlueGun : Gun
 			if (isReloadSE == true)
 			{
 				//SEオブジェクトを生成する
-				ReloadSE();
+				ReloadSE(gunObject.transform);
 				isReloadSE = false;
 			}
 
@@ -133,5 +140,14 @@ public class BlueGun : Gun
 				isReloadTime = false;//リロードのオフ
 			}
 		}
+	}
+
+	/// <summary>
+	/// リロードのSE
+	/// </summary>
+	void ReloadSE(Transform gunTransform)
+	{
+		GameObject ReloadSE = UnityEngine.Object.Instantiate(reloadSEPrefab, gunTransform.position, Quaternion.identity);
+		UnityEngine.Object.Destroy(ReloadSE, reloadSeEndtime);//SEをSE_Endtime後削除
 	}
 }

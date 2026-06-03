@@ -1,31 +1,42 @@
-﻿
-public class BlueGunUI : BaseGunUI
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>
+/// 右手の銃のUI
+/// </summary>
+public class RightGunUI : BaseGunUI
 {
+
 	new void Start()
 	{
 		base.Start();
-		UpdateBulletText();
 	}
 
 	new void Update()
 	{
 		base.Update();
 
-		if (BlueGun.SingletonInstance.IsReloadTime == true)
+		UpdateReloadImage();
+		UpdateBulletText();
+	}
+
+	void UpdateReloadImage()
+	{
+		if (gun.IsReloadTime == true)
 		{
 			reloadColor.a = FadeIn(reloadColor.a);
 
-			imageReload.color = reloadColor; //画像の透明度を変える   
+			imageReload.color = reloadColor; //画像の透明度を変える
 		}
 
-		if (BlueGun.SingletonInstance.IsReloadTime == false)
+		if (gun.IsReloadTime == false)
 		{
 			reloadColor.a = FadeOut(reloadColor.a);
 
 			imageReload.color = reloadColor; //画像の透明度を変える
 		}
-
-		UpdateBulletText();
 	}
 
 	/// <summary>
@@ -34,9 +45,9 @@ public class BlueGunUI : BaseGunUI
 	void UpdateBulletText()
 	{
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
-		textBulletWindows.text = BlueGun.SingletonInstance.CurrentBullet.ToString();
+		textBulletWindows.text = gun.CurrentBullet.ToString();
 #elif UNITY_ANDROID//端末がAndroidだった場合の処理
-		textBulletAndroid.text = BlueGun.SingletonInstance.CurrentBullet.ToString();
+		textBulletAndroid.text = gun.CurrentBullet.ToString();
 #endif//終了
 	}
 }

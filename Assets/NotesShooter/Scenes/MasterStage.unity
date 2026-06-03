@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 6168026}
   - component: {fileID: 6168025}
   m_Layer: 5
-  m_Name: BlueReloadButton
+  m_Name: LeftReloadButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 92524919}
   - component: {fileID: 92524918}
   m_Layer: 5
-  m_Name: RedShotButton
+  m_Name: RightShotButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1715,7 +1715,7 @@ GameObject:
   - component: {fileID: 170465785}
   - component: {fileID: 170465784}
   m_Layer: 5
-  m_Name: BlueShotButton
+  m_Name: LeftShotButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2931,7 +2931,7 @@ GameObject:
   - component: {fileID: 311702276}
   - component: {fileID: 311702275}
   m_Layer: 5
-  m_Name: RedReloadButton
+  m_Name: RightReloadButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3685,7 +3685,7 @@ GameObject:
   - component: {fileID: 487759653}
   - component: {fileID: 487759652}
   m_Layer: 5
-  m_Name: RedPanel
+  m_Name: RightPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10617,7 +10617,7 @@ GameObject:
   - component: {fileID: 1827944373}
   - component: {fileID: 1827944372}
   m_Layer: 5
-  m_Name: BluePanel
+  m_Name: LeftPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11185,15 +11185,15 @@ MonoBehaviour:
   imageCrossHair: {fileID: 221730855}
   panelPause: {fileID: 2121794788}
   audioSource: {fileID: 1902696352}
-  redGunUI: {fileID: 1902696358}
-  blueGunUI: {fileID: 1902696359}
+  rightGunUI: {fileID: 1902696358}
+  leftGunUI: {fileID: 1902696359}
   purpleGunUI: {fileID: 1902696360}
-  redPanel: {fileID: 487759652}
-  bluePanel: {fileID: 1827944372}
-  redShotButton: {fileID: 92524918}
-  redReloadButton: {fileID: 311702275}
-  blueShotButton: {fileID: 170465784}
-  blueReloadButton: {fileID: 6168025}
+  rightPanel: {fileID: 487759652}
+  leftPanel: {fileID: 1827944372}
+  rightShotButton: {fileID: 92524918}
+  rightReloadButton: {fileID: 311702275}
+  leftShotButton: {fileID: 170465784}
+  leftReloadButton: {fileID: 6168025}
   pauseButton: {fileID: 377504009}
   floatingJoystick: {fileID: 1265727139}
 --- !u!114 &1902696358
@@ -11213,6 +11213,7 @@ MonoBehaviour:
   textBulletAndroid: {fileID: 1347970567}
   hitReticule: {fileID: 1648599399}
   color: {r: 1, g: 0.39215687, b: 0, a: 1}
+  rightGun: {fileID: 5571499671366485084}
 --- !u!114 &1902696359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11230,6 +11231,7 @@ MonoBehaviour:
   textBulletAndroid: {fileID: 917056742}
   hitReticule: {fileID: 2081407624}
   color: {r: 0, g: 0.39215687, b: 1, a: 1}
+  leftGun: {fileID: 5571499671366485085}
 --- !u!114 &1902696360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12465,6 +12467,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a98734c0bb2f0c46bb70db0c748ed13, type: 3}
+--- !u!114 &5571499671366485084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 907769107308547787, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
+    type: 3}
+  m_PrefabInstance: {fileID: 5571499671366485082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e74ea2d74f2da4eba13f7a4202bc3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5571499671366485085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3193905533904335141, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
+    type: 3}
+  m_PrefabInstance: {fileID: 5571499671366485082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dabcd600b2b9264ca27d508198ae808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6503168534966024040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4512044457845045889, guid: 9fd8da02ed0550f4fa06c727769cd57d,

@@ -93,10 +93,10 @@ GameObject:
   - component: {fileID: 5252974918579743009}
   - component: {fileID: 1364110523292569550}
   - component: {fileID: 6711246880449887134}
-  - component: {fileID: 431571935060797613}
-  - component: {fileID: 2895654781214299454}
   - component: {fileID: 7917648425393776794}
   - component: {fileID: 5696965199564642832}
+  - component: {fileID: 3193905533904335141}
+  - component: {fileID: 907769107308547787}
   m_Layer: 11
   m_Name: FPSCamera_RotX
   m_TagString: MainCamera
@@ -180,46 +180,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4969355360105628860}
   m_Enabled: 1
---- !u!114 &431571935060797613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4969355360105628860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68aa9329fd9c02345b1cd781a587938d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSEPrefab: {fileID: 9110255550956096348, guid: c2b04dffa24d64f43b4c3fecfb3c33db,
-    type: 3}
-  gunCartridgePrefab: {fileID: 6407148758114783756, guid: 5fce2c2464a387b4b95f9753f933c9e2,
-    type: 3}
-  reloadSEPrefab: {fileID: 3222061081758656403, guid: cf99a948bb2d3234eb4418a9e1a92e76,
-    type: 3}
-  blueBullet: {fileID: 438720750222157006, guid: 1b526f21d44bcd94ca95a9620a054f53,
-    type: 3}
---- !u!114 &2895654781214299454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4969355360105628860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18d5a2a96d7b9e447ab3598555fd98c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSEPrefab: {fileID: 9110255550956096348, guid: c2b04dffa24d64f43b4c3fecfb3c33db,
-    type: 3}
-  gunCartridgePrefab: {fileID: 6407148758114783756, guid: 5fce2c2464a387b4b95f9753f933c9e2,
-    type: 3}
-  reloadSEPrefab: {fileID: 3222061081758656403, guid: cf99a948bb2d3234eb4418a9e1a92e76,
-    type: 3}
-  redBullet: {fileID: 6496509218252219463, guid: 32195abb309e0ac41ab60918f71a6008,
-    type: 3}
 --- !u!114 &7917648425393776794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +239,44 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &3193905533904335141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4969355360105628860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dabcd600b2b9264ca27d508198ae808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSEPrefab: {fileID: 9110255550956096348, guid: c2b04dffa24d64f43b4c3fecfb3c33db,
+    type: 3}
+  gunCartridgePrefab: {fileID: 6407148758114783756, guid: 5fce2c2464a387b4b95f9753f933c9e2,
+    type: 3}
+  reloadSEPrefab: {fileID: 3222061081758656403, guid: cf99a948bb2d3234eb4418a9e1a92e76,
+    type: 3}
+  bullet: {fileID: 438720750222157006, guid: 1b526f21d44bcd94ca95a9620a054f53, type: 3}
+--- !u!114 &907769107308547787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4969355360105628860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e74ea2d74f2da4eba13f7a4202bc3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSEPrefab: {fileID: 9110255550956096348, guid: c2b04dffa24d64f43b4c3fecfb3c33db,
+    type: 3}
+  gunCartridgePrefab: {fileID: 6407148758114783756, guid: 5fce2c2464a387b4b95f9753f933c9e2,
+    type: 3}
+  reloadSEPrefab: {fileID: 3222061081758656403, guid: cf99a948bb2d3234eb4418a9e1a92e76,
+    type: 3}
+  bullet: {fileID: 6496509218252219463, guid: 32195abb309e0ac41ab60918f71a6008, type: 3}
 --- !u!1 &7384673036588287666
 GameObject:
   m_ObjectHideFlags: 0

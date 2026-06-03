@@ -4,7 +4,7 @@ using TMPro;
 
 /// <summary>
 /// 基底クラス
-/// 派生クラスのリスト(BlueGunUI・RedGunUI)
+/// 派生クラスのリスト(LeftGunUI・RightGunUI)
 /// </summary>
 public class BaseGunUI : MonoBehaviour
 {
@@ -32,6 +32,13 @@ public class BaseGunUI : MonoBehaviour
 	}
 	[Tooltip("ヒットレティクルカラー")]
 	[SerializeField] protected Color color;
+
+	protected IGun gun;
+
+	public void SetGun(IGun gun)
+	{
+		this.gun = gun;
+	}
 
 	protected void Start()
 	{
