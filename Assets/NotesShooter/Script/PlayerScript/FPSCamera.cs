@@ -27,6 +27,9 @@ public class FPSCamera : MonoBehaviour
 	private Transform cameraTransform;
 	[Tooltip("縦回転の現在角度を保持する")]
 	private float cameraPitch; // カメラの上下回転角度を保持し、Clampで制限するための変数
+	[Tooltip("レイキャストの中心点（レティクル）")]
+	[SerializeField] private GameObject lookPoint;
+	public GameObject LookPoint => lookPoint;
 
 	void Awake()
 	{
@@ -84,11 +87,23 @@ public class FPSCamera : MonoBehaviour
 		{
 			if (hit.collider.gameObject.CompareTag("BlueTarget") || hit.collider.gameObject.CompareTag("PurpleTarget") || hit.collider.gameObject.CompareTag("RedTarget"))//※間違ってオブジェクトの設定にレイヤーとタグを間違えるなよおれｗ
 			{
+				//レイの中心点（レティクル）にターゲットがヒットしている位置を入れる
+				lookPoint.transform.position = hit.point;
 				//カメラの速さを遅くする
 				localCameraSpeedX = cameraSpeedX / slowDownCameraSpeed;
 				localCameraSpeedY = cameraSpeedY / slowDownCameraSpeed;
 				isTargethit = true;
 			}
+			else
+			{
+				//レイの中心点（レティクル）にターゲットがヒットしていない位置を入れる
+				lookPoint.transform.position = ray.origin + ray.direction * range;
+			}
+		}
+		else
+		{
+			//レイの中心点（レティクル）にターゲットがヒットしていない位置を入れる
+			lookPoint.transform.position = ray.origin + ray.direction * range;
 		}
 
 		//マウスXの入力量 × カメラのスピード × 時間 = の値をX回転の量にする

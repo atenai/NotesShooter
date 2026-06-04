@@ -14,6 +14,8 @@ public class LeftGun : MonoBehaviour
     [SerializeField] GameObject gunCartridgePrefab;
     [SerializeField] GameObject reloadSEPrefab;
     [SerializeField] BlueBullet bullet;
+    [SerializeField] GameObject shootPoint;
+    [SerializeField] GameObject cartridgePoint;
 
     void Awake()
     {
@@ -27,18 +29,20 @@ public class LeftGun : MonoBehaviour
 
     void Start()
     {
-        PlayerUI.SingletonInstance.LeftShotButton.onClick.AddListener(() => gun.ShotSystem(this.gameObject));
+        PlayerUI.SingletonInstance.LeftShotButton.onClick.AddListener(() => gun.ShotSystem(this.gameObject, shootPoint, cartridgePoint));
         PlayerUI.SingletonInstance.LeftReloadButton.onClick.AddListener(() => gun.ManualReloadTrigger());
         PlayerUI.SingletonInstance.LeftGunUI.SetGun(gun);
     }
 
     void Update()
     {
+        //銃がレイの中心点（レティクル）を向くようにする
+        this.transform.LookAt(FPSCamera.SingletonInstance.LookPoint.transform.position);
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
         //マウス左クリックが押されたとき
         if (Input.GetMouseButtonDown(0))
         {
-            gun.ShotSystem(this.gameObject);
+            gun.ShotSystem(this.gameObject, shootPoint, cartridgePoint);
         }
 #endif//終了
 

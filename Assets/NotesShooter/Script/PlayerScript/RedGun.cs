@@ -50,7 +50,7 @@ public class RedGun : IGun
 	/// <summary>
 	/// ショットシステム
 	/// </summary>
-	public void ShotSystem(GameObject gunObject)
+	public void ShotSystem(GameObject gunObject, GameObject shootPoint, GameObject cartridgePoint)
 	{
 		if (currentBullet == 0)
 		{
@@ -66,10 +66,30 @@ public class RedGun : IGun
 
 		//SEオブジェクトを生成する
 		BulletSE(gunObject.transform);
+		CreateBullet(shootPoint.transform);
+		CreateGunCartridge(cartridgePoint.transform);
+	}
 
-		//弾オブジェクトを生成して前方向に飛ばす 
-		GameObject newBullet = UnityEngine.Object.Instantiate(bullet.gameObject, gunObject.transform.position, gunObject.transform.rotation);
-		newBullet.GetComponent<Rigidbody>().AddForce(gunObject.transform.forward * 7000.0f);//速すぎるとすり抜けてしまう
+	/// <summary>
+	/// 弾オブジェクトを生成して前方向に飛ばす
+	/// </summary>
+	/// <param name="shootTransform"></param>
+	void CreateBullet(Transform shootTransform)
+	{
+		GameObject newBullet = UnityEngine.Object.Instantiate(bullet.gameObject, shootTransform.position, shootTransform.rotation);
+		newBullet.GetComponent<Rigidbody>().AddForce(shootTransform.forward * 7000.0f);//速すぎるとすり抜けてしまう
+	}
+
+	/// <summary>
+	/// 薬莢オブジェクトを生成して飛ばす
+	/// </summary>
+	void CreateGunCartridge(Transform cartridgeTransform)
+	{
+		GameObject newCartridge = UnityEngine.Object.Instantiate(gunCartridgePrefab, cartridgeTransform.position, cartridgeTransform.rotation);
+		UnityEngine.Object.Destroy(newCartridge, gunCartridgeDestroyTime);
+		newCartridge.GetComponent<Rigidbody>().AddForce(cartridgeTransform.forward * 250.0f);//速すぎるとすり抜けてしまう
+		newCartridge.GetComponent<Rigidbody>().AddForce(cartridgeTransform.up * 100.0f);//速すぎるとすり抜けてしまう
+		newCartridge.GetComponent<Rigidbody>().AddForce(cartridgeTransform.right * 200.0f);//速すぎるとすり抜けてしまう
 	}
 
 	/// <summary>
@@ -79,18 +99,6 @@ public class RedGun : IGun
 	{
 		GameObject BulletSE = UnityEngine.Object.Instantiate(bulletSEPrefab, gunTransform.position, Quaternion.identity);
 		UnityEngine.Object.Destroy(BulletSE, bulletSeEndtime);
-	}
-
-	/// <summary>
-	/// 薬莢オブジェクトを生成して飛ばす
-	/// </summary>
-	void CreateGunCartridge(Transform gunTransform)
-	{
-		GameObject newCartridge = UnityEngine.Object.Instantiate(gunCartridgePrefab, new Vector3(gunTransform.position.x + 0.5f, gunTransform.position.y, gunTransform.position.z + 0.5f), Quaternion.identity);
-		UnityEngine.Object.Destroy(newCartridge, gunCartridgeDestroyTime);
-		newCartridge.GetComponent<Rigidbody>().AddForce(gunTransform.forward * 250.0f);//速すぎるとすり抜けてしまう
-		newCartridge.GetComponent<Rigidbody>().AddForce(gunTransform.up * 100.0f);//速すぎるとすり抜けてしまう
-		newCartridge.GetComponent<Rigidbody>().AddForce(gunTransform.right * 200.0f);//速すぎるとすり抜けてしまう
 	}
 
 	/// <summary>
