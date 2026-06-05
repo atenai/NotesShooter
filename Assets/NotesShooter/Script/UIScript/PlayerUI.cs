@@ -19,7 +19,6 @@ public class PlayerUI : MonoBehaviour
 	public bool IsPause => isPause;
 	[Tooltip("ポーズ画像")]
 	[SerializeField] GameObject panelPause;
-	[SerializeField] AudioSource audioSource;
 
 	[SerializeField] BaseGunUI rightGunUI;
 	public BaseGunUI RightGunUI
@@ -124,14 +123,14 @@ public class PlayerUI : MonoBehaviour
 			Time.timeScale = 0f;
 			panelPause.SetActive(true);
 			// 一時停止
-			audioSource.Pause();
+			MusicManager.SingletonInstance.AudioSource.Pause();
 		}
 		else
 		{
 			Time.timeScale = 1f;
 			panelPause.SetActive(false);
 			// 一時停止解除
-			audioSource.UnPause();
+			MusicManager.SingletonInstance.AudioSource.UnPause();
 		}
 	}
 }
