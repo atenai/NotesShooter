@@ -5,7 +5,7 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     //シングルトンで作成（ゲーム中に１つのみにする）
-    private static MusicManager singletonInstance = null;
+    static MusicManager singletonInstance = null;
     public static MusicManager SingletonInstance => singletonInstance;
 
     [SerializeField] AudioSource audioSource;
@@ -24,9 +24,14 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    [Tooltip("音楽開始からの経過時間を記録するための変数")]
+    double musicStartDspTime;
+    public double MusicStartDspTime => musicStartDspTime;
+
     void Start()
     {
-
+        musicStartDspTime = AudioSettings.dspTime;
+        audioSource.PlayScheduled(musicStartDspTime);
     }
 
     void Update()
