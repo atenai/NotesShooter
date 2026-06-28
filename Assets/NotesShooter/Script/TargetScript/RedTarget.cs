@@ -17,7 +17,7 @@ public class RedTarget : Target
         {
             //Debug.Log("RightCubeに当たったよ");
 
-            PlayerUI.SingletonInstance.RightGunUI.IsHitReticule = true;
+            //UIManager.SingletonInstance.RightGunUI.IsHitReticule = true;
 
             //爆発エフェクトオブジェクトを生成する	
             HitEffect();

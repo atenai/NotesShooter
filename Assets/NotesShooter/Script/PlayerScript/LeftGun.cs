@@ -7,14 +7,17 @@ using UnityEngine;
 /// </summary>
 public class LeftGun : MonoBehaviour
 {
-    IGun gun;
-
+    [SerializeField] BlueBullet bullet;
     [SerializeField] GameObject bulletSEPrefab;
     [SerializeField] GameObject gunCartridgePrefab;
     [SerializeField] GameObject reloadSEPrefab;
-    [SerializeField] BlueBullet bullet;
     [SerializeField] GameObject shootPoint;
+    public GameObject ShootPoint => shootPoint;
     [SerializeField] GameObject cartridgePoint;
+    public GameObject CartridgePoint => cartridgePoint;
+
+    IGun gun;
+    public IGun Gun => gun;
 
     void Awake()
     {
@@ -28,9 +31,7 @@ public class LeftGun : MonoBehaviour
 
     void Start()
     {
-        PlayerUI.SingletonInstance.LeftShotButton.onClick.AddListener(() => gun.ShotSystem(this.gameObject, shootPoint, cartridgePoint));
-        PlayerUI.SingletonInstance.LeftReloadButton.onClick.AddListener(() => gun.ManualReloadTrigger());
-        PlayerUI.SingletonInstance.LeftGunUI.SetGun(gun);
+
     }
 
     void Update()

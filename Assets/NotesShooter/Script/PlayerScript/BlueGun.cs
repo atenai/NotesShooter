@@ -27,8 +27,8 @@ public class BlueGun : IGun
 	const float reloadTimeDefine = 1.0f;
 	const int reloadTimeReset = 0;
 	[Tooltip("リロードのオン/オフ")]
-	bool isReloadTime = false;
-	public bool IsReloadTime => isReloadTime;
+	bool isReloadTrigger = false;
+	public bool IsReloadTrigger => isReloadTrigger;
 
 	[Header("リロードSE")]
 	GameObject reloadSEPrefab;
@@ -44,7 +44,7 @@ public class BlueGun : IGun
 
 		currentBullet = resetBulletNumber;//残弾数をリセット
 		reloadTime = reloadTimeReset;//リロードタイムをリセット
-		isReloadTime = false;//リロードのオフ
+		isReloadTrigger = false;//リロードのオフ
 	}
 
 	/// <summary>
@@ -56,7 +56,7 @@ public class BlueGun : IGun
 		{
 			return;
 		}
-		if (isReloadTime == true)
+		if (isReloadTrigger == true)
 		{
 			return;
 		}
@@ -105,9 +105,9 @@ public class BlueGun : IGun
 	public void AutoReloadTrigger()
 	{
 		//リロード中で無く、かつ残弾数が0になったらリロード開始
-		if (currentBullet == 0 && isReloadTime == false)
+		if (currentBullet == 0 && isReloadTrigger == false)
 		{
-			isReloadTime = true;//リロードのオン
+			isReloadTrigger = true;//リロードのオン
 			isReloadSE = true;
 		}
 	}
@@ -118,9 +118,9 @@ public class BlueGun : IGun
 	public void ManualReloadTrigger()
 	{
 		//残弾数が満タンで無いとき、かつリロード中で無いとき
-		if (currentBullet != resetBulletNumber && isReloadTime == false)
+		if (currentBullet != resetBulletNumber && isReloadTrigger == false)
 		{
-			isReloadTime = true;//リロードのオン
+			isReloadTrigger = true;//リロードのオン
 			isReloadSE = true;
 		}
 	}
@@ -131,7 +131,7 @@ public class BlueGun : IGun
 	public void ReloadSystem(GameObject gunObject)
 	{
 		//リロードがオンになったら
-		if (isReloadTime == true)
+		if (isReloadTrigger == true)
 		{
 			if (isReloadSE == true)
 			{
@@ -145,7 +145,7 @@ public class BlueGun : IGun
 			{
 				currentBullet = resetBulletNumber;//残弾数をリセット
 				reloadTime = reloadTimeReset;//リロードタイムをリセット
-				isReloadTime = false;//リロードのオフ
+				isReloadTrigger = false;//リロードのオフ
 			}
 		}
 	}

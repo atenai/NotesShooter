@@ -7,14 +7,17 @@ using UnityEngine;
 /// </summary>
 public class RightGun : MonoBehaviour
 {
-    IGun gun;
-
+    [SerializeField] RedBullet bullet;
     [SerializeField] GameObject bulletSEPrefab;
     [SerializeField] GameObject gunCartridgePrefab;
     [SerializeField] GameObject reloadSEPrefab;
-    [SerializeField] RedBullet bullet;
     [SerializeField] GameObject shootPoint;
+    public GameObject ShootPoint => shootPoint;
     [SerializeField] GameObject cartridgePoint;
+    public GameObject CartridgePoint => cartridgePoint;
+
+    IGun gun;
+    public IGun Gun => gun;
 
     void Awake()
     {
@@ -28,9 +31,7 @@ public class RightGun : MonoBehaviour
 
     void Start()
     {
-        PlayerUI.SingletonInstance.RightShotButton.onClick.AddListener(() => gun.ShotSystem(this.gameObject, shootPoint, cartridgePoint));
-        PlayerUI.SingletonInstance.RightReloadButton.onClick.AddListener(() => gun.ManualReloadTrigger());
-        PlayerUI.SingletonInstance.RightGunUI.SetGun(gun);
+
     }
 
     void Update()

@@ -33,7 +33,7 @@ public class PurpleTarget : Target
 
             life = life - 1;
 
-            PlayerUI.SingletonInstance.PurpleGunUI.IsHitReticule = true;
+            //UIManager.SingletonInstance.PurpleGunUI.IsHitReticule = true;
 
             //SEオブジェクトを生成する
             GameObject lifeDamageSE = Instantiate(lifeDamageSEPrefab, this.gameObject.transform.position, Quaternion.identity);
@@ -50,7 +50,7 @@ public class PurpleTarget : Target
         {
             //Debug.Log("DrumColliderがPurpleCubeに当たったよ");
 
-            PlayerUI.SingletonInstance.PurpleGunUI.IsHitReticule = true;
+            //UIManager.SingletonInstance.PurpleGunUI.IsHitReticule = true;
 
             TargetDestroy();
         }

@@ -7,7 +7,7 @@
 public interface IGun
 {
 	public int CurrentBullet { get; }
-	public bool IsReloadTime { get; }
+	public bool IsReloadTrigger { get; }
 	void ShotSystem(GameObject gunObject, GameObject shootPoint, GameObject cartridgePoint);
 	void AutoReloadTrigger();
 	void ManualReloadTrigger();

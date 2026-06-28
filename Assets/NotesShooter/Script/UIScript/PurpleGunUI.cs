@@ -1,13 +1,5 @@
 ﻿
-public class PurpleGunUI : BaseGunUI
+public class PurpleGunUI
 {
-    new void Start()
-    {
 
-    }
-
-    new void Update()
-    {
-        base.Update();
-    }
 }
