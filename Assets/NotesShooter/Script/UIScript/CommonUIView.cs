@@ -11,6 +11,20 @@ public class CommonUIView : MonoBehaviour
     [Tooltip("ポーズ画像")]
     [SerializeField] GameObject panelPause;
 
+    [Tooltip("ヒットレティクル")]
+    [SerializeField] Image hitReticule;
+    [Tooltip("ヒットレティクルが消失するスピード")]
+    float hitReticuleSpeed = 10.0f;
+    [Tooltip("ヒットレティクルを表示するか？？")]
+    bool isHitReticule = false;
+    public bool IsHitReticule
+    {
+        get { return isHitReticule; }
+        set { isHitReticule = value; }
+    }
+    [Tooltip("ヒットレティクルカラー")]
+    [SerializeField] Color color;
+
     void Start()
     {
         InitReticleANdCrossHair();
@@ -24,7 +38,25 @@ public class CommonUIView : MonoBehaviour
 
     void Update()
     {
+        UpdateHitReticule();
+    }
 
+    /// <summary>
+    /// ヒットレティクル
+    /// </summary> 
+    void UpdateHitReticule()
+    {
+        if (isHitReticule == true)
+        {
+            hitReticule.color = color;
+        }
+
+        if (isHitReticule == false)
+        {
+            hitReticule.color = Color.Lerp(hitReticule.color, Color.clear, Time.deltaTime * hitReticuleSpeed);
+        }
+
+        isHitReticule = false;
     }
 
     public void ChangeRedColorReticleAndCrossHair(bool isRayCasthit)

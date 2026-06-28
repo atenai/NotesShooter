@@ -4,20 +4,40 @@ using UnityEngine;
 
 public class UIPresenter : MonoBehaviour
 {
+    //シングルトンで作成（ゲーム中に１つのみにする）
+    static UIPresenter singletonInstance = null;
+    public static UIPresenter SingletonInstance => singletonInstance;
+
     [SerializeField] CommonUIView commonUIView;
+    public CommonUIView CommonUIView => commonUIView;
     [SerializeField] CommonUIPCView commonUIPCView;
     [SerializeField] CommonUISmartPhoneView commonUISmartPhoneView;
 
     [SerializeField] RightGunUICommonView rightGunUICommonView;
+    public RightGunUICommonView RightGunUICommonView => rightGunUICommonView;
     [SerializeField] RightGunUIPCView rightGunUIPCView;
     [SerializeField] RightGunUISmartPhoneView rightGunUISmartPhoneView;
 
     [SerializeField] LeftGunUICommonView leftGunUICommonView;
+    public LeftGunUICommonView LeftGunUICommonView => leftGunUICommonView;
     [SerializeField] LeftGunUIPCView leftGunUIPCView;
     [SerializeField] LeftGunUISmartPhoneView leftGunUISmartPhoneView;
 
     [SerializeField] RightGun rightGun;
     [SerializeField] LeftGun leftGun;
+
+    void Awake()
+    {
+        //staticな変数instanceはメモリ領域は確保されていますが、初回では中身が入っていないので、中身を入れます。
+        if (singletonInstance == null)
+        {
+            singletonInstance = this;//thisというのは自分自身のインスタンスという意味になります。この場合、Playerのインスタンスという意味になります。
+        }
+        else
+        {
+            Destroy(this.gameObject);//中身がすでに入っていた場合、自身のインスタンスがくっついているゲームオブジェクトを破棄します。
+        }
+    }
 
     void Start()
     {

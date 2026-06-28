@@ -3019,7 +3019,6 @@ GameObject:
   - component: {fileID: 4570115225269061043}
   - component: {fileID: 8853162120472402776}
   - component: {fileID: 4395073555785405421}
-  - component: {fileID: 8794689762022211324}
   - component: {fileID: 5199635102874087488}
   - component: {fileID: 6229827948469608815}
   - component: {fileID: 1654517327887581200}
@@ -3146,18 +3145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69db6fb6545f3fa4ba188ec30492aaea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8794689762022211324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8989917019572285324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9911841f1a0b5d541ac4c84b9b02c8b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5199635102874087488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3196,6 +3183,8 @@ MonoBehaviour:
   imageReticle: {fileID: 5594530179815635274}
   imageCrossHair: {fileID: 2059731635639391737}
   panelPause: {fileID: 6354703976031174433}
+  hitReticule: {fileID: 2283378735469967118}
+  color: {r: 0.9411765, g: 0, b: 0.9411765, a: 1}
 --- !u!114 &1654517327887581200
 MonoBehaviour:
   m_ObjectHideFlags: 0
