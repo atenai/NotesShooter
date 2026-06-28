@@ -8,7 +8,6 @@ using UnityEngine;
 public class RightGun : MonoBehaviour
 {
     IGun gun;
-    public IGun Gun => gun;
 
     [SerializeField] GameObject bulletSEPrefab;
     [SerializeField] GameObject gunCartridgePrefab;

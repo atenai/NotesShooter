@@ -92,15 +92,13 @@ public class PlayerUI : MonoBehaviour
 
 	void Update()
 	{
-		if (FPSCamera.SingletonInstance.IsTargethit == true)
+		if (FPSCamera.SingletonInstance.IsRayCasthit == true)
 		{
-			imageReticle.color = new Color(255, 0, 0, 150);
-			imageCrossHair.color = new Color(255, 0, 0, 150);
+			ChangeRedColorReticleAndCrossHair();
 		}
 		else
 		{
-			imageReticle.color = new Color(255, 255, 255, 150);
-			imageCrossHair.color = new Color(255, 255, 255, 150);
+			ChangeWhiteColorReticleAndCrossHair();
 		}
 
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
@@ -109,6 +107,18 @@ public class PlayerUI : MonoBehaviour
 			Pause();
 		}
 #endif//終了
+	}
+
+	void ChangeRedColorReticleAndCrossHair()
+	{
+		imageReticle.color = new Color(255, 0, 0, 150);
+		imageCrossHair.color = new Color(255, 0, 0, 150);
+	}
+
+	void ChangeWhiteColorReticleAndCrossHair()
+	{
+		imageReticle.color = new Color(255, 255, 255, 150);
+		imageCrossHair.color = new Color(255, 255, 255, 150);
 	}
 
 	/// <summary>

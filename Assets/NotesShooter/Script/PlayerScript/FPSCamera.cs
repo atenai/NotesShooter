@@ -19,8 +19,8 @@ public class FPSCamera : MonoBehaviour
 	[Tooltip("レイの長さ")]
 	[SerializeField] private float range = 100.0f;
 	[Tooltip("レティクルの中心点（レイキャスト）にターゲットがヒットしてるか？")]
-	private bool isTargethit = false;
-	public bool IsTargethit => isTargethit;
+	private bool isRayCasthit = false;
+	public bool IsRayCasthit => isRayCasthit;
 	[Tooltip("横回転(Y)はプレイヤーキャラクターの座標位置を使っている(Player_RotY)")]
 	private Transform playerTransform;
 	[Tooltip("縦回転(X)はカメラの座標位置を使っている(FPSCamera_RotX)")]
@@ -77,7 +77,7 @@ public class FPSCamera : MonoBehaviour
 
 		localCameraSpeedX = cameraSpeedX;
 		localCameraSpeedY = cameraSpeedY;
-		isTargethit = false;
+		isRayCasthit = false;
 
 		//ターゲットにあたった際にカメラを遅くする処理
 		Ray ray = new Ray(this.transform.position, this.transform.forward);
@@ -92,7 +92,7 @@ public class FPSCamera : MonoBehaviour
 				//カメラの速さを遅くする
 				localCameraSpeedX = cameraSpeedX / slowDownCameraSpeed;
 				localCameraSpeedY = cameraSpeedY / slowDownCameraSpeed;
-				isTargethit = true;
+				isRayCasthit = true;
 			}
 			else
 			{
