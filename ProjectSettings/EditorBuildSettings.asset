@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/NotesShooter/Scenes/MasterStage.unity
     guid: 50d4c3cd060608f4fbf167caa9155bf0
   - enabled: 1
+    path: Assets/NotesShooter/Scenes/Stage2.unity
+    guid: 4e6ecc95953ff7749a4306756c85dcee
+  - enabled: 1
     path: Assets/NotesShooter/Scenes/Result.unity
     guid: 21bac835b48ca3e4d8cfacc11636819e
   m_configObjects: {}
