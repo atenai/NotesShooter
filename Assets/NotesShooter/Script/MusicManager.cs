@@ -28,6 +28,16 @@ public class MusicManager : MonoBehaviour
     double musicStartDspTime;
     public double MusicStartDspTime => musicStartDspTime;
 
+    bool isPaused = false;
+    double pauseBeganDspTime;
+
+    /// <summary>
+    /// ポーズ時間を差し引いた、現在の音楽再生時間（秒）。
+    /// AudioSettings.dspTimeはTime.timeScaleやAudioSource.Pauseの影響を受けず進み続けるため、
+    /// ポーズ中はこの値を止めて辻褄を合わせる。
+    /// </summary>
+    public double CurrentMusicTime => (isPaused ? pauseBeganDspTime : AudioSettings.dspTime) - musicStartDspTime;
+
     void Start()
     {
         musicStartDspTime = AudioSettings.dspTime;
@@ -37,5 +47,28 @@ public class MusicManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    /// <summary>
+    /// GameManagerのポーズ切り替えと連動して、音楽時間の進行を止める/再開する
+    /// </summary>
+    public void NotifyPauseStateChanged(bool paused)
+    {
+        if (paused == isPaused)
+        {
+            return;
+        }
+
+        if (paused)
+        {
+            pauseBeganDspTime = AudioSettings.dspTime;
+        }
+        else
+        {
+            //ポーズしていた分だけ基準時刻を後ろにずらし、再開後もCurrentMusicTimeが連続するようにする
+            musicStartDspTime += AudioSettings.dspTime - pauseBeganDspTime;
+        }
+
+        isPaused = paused;
     }
 }

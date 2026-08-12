@@ -59,5 +59,8 @@ public class GameManager : MonoBehaviour
             // 一時停止解除
             MusicManager.SingletonInstance.AudioSource.UnPause();
         }
+
+        //dspTimeベースで的の移動を計算しているRhythmTargetMoverDSPのために、音楽時間の進行も止める/再開する
+        MusicManager.SingletonInstance.NotifyPauseStateChanged(isPause);
     }
 }
