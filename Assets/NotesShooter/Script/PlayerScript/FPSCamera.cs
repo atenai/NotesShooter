@@ -64,8 +64,8 @@ public class FPSCamera : MonoBehaviour
 		float xRotation = Input.GetAxis("Mouse X");
 		float yRotation = Input.GetAxis("Mouse Y");
 #elif UNITY_ANDROID//端末がAndroidだった場合の処理
-		float xRotation = PlayerUI.SingletonInstance.FloatingJoystick.Horizontal;
-		float yRotation = PlayerUI.SingletonInstance.FloatingJoystick.Vertical;
+		float xRotation = UIPresenter.SingletonInstance.CommonUISmartPhoneView.FloatingJoystick.Horizontal;
+		float yRotation = UIPresenter.SingletonInstance.CommonUISmartPhoneView.FloatingJoystick.Vertical;
 #endif//終了
 		MouseCamera(new Vector2(xRotation, yRotation));
 	}

@@ -616,7 +616,7 @@ MonoBehaviour:
   image: {fileID: 1147840944}
   audioClip: {fileID: 8300000, guid: 50d885d821f431545a7b16dc7f5b2821, type: 3}
   audioSource: {fileID: 1830390851}
-  sceneName: MasterStage
+  sceneName: Stage2
   textPressAnyKey: {fileID: 4590527945439398653}
 --- !u!1 &705507993
 GameObject:

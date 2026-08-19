@@ -12,6 +12,7 @@ public class UIPresenter : MonoBehaviour
     public CommonUIView CommonUIView => commonUIView;
     [SerializeField] CommonUIPCView commonUIPCView;
     [SerializeField] CommonUISmartPhoneView commonUISmartPhoneView;
+    public CommonUISmartPhoneView CommonUISmartPhoneView => commonUISmartPhoneView;
 
     [SerializeField] RightGunUICommonView rightGunUICommonView;
     public RightGunUICommonView RightGunUICommonView => rightGunUICommonView;
@@ -58,7 +59,7 @@ public class UIPresenter : MonoBehaviour
         rightGunUISmartPhoneView.HiddenSmartPhoneUI();
         leftGunUISmartPhoneView.HiddenSmartPhoneUI();
 #elif UNITY_ANDROID//端末がAndroidだった場合の処理
-		commonUIPCView.HiddenPCUI();
+        //CommonUIPCViewにはPC固有の表示要素が無いため非表示処理は不要
         rightGunUIPCView.HiddenPCUI();
         leftGunUIPCView.HiddenPCUI();
 #endif//終了

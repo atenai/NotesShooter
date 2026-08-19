@@ -15,8 +15,10 @@ public class RhythmTargetMoverDSP : MonoBehaviour
     [Header("タイミング")]
     [Tooltip("的がヒット地点に到達する音楽時間（秒）。0以下の場合はhitPoint（未設定ならスポーン位置）のワールドZ座標から自動計算する（Z / PlayerMove.ForwardSpeed）")]
     [SerializeField] private float hitTime = 0f;
-    [Tooltip("的がスポーン地点からヒット地点に移動する時間（秒）")]
+    [Tooltip("的が出現してからヒット時刻に達するまでの先行時間（秒）。実際の移動所要時間はmoveDurationで別途指定できる")]
     [SerializeField] private float approachTime = 3.0f;
+    [Tooltip("スポーン地点からヒット地点まで実際に移動する秒数。0以下ならapproachTimeと同じ（従来動作）。approachTimeより短い場合、移動完了後はヒット地点で待機する")]
+    [SerializeField] private float moveDuration = 0f;
     [Tooltip("ヒット時刻を過ぎても撃たれなかった場合、消滅させるまでの猶予秒数")]
     [SerializeField] private float missDespawnDelay = 1.0f;
 
@@ -41,6 +43,14 @@ public class RhythmTargetMoverDSP : MonoBehaviour
         {
             float z = hitPoint != null ? hitPoint.position.z : (spawnPoint != null ? spawnPoint.position.z : cube.transform.position.z);
             hitTime = z / PlayerMove.ForwardSpeed;
+        }
+
+        //このスクリプトがtransformを直接動かすため、物理演算と競合しないようキネマティックにする
+        //（非キネマティックのまま位置を代入すると毎フレーム物理側の再計算が走る）
+        Rigidbody body = cube.GetComponent<Rigidbody>();
+        if (body != null)
+        {
+            body.isKinematic = true;
         }
 
         if (isExternalTarget)
@@ -83,7 +93,9 @@ public class RhythmTargetMoverDSP : MonoBehaviour
             }
         }
 
-        float t = Mathf.Clamp01((float)((currentMusicTime - appearTime) / approachTime));
+        //移動時間はapproachTimeと分離できる。moveDuration < approachTime の場合、移動完了後はヒット地点で待機する
+        float moveSpan = moveDuration > 0f ? moveDuration : approachTime;
+        float t = Mathf.Clamp01((float)((currentMusicTime - appearTime) / moveSpan));
 
         cube.transform.position = arcHeight > 0f
             ? QuadraticBezier(spawnPoint.position, hitPoint.position, arcHeight, t)

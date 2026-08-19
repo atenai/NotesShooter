@@ -16,6 +16,9 @@ public class ScreenSetting : MonoBehaviour
 	{
 #if UNITY_ANDROID//端末がAndroidだった場合の処理
 
+		//モバイルではvSyncCountが無視され、targetFrameRateの既定が30になるため明示的に指定する
+		Application.targetFrameRate = 60;
+
 #endif //終了
 
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
