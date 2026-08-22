@@ -66,6 +66,12 @@ public class BlueGun : IGun
 		BulletSE(gunObject.transform);
 		CreateBullet(shootPoint.transform);
 		CreateGunCartridge(cartridgePoint.transform);
+
+		//撃った手応えを出す為にカメラを少しだけ跳ね上げる（跳ね上げた分は自動で戻る）
+		if (FPSCamera.SingletonInstance != null)
+		{
+			FPSCamera.SingletonInstance.AddRecoil();
+		}
 	}
 
 	/// <summary>

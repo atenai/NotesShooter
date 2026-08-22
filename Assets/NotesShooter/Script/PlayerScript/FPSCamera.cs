@@ -41,6 +41,8 @@ public class FPSCamera : MonoBehaviour
 	[Range(1.0f, 3.0f)][SerializeField] private float touchResponseCurve = 2.0f;
 	[Tooltip("スティックのデッドゾーン。この量までの傾きは無視する（指のブレ対策）")]
 	[Range(0.0f, 0.3f)][SerializeField] private float touchDeadZone = 0.05f;
+	[Tooltip("動き出しをなめらかにする秒数。指のガタつきが消えて手触りが良くなる。戻す時は補間しないので、指を止めた後にカメラが流れる事は無い（0で無効）")]
+	[Range(0.0f, 0.2f)][SerializeField] private float touchInputSmoothTime = 0.05f;
 	[Tooltip("スティックを大きく倒し続けた時に最大何倍まで加速するか。既定の1.0は加速なし（マウスと同じで倒した量にそのまま比例する動き）")]
 	[Range(1.0f, 3.0f)][SerializeField] private float touchTurnBoost = 1.0f;
 	[Tooltip("最大倍率まで加速するのにかかる秒数")]
@@ -55,6 +57,14 @@ public class FPSCamera : MonoBehaviour
 	[Range(0.3f, 1.0f)][SerializeField] private float swipeAreaRate = 0.5f;
 #pragma warning restore 0414
 
+	[Header("カメラの手触り")]
+	[Tooltip("横に振った時にカメラを傾ける最大角度。振っている方向へ体重が乗るような手触りになる（0で無効）")]
+	[Range(0.0f, 6.0f)][SerializeField] private float cameraRollAngle = 2.0f;
+	[Tooltip("1発撃った時に跳ね上がる角度。跳ね上がった分は自動で元に戻る（0で無効）")]
+	[Range(0.0f, 3.0f)][SerializeField] private float recoilKick = 0.6f;
+	[Tooltip("跳ね上がった分が戻る速さ（度/秒）")]
+	[Range(1.0f, 30.0f)][SerializeField] private float recoilRecoverSpeed = 6.0f;
+
 	[Header("エイムアシスト（的を狙いやすくする補助）")]
 	[Tooltip("エイムアシストを使うか")]
 	[SerializeField] private bool useAimAssist = true;
@@ -66,6 +76,12 @@ public class FPSCamera : MonoBehaviour
 	[Range(0.1f, 1.0f)][SerializeField] private float aimAssistSlowDown = 0.28f;
 	[Tooltip("的の方向へ引き寄せる速さ（度/秒）。的が動いても照準が離れにくくなる（0で吸い付きなし）")]
 	[Range(0.0f, 150.0f)][SerializeField] private float aimAssistTrackSpeed = 45.0f;
+	[Tooltip("壁などに隠れている的をアシスト対象から外すか")]
+	[SerializeField] private bool useAimAssistLineOfSight = true;
+	[Tooltip("照準が少し外れていても銃だけ的へ向けて当たるようにするか")]
+	[SerializeField] private bool useBulletMagnetism = true;
+	[Tooltip("銃を的へ向ける許容角度。これ以上外していると当たらない。大きくし過ぎると自動で狙ってくれる感じになる")]
+	[Range(0.0f, 8.0f)][SerializeField] private float bulletMagnetismAngle = 3.0f;
 
 	[Tooltip("レイの長さ")]
 	[SerializeField] private float range = 100.0f;
@@ -82,12 +98,27 @@ public class FPSCamera : MonoBehaviour
 	[SerializeField] private GameObject lookPoint;
 	public GameObject LookPoint => lookPoint;
 
+	[Tooltip("今カメラを傾けている角度（Z回転）")]
+	private float cameraRoll = 0.0f;
+	[Tooltip("傾きをなめらかに変化させる為の作業用")]
+	private float cameraRollVelocity = 0.0f;
+	[Tooltip("リコイルで跳ね上げた分のうち、まだ戻していない角度")]
+	private float pendingRecoilRecovery = 0.0f;
+	[Tooltip("なめらかにした後のスティックの傾き")]
+	private Vector2 smoothedStickInput = Vector2.zero;
 	[Tooltip("スティックを倒し続けている時間。加速（touchTurnBoost）の計算に使う")]
 	private float turnBoostTimer = 0.0f;
 	[Tooltip("ポーズボタン等のUIを押した指のID。スワイプ操作でカメラを動かさない為に覚えておく")]
 	private readonly List<int> ignoredFingerIds = new List<int>();
 	[Tooltip("エイムアシストの対象を探す時の作業用。毎フレーム確保しないように使い回す")]
 	private readonly Collider[] aimAssistColliders = new Collider[128];
+	[Tooltip("今アシスト対象にしている的。対象がチラチラ切り替わらないように前のフレームの物を覚えておく")]
+	private Collider lockedAssistCollider = null;
+	[Tooltip("今アシスト対象にしている的が居るか")]
+	private bool hasAssistTarget = false;
+	public bool HasAssistTarget => hasAssistTarget;
+	[Tooltip("今アシスト対象にしている的の位置")]
+	private Vector3 assistTargetPosition = Vector3.zero;
 
 	//マウスの入力量に掛ける係数。Input.GetAxisは既に「1フレーム分の移動量」なので、Time.deltaTimeでは無く固定値を掛ける（フレームレートで感度が変わらないようにする為）
 	private const float MouseDeltaScale = 0.02f;
@@ -95,6 +126,14 @@ public class FPSCamera : MonoBehaviour
 	private const float TurnBoostThreshold = 0.7f;
 	//「目一杯操作している」とみなす1秒あたりの回転量（度）。エイムアシストを効かせる強さの計算に使う
 	private const float FullInputRotationSpeed = 150.0f;
+	//この速さで振った時にカメラの傾きが最大になる（度/秒）
+	private const float RollReferenceRotationSpeed = 180.0f;
+	//カメラの傾きが変化するのにかかる秒数
+	private const float RollSmoothTime = 0.12f;
+	//一度ロックした的を維持する角度の倍率。アシスト範囲より少し広い所まで追い続ける
+	private const float LockKeepAngleRate = 1.3f;
+	//別の的へ乗り換える条件。今の的より「この倍率より近い」的が現れた時だけ乗り換える
+	private const float LockSwitchAngleRate = 0.6f;
 	// 上を向ける最大角度
 	private const float LookingUpAngle = 36.0f;
 	// 下を向ける最大角度
@@ -153,7 +192,7 @@ public class FPSCamera : MonoBehaviour
 		else
 		{
 			//ジョイスティックの入力は「傾き（＝回転の速さ）」なので、Time.deltaTimeを掛けて1フレーム分の回転量（度）にする
-			Vector2 stickInput = ApplyStickResponse(GetJoystickInput());
+			Vector2 stickInput = SmoothStickInput(ApplyStickResponse(GetJoystickInput()));
 			float turnBoost = UpdateTurnBoost(stickInput.magnitude);
 			rotationAmount = new Vector2(stickInput.x * touchCameraSpeedX, stickInput.y * touchCameraSpeedY) * turnBoost * Time.deltaTime;
 		}
@@ -227,6 +266,29 @@ public class FPSCamera : MonoBehaviour
 		float curvedMagnitude = Mathf.Pow(normalizedMagnitude, touchResponseCurve);
 
 		return stickInput.normalized * curvedMagnitude;
+	}
+
+	/// <summary>
+	/// Android用。スティックの傾きの変化をなめらかにする
+	/// </summary>
+	Vector2 SmoothStickInput(Vector2 rawStickInput)
+	{
+		if (touchInputSmoothTime <= 0.0f)
+		{
+			smoothedStickInput = rawStickInput;
+			return smoothedStickInput;
+		}
+
+		//倒す方向（入力が増える方向）だけなめらかにする。戻す時までなめらかにすると、指を離した後にカメラが流れて行き過ぎてしまう為
+		float changeRate = 1.0f;
+		if (smoothedStickInput.sqrMagnitude < rawStickInput.sqrMagnitude)
+		{
+			//フレームレートが変わっても同じ効き方になる指数移動平均
+			changeRate = 1.0f - Mathf.Exp(-Time.deltaTime / touchInputSmoothTime);
+		}
+		smoothedStickInput = Vector2.Lerp(smoothedStickInput, rawStickInput, changeRate);
+
+		return smoothedStickInput;
 	}
 
 	/// <summary>
@@ -314,38 +376,105 @@ public class FPSCamera : MonoBehaviour
 		//プレイヤーがどれくらい強く操作しているか（0〜1）。エイムアシストを効かせる強さに使う
 		float inputStrength = Mathf.Clamp01(rotationAmount.magnitude / (FullInputRotationSpeed * Time.deltaTime));
 
-		Vector3 assistTargetPosition;
-		bool hasAssistTarget = TryFindAimAssistTarget(out assistTargetPosition);
+		//アシストする的を決める
+		UpdateAimAssistTarget();
 
 		//的の近くを狙っている時はカメラを遅くして、行き過ぎ（オーバーシュート）を防ぐ
 		if (hasAssistTarget == true)
 		{
-			rotationAmount *= GetAimAssistSlowDownRate(assistTargetPosition);
+			rotationAmount *= GetAimAssistSlowDownRate();
 		}
 
 		//横回転（Y軸）はプレイヤーキャラクターを回し、縦回転（X軸）はカメラを回す
-		playerTransform.Rotate(0.0f, rotationAmount.x, 0.0f);
+		float appliedYaw = rotationAmount.x;
+		playerTransform.Rotate(0.0f, appliedYaw, 0.0f);
 		AddCameraPitch(-rotationAmount.y);
+
+		//撃った時に跳ね上げた分を少しずつ戻す
+		UpdateRecoilRecovery();
 
 		//的の方向へ少しだけ引き寄せる（的が動いても照準が離れにくくなる）
 		if (hasAssistTarget == true)
 		{
-			ApplyAimAssistTracking(assistTargetPosition, inputStrength);
+			appliedYaw += ApplyAimAssistTracking(inputStrength);
 		}
+
+		//実際に回った量に合わせてカメラを傾ける
+		UpdateCameraRoll(appliedYaw);
 
 		//回し終わった後の向きでレティクルの位置を決める
 		UpdateLookPoint();
 	}
 
 	/// <summary>
-	/// 縦回転を加算する。上下の最大角度を超えないようにClampする
+	/// 縦回転を加算する。上下の最大角度を超えないようにClampして、実際に回した角度を返す
 	/// </summary>
-	void AddCameraPitch(float deltaPitch)
+	float AddCameraPitch(float deltaPitch)
 	{
-		cameraPitch = Mathf.Clamp(cameraPitch + deltaPitch, -LookingUpAngle, LookingDownAngle);
+		float newPitch = Mathf.Clamp(cameraPitch + deltaPitch, -LookingUpAngle, LookingDownAngle);
+		float appliedPitch = newPitch - cameraPitch;
+		cameraPitch = newPitch;
+		ApplyCameraLocalRotation();
 
+		return appliedPitch;
+	}
+
+	/// <summary>
+	/// 今の縦回転と傾きをカメラに反映する
+	/// </summary>
+	void ApplyCameraLocalRotation()
+	{
 		Vector3 localEuler = cameraTransform.localEulerAngles;
-		cameraTransform.localEulerAngles = new Vector3(cameraPitch, localEuler.y, localEuler.z);
+		//Z回転（傾き）は見た目だけの物で、前方向（＝弾を撃つ向き）は変わらない
+		cameraTransform.localEulerAngles = new Vector3(cameraPitch, localEuler.y, cameraRoll);
+	}
+
+	/// <summary>
+	/// 横に振った量に応じてカメラを傾ける
+	/// </summary>
+	void UpdateCameraRoll(float appliedYaw)
+	{
+		float targetRoll = 0.0f;
+		if (0.0f < cameraRollAngle && 0.0f < Time.deltaTime)
+		{
+			float yawSpeed = appliedYaw / Time.deltaTime;
+			//右へ振ったら右へ倒れ込むように、振った向きと逆符号のZ回転にする
+			targetRoll = -Mathf.Clamp(yawSpeed / RollReferenceRotationSpeed, -1.0f, 1.0f) * cameraRollAngle;
+		}
+
+		cameraRoll = Mathf.SmoothDamp(cameraRoll, targetRoll, ref cameraRollVelocity, RollSmoothTime);
+		ApplyCameraLocalRotation();
+	}
+
+	/// <summary>
+	/// 銃を撃った時に呼ぶ。カメラを少しだけ跳ね上げる（跳ね上げた分は自動で戻る）
+	/// </summary>
+	public void AddRecoil()
+	{
+		if (recoilKick <= 0.0f)
+		{
+			return;
+		}
+
+		//cameraPitchは下向きが＋なので、マイナス方向が跳ね上げになる
+		float appliedPitch = AddCameraPitch(-recoilKick);
+		//上を向ける限界でClampされた場合は、実際に跳ね上がった分だけ戻すようにする
+		pendingRecoilRecovery += -appliedPitch;
+	}
+
+	/// <summary>
+	/// リコイルで跳ね上げた分を少しずつ元に戻す
+	/// </summary>
+	void UpdateRecoilRecovery()
+	{
+		if (pendingRecoilRecovery <= 0.0f)
+		{
+			return;
+		}
+
+		float recoverStep = Mathf.Min(pendingRecoilRecovery, recoilRecoverSpeed * Time.deltaTime);
+		pendingRecoilRecovery -= recoverStep;
+		AddCameraPitch(recoverStep);
 	}
 
 	/// <summary>
@@ -369,6 +498,15 @@ public class FPSCamera : MonoBehaviour
 			}
 		}
 
+		//照準の中心は外れていても、すぐ近くに的が居る場合は銃だけそちらへ向ける（少し外しても当たるようにする補助）
+		if (useBulletMagnetism == true && hasAssistTarget == true && GetAngleToPosition(assistTargetPosition) <= bulletMagnetismAngle)
+		{
+			lookPoint.transform.position = assistTargetPosition;
+			//この場合も弾は当たるので、レティクルの色は「当たる」表示にする
+			isRayCasthit = true;
+			return;
+		}
+
 		//レイの中心点（レティクル）にターゲットがヒットしていない位置を入れる
 		lookPoint.transform.position = ray.origin + ray.direction * range;
 	}
@@ -382,18 +520,48 @@ public class FPSCamera : MonoBehaviour
 	}
 
 	/// <summary>
-	/// エイムアシストの対象（照準の中心に一番近い的）を探す
+	/// カメラの正面から、指定した位置までの角度を返す
 	/// </summary>
-	bool TryFindAimAssistTarget(out Vector3 targetPosition)
+	float GetAngleToPosition(Vector3 position)
 	{
-		targetPosition = Vector3.zero;
+		return Vector3.Angle(cameraTransform.forward, position - cameraTransform.position);
+	}
+
+	/// <summary>
+	/// エイムアシストの対象を決める。一度決めた的は少し粘って追い続ける（対象がチラチラ切り替わらないようにする為）
+	/// </summary>
+	void UpdateAimAssistTarget()
+	{
+		hasAssistTarget = false;
+
 		if (useAimAssist == false)
 		{
-			return false;
+			lockedAssistCollider = null;
+			return;
 		}
 
-		bool isFound = false;
-		float nearestAngle = float.MaxValue;
+		//今ロックしている的が、まだ狙える所に居るか調べる
+		float lockedAngle = float.MaxValue;
+		Vector3 lockedCenter = Vector3.zero;
+		if (lockedAssistCollider != null && lockedAssistCollider.gameObject.activeInHierarchy == true)
+		{
+			lockedCenter = lockedAssistCollider.bounds.center;
+			lockedAngle = GetAngleToPosition(lockedCenter);
+			//一度ロックした的はアシスト範囲より少し広い所まで維持する
+			if (aimAssistAngle * LockKeepAngleRate < lockedAngle || IsVisibleTarget(lockedAssistCollider, lockedCenter) == false)
+			{
+				lockedAssistCollider = null;
+			}
+		}
+		else
+		{
+			lockedAssistCollider = null;
+		}
+
+		//アシスト範囲の中で照準に一番近い的を探す
+		Collider bestCollider = null;
+		float bestAngle = float.MaxValue;
+		Vector3 bestCenter = Vector3.zero;
 
 		int colliderCount = Physics.OverlapSphereNonAlloc(cameraTransform.position, aimAssistRange, aimAssistColliders);
 		for (int i = 0; i < colliderCount; i++)
@@ -410,54 +578,109 @@ public class FPSCamera : MonoBehaviour
 
 			//コライダーの中心を的の位置として扱う
 			Vector3 center = targetCollider.bounds.center;
-			float angle = Vector3.Angle(cameraTransform.forward, center - cameraTransform.position);
+			float angle = GetAngleToPosition(center);
 			//照準から離れすぎている的と、既に見つけた的より照準から遠い的は無視する
-			if (aimAssistAngle < angle || nearestAngle <= angle)
+			if (aimAssistAngle < angle || bestAngle <= angle)
+			{
+				continue;
+			}
+			//壁の向こうに居る的は狙えないので外す
+			if (IsVisibleTarget(targetCollider, center) == false)
 			{
 				continue;
 			}
 
-			nearestAngle = angle;
-			targetPosition = center;
-			isFound = true;
+			bestAngle = angle;
+			bestCollider = targetCollider;
+			bestCenter = center;
 		}
 
-		return isFound;
+		if (lockedAssistCollider != null)
+		{
+			//今の的より明らかに照準へ近い的が現れた時だけ乗り換える
+			if (bestCollider != null && bestCollider != lockedAssistCollider && bestAngle < lockedAngle * LockSwitchAngleRate)
+			{
+				lockedAssistCollider = bestCollider;
+				assistTargetPosition = bestCenter;
+			}
+			else
+			{
+				assistTargetPosition = lockedCenter;
+			}
+			hasAssistTarget = true;
+			return;
+		}
+
+		if (bestCollider == null)
+		{
+			return;
+		}
+
+		lockedAssistCollider = bestCollider;
+		assistTargetPosition = bestCenter;
+		hasAssistTarget = true;
+	}
+
+	/// <summary>
+	/// 的が壁などに隠れていないか調べる
+	/// </summary>
+	bool IsVisibleTarget(Collider targetCollider, Vector3 targetCenter)
+	{
+		if (useAimAssistLineOfSight == false)
+		{
+			return true;
+		}
+
+		Vector3 origin = cameraTransform.position;
+		Vector3 toTarget = targetCenter - origin;
+		float distance = toTarget.magnitude;
+		if (distance <= 0.01f)
+		{
+			return true;
+		}
+
+		RaycastHit hit;
+		if (Physics.Raycast(origin, toTarget / distance, out hit, distance) == false)
+		{
+			return true;
+		}
+
+		//手前に別の的が居るのは構わない（そちらを狙う事になるだけ）
+		return hit.collider == targetCollider || IsShootableTarget(hit.collider.gameObject);
 	}
 
 	/// <summary>
 	/// 的の近くを狙っている時にカメラの速さを落とす倍率を返す。照準の中心に近いほど遅くなる
 	/// </summary>
-	float GetAimAssistSlowDownRate(Vector3 targetPosition)
+	float GetAimAssistSlowDownRate()
 	{
-		float angle = Vector3.Angle(cameraTransform.forward, targetPosition - cameraTransform.position);
 		//照準の中心に近いほど1に近づく値
-		float closeness = 1.0f - Mathf.Clamp01(angle / aimAssistAngle);
+		float closeness = 1.0f - Mathf.Clamp01(GetAngleToPosition(assistTargetPosition) / aimAssistAngle);
 
 		return Mathf.Lerp(1.0f, aimAssistSlowDown, closeness);
 	}
 
 	/// <summary>
-	/// 的の方向へカメラを少しだけ引き寄せる
+	/// 的の方向へカメラを少しだけ引き寄せる。実際に横へ回した角度を返す
 	/// </summary>
-	void ApplyAimAssistTracking(Vector3 targetPosition, float inputStrength)
+	float ApplyAimAssistTracking(float inputStrength)
 	{
 		if (aimAssistTrackSpeed <= 0.0f)
 		{
-			return;
+			return 0.0f;
 		}
 
-		Vector3 toTarget = targetPosition - cameraTransform.position;
+		Vector3 toTarget = assistTargetPosition - cameraTransform.position;
 		if (toTarget.sqrMagnitude <= 0.0001f)
 		{
-			return;
+			return 0.0f;
 		}
 
 		//カメラを回した後の向きで、まだアシストの範囲内にいるか調べ直す
 		float angle = Vector3.Angle(cameraTransform.forward, toTarget);
 		if (aimAssistAngle < angle)
 		{
-			return;
+			return 0.0f;
 		}
 
 		//照準の中心に近いほど強く効かせる
@@ -468,7 +691,7 @@ public class FPSCamera : MonoBehaviour
 		float maxStep = aimAssistTrackSpeed * closeness * inputWeight * Time.deltaTime;
 		if (maxStep <= 0.0f)
 		{
-			return;
+			return 0.0f;
 		}
 
 		//横（ヨー）の差分を求める
@@ -482,7 +705,10 @@ public class FPSCamera : MonoBehaviour
 		float pitchDelta = targetPitch - cameraPitch;
 
 		//残りの差分を超えて回さないようにClampしているので、行き過ぎずに的へ寄っていく
-		playerTransform.Rotate(0.0f, Mathf.Clamp(yawDelta, -maxStep, maxStep), 0.0f);
+		float yawStep = Mathf.Clamp(yawDelta, -maxStep, maxStep);
+		playerTransform.Rotate(0.0f, yawStep, 0.0f);
 		AddCameraPitch(Mathf.Clamp(pitchDelta, -maxStep, maxStep));
+
+		return yawStep;
 	}
 }
