@@ -43,7 +43,8 @@ public static class AndroidBuilder
 			}
 		}
 
-		Debug.Log(Start_Marker + " scenes=" + scenes.Count + " out=" + outputPath);
+		Debug.Log(Start_Marker + " scenes=" + scenes.Count + " out=" + outputPath
+			+ " cleanBuild=" + HasCommandLineFlag("-cleanBuild"));
 
 		if (scenes.Count == 0)
 		{
@@ -59,7 +60,31 @@ public static class AndroidBuilder
 		options.targetGroup = BuildTargetGroup.Android;
 		options.options = BuildOptions.None;
 
-		BuildReport report = BuildPipeline.BuildPlayer(options);
+		// 差分ビルドのキャッシュが古い状態を再利用して、削除済みスクリプトの参照が残ったままの
+		// シーンデータが出来てしまうことがある（実機で「level? is corrupted」となり起動時に落ちる）。
+		// -cleanBuild を付けた場合はキャッシュを捨ててビルドし直す。
+		bool isCleanBuild = HasCommandLineFlag("-cleanBuild");
+		if (isCleanBuild == true)
+		{
+			options.options = options.options | BuildOptions.CleanBuildCache;
+		}
+
+		// EditorUserBuildSettings.buildAppBundle が有効なままだと、出力先の拡張子が .apk でも
+		// 中身はAAB(Android App Bundle)になり、端末に直接インストールできない成果物になってしまう。
+		// このメソッドはAPKを出す前提なので明示的に無効化し、エディターの設定はビルド後に戻す。
+		bool previousBuildAppBundle = EditorUserBuildSettings.buildAppBundle;
+		EditorUserBuildSettings.buildAppBundle = false;
+
+		BuildReport report;
+		try
+		{
+			report = BuildPipeline.BuildPlayer(options);
+		}
+		finally
+		{
+			EditorUserBuildSettings.buildAppBundle = previousBuildAppBundle;
+		}
+
 		BuildSummary summary = report.summary;
 
 		Debug.Log(Done_Marker
@@ -88,6 +113,22 @@ public static class AndroidBuilder
 		string projectRoot = Directory.GetParent(Application.dataPath).FullName;
 		string siblingDirectory = Path.Combine(Directory.GetParent(projectRoot).FullName, "NotesShooter_Build");
 		return Path.Combine(siblingDirectory, "NotesShooterBuild.apk");
+	}
+
+	/// <summary>
+	/// 値を伴わないコマンドライン引数（フラグ）が指定されているか
+	/// </summary>
+	static bool HasCommandLineFlag(string name)
+	{
+		string[] args = System.Environment.GetCommandLineArgs();
+		for (int i = 0; i < args.Length; i++)
+		{
+			if (args[i] == name)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	static string GetCommandLineArg(string name)
