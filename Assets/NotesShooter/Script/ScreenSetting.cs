@@ -7,6 +7,11 @@ public class ScreenSetting : MonoBehaviour
 	[SerializeField] bool isCursor = false;
 	[Tooltip("FPSのオン/オフ")]
 	[SerializeField] bool isFPS = false;
+	//PCビルドでは参照しないので「未使用」の警告が出る。設定値はインスペクターで保持したいので警告だけ止める
+#pragma warning disable 0414
+	[Tooltip("Androidでの最大フレームレート。端末のリフレッシュレートとこの値の小さい方が使われる(発熱や電池が気になる場合は60に下げる)")]
+	[Range(60, 120)][SerializeField] int androidMaxFrameRate = 120;
+#pragma warning restore 0414
 	[Tooltip("フレームレート")]
 	int frameCount;
 	float prevTime;
@@ -17,7 +22,9 @@ public class ScreenSetting : MonoBehaviour
 #if UNITY_ANDROID//端末がAndroidだった場合の処理
 
 		//モバイルではvSyncCountが無視され、targetFrameRateの既定が30になるため明示的に指定する
-		Application.targetFrameRate = 60;
+		//端末のリフレッシュレート(90Hzや120Hzの端末がある)に合わせるとカメラの動きが更に滑らかになる
+		int refreshRate = (int)Screen.currentResolution.refreshRateRatio.value;
+		Application.targetFrameRate = Mathf.Clamp(refreshRate, 60, androidMaxFrameRate);
 
 #endif //終了
 
