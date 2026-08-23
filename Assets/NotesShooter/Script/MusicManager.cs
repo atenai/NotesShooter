@@ -24,6 +24,19 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        //AudioSourceのPlay On Awakeが有効だとカウントダウン中に音楽が鳴ってしまうので、確実に止めておく
+        if (audioSource != null)
+        {
+            audioSource.playOnAwake = false;
+            if (isMusicStarted == false)
+            {
+                audioSource.Stop();
+            }
+        }
+    }
+
     [Tooltip("音楽開始からの経過時間を記録するための変数")]
     double musicStartDspTime;
     public double MusicStartDspTime => musicStartDspTime;
