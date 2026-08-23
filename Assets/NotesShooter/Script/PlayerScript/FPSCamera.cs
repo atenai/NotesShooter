@@ -197,7 +197,23 @@ public class FPSCamera : MonoBehaviour
 			rotationAmount = new Vector2(stickInput.x * touchCameraSpeedX, stickInput.y * touchCameraSpeedY) * turnBoost * Time.deltaTime;
 		}
 #endif//終了
+
+		//カウントダウンが終わるまではカメラを動かせないようにする
+		if (IsCameraControlEnabled() == false)
+		{
+			rotationAmount = Vector2.zero;
+		}
+
 		RotateCamera(rotationAmount);
+	}
+
+	/// <summary>
+	/// カメラを操作してよいか。カウントダウン中は動かせない
+	/// </summary>
+	bool IsCameraControlEnabled()
+	{
+		//GameManagerが居ないシーン（テスト用シーン等）では常に操作できるようにしておく
+		return GameManager.SingletonInstance == null || GameManager.SingletonInstance.IsGameStarted == true;
 	}
 
 	/// <summary>
@@ -394,7 +410,7 @@ public class FPSCamera : MonoBehaviour
 		UpdateRecoilRecovery();
 
 		//的の方向へ少しだけ引き寄せる（的が動いても照準が離れにくくなる）
-		if (hasAssistTarget == true)
+		if (hasAssistTarget == true && IsCameraControlEnabled() == true)
 		{
 			appliedYaw += ApplyAimAssistTracking(inputStrength);
 		}

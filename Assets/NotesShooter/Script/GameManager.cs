@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     bool isPause = false;
     public bool IsPause => isPause;
 
+    [Tooltip("カウントダウンが終わってプレイが始まったか")]
+    bool isGameStarted = false;
+    public bool IsGameStarted => isGameStarted;
+
     void Awake()
     {
         //staticな変数instanceはメモリ領域は確保されていますが、初回では中身が入っていないので、中身を入れます。
@@ -45,6 +49,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void Pause()
     {
+        //カウントダウン中はポーズさせない
+        if (isGameStarted == false)
+        {
+            return;
+        }
+
         isPause = isPause ? false : true;
 
         if (isPause == true)
@@ -62,5 +72,19 @@ public class GameManager : MonoBehaviour
 
         //dspTimeベースで的の移動を計算しているRhythmTargetMoverDSPのために、音楽時間の進行も止める/再開する
         MusicManager.SingletonInstance.NotifyPauseStateChanged(isPause);
+    }
+
+    /// <summary>
+    /// カウントダウンが終わった時に呼ぶ。ここで初めて音楽が鳴り始め、プレイヤーと的が動き出す
+    /// </summary>
+    public void StartGame()
+    {
+        if (isGameStarted == true)
+        {
+            return;
+        }
+
+        isGameStarted = true;
+        MusicManager.SingletonInstance.PlayMusic();
     }
 }

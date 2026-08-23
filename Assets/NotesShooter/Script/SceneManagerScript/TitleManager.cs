@@ -11,6 +11,7 @@ public class TitleManager : BaseSceneManager
 
 	void Update()
 	{
+		FadeIn();
 		FadeTrigger();
 		FadeOut();
 		PressAnyButton();

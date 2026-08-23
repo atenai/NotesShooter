@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class CommonUIView : MonoBehaviour
 {
     [Tooltip("レティクル画像")]
@@ -10,6 +11,9 @@ public class CommonUIView : MonoBehaviour
     [SerializeField] Image imageCrossHair;
     [Tooltip("ポーズ画像")]
     [SerializeField] GameObject panelPause;
+
+    [Tooltip("プレイ開始前のカウントダウン表示")]
+    [SerializeField] TextMeshProUGUI textCountdown;
 
     [Tooltip("ヒットレティクル")]
     [SerializeField] Image hitReticule;
@@ -89,5 +93,35 @@ public class CommonUIView : MonoBehaviour
     public void Pause(bool isPause)
     {
         panelPause.SetActive(isPause);
+    }
+
+    /// <summary>
+    /// カウントダウンの数字を表示する
+    /// </summary>
+    public void SetCountdownText(string text)
+    {
+        if (textCountdown == null)
+        {
+            return;
+        }
+
+        if (textCountdown.gameObject.activeSelf == false)
+        {
+            textCountdown.gameObject.SetActive(true);
+        }
+        textCountdown.text = text;
+    }
+
+    /// <summary>
+    /// カウントダウンの表示を消す
+    /// </summary>
+    public void HideCountdown()
+    {
+        if (textCountdown == null)
+        {
+            return;
+        }
+
+        textCountdown.gameObject.SetActive(false);
     }
 }

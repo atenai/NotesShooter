@@ -11,6 +11,12 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
+        //カウントダウンが終わるまでは前に進まない
+        if (GameManager.SingletonInstance != null && GameManager.SingletonInstance.IsGameStarted == false)
+        {
+            return;
+        }
+
         this.transform.Translate(0.0f, 0.0f, MoveNum * Time.deltaTime);
     }
 }

@@ -31,15 +31,28 @@ public class MusicManager : MonoBehaviour
     bool isPaused = false;
     double pauseBeganDspTime;
 
+    [Tooltip("カウントダウンが終わって音楽が鳴り始めたか")]
+    bool isMusicStarted = false;
+
     /// <summary>
     /// ポーズ時間を差し引いた、現在の音楽再生時間（秒）。
     /// AudioSettings.dspTimeはTime.timeScaleやAudioSource.Pauseの影響を受けず進み続けるため、
     /// ポーズ中はこの値を止めて辻褄を合わせる。
     /// </summary>
-    public double CurrentMusicTime => (isPaused ? pauseBeganDspTime : AudioSettings.dspTime) - musicStartDspTime;
+    /// カウントダウン中はまだ音楽が始まっていないので0を返す
+    public double CurrentMusicTime => (isMusicStarted == false) ? 0.0 : (isPaused ? pauseBeganDspTime : AudioSettings.dspTime) - musicStartDspTime;
 
-    void Start()
+    /// <summary>
+    /// カウントダウンが終わった時にGameManagerから呼ばれる。ここで初めて音楽を鳴らす
+    /// </summary>
+    public void PlayMusic()
     {
+        if (isMusicStarted == true)
+        {
+            return;
+        }
+
+        isMusicStarted = true;
         musicStartDspTime = AudioSettings.dspTime;
         audioSource.PlayScheduled(musicStartDspTime);
     }
