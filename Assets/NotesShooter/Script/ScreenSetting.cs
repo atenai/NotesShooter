@@ -26,6 +26,9 @@ public class ScreenSetting : MonoBehaviour
 		int refreshRate = (int)Screen.currentResolution.refreshRateRatio.value;
 		Application.targetFrameRate = Mathf.Clamp(refreshRate, 60, androidMaxFrameRate);
 
+		//GPUが描画に追いつかない時にフレームが無制限に溜まり、その分のGPUメモリを確保し続けて最後にメモリ不足で落ちる事があるので、溜められるフレーム数に上限を付ける
+		QualitySettings.maxQueuedFrames = 2;
+
 #endif //終了
 
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理

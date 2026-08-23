@@ -970,7 +970,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614583}
   - {fileID: 8926484042661614585}
   dataType: 0
-  capacity: 40000
+  capacity: 2048
   stripCapacity: 1
   particlePerStripCount: 128
   needsComputeBounds: 0
@@ -16624,7 +16624,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616246}
   - {fileID: 8926484042661616259}
   dataType: 0
-  capacity: 100000
+  capacity: 2048
   stripCapacity: 1
   particlePerStripCount: 128
   needsComputeBounds: 0
@@ -17969,7 +17969,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616354}
   - {fileID: 8926484042661616367}
   dataType: 0
-  capacity: 10000
+  capacity: 2048
   stripCapacity: 1
   particlePerStripCount: 128
   needsComputeBounds: 0
@@ -19577,7 +19577,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616463}
   - {fileID: 8926484042661616436}
   dataType: 0
-  capacity: 65536
+  capacity: 2048
   stripCapacity: 1
   particlePerStripCount: 128
   needsComputeBounds: 0
@@ -20318,7 +20318,7 @@ MonoBehaviour:
   m_Owners:
   - {fileID: 8926484042661614957}
   dataType: 0
-  capacity: 65536
+  capacity: 2048
   stripCapacity: 1
   particlePerStripCount: 128
   needsComputeBounds: 0
@@ -22072,7 +22072,7 @@ MonoBehaviour:
   - {fileID: 8926484042661617221}
   - {fileID: 8926484042661617234}
   dataType: 0
-  capacity: 5000
+  capacity: 2048
   stripCapacity: 1
   particlePerStripCount: 128
   needsComputeBounds: 0
