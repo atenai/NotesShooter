@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 /// <summary>
@@ -12,6 +13,9 @@ public class Goal : MonoBehaviour
 
     bool isGoal = false;
     public bool IsGoal => isGoal;
+
+    [Tooltip("スコアを登録済みか。OnTriggerEnterが複数回呼ばれても1回だけ登録する為のフラグ")]
+    bool isScoreRegistered = false;
 
     void Awake()
     {
@@ -35,19 +39,32 @@ public class Goal : MonoBehaviour
     void OnTriggerEnter(Collider hit)
     {
         //接触対象はPlayerタグですか？
-        if (hit.CompareTag("Player"))
+        if (hit.CompareTag("Player") == false)
         {
-            //「SCORE」というキーで、Int値の「score.ScoreNum」を保存
-            PlayerPrefs.SetInt("SCORE", GamePlayScore.SingletonInstance.ScoreNum);
-            PlayerPrefs.Save();
-
-            StartCoroutine(RegisterScore(GamePlayScore.SingletonInstance.ScoreNum));
+            return;
         }
+
+        //プレイヤーのコライダーが複数あると何度も呼ばれてスコアが多重登録されるので、最初の1回だけ処理する
+        if (isScoreRegistered == true)
+        {
+            return;
+        }
+        isScoreRegistered = true;
+
+        int score = GamePlayScore.SingletonInstance.ScoreNum;
+
+        //遊んでいるシーン名をステージ名として、ステージ別にスコアとハイスコアを記録する
+        ScoreRecord.Save(SceneManager.GetActiveScene().name, score);
+
+        //サーバーへの登録完了を待たずにリザルトへ進める。
+        //待つようにすると、通信できない環境では最大10秒（www.timeout）ゴール地点で止まってしまう
+        isGoal = true;
+
+        StartCoroutine(RegisterScore(score));
     }
 
-    //TODO : 多重で登録されている
     /// <summary>
-    /// スコアを登録する
+    /// スコアをサーバーへ登録する。結果を待たずにリザルトへ進むので、失敗してもゲーム進行には影響しない
     /// </summary>
     /// <param name="score"></param>
     /// <returns></returns>
@@ -115,12 +132,10 @@ public class Goal : MonoBehaviour
                 {
                     Debug.Log("スコア登録失敗");
                 }
-                isGoal = true;
             }
             else
             {
                 Debug.LogWarning("予期せぬ応答: " + resp);
-                isGoal = true;
             }
         }
     }

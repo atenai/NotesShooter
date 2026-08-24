@@ -11,11 +11,42 @@ using System.Text.RegularExpressions;
 public class ResultScore : MonoBehaviour
 {
     [SerializeField] Text scoreText;
+    [Tooltip("遊んだステージ名の表示")]
+    [SerializeField] Text stageNameText;
+    [Tooltip("そのステージのハイスコアの表示")]
+    [SerializeField] Text highScoreText;
+    [Tooltip("ハイスコア更新時に出す表示")]
+    [SerializeField] GameObject newRecordGameObject;
 
     void Start()
     {
-        scoreText.text = PlayerPrefs.GetInt("SCORE", 0).ToString();
+        DisplayScore();
         StartCoroutine(GetScore());
+    }
+
+    /// <summary>
+    /// 直前のプレイの結果を表示する。ステージ別に記録しているのでステージ名とハイスコアも出す
+    /// </summary>
+    void DisplayScore()
+    {
+        string stageName = ScoreRecord.LastStageName;
+
+        scoreText.text = ScoreRecord.LastScore.ToString();
+
+        if (stageNameText != null)
+        {
+            stageNameText.text = "STAGE : " + stageName;
+        }
+
+        if (highScoreText != null)
+        {
+            highScoreText.text = "HIGH SCORE : " + ScoreRecord.GetHighScore(stageName).ToString();
+        }
+
+        if (newRecordGameObject != null)
+        {
+            newRecordGameObject.SetActive(ScoreRecord.LastPlayIsNewRecord);
+        }
     }
 
     IEnumerator GetScore()
