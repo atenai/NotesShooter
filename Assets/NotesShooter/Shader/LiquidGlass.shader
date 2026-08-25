@@ -8,7 +8,11 @@ Shader "NotesShooter/LiquidGlass"
 	Properties
 	{
 		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
-		_Mode ("0=背景 1=ガラス", Float) = 0
+		// 0=背景（自前のグラデーションを描く）
+		// 1=ガラス（背景と同じ模様をぼかす。リザルト等、背景も自前で描いている画面用）
+		// 2=ガラス（実際の画面をぼかす。Screen Space Cameraのキャンバス用）
+		// 3=ガラス（背景を読まず半透明で重ねる。Screen Space OverlayのHUD用）
+		_Mode ("0=背景 1=ガラス(自前背景) 2=ガラス(実画面)", Float) = 0
 
 		_ColorDeep ("奥の色", Color) = (0.055, 0.271, 0.408, 1)
 		_ColorMid ("中間の色", Color) = (0.208, 0.588, 0.788, 1)
@@ -79,6 +83,8 @@ Shader "NotesShooter/LiquidGlass"
 			float _RimWidth;
 			float _RimPower;
 			fixed4 _Color;
+			//URPが用意する不透明部分の画面。ゲーム中のHUDはこれをぼかして背景にする
+			sampler2D _CameraOpaqueTexture;
 
 			v2f vert (appdata v)
 			{
@@ -115,6 +121,16 @@ Shader "NotesShooter/LiquidGlass"
 				col = lerp(col, _ColorLight.rgb, Blob(uv, c4, 0.38) * 0.50);
 
 				return col;
+			}
+
+			// ガラスが背後として使う色。_Mode=2は実際の画面、それ以外は自前の模様
+			float3 SampleBehind(float2 uv)
+			{
+				if (_Mode > 1.5)
+				{
+					return tex2D(_CameraOpaqueTexture, saturate(uv)).rgb;
+				}
+				return Background(uv);
 			}
 
 			// 角丸長方形までの符号付き距離(px)。中が負、外が正
@@ -159,24 +175,35 @@ Shader "NotesShooter/LiquidGlass"
 				float2 normal = normalize(float2(ddx(dist), ddy(dist)) + 1e-5);
 				float2 refracted = patternUV + normal * _Refraction * edge * edge;
 
-				// 9点サンプルのぼかし
+				// 9点サンプルのぼかし（_Mode=3では背景を読まないので使わない）
 				float3 blurred = 0;
+				if (_Mode < 2.5)
+				{
 				float2 o1 = float2(_Blur, 0);
 				float2 o2 = float2(0, _Blur);
 				float2 o3 = float2(_Blur, _Blur) * 0.7071;
 				float2 o4 = float2(_Blur, -_Blur) * 0.7071;
-				blurred += Background(refracted) * 0.28;
-				blurred += Background(refracted + o1) * 0.09;
-				blurred += Background(refracted - o1) * 0.09;
-				blurred += Background(refracted + o2) * 0.09;
-				blurred += Background(refracted - o2) * 0.09;
-				blurred += Background(refracted + o3) * 0.09;
-				blurred += Background(refracted - o3) * 0.09;
-				blurred += Background(refracted + o4) * 0.09;
-				blurred += Background(refracted - o4) * 0.09;
+				blurred += SampleBehind(refracted) * 0.28;
+				blurred += SampleBehind(refracted + o1) * 0.09;
+				blurred += SampleBehind(refracted - o1) * 0.09;
+				blurred += SampleBehind(refracted + o2) * 0.09;
+				blurred += SampleBehind(refracted - o2) * 0.09;
+				blurred += SampleBehind(refracted + o3) * 0.09;
+				blurred += SampleBehind(refracted - o3) * 0.09;
+				blurred += SampleBehind(refracted + o4) * 0.09;
+				blurred += SampleBehind(refracted - o4) * 0.09;
+				}
 
 				// ガラス自体のうっすらした白み
 				float3 col = lerp(blurred, _GlassTint.rgb, _GlassTint.a);
+				float baseAlpha = 1.0;
+
+				if (_Mode > 2.5)
+				{
+					//背景を読めない環境用。板自体を半透明にして背後をそのまま透けさせる
+					col = _GlassTint.rgb;
+					baseAlpha = _GlassTint.a;
+				}
 
 				// 上から下へ薄く光を乗せて、板の厚みを感じさせる
 				float sheen = saturate(0.55 - i.uv.y * 0.55) * 0.18;
@@ -187,7 +214,8 @@ Shader "NotesShooter/LiquidGlass"
 				float rimDirection = saturate(0.5 + 0.5 * dot(normal, normalize(float2(-0.6, 0.8))));
 				col += rim * rimDirection * _RimPower;
 
-				float alpha = inside * i.color.a;
+				//縁は板本体より濃くして、ガラスの輪郭がはっきり見えるようにする
+				float alpha = inside * i.color.a * max(baseAlpha, rim * 0.85);
 				return fixed4(col, alpha);
 			}
 			ENDCG

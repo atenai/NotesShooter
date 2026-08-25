@@ -9,6 +9,8 @@ public class RightGunUISmartPhoneView : MonoBehaviour
     [Tooltip("リロード画像")]
     [SerializeField] Image imageReload = null;
     Color reloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
+    [Tooltip("リロード中以外でもボタンのアイコンとして見える濃さ。このImageはボタンのアイコンを兼ねているので0にすると空のボタンに見えてしまう")]
+    const float baseReloadAlpha = 0.55f;
 
     [Tooltip("Android用残段数テキスト")]
     [SerializeField] TextMeshProUGUI textBulletAndroid = null;
@@ -31,10 +33,12 @@ public class RightGunUISmartPhoneView : MonoBehaviour
 
     void InitReload()
     {
-        reloadColor = new Color(255.0f, 255.0f, 255.0f, 0.0f);
+        reloadColor = new Color(1.0f, 1.0f, 1.0f, baseReloadAlpha);
         if (imageReload != null)
         {
             imageReload.color = reloadColor;
+            //回転したままだとアイコンが傾いて見えるので正面に戻す
+            imageReload.rectTransform.localRotation = Quaternion.identity;
         }
     }
 
@@ -72,28 +76,21 @@ public class RightGunUISmartPhoneView : MonoBehaviour
             imageReload.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, imageReloadRotateSpeed * Time.deltaTime);
         }
 
-        if (reloadColorAlpha <= 1)
-        {
-            //アルファ値を徐々に+する
-            reloadColorAlpha = reloadColorAlpha + (fadeSpeed * Time.deltaTime);
-        }
-        return reloadColorAlpha;
+        //アルファ値を徐々に+する
+        return Mathf.Min(reloadColorAlpha + (fadeSpeed * Time.deltaTime), 1.0f);
     }
 
     float FadeOut(float reloadColorAlpha)
     {
+        //リロードが終わったら回転を止めて、アイコンを正面へ戻す
         if (imageReload != null)
         {
-            //リロード画像を回転
-            imageReload.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, imageReloadRotateSpeed * Time.deltaTime);
+            imageReload.rectTransform.localRotation = Quaternion.RotateTowards(
+                imageReload.rectTransform.localRotation, Quaternion.identity, Mathf.Abs(imageReloadRotateSpeed) * Time.deltaTime);
         }
 
-        if (reloadColorAlpha >= 0)
-        {
-            //アルファ値を徐々に-する
-            reloadColorAlpha = reloadColorAlpha - (fadeSpeed * Time.deltaTime);
-        }
-        return reloadColorAlpha;
+        //アルファ値を徐々に-するが、ボタンのアイコンとして見える濃さまでで止める
+        return Mathf.Max(reloadColorAlpha - (fadeSpeed * Time.deltaTime), baseReloadAlpha);
     }
 
     /// <summary>
