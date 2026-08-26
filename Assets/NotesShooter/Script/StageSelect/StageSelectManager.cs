@@ -12,6 +12,8 @@ public class StageSelectManager : MonoBehaviour
 	[SerializeField] private string stageSceneName = "Stage2";
 	[Tooltip("ボーナスステージボタンから飛ぶシーン名")]
 	[SerializeField] private string bonusStageSceneName = "MasterStage";
+	[Tooltip("戻るボタンで飛ぶシーン名")]
+	[SerializeField] private string titleSceneName = "Title";
 
 	[Tooltip("フェードの速さ")]
 	private const float fadeSpeed = 2.5f;
@@ -105,6 +107,12 @@ public class StageSelectManager : MonoBehaviour
 		FadeIn();
 		FadeOut();
 
+		//Androidのバックキーとエディタ・PCのEscapeはどちらもKeyCode.Escapeで拾える
+		if (Input.GetKeyDown(KeyCode.Escape) == true)
+		{
+			RequestTitle();
+		}
+
 		if (Input.GetKeyDown(KeyCode.R))
 		{
 			//bonusStageSelectButton.Reduction();
@@ -186,6 +194,14 @@ public class StageSelectManager : MonoBehaviour
 	public void RequestStageStart()
 	{
 		RequestSceneChange(stageSceneName);
+	}
+
+	/// <summary>
+	/// 戻るボタンとAndroidのバックキーから呼ばれる
+	/// </summary>
+	public void RequestTitle()
+	{
+		RequestSceneChange(titleSceneName);
 	}
 
 	/// <summary>
