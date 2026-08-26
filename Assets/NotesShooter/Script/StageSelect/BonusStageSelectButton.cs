@@ -124,7 +124,11 @@ public class BonusStageSelectButton : StageSelectButtonBase
 
 	void OnClick()
 	{
-		Debug.Log(buttonNumber);
-		SceneManager.LoadScene("MasterStage");
+		//シーン遷移はフェードを持っているStageSelectManagerに任せる
+		StageSelectManager manager = FindObjectOfType<StageSelectManager>();
+		if (manager != null)
+		{
+			manager.RequestBonusStageStart();
+		}
 	}
 }

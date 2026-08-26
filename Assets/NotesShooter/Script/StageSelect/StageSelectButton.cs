@@ -120,9 +120,13 @@ public class StageSelectButton : StageSelectButtonBase
 
 	void OnClick()
 	{
-		Debug.Log(buttonNumber);
-
 		StageSelectManager.playCount++;
-		SceneManager.LoadScene("StageSelect");
+
+		//シーン遷移はフェードを持っているStageSelectManagerに任せる
+		StageSelectManager manager = FindObjectOfType<StageSelectManager>();
+		if (manager != null)
+		{
+			manager.RequestStageStart();
+		}
 	}
 }
