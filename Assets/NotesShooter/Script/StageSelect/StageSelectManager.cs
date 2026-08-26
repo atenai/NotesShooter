@@ -40,6 +40,15 @@ public class StageSelectManager : MonoBehaviour
 
 	public static int playCount = 1;
 
+	/// <summary>
+	/// 遊んだ回数を1つ進める。ステージ数を超えると該当するボタンが無くなり、
+	/// 強調表示もスクロール演出も行われなくなるので上限で止める
+	/// </summary>
+	public static void AdvancePlayCount()
+	{
+		playCount = Mathf.Min(playCount + 1, Total_Stage);
+	}
+
 	void Start()
 	{
 		//シーンの開始時は真っ黒にしておき、少しずつ透明にする

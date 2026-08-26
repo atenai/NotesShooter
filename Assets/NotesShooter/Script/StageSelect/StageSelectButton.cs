@@ -120,7 +120,7 @@ public class StageSelectButton : StageSelectButtonBase
 
 	void OnClick()
 	{
-		StageSelectManager.playCount++;
+		StageSelectManager.AdvancePlayCount();
 
 		//シーン遷移はフェードを持っているStageSelectManagerに任せる
 		StageSelectManager manager = FindObjectOfType<StageSelectManager>();
