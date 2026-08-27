@@ -1440,7 +1440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.804, g: 0.906, b: 0.965, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2113,7 +2113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u958B\u767A\u30E1\u30F3\u30D0\u30FC\u3000\u30D7\u30ED\u30B0\u30E9\u30E0\uFF1A\u304B\u3057\u308F\u3070\u3089\uFF0F\u30E2\u30C7\u30EB\uFF1A\u304A\u304B\u3056\u304D\uFF0F\u30B7\u30A7\u30FC\u30C0\u30FC\uFF1A\u30B3\u30A6"
+  m_Text: "\u958B\u767A\u30E1\u30F3\u30D0\u30FC\u3000\u67CF\u539F\u96C4\u592A"
 --- !u!222 &1700100064
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4042,7 +4042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5639,7 +5639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

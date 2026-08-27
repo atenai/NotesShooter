@@ -28,7 +28,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
 	[SerializeField] string[] bannerHiddenSceneNames = { "MasterStage", "Stage2" };
 
 	int adsInterstitialCount = 0;
-	const int Max_AdsInterstitial_Count = 3;
+	[Tooltip("インターステーシャル広告を何回に1回出すか。1なら毎回出す")]
+	[SerializeField] int adsInterstitialInterval = 1;
 
 	void Awake()
 	{
@@ -145,7 +146,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
 	public void ShowAdsInterstitialCount()
 	{
 		adsInterstitialCount++;
-		if (Max_AdsInterstitial_Count <= adsInterstitialCount)
+		if (adsInterstitialInterval <= adsInterstitialCount)
 		{
 			adsInterstitialCount = 0;
 			adsInterstitial.ShowAd();
