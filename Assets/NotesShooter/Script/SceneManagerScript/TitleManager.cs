@@ -1,40 +1,113 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class TitleManager : BaseSceneManager
 {
-	[SerializeField] Text textPressAnyKey;
+	[Tooltip("メニュー項目を選んだ時に強調表示する下線")]
+	[SerializeField] Image imageMenuUnderline;
+	[Tooltip("ハイスコアの表示")]
+	[SerializeField] Text textHighScore;
+	[Tooltip("バージョンの表示")]
+	[SerializeField] Text textVersion;
 
-	float textAlfa = 0.0f;
-	bool isAlfa = false;
-	float textSpeed = 1.0f;
+	[Tooltip("下線を点滅させる速さ")]
+	const float underlinePulseSpeed = 1.6f;
+	[Tooltip("下線の一番薄い時の濃さ")]
+	const float underlineMinAlfa = 0.35f;
+
+	new void Start()
+	{
+		base.Start();
+
+		DisplayHighScore();
+		DisplayVersion();
+	}
 
 	void Update()
 	{
 		FadeIn();
-		FadeTrigger();
 		FadeOut();
-		PressAnyButton();
+		PulseUnderline();
+
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
+		//ESCキーでゲームを終了する
+		if (Input.GetKeyDown(KeyCode.Escape) == true)
+		{
+			RequestQuit();
+		}
+#endif//終了
 	}
 
-	void PressAnyButton()
+	/// <summary>
+	/// 一番良いスコアを出す。まだ遊んでいなければ0になる
+	/// </summary>
+	void DisplayHighScore()
 	{
-		string text = (isFade == true) ? textPressAnyKey.text = "" : textPressAnyKey.text = "Press Any Key";
-
-		const float max = 1.0f;
-		if (max <= textAlfa)
+		if (textHighScore == null)
 		{
-			isAlfa = true;
+			return;
 		}
 
-		const float min = 0.0f;
-		if (textAlfa <= min)
+		//直前に遊んだステージのハイスコアを出す。未プレイならキーが無いので0が返る
+		int highScore = ScoreRecord.GetHighScore(ScoreRecord.LastStageName);
+		textHighScore.text = "HIGH SCORE   " + highScore.ToString();
+	}
+
+	void DisplayVersion()
+	{
+		if (textVersion == null)
 		{
-			isAlfa = false;
+			return;
 		}
 
-		var result = (isAlfa == true) ? textAlfa -= textSpeed * Time.deltaTime : textAlfa += textSpeed * Time.deltaTime;
+		textVersion.text = "v " + Application.version;
+	}
 
-		textPressAnyKey.color = new Color(0.0f, 255.0f, 255.0f, textAlfa);
+	/// <summary>
+	/// 選択中の項目の下線をゆっくり明滅させて、そこが選べる事を示す
+	/// </summary>
+	void PulseUnderline()
+	{
+		if (imageMenuUnderline == null)
+		{
+			return;
+		}
+
+		float pulse = (Mathf.Sin(Time.time * underlinePulseSpeed) + 1.0f) * 0.5f;
+		float alfa = Mathf.Lerp(underlineMinAlfa, 1.0f, pulse);
+
+		Color color = imageMenuUnderline.color;
+		imageMenuUnderline.color = new Color(color.r, color.g, color.b, alfa);
+	}
+
+	/// <summary>
+	/// 「ゲームスタート」から呼ばれる。フェードアウトしてステージセレクトへ移る
+	/// </summary>
+	public void RequestGameStart()
+	{
+		//フェード中の二重押しを弾く
+		if (isFade == true)
+		{
+			return;
+		}
+
+		isFade = true;
+
+		if (audioSource != null && audioClip != null)
+		{
+			audioSource.PlayOneShot(audioClip);
+		}
+	}
+
+	/// <summary>
+	/// 「ゲーム終了」から呼ばれる
+	/// </summary>
+	public void RequestQuit()
+	{
+#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+#else
+		Application.Quit();
+#endif
 	}
 }
