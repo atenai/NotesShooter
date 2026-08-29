@@ -1,47 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.SceneManagement;
 
 public class BonusStageSelectButton : StageSelectButtonBase
 {
 	[SerializeField] GameObject bonusStageSelectButton;
 	[SerializeField] GameObject buttonGameObject;
 	[SerializeField] Button button;
-	[SerializeField] private TextMeshProUGUI buttonText;
+	[Tooltip("スタートボタンの中の文字")]
+	[SerializeField] private Text buttonText;
 	[SerializeField] GameObject icon;
+
+	[Tooltip("スタートボタンに出す文字")]
+	const string startText = "▶ スタート";
+	[Tooltip("カードに薄く大きく出す記号")]
+	const string bonusMark = "★";
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	/// <param name="buttonNumber"></param>
-	/// <param name="totalNumber"></param>
+	/// <param name="buttonNumber">このカードが何番目のステージか</param>
+	/// <param name="totalNumber">ステージの総数</param>
+	/// <param name="playCount">今どこまで遊んだか</param>
 	public void Initialize(int buttonNumber, int totalNumber, int playCount)
 	{
 		this.buttonNumber = buttonNumber;
 
 		Reduction();
 		SetVerticalBarGauge(0);
-		SetFrameLineColor(Color.gray);
-		SetBackgroundColor(Color.white);
-		SetButtonText(buttonNumber.ToString());
+		SetLabelText("ボーナスステージ");
+		SetNumberText(bonusMark);
+		SetButtonText(startText);
 
-		//現在の日なら
-		if (buttonNumber == playCount)
-		{
-			Expansion();
-		}
-
-		//前の日なら
 		if (buttonNumber < playCount)
 		{
+			//遊び終わったステージ
 			SetVerticalBarGauge(100);
-			SetFrameLineColor(Color.red);
+			SetFrameLineColor(clearedColor);
+			SetBackgroundColor(Color.white);
+			SetStatusText("クリア", clearedColor);
+		}
+		else if (buttonNumber == playCount)
+		{
+			//今遊べるステージ。下線は演出の最後に光らせるので、ここではまだ暗いままにしておく
+			Expansion();
+			SetFrameLineColor(lockedColor);
+			SetBackgroundColor(Color.white);
+			SetStatusText("タップしてスタート", currentColor);
+		}
+		else
+		{
+			//まだ遊べないステージ
+			SetFrameLineColor(lockedColor);
+			SetBackgroundColor(lockedBackgroundColor);
+			SetStatusText("これから", lockedTextColor);
 		}
 
-		//最後の日なら
+		//一番上のステージから先は無いので縦棒を消す
 		if (buttonNumber == totalNumber)
 		{
 			HideVerticalBar();
@@ -64,6 +78,11 @@ public class BonusStageSelectButton : StageSelectButtonBase
 	/// <param name="text"></param>
 	public void SetButtonText(string text)
 	{
+		if (buttonText == null)
+		{
+			return;
+		}
+
 		buttonText.text = text;
 	}
 
@@ -72,7 +91,7 @@ public class BonusStageSelectButton : StageSelectButtonBase
 	/// </summary>
 	/// <param name="x">横幅</param>
 	/// <param name="y">縦幅</param>
-	public void SetBonusStageSelectButtonSize(float x = 500, float y = 400)
+	public void SetBonusStageSelectButtonSize(float x = 520, float y = 320)
 	{
 		bonusStageSelectButton.GetComponent<RectTransform>().sizeDelta = new Vector2(x, y);
 	}
@@ -83,6 +102,11 @@ public class BonusStageSelectButton : StageSelectButtonBase
 	/// <param name="y"></param>
 	public void SetIconPos(float y)
 	{
+		if (icon == null)
+		{
+			return;
+		}
+
 		Vector2 pos = icon.GetComponent<RectTransform>().anchoredPosition;
 		pos.y = y;
 		icon.GetComponent<RectTransform>().anchoredPosition = pos;
@@ -93,8 +117,7 @@ public class BonusStageSelectButton : StageSelectButtonBase
 	/// </summary>
 	public void Expansion()
 	{
-		SetBonusStageSelectButtonSize(y: 400);
-		SetIconPos(75);
+		SetBonusStageSelectButtonSize(y: 320);
 		SetButtonGameObject(true);
 	}
 
@@ -103,13 +126,12 @@ public class BonusStageSelectButton : StageSelectButtonBase
 	/// </summary>
 	public void Reduction()
 	{
-		SetBonusStageSelectButtonSize(450, 200);
-		SetIconPos(25);
+		SetBonusStageSelectButtonSize(460, 200);
 		SetButtonGameObject(false);
 	}
 
 	/// <summary>
-	/// 前倒しアンロック 
+	/// 前倒しアンロック
 	/// </summary>
 	public void AdvanceUnlock()
 	{
@@ -124,6 +146,8 @@ public class BonusStageSelectButton : StageSelectButtonBase
 
 	void OnClick()
 	{
+		StageSelectManager.AdvancePlayCount();
+
 		//シーン遷移はフェードを持っているStageSelectManagerに任せる
 		StageSelectManager manager = FindObjectOfType<StageSelectManager>();
 		if (manager != null)

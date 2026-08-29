@@ -1,57 +1,67 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.SceneManagement;
 
 public class StageSelectButton : StageSelectButtonBase
 {
 	[SerializeField] GameObject stageSelectButton;
 	[SerializeField] GameObject buttonGameObject;
 	[SerializeField] Button button;
-	[SerializeField] private TextMeshProUGUI buttonText;
+	[Tooltip("スタートボタンの中の文字")]
+	[SerializeField] private Text buttonText;
 	[Tooltip("完了マーク")]
 	[SerializeField] private GameObject completeMarkGameObject;
+
+	[Tooltip("スタートボタンに出す文字")]
+	const string startText = "▶ スタート";
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	/// <param name="buttonNumber"></param>
-	/// <param name="totalNumber"></param>
+	/// <param name="buttonNumber">このカードが何番目のステージか</param>
+	/// <param name="totalNumber">ステージの総数</param>
+	/// <param name="playCount">今どこまで遊んだか</param>
 	public void Initialize(int buttonNumber, int totalNumber, int playCount)
 	{
 		this.buttonNumber = buttonNumber;
 
 		Reduction();
 		SetVerticalBarGauge(0);
-		SetFrameLineColor(Color.gray);
-		SetBackgroundColor(Color.white);
 		SetCompleteMark(false);
-		SetButtonText(buttonNumber.ToString());
+		SetLabelText("ステージ " + buttonNumber.ToString());
+		SetNumberText(buttonNumber.ToString());
+		SetButtonText(startText);
 
-		//現在の日なら
-		if (buttonNumber == playCount)
-		{
-			Expansion();
-		}
-
-		//前の日なら
 		if (buttonNumber < playCount)
 		{
-			SetFrameLineColor(Color.red);
+			//遊び終わったステージ
+			SetFrameLineColor(clearedColor);
+			SetBackgroundColor(Color.white);
 			SetCompleteMark(true);
-		}
+			SetStatusText("クリア", clearedColor);
 
-		//前の日なら
-		if (buttonNumber < playCount - 1)
+			//1つ前のステージのゲージは演出で伸ばすので、それより前だけ最初から満たしておく
+			if (buttonNumber < playCount - 1)
+			{
+				SetVerticalBarGauge(100);
+			}
+		}
+		else if (buttonNumber == playCount)
 		{
-			SetVerticalBarGauge(100);
-			SetFrameLineColor(Color.red);
-			SetCompleteMark(true);
+			//今遊べるステージ。下線は演出の最後に光らせるので、ここではまだ暗いままにしておく
+			Expansion();
+			SetFrameLineColor(lockedColor);
+			SetBackgroundColor(Color.white);
+			SetStatusText("タップしてスタート", currentColor);
+		}
+		else
+		{
+			//まだ遊べないステージ
+			SetFrameLineColor(lockedColor);
+			SetBackgroundColor(lockedBackgroundColor);
+			SetStatusText("これから", lockedTextColor);
 		}
 
-		//最後の日なら
+		//一番上のステージから先は無いので縦棒を消す
 		if (buttonNumber == totalNumber)
 		{
 			HideVerticalBar();
@@ -73,6 +83,11 @@ public class StageSelectButton : StageSelectButtonBase
 	/// <param name="text"></param>
 	public void SetButtonText(string text)
 	{
+		if (buttonText == null)
+		{
+			return;
+		}
+
 		buttonText.text = text;
 	}
 
@@ -90,7 +105,7 @@ public class StageSelectButton : StageSelectButtonBase
 	/// </summary>
 	/// <param name="x">横幅</param>
 	/// <param name="y">縦幅</param>
-	public void SetStageSelectButtonSize(float x = 500, float y = 300)
+	public void SetStageSelectButtonSize(float x = 520, float y = 320)
 	{
 		stageSelectButton.GetComponent<RectTransform>().sizeDelta = new Vector2(x, y);
 	}
@@ -100,7 +115,7 @@ public class StageSelectButton : StageSelectButtonBase
 	/// </summary>
 	public void Expansion()
 	{
-		SetStageSelectButtonSize(y: 300);
+		SetStageSelectButtonSize(y: 320);
 		SetButtonGameObject(true);
 	}
 
@@ -109,7 +124,7 @@ public class StageSelectButton : StageSelectButtonBase
 	/// </summary>
 	public void Reduction()
 	{
-		SetStageSelectButtonSize(450, 200);
+		SetStageSelectButtonSize(460, 200);
 		SetButtonGameObject(false);
 	}
 

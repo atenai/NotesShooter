@@ -6,6 +6,22 @@ using UnityEngine.UI;
 
 public class StageSelectManager : MonoBehaviour
 {
+	/// <summary>
+	/// ステージ1つ分の紹介文。左側の説明欄に出す
+	/// </summary>
+	[System.Serializable]
+	public class StageInformation
+	{
+		[Tooltip("大きく出すステージ名")]
+		public string stageName = "ステージ 1";
+		[Tooltip("小さく出す英語の見出し")]
+		public string subName = "STAGE 01";
+		[Tooltip("ステージの説明")]
+		[TextArea] public string description = "";
+		[Tooltip("ステージ情報に出す難易度")]
+		public string difficulty = "★☆☆";
+	}
+
 	[Tooltip("フェード用の黒画像")]
 	[SerializeField] private Image fadeImage;
 	[Tooltip("ステージボタンから飛ぶシーン名")]
@@ -40,6 +56,26 @@ public class StageSelectManager : MonoBehaviour
 	[SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
 	List<StageSelectButtonBase> stageSelectButtons = new List<StageSelectButtonBase>();
 
+	[Tooltip("左側に出す、今遊べるステージの大きい見出し")]
+	[SerializeField] private Text textStageName;
+	[Tooltip("左側に出す、今遊べるステージの小さい見出し")]
+	[SerializeField] private Text textStageSubName;
+	[Tooltip("左側に出す、今遊べるステージの説明文")]
+	[SerializeField] private Text textDescription;
+	[Tooltip("今が何ステージ目かの表示")]
+	[SerializeField] private Text textProgress;
+	[Tooltip("ステージ情報のハイスコア")]
+	[SerializeField] private Text textInfoHighScore;
+	[Tooltip("ステージ情報の状態")]
+	[SerializeField] private Text textInfoState;
+	[Tooltip("ステージ情報の難易度")]
+	[SerializeField] private Text textInfoDifficulty;
+	[Tooltip("バージョンの表示")]
+	[SerializeField] private Text textVersion;
+	[Tooltip("ステージごとの紹介文。1番目のステージから順に入れる")]
+	[SerializeField] private StageInformation[] stageInformations;
+
+	[Tooltip("何ステージ目まで遊んだか。アプリを起動している間だけ覚えている")]
 	public static int playCount = 1;
 
 	/// <summary>
@@ -62,6 +98,10 @@ public class StageSelectManager : MonoBehaviour
 		InitVerticalLayoutGroupPadding();
 		CreateStageButtons();
 
+		DisplayCurrentStage();
+		DisplayProgress();
+		DisplayVersion();
+
 		//以下演出
 		StartCoroutine(Direction());
 	}
@@ -76,9 +116,6 @@ public class StageSelectManager : MonoBehaviour
 		{
 			verticalLayoutGroup.padding.top = 1000;
 		}
-
-		// レイアウト更新を即座に反映
-		//LayoutRebuilder.ForceRebuildLayoutImmediate(verticalLayoutGroup.GetComponent<RectTransform>());
 	}
 
 	/// <summary>
@@ -112,23 +149,82 @@ public class StageSelectManager : MonoBehaviour
 		{
 			RequestTitle();
 		}
+	}
 
-		if (Input.GetKeyDown(KeyCode.R))
+	/// <summary>
+	/// 今遊べるステージの見出しと説明とステージ情報を左側に出す
+	/// </summary>
+	private void DisplayCurrentStage()
+	{
+		int currentStage = Mathf.Clamp(playCount, First_Stage, Total_Stage);
+		bool isBonusStage = currentStage == Total_Stage;
+
+		StageInformation information = null;
+		if (stageInformations != null && currentStage - 1 < stageInformations.Length)
 		{
-			//bonusStageSelectButton.Reduction();
-			//stageSelectButtons[1].Reduction();
+			information = stageInformations[currentStage - 1];
 		}
 
-		if (Input.GetKeyDown(KeyCode.E))
+		if (textStageName != null)
 		{
-			//bonusStageSelectButton.Expansion();
-			//stageSelectButtons[1].Expansion();
+			textStageName.text = information != null ? information.stageName : "ステージ " + currentStage.ToString();
 		}
 
-		if (Input.GetKeyDown(KeyCode.U))
+		if (textStageSubName != null)
 		{
-			//stageSelectButtons[totalStageCount - 1].GetComponent<BonusStageSelectButton>().AdvanceUnlock();
+			textStageSubName.text = information != null ? information.subName : "STAGE " + currentStage.ToString("00");
 		}
+
+		if (textDescription != null)
+		{
+			textDescription.text = information != null ? information.description : string.Empty;
+		}
+
+		//playCountはアプリを閉じると1に戻るが、ハイスコアは記録に残る。
+		//「まだ遊んでいない」かどうかは記録の方で判断する
+		string sceneName = isBonusStage == true ? bonusStageSceneName : stageSceneName;
+		int highScore = ScoreRecord.GetHighScore(sceneName);
+
+		if (textInfoHighScore != null)
+		{
+			textInfoHighScore.text = highScore.ToString();
+		}
+
+		if (textInfoState != null)
+		{
+			textInfoState.text = 0 < highScore ? "クリア済み" : "未プレイ";
+		}
+
+		if (textInfoDifficulty != null)
+		{
+			textInfoDifficulty.text = information != null ? information.difficulty : "★☆☆";
+		}
+	}
+
+	/// <summary>
+	/// 今が何ステージ目かを出す。
+	/// playCountはTotal_Stageで頭打ちにしているので、クリア数として出すと
+	/// 全部遊んでも「3 / 4」までしか進まず正しくない
+	/// </summary>
+	private void DisplayProgress()
+	{
+		if (textProgress == null)
+		{
+			return;
+		}
+
+		int currentStage = Mathf.Clamp(playCount, First_Stage, Total_Stage);
+		textProgress.text = currentStage.ToString() + " / " + Total_Stage.ToString();
+	}
+
+	private void DisplayVersion()
+	{
+		if (textVersion == null)
+		{
+			return;
+		}
+
+		textVersion.text = "v " + Application.version;
 	}
 
 	/// <summary>
@@ -226,7 +322,8 @@ public class StageSelectManager : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 演出
+	/// 演出。1つ前のステージまでスクロールしてゲージを伸ばし、
+	/// 今遊べるステージまで上がって下線を光らせる
 	/// </summary>
 	/// <returns></returns>
 	private IEnumerator Direction()
@@ -262,7 +359,7 @@ public class StageSelectManager : MonoBehaviour
 			});
 			yield return new WaitUntil(() => isCurrentScrollButtonCompleted);
 
-			currentButton.SetFrameLineColor(Color.red);
+			currentButton.SetFrameLineToCurrent();
 
 			yield return new WaitForSeconds(1.0f);
 		}

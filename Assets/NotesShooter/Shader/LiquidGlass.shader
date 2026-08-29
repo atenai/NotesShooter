@@ -29,6 +29,15 @@ Shader "NotesShooter/LiquidGlass"
 		_RimPower ("縁の光沢の強さ", Range(0, 3)) = 1.5
 
 		_Color ("Tint", Color) = (1,1,1,1)
+
+		// ScrollViewのMask等で切り抜く為の値。uGUIが実行時に書き込む。
+		// この項目が無いと、マスクの中に居ても切り抜かれずにはみ出して描かれてしまう
+		_StencilComp ("Stencil Comparison", Float) = 8
+		_Stencil ("Stencil ID", Float) = 0
+		_StencilOp ("Stencil Operation", Float) = 0
+		_StencilWriteMask ("Stencil Write Mask", Float) = 255
+		_StencilReadMask ("Stencil Read Mask", Float) = 255
+		_ColorMask ("Color Mask", Float) = 15
 	}
 
 	SubShader
@@ -42,11 +51,21 @@ Shader "NotesShooter/LiquidGlass"
 			"CanUseSpriteAtlas" = "True"
 		}
 
+		Stencil
+		{
+			Ref [_Stencil]
+			Comp [_StencilComp]
+			Pass [_StencilOp]
+			ReadMask [_StencilReadMask]
+			WriteMask [_StencilWriteMask]
+		}
+
 		Cull Off
 		Lighting Off
 		ZWrite Off
 		ZTest [unity_GUIZTestMode]
 		Blend SrcAlpha OneMinusSrcAlpha
+		ColorMask [_ColorMask]
 
 		Pass
 		{
