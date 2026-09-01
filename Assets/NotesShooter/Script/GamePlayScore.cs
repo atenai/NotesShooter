@@ -9,6 +9,10 @@ public class GamePlayScore : MonoBehaviour
     int scoreNum = 0;
     public int ScoreNum => scoreNum;
 
+    //的は壊れた時に一度だけAddScoreを呼ぶので、呼ばれた回数がそのまま倒した数になる
+    int destroyedTargetNum = 0;
+    public int DestroyedTargetNum => destroyedTargetNum;
+
     void Awake()
     {
         //staticな変数instanceはメモリ領域は確保されていますが、初回では中身が入っていないので、中身を入れます。
@@ -25,5 +29,6 @@ public class GamePlayScore : MonoBehaviour
     public void AddScore(int add_score)
     {
         scoreNum += add_score;//スコアを+する処理
+        destroyedTargetNum++;//倒した的の数を1つ進める
     }
 }

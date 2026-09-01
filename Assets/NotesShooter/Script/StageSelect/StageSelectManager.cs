@@ -102,6 +102,10 @@ public class StageSelectManager : MonoBehaviour
 		DisplayProgress();
 		DisplayVersion();
 
+		//リザルト画面はシーン名しか知らず「Stage2」としか出せないので、
+		//ここで選んでいるステージの表示名を覚えさせておく
+		RememberStageDisplayName();
+
 		//以下演出
 		StartCoroutine(Direction());
 	}
@@ -199,6 +203,22 @@ public class StageSelectManager : MonoBehaviour
 		{
 			textInfoDifficulty.text = information != null ? information.difficulty : "★☆☆";
 		}
+	}
+
+	/// <summary>
+	/// 今遊ぼうとしているステージの表示名を、リザルト画面の為に覚えておく
+	/// </summary>
+	private void RememberStageDisplayName()
+	{
+		int currentStage = Mathf.Clamp(playCount, First_Stage, Total_Stage);
+
+		string displayName = "ステージ " + currentStage.ToString();
+		if (stageInformations != null && currentStage - 1 < stageInformations.Length && stageInformations[currentStage - 1] != null)
+		{
+			displayName = stageInformations[currentStage - 1].stageName;
+		}
+
+		ScoreRecord.SetPlayingStageDisplayName(displayName);
 	}
 
 	/// <summary>

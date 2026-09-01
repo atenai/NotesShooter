@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
@@ -6,47 +6,288 @@ using System.Collections;
 using System.Text.RegularExpressions;
 
 /// <summary>
-/// リザルトのスコア表示クラス
+/// リザルトのスコア表示クラス。
+/// 数字をいきなり出さず、0から数え上げてゲージを伸ばし、最後にランクと新記録を出す。
 /// </summary>
 public class ResultScore : MonoBehaviour
 {
-    [SerializeField] Text scoreText;
-    [Tooltip("遊んだステージ名の表示")]
-    [SerializeField] Text stageNameText;
-    [Tooltip("そのステージのハイスコアの表示")]
-    [SerializeField] Text highScoreText;
+    /// <summary>
+    /// 何点以上でどのランクにするか
+    /// </summary>
+    [Serializable]
+    public class RankThreshold
+    {
+        [Tooltip("表示する文字")]
+        public string rankName = "C";
+        [Tooltip("このランクになる、自己ベストに対する最低の割合(%)")]
+        public int leastRatePercent = 0;
+        [Tooltip("文字の色")]
+        public Color rankColor = Color.white;
+    }
+
+    [Tooltip("スコアの数字")]
+    [SerializeField] Text textScore;
+    [Tooltip("遊んだステージ名")]
+    [SerializeField] Text textStageName;
+    [Tooltip("そのステージのハイスコア")]
+    [SerializeField] Text textHighScore;
+    [Tooltip("倒した的の数")]
+    [SerializeField] Text textTargetCount;
+    [Tooltip("ランクの文字")]
+    [SerializeField] Text textRank;
+    [Tooltip("ハイスコアとの差")]
+    [SerializeField] Text textDiff;
+    [Tooltip("ハイスコアに対する今回のスコアの割合を示すゲージ")]
+    [SerializeField] Image imageScoreGauge;
     [Tooltip("ハイスコア更新時に出す表示")]
     [SerializeField] GameObject newRecordGameObject;
+    [Tooltip("ハイスコア更新時の文字。どれだけ伸びたかを出す")]
+    [SerializeField] Text textNewRecord;
+    [Tooltip("ランクの判定表。割合の高い順に並べる")]
+    [SerializeField] RankThreshold[] rankThresholds;
+
+    [Tooltip("スコアを数え上げるのにかける秒数")]
+    [SerializeField] float countUpTime = 0.9f;
+    [Tooltip("数え終わってからランクと新記録を出すまでの間")]
+    [SerializeField] float revealDelay = 0.15f;
+    [Tooltip("広告が閉じるのを待つ上限の秒数")]
+    [SerializeField] float adsWaitLimit = 30.0f;
+
+    [Tooltip("ランクが出る時に一瞬大きく見せる倍率")]
+    const float rankPopScale = 1.6f;
+    [Tooltip("ランクの大きさが戻る速さ")]
+    const float rankPopSpeed = 6.0f;
 
     void Start()
     {
-        DisplayScore();
+        StartCoroutine(DisplayResult());
         StartCoroutine(GetScore());
     }
 
     /// <summary>
-    /// 直前のプレイの結果を表示する。ステージ別に記録しているのでステージ名とハイスコアも出す
+    /// 直前のプレイの結果を順番に出していく
     /// </summary>
-    void DisplayScore()
+    IEnumerator DisplayResult()
     {
         string stageName = ScoreRecord.LastStageName;
+        int score = ScoreRecord.LastScore;
+        int highScore = ScoreRecord.GetHighScore(stageName);
+        bool isNewRecord = ScoreRecord.LastPlayIsNewRecord;
 
-        scoreText.text = ScoreRecord.LastScore.ToString();
+        //更新するとハイスコアは今回の点で上書きされるので、比べる相手は更新前の点を使う
+        int previousHighScore = ScoreRecord.LastPreviousHighScore;
 
-        if (stageNameText != null)
+        if (textStageName != null)
         {
-            stageNameText.text = "STAGE : " + stageName;
+            textStageName.text = ScoreRecord.GetStageDisplayName(stageName);
         }
 
-        if (highScoreText != null)
+        if (textHighScore != null)
         {
-            highScoreText.text = "HIGH SCORE : " + ScoreRecord.GetHighScore(stageName).ToString();
+            //更新した時、ハイスコアは今回の点で上書き済み。
+            //同じ数字が2つ並ぶだけになるので、ここには更新前の記録を出す
+            textHighScore.text = previousHighScore <= 0 ? "-" : previousHighScore.ToString();
         }
+
+        if (textTargetCount != null)
+        {
+            textTargetCount.text = ScoreRecord.LastTargetCount.ToString();
+        }
+
+        if (textDiff != null)
+        {
+            textDiff.text = string.Empty;
+        }
+
+        //数え上げが終わるまでは伏せておく
+        if (newRecordGameObject != null)
+        {
+            newRecordGameObject.SetActive(false);
+        }
+
+        if (textRank != null)
+        {
+            textRank.text = string.Empty;
+        }
+
+        //広告が画面を覆っている間に演出を流しても見えないので、閉じるまで待つ。
+        //閉じた通知が来ない環境もあるので、待つのは上限までにして必ず先へ進める
+        float waited = 0.0f;
+        while (AdsInterstitial.IsShowing == true && waited < adsWaitLimit)
+        {
+            waited += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        yield return StartCoroutine(CountUpScore(score, previousHighScore));
+
+        yield return new WaitForSeconds(revealDelay);
+
+        DisplayRank(score, previousHighScore);
+        DisplayDiff(score, previousHighScore, isNewRecord);
 
         if (newRecordGameObject != null)
         {
-            newRecordGameObject.SetActive(ScoreRecord.LastPlayIsNewRecord);
+            newRecordGameObject.SetActive(isNewRecord);
         }
+
+        if (textRank != null)
+        {
+            yield return StartCoroutine(PopRank());
+        }
+    }
+
+    /// <summary>
+    /// 0から今回のスコアまで数え上げ、あわせてゲージも伸ばす
+    /// </summary>
+    IEnumerator CountUpScore(int score, int highScore)
+    {
+        if (textScore == null)
+        {
+            yield break;
+        }
+
+        float elapsed = 0.0f;
+
+        while (elapsed < countUpTime)
+        {
+            elapsed += Time.deltaTime;
+
+            //最初は速く、最後にゆっくり止まるようにする
+            float rate = Mathf.Clamp01(elapsed / countUpTime);
+            rate = 1.0f - (1.0f - rate) * (1.0f - rate);
+
+            int current = Mathf.RoundToInt(score * rate);
+            textScore.text = current.ToString();
+            ApplyGauge(current, highScore);
+
+            yield return null;
+        }
+
+        textScore.text = score.ToString();
+        ApplyGauge(score, highScore);
+    }
+
+    /// <summary>
+    /// 自己ベストに対する割合でゲージを伸ばす。
+    /// Imageのfillは角丸スプライトが要り、細い棒だと縁が破綻するので、
+    /// 板そのものの右端を動かして伸ばしている
+    /// </summary>
+    void ApplyGauge(int score, int highScore)
+    {
+        if (imageScoreGauge == null)
+        {
+            return;
+        }
+
+        float rate;
+        if (highScore <= 0)
+        {
+            //まだ記録が無い時は、点が入っていれば満タンにする
+            rate = score <= 0 ? 0.0f : 1.0f;
+        }
+        else
+        {
+            rate = Mathf.Clamp01((float)score / highScore);
+        }
+
+        RectTransform rectTransform = imageScoreGauge.rectTransform;
+        rectTransform.anchorMax = new Vector2(rate, rectTransform.anchorMax.y);
+        rectTransform.offsetMin = new Vector2(0.0f, rectTransform.offsetMin.y);
+        rectTransform.offsetMax = new Vector2(0.0f, rectTransform.offsetMax.y);
+    }
+
+    /// <summary>
+    /// ランクを出す。
+    /// ステージごとに取れる点が大きく違うので、決め打ちの点数で区切ると
+    /// あるステージは常に高評価、別のステージは常に低評価になってしまう。
+    /// 自分の best に対してどこまで届いたかで決めれば、どのステージでも意味を持つ
+    /// </summary>
+    void DisplayRank(int score, int previousHighScore)
+    {
+        if (textRank == null || rankThresholds == null || rankThresholds.Length == 0)
+        {
+            return;
+        }
+
+        //まだ記録が無い初回は、それ自体が自己ベストなので一番上にする
+        int ratePercent = previousHighScore <= 0 ? 100 : Mathf.RoundToInt(100.0f * score / previousHighScore);
+
+        foreach (RankThreshold threshold in rankThresholds)
+        {
+            if (threshold == null || ratePercent < threshold.leastRatePercent)
+            {
+                continue;
+            }
+
+            textRank.text = threshold.rankName;
+            textRank.color = threshold.rankColor;
+            return;
+        }
+
+        //どれにも当てはまらなければ一番下のランクにする
+        RankThreshold lowest = rankThresholds[rankThresholds.Length - 1];
+        textRank.text = lowest.rankName;
+        textRank.color = lowest.rankColor;
+    }
+
+    /// <summary>
+    /// ハイスコアとの差を出す
+    /// </summary>
+    void DisplayDiff(int score, int previousHighScore, bool isNewRecord)
+    {
+        if (isNewRecord == true)
+        {
+            //更新した時は差を新記録の側に出すので、こちらは空にしておく
+            if (textDiff != null)
+            {
+                textDiff.text = string.Empty;
+            }
+
+            if (textNewRecord != null)
+            {
+                int growth = score - previousHighScore;
+                //初めて遊んだステージは比べる相手が無いので、伸び幅は出さない
+                textNewRecord.text = previousHighScore <= 0
+                    ? "NEW RECORD"
+                    : "NEW RECORD   +" + growth.ToString();
+            }
+
+            return;
+        }
+
+        if (textDiff == null)
+        {
+            return;
+        }
+
+        int diff = previousHighScore - score;
+        if (diff <= 0)
+        {
+            textDiff.text = "自己ベストに ならびました";
+            return;
+        }
+
+        textDiff.text = "ベストまで あと " + diff.ToString();
+    }
+
+    /// <summary>
+    /// ランクの文字を一瞬大きく出してから元の大きさへ戻す
+    /// </summary>
+    IEnumerator PopRank()
+    {
+        RectTransform rectTransform = textRank.rectTransform;
+        Vector3 baseScale = Vector3.one;
+        float scale = rankPopScale;
+
+        while (0.001f < scale - 1.0f)
+        {
+            scale = Mathf.Lerp(scale, 1.0f, 1.0f - Mathf.Exp(-rankPopSpeed * Time.deltaTime));
+            rectTransform.localScale = baseScale * scale;
+            yield return null;
+        }
+
+        rectTransform.localScale = baseScale;
     }
 
     IEnumerator GetScore()

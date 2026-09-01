@@ -52,9 +52,10 @@ public class Goal : MonoBehaviour
         isScoreRegistered = true;
 
         int score = GamePlayScore.SingletonInstance.ScoreNum;
+        int destroyedTargetNum = GamePlayScore.SingletonInstance.DestroyedTargetNum;
 
         //遊んでいるシーン名をステージ名として、ステージ別にスコアとハイスコアを記録する
-        ScoreRecord.Save(SceneManager.GetActiveScene().name, score);
+        ScoreRecord.Save(SceneManager.GetActiveScene().name, score, destroyedTargetNum);
 
         //サーバーへの登録完了を待たずにリザルトへ進める。
         //待つようにすると、通信できない環境では最大10秒（www.timeout）ゴール地点で止まってしまう

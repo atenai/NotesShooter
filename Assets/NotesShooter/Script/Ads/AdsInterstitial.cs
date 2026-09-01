@@ -22,9 +22,14 @@ public class AdsInterstitial : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
 	}
 
 	//インターステーショナル広告を表示する
+	[Tooltip("今この広告が画面を覆っているか。覆っている間の演出は見えないので、待ちたい側が見る")]
+	static bool isShowing = false;
+	public static bool IsShowing => isShowing;
+
 	public void ShowAd()
 	{
 		Debug.Log("Showing Ad: " + _adUnitId);
+		isShowing = true;
 		//インターステーショナル広告を表示
 		Advertisement.Show(_adUnitId, this);
 	}
@@ -45,6 +50,7 @@ public class AdsInterstitial : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
 	public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
 	{
 		Debug.Log($"Error showing Ad Unit: {adUnitId} - {error.ToString()} - {message}");
+		isShowing = false;
 	}
 
 	public void OnUnityAdsShowStart(string adUnitId) { }
@@ -54,6 +60,8 @@ public class AdsInterstitial : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
 	public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
 	{
 		Debug.Log("<color=blue>あなたはインターステーショナル広告をゲットしました。</color>");
+
+		isShowing = false;
 
 		//インターステーショナル広告をロード
 		Advertisement.Load(_adUnitId, this);
