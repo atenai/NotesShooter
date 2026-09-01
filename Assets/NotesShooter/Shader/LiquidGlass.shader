@@ -233,6 +233,11 @@ Shader "NotesShooter/LiquidGlass"
 				float rimDirection = saturate(0.5 + 0.5 * dot(normal, normalize(float2(-0.6, 0.8))));
 				col += rim * rimDirection * _RimPower;
 
+				//ガラスモードは板の色を自分で決めているので、そのままだと
+				//uGUIがボタンを押した時に送ってくる色が効かず、押した事が分からない。
+				//最後に掛けて、色の変化が板にも乗るようにする
+				col *= i.color.rgb;
+
 				//縁は板本体より濃くして、ガラスの輪郭がはっきり見えるようにする
 				float alpha = inside * i.color.a * max(baseAlpha, rim * 0.85);
 				return fixed4(col, alpha);
