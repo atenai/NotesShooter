@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEditor;
+using UnityEditor.Events;
 using UnityEditor.SceneManagement;
 
 /// <summary>
@@ -23,6 +25,7 @@ public static class ResultUIBuilder
 	static Font font;
 	static Material backgroundMaterial;
 	static Material panelMaterial;
+	static Material buttonMaterial;
 	static Sprite barSprite;
 
 	[MenuItem("Tools/NotesShooter/リザルトのUIを組み直す")]
@@ -37,9 +40,10 @@ public static class ResultUIBuilder
 		font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
 		backgroundMaterial = AssetDatabase.LoadAssetAtPath<Material>(shaderFolder + "M_LiquidGlassBackground.mat");
 		panelMaterial = AssetDatabase.LoadAssetAtPath<Material>(shaderFolder + "M_LiquidGlassPanel.mat");
+		buttonMaterial = AssetDatabase.LoadAssetAtPath<Material>(shaderFolder + "M_LiquidGlassButton.mat");
 		barSprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
 
-		if (font == null || backgroundMaterial == null || panelMaterial == null || barSprite == null)
+		if (font == null || backgroundMaterial == null || panelMaterial == null || buttonMaterial == null || barSprite == null)
 		{
 			Debug.LogError("リザルトの組み直しに必要なフォントかマテリアルかスプライトが見つかりませんでした");
 			return;
@@ -65,6 +69,7 @@ public static class ResultUIBuilder
 			"Text_ScoreLabel", "Text_Score", "Text_NewRecord", "Line_Footer", "Text_HighScore",
 			"Text_ResultLabel", "Text_RankLabel", "Panel_RankBadge",
 			"Image_GaugeTrack", "Text_ScoreDelta", "Panel_NewRecord", "Panel_Stats",
+			"Text_NextLabel", "Button_StageSelect", "Button_Title", "Text_Version",
 		};
 		foreach (string name in removeNames)
 		{
@@ -104,17 +109,17 @@ public static class ResultUIBuilder
 		headerLine.raycastTarget = false;
 
 		//主役のスコア
-		CreateText(canvasTransform, "Text_ScoreLabel", "SCORE", 34, accentColor, TextAnchor.MiddleCenter,
-			new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0, -250), new Vector2(600, 44));
-		Text textScore = CreateText(canvasTransform, "Text_Score", "0", 230, Color.white, TextAnchor.MiddleCenter,
-			new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0, -306), new Vector2(1400, 270));
+		CreateText(canvasTransform, "Text_ScoreLabel", "SCORE", 34, accentColor, TextAnchor.MiddleLeft,
+			new Vector2(0, 1), new Vector2(0, 1), new Vector2(64, -250), new Vector2(500, 44));
+		Text textScore = CreateText(canvasTransform, "Text_Score", "0", 200, Color.white, TextAnchor.MiddleLeft,
+			new Vector2(0, 1), new Vector2(0, 1), new Vector2(64, -296), new Vector2(1000, 230));
 		Shadow shadow = textScore.gameObject.AddComponent<Shadow>();
 		shadow.effectColor = new Color(0, 0, 0, 0.35f);
 		shadow.effectDistance = new Vector2(4, -6);
 
 		//自己ベストに対する今回の位置をゲージで見せる
 		Image gaugeTrack = CreateImage(canvasTransform, "Image_GaugeTrack", null, new Color(1, 1, 1, 0.18f));
-		SetRect(gaugeTrack.rectTransform, new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0, -584), new Vector2(600, 8));
+		SetRect(gaugeTrack.rectTransform, new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1), new Vector2(64, -540), new Vector2(700, 8));
 		gaugeTrack.sprite = null;
 		gaugeTrack.type = Image.Type.Simple;
 		gaugeTrack.raycastTarget = false;
@@ -133,12 +138,12 @@ public static class ResultUIBuilder
 		gaugeRect.offsetMax = Vector2.zero;
 
 		//ベストに届かなかった時はここに差を出す
-		Text textDelta = CreateText(canvasTransform, "Text_ScoreDelta", "", 32, softTextColor, TextAnchor.MiddleCenter,
-			new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0, -620), new Vector2(900, 48));
+		Text textDelta = CreateText(canvasTransform, "Text_ScoreDelta", "", 32, softTextColor, TextAnchor.MiddleLeft,
+			new Vector2(0, 1), new Vector2(0, 1), new Vector2(64, -566), new Vector2(800, 48));
 
 		//更新した時だけ出す。画面で唯一の不透明な色面にして目立たせる
 		Image newRecordPanel = CreateImage(canvasTransform, "Panel_NewRecord", null, accentColor);
-		SetRect(newRecordPanel.rectTransform, new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0, -616), new Vector2(520, 58));
+		SetRect(newRecordPanel.rectTransform, new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1), new Vector2(64, -562), new Vector2(520, 58));
 		newRecordPanel.sprite = barSprite;
 		newRecordPanel.type = Image.Type.Sliced;
 		newRecordPanel.raycastTarget = false;
@@ -146,44 +151,43 @@ public static class ResultUIBuilder
 			new Vector2(0, 0), new Vector2(1, 1), Vector2.zero, Vector2.zero);
 		Stretch(textNewRecord.rectTransform);
 
-		//撃破数とハイスコアを並べる
+		//右側にこのプレイの内訳。ステージセレクトの情報パネルと同じ作りにする
 		Image statsPanel = CreateImage(canvasTransform, "Panel_Stats", panelMaterial, Color.white);
-		SetRect(statsPanel.rectTransform, new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0, -728), new Vector2(1200, 152));
+		SetRect(statsPanel.rectTransform, new Vector2(1, 1), new Vector2(1, 1), new Vector2(1, 1), new Vector2(-64, -250), new Vector2(460, 300));
 		statsPanel.raycastTarget = false;
-		AddLiquidGlassRect(statsPanel.gameObject, 34.0f);
+		AddLiquidGlassRect(statsPanel.gameObject, 30.0f);
 
-		CreateText(statsPanel.transform, "Text_ShotLabel", "たおした的", 26, softTextColor, TextAnchor.MiddleCenter,
-			new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(-300, -24), new Vector2(320, 34));
-		Text textShot = CreateText(statsPanel.transform, "Text_Shot", "0", 58, Color.white, TextAnchor.MiddleCenter,
-			new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(-300, -62), new Vector2(320, 72));
+		CreateText(statsPanel.transform, "Text_StatsTitle", "このプレイ", 24, accentColor, TextAnchor.MiddleLeft,
+			new Vector2(0, 1), new Vector2(0, 1), new Vector2(28, -22), new Vector2(400, 36));
+		Image statsLine = CreateImage(statsPanel.transform, "Line_Stats", null, new Color(1, 1, 1, 0.35f));
+		SetRect(statsLine.rectTransform, new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1), new Vector2(28, -64), new Vector2(404, 2));
+		statsLine.raycastTarget = false;
 
-		Image divider = CreateImage(statsPanel.transform, "Image_StatDivider", null, new Color(1, 1, 1, 0.3f));
-		SetRect(divider.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(2, 96));
-		divider.raycastTarget = false;
+		Text textShot = CreateStatRow(statsPanel.transform, "Shot", "たおした的", "0", -86);
+		Text textHighScore = CreateStatRow(statsPanel.transform, "HighScore", "これまでのベスト", "0", -152);
+		Text textRate = CreateStatRow(statsPanel.transform, "Rate", "達成率", "0 %", -218);
 
-		CreateText(statsPanel.transform, "Text_HighScoreLabel", "これまでのベスト", 26, softTextColor, TextAnchor.MiddleCenter,
-			new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(300, -24), new Vector2(320, 34));
-		Text textHighScore = CreateText(statsPanel.transform, "Text_HighScore", "0", 58, Color.white, TextAnchor.MiddleCenter,
-			new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(300, -62), new Vector2(320, 72));
+		//次にどうするかを選ばせる。画面のどこを触っても進む作りをやめて、行き先をボタンで分ける
+		CreateText(canvasTransform, "Text_NextLabel", "つぎはどうしますか？", 30, softTextColor, TextAnchor.MiddleLeft,
+			new Vector2(0, 0), new Vector2(0, 0), new Vector2(64, 400), new Vector2(800, 44));
 
-		//下側。ステージセレクトと同じ位置に線と案内を置く
+		Button buttonStageSelect = CreateMenuButton(canvasTransform, "Button_StageSelect", "ステージセレクト", new Vector2(64, 190));
+		Button buttonTitle = CreateMenuButton(canvasTransform, "Button_Title", "タイトルへ", new Vector2(516, 190));
+
+		//下側。ステージセレクトと同じ位置に線を置く
 		Image footerLine = CreateImage(canvasTransform, "Line_Footer", null, new Color(1, 1, 1, 0.45f));
 		SetRect(footerLine.rectTransform, new Vector2(0, 0), new Vector2(1, 0), new Vector2(0.5f, 0), new Vector2(0, 150), new Vector2(-120, 2));
 		footerLine.raycastTarget = false;
 
-		//元からある案内文は作り直さず、位置と字だけ整える
+		Text textVersion = CreateText(canvasTransform, "Text_Version", "v " + Application.version, 22, softTextColor, TextAnchor.MiddleRight,
+			new Vector2(1, 0), new Vector2(1, 0), new Vector2(-60, 62), new Vector2(400, 34));
+
+		//元からある案内文はボタンに置き換わったので隠す。
+		//これはプレハブインスタンスの一部でDestroyImmediateでは消せない
 		Transform quitTransform = canvasTransform.Find("Text_GameQuit");
 		if (quitTransform != null)
 		{
-			Text textQuit = quitTransform.GetComponent<Text>();
-			textQuit.font = font;
-			textQuit.text = "画面をタップしてタイトルへ";
-			textQuit.fontSize = 30;
-			textQuit.color = softTextColor;
-			textQuit.alignment = TextAnchor.MiddleCenter;
-			textQuit.raycastTarget = false;
-			SetRect(textQuit.rectTransform, new Vector2(0, 0), new Vector2(1, 0), new Vector2(0.5f, 0), new Vector2(0, 62), new Vector2(-120, 48));
-			quitTransform.SetSiblingIndex(canvasTransform.childCount - 1);
+			quitTransform.gameObject.SetActive(false);
 		}
 
 		//フェード用の黒画像は必ず一番手前。押せてしまうとタップが吸われるので当たり判定は切る
@@ -196,8 +200,9 @@ public static class ResultUIBuilder
 			fadeTransform.SetAsLastSibling();
 		}
 
-		WireResultScore(textScore, textStageName, textHighScore, textShot, textRank, textDelta,
+		WireResultScore(textScore, textStageName, textHighScore, textShot, textRank, textDelta, textRate,
 			gauge, newRecordPanel.gameObject, textNewRecord);
+		WireButtons(buttonStageSelect, buttonTitle);
 
 		//背景を全面に描くので、カメラは空を描かなくて良い
 		Camera camera = Camera.main;
@@ -213,7 +218,7 @@ public static class ResultUIBuilder
 	}
 
 	static void WireResultScore(Text textScore, Text textStageName, Text textHighScore, Text textShot,
-		Text textRank, Text textDelta, Image gauge, GameObject newRecordObject, Text textNewRecord)
+		Text textRank, Text textDelta, Text textRate, Image gauge, GameObject newRecordObject, Text textNewRecord)
 	{
 		ResultScore resultScore = Object.FindObjectOfType<ResultScore>();
 		if (resultScore == null)
@@ -229,6 +234,7 @@ public static class ResultUIBuilder
 		serialized.FindProperty("textTargetCount").objectReferenceValue = textShot;
 		serialized.FindProperty("textRank").objectReferenceValue = textRank;
 		serialized.FindProperty("textDiff").objectReferenceValue = textDelta;
+		serialized.FindProperty("textAchieveRate").objectReferenceValue = textRate;
 		serialized.FindProperty("imageScoreGauge").objectReferenceValue = gauge;
 		serialized.FindProperty("newRecordGameObject").objectReferenceValue = newRecordObject;
 		serialized.FindProperty("textNewRecord").objectReferenceValue = textNewRecord;
@@ -252,6 +258,66 @@ public static class ResultUIBuilder
 		}
 
 		serialized.ApplyModifiedPropertiesWithoutUndo();
+	}
+
+	/// <summary>
+	/// ボタンの押した時の行き先を繋ぎ直す
+	/// </summary>
+	static void WireButtons(Button buttonStageSelect, Button buttonTitle)
+	{
+		ResultManager manager = Object.FindObjectOfType<ResultManager>();
+		if (manager == null)
+		{
+			Debug.LogError("ResultManagerが見つかりませんでした");
+			return;
+		}
+
+		SetOnClick(buttonStageSelect, new UnityAction(manager.RequestStageSelect));
+		SetOnClick(buttonTitle, new UnityAction(manager.RequestTitle));
+	}
+
+	static void SetOnClick(Button button, UnityAction action)
+	{
+		//前に繋いだ物が残っていると二重に呼ばれるので、一度全部外す
+		for (int i = button.onClick.GetPersistentEventCount() - 1; 0 <= i; i--)
+		{
+			UnityEventTools.RemovePersistentListener(button.onClick, i);
+		}
+
+		UnityEventTools.AddPersistentListener(button.onClick, action);
+	}
+
+	/// <summary>
+	/// 情報パネルの中の「見出し + 数字」の一行。数字の側を返す
+	/// </summary>
+	static Text CreateStatRow(Transform parent, string name, string label, string value, float y)
+	{
+		CreateText(parent, "Text_" + name + "Label", label, 24, softTextColor, TextAnchor.MiddleLeft,
+			new Vector2(0, 1), new Vector2(0, 1), new Vector2(28, y), new Vector2(260, 44));
+		return CreateText(parent, "Text_" + name, value, 34, Color.white, TextAnchor.MiddleRight,
+			new Vector2(1, 1), new Vector2(1, 1), new Vector2(-28, y + 2), new Vector2(280, 48));
+	}
+
+	/// <summary>
+	/// 下に並べる大きめのボタン。押せる場所である事が分かるよう下線を付ける
+	/// </summary>
+	static Button CreateMenuButton(Transform parent, string name, string label, Vector2 position)
+	{
+		Image panel = CreateImage(parent, name, buttonMaterial, Color.white);
+		SetRect(panel.rectTransform, new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0), position, new Vector2(420, 160));
+		AddLiquidGlassRect(panel.gameObject, 30.0f);
+
+		Button button = panel.gameObject.AddComponent<Button>();
+		button.targetGraphic = panel;
+
+		Text text = CreateText(panel.transform, "Text_Label", label, 34, Color.white, TextAnchor.MiddleCenter,
+			new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0, 10), new Vector2(400, 50));
+
+		Image underline = CreateImage(panel.transform, "Image_Underline", null, accentColor);
+		SetRect(underline.rectTransform, new Vector2(0.5f, 0), new Vector2(0.5f, 0), new Vector2(0.5f, 0), new Vector2(0, 28), new Vector2(240, 5));
+		underline.raycastTarget = false;
+
+		return button;
 	}
 
 	static void AddLiquidGlassRect(GameObject target, float radius)
@@ -328,10 +394,20 @@ public static class ResultUIBuilder
 
 	static void DestroyByName(Transform parent, string name)
 	{
+		//プレハブインスタンスの一部などDestroyImmediateで消せない相手だと、
+		//Findが同じ物を返し続けて終わらなくなるので、消えなければ打ち切る
 		Transform target = parent.Find(name);
 		while (target != null)
 		{
-			Object.DestroyImmediate(target.gameObject);
+			GameObject gameObject = target.gameObject;
+			Object.DestroyImmediate(gameObject);
+
+			if (gameObject != null)
+			{
+				Debug.LogWarning(name + " は消せませんでした。プレハブの一部の可能性があります");
+				return;
+			}
+
 			target = parent.Find(name);
 		}
 	}

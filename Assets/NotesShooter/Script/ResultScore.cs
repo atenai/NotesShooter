@@ -37,6 +37,8 @@ public class ResultScore : MonoBehaviour
     [SerializeField] Text textRank;
     [Tooltip("ハイスコアとの差")]
     [SerializeField] Text textDiff;
+    [Tooltip("自己ベストに対する達成率。ランクの根拠が分かるように出す")]
+    [SerializeField] Text textAchieveRate;
     [Tooltip("ハイスコアに対する今回のスコアの割合を示すゲージ")]
     [SerializeField] Image imageScoreGauge;
     [Tooltip("ハイスコア更新時に出す表示")]
@@ -212,6 +214,11 @@ public class ResultScore : MonoBehaviour
 
         //まだ記録が無い初回は、それ自体が自己ベストなので一番上にする
         int ratePercent = previousHighScore <= 0 ? 100 : Mathf.RoundToInt(100.0f * score / previousHighScore);
+
+        if (textAchieveRate != null)
+        {
+            textAchieveRate.text = previousHighScore <= 0 ? "-" : ratePercent.ToString() + " %";
+        }
 
         foreach (RankThreshold threshold in rankThresholds)
         {
