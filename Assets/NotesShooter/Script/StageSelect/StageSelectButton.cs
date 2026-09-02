@@ -105,7 +105,7 @@ public class StageSelectButton : StageSelectButtonBase
 	/// </summary>
 	/// <param name="x">横幅</param>
 	/// <param name="y">縦幅</param>
-	public void SetStageSelectButtonSize(float x = 520, float y = 320)
+	public void SetStageSelectButtonSize(float x = 700, float y = 320)
 	{
 		stageSelectButton.GetComponent<RectTransform>().sizeDelta = new Vector2(x, y);
 	}

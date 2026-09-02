@@ -1,15 +1,38 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class ResultManager : BaseSceneManager
+public class ResultManager : MonoBehaviour, IFadeSceneManager
 {
-	[Tooltip("「タイトルへ」から飛ぶシーン名")]
-	[SerializeField] string titleSceneName = "Title";
-	[Tooltip("「ステージセレクト」から飛ぶシーン名")]
-	[SerializeField] string stageSelectSceneName = "StageSelect";
+	[Header("オーディオ")]
+	[SerializeField] AudioClip audioClip;
+	[SerializeField] AudioSource audioSource;
 
-	new void Start()
+	[Header("シーン遷移")]
+	[Tooltip("タイトル")]
+	const string Title_SceneName = "Title";
+	[Tooltip("ステージセレクト")]
+	const string StageSelect_SceneName = "StageSelect";
+	[Tooltip("次のシーン名")]
+	string nextSceneName = "";
+
+	[Header("フェード")]
+	[Tooltip("フェード用の黒画像")]
+	[SerializeField] Image fadeImage;
+	[Tooltip("フェードの速度")]
+	float fadeSpeed = 2.5f;
+	[Tooltip("フェードインのアルファ値")]
+	float fadeInAlfa = 1.0f;
+	[Tooltip("フェードインが終わったか？")]
+	bool isFadeInEnd = false;
+	[Tooltip("フェードアウトのアルファ値")]
+	float fadeOutAlfa = 0.0f;
+	[Tooltip("フェードアウトが始まったか？")]
+	bool isFadeOutStart = false;
+
+	void Start()
 	{
-		base.Start();
+		InitFade();
 
 		//リザルトに来るたびに数え、規定回数ごとにインターステーシャル広告を出す
 		if (AdsManager.SingletonInstance != null)
@@ -18,14 +41,41 @@ public class ResultManager : BaseSceneManager
 		}
 	}
 
+	public void InitFade()
+	{
+		//フェードインの初期化
+		isFadeInEnd = false;
+		fadeInAlfa = 1.0f;
+		fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeInAlfa);
+
+		//フェードアウトの初期化
+		isFadeOutStart = false;
+		fadeOutAlfa = 0.0f;
+	}
+
 	void Update()
 	{
 		FadeIn();
-
-		//画面のどこを触っても進む処理は使わない。
-		//Input.anyKeyDownはボタンを押した時にも反応してしまい、
-		//どのボタンを押してもFadeTriggerが先にタイトルへ行き先を決めてしまう
 		FadeOut();
+	}
+
+	public void FadeIn()
+	{
+		if (isFadeInEnd == true)
+		{
+			return;
+		}
+
+		fadeInAlfa -= fadeSpeed * Time.deltaTime;
+
+		const float min = 0.0f;
+		if (fadeInAlfa <= min)
+		{
+			fadeInAlfa = min;
+			isFadeInEnd = true;
+		}
+
+		fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeInAlfa);
 	}
 
 	/// <summary>
@@ -33,7 +83,7 @@ public class ResultManager : BaseSceneManager
 	/// </summary>
 	public void RequestTitle()
 	{
-		RequestSceneChange(titleSceneName);
+		RequestSceneChange(Title_SceneName);
 	}
 
 	/// <summary>
@@ -41,27 +91,47 @@ public class ResultManager : BaseSceneManager
 	/// </summary>
 	public void RequestStageSelect()
 	{
-		RequestSceneChange(stageSelectSceneName);
+		RequestSceneChange(StageSelect_SceneName);
 	}
 
 	/// <summary>
 	/// 行き先を決めてフェードアウトを始める
 	/// </summary>
-	void RequestSceneChange(string name)
+	void RequestSceneChange(string sceneName)
 	{
 		//連打で二重に遷移しないようにする
-		if (isFade == true || string.IsNullOrEmpty(name) == true)
+		if (isFadeOutStart == true)
 		{
 			return;
 		}
 
-		//基底クラスのFadeOutはsceneNameを見て移るので、押されたボタンの行き先を入れておく
-		sceneName = name;
-		isFade = true;
+		nextSceneName = sceneName;
+		isFadeOutStart = true;
 
 		if (audioSource != null && audioClip != null)
 		{
 			audioSource.PlayOneShot(audioClip);
 		}
+	}
+
+	public void FadeOut()
+	{
+		if (isFadeOutStart == true)
+		{
+			fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeOutAlfa);
+			fadeOutAlfa += fadeSpeed * Time.deltaTime;
+		}
+
+		const float max = 1.0f;
+		if (max <= fadeOutAlfa)
+		{
+			isFadeOutStart = false;
+			SceneChange(nextSceneName);
+		}
+	}
+
+	public void SceneChange(string name)
+	{
+		SceneManager.LoadScene(name);
 	}
 }

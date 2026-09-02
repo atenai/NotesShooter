@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class StageSelectManager : MonoBehaviour
+public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 {
 	/// <summary>
 	/// ステージ1つ分の紹介文。左側の説明欄に出す
@@ -22,27 +23,34 @@ public class StageSelectManager : MonoBehaviour
 		public string difficulty = "★☆☆";
 	}
 
-	[Tooltip("フェード用の黒画像")]
-	[SerializeField] private Image fadeImage;
-	[Tooltip("ステージボタンから飛ぶシーン名")]
-	[SerializeField] private string stageSceneName = "Stage2";
-	[Tooltip("ボーナスステージボタンから飛ぶシーン名")]
-	[SerializeField] private string bonusStageSceneName = "MasterStage";
-	[Tooltip("戻るボタンで飛ぶシーン名")]
-	[SerializeField] private string titleSceneName = "Title";
+	[Header("オーディオ")]
+	[SerializeField] AudioClip audioClip;
+	[SerializeField] AudioSource audioSource;
 
-	[Tooltip("フェードの速さ")]
-	private const float fadeSpeed = 2.5f;
-	[Tooltip("フェードインで薄くしていく黒画像の濃さ")]
-	private float fadeInAlfa = 1.0f;
-	[Tooltip("フェードインが終わったか")]
-	private bool isFadeInEnd = false;
-	[Tooltip("フェードアウト中の黒画像の濃さ")]
-	private float fadeOutAlfa = 0.0f;
-	[Tooltip("フェードアウト中か")]
-	private bool isFadeOut = false;
-	[Tooltip("フェードアウトが終わったら読み込むシーン名")]
-	private string nextSceneName = "";
+	[Header("シーン遷移")]
+	[Tooltip("ステージボタンから飛ぶシーン名")]
+	[SerializeField] string stageSceneName = "Stage2";
+	[Tooltip("ボーナスステージボタンから飛ぶシーン名")]
+	[SerializeField] string bonusStageSceneName = "MasterStage";
+	[Tooltip("タイトル")]
+	const string Title_SceneName = "Title";
+	[Tooltip("次のシーン名")]
+	string nextSceneName = "";
+
+	[Header("フェード")]
+	[Tooltip("フェード用の黒画像")]
+	[SerializeField] Image fadeImage;
+	[Tooltip("フェードの速度")]
+	float fadeSpeed = 2.5f;
+	[Tooltip("フェードインのアルファ値")]
+	float fadeInAlfa = 1.0f;
+	[Tooltip("フェードインが終わったか？")]
+	bool isFadeInEnd = false;
+	[Tooltip("フェードアウトのアルファ値")]
+	float fadeOutAlfa = 0.0f;
+	[Tooltip("フェードアウトが始まったか？")]
+	bool isFadeOutStart = false;
+
 
 	private const int First_Stage = 1;
 	private const int Total_Stage = 4;
@@ -89,11 +97,7 @@ public class StageSelectManager : MonoBehaviour
 
 	void Start()
 	{
-		//シーンの開始時は真っ黒にしておき、少しずつ透明にする
-		fadeInAlfa = 1.0f;
-		isFadeInEnd = false;
-		isFadeOut = false;
-		ApplyFadeAlfa(fadeInAlfa);
+		InitFade();
 
 		InitVerticalLayoutGroupPadding();
 		CreateStageButtons();
@@ -110,15 +114,32 @@ public class StageSelectManager : MonoBehaviour
 		StartCoroutine(Direction());
 	}
 
+	public void InitFade()
+	{
+		//フェードインの初期化
+		isFadeInEnd = false;
+		fadeInAlfa = 1.0f;
+		fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeInAlfa);
+
+		//フェードアウトの初期化
+		isFadeOutStart = false;
+		fadeOutAlfa = 0.0f;
+	}
+
+	/// <summary>
+	/// ステージボタンの縦方向の余白を調整する
+	/// 最初のステージの時は下に余白を作る。
+	/// 最後のステージの時は上に余白を作る。
+	/// </summary>
 	void InitVerticalLayoutGroupPadding()
 	{
 		if (playCount == First_Stage)
 		{
-			verticalLayoutGroup.padding.bottom = 1000;
+			verticalLayoutGroup.padding.bottom = 500;
 		}
 		else if (playCount == Total_Stage)
 		{
-			verticalLayoutGroup.padding.top = 1000;
+			verticalLayoutGroup.padding.top = 500;
 		}
 	}
 
@@ -141,18 +162,6 @@ public class StageSelectManager : MonoBehaviour
 		BonusStageSelectButton bonusStageSelectButton = bonusStageSelectButtonGameObject.GetComponent<BonusStageSelectButton>();
 		bonusStageSelectButton.Initialize(Total_Stage, Total_Stage, playCount);
 		stageSelectButtons.Add(bonusStageSelectButton);
-	}
-
-	void Update()
-	{
-		FadeIn();
-		FadeOut();
-
-		//Androidのバックキーとエディタ・PCのEscapeはどちらもKeyCode.Escapeで拾える
-		if (Input.GetKeyDown(KeyCode.Escape) == true)
-		{
-			RequestTitle();
-		}
 	}
 
 	/// <summary>
@@ -206,22 +215,6 @@ public class StageSelectManager : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 今遊ぼうとしているステージの表示名を、リザルト画面の為に覚えておく
-	/// </summary>
-	private void RememberStageDisplayName()
-	{
-		int currentStage = Mathf.Clamp(playCount, First_Stage, Total_Stage);
-
-		string displayName = "ステージ " + currentStage.ToString();
-		if (stageInformations != null && currentStage - 1 < stageInformations.Length && stageInformations[currentStage - 1] != null)
-		{
-			displayName = stageInformations[currentStage - 1].stageName;
-		}
-
-		ScoreRecord.SetPlayingStageDisplayName(displayName);
-	}
-
-	/// <summary>
 	/// 今が何ステージ目かを出す。
 	/// playCountはTotal_Stageで頭打ちにしているので、クリア数として出すと
 	/// 全部遊んでも「3 / 4」までしか進まず正しくない
@@ -248,97 +241,19 @@ public class StageSelectManager : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 黒画像の濃さを反映する
+	/// 今遊ぼうとしているステージの表示名を、リザルト画面の為に覚えておく
 	/// </summary>
-	private void ApplyFadeAlfa(float alfa)
+	private void RememberStageDisplayName()
 	{
-		if (fadeImage == null)
+		int currentStage = Mathf.Clamp(playCount, First_Stage, Total_Stage);
+
+		string displayName = "ステージ " + currentStage.ToString();
+		if (stageInformations != null && currentStage - 1 < stageInformations.Length && stageInformations[currentStage - 1] != null)
 		{
-			return;
+			displayName = stageInformations[currentStage - 1].stageName;
 		}
 
-		Color color = fadeImage.color;
-		fadeImage.color = new Color(color.r, color.g, color.b, alfa);
-	}
-
-	/// <summary>
-	/// シーン開始時のフェードイン
-	/// </summary>
-	private void FadeIn()
-	{
-		if (isFadeInEnd == true)
-		{
-			return;
-		}
-
-		fadeInAlfa -= fadeSpeed * Time.deltaTime;
-
-		const float min = 0.0f;
-		if (fadeInAlfa <= min)
-		{
-			fadeInAlfa = min;
-			isFadeInEnd = true;
-		}
-
-		ApplyFadeAlfa(fadeInAlfa);
-	}
-
-	/// <summary>
-	/// フェードアウトし切ったらシーンを切り替える
-	/// </summary>
-	private void FadeOut()
-	{
-		if (isFadeOut == false)
-		{
-			return;
-		}
-
-		fadeOutAlfa += fadeSpeed * Time.deltaTime;
-		ApplyFadeAlfa(fadeOutAlfa);
-
-		const float max = 1.0f;
-		if (max <= fadeOutAlfa)
-		{
-			isFadeOut = false;
-			UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
-		}
-	}
-
-	/// <summary>
-	/// ステージボタンから呼ばれる。フェードアウトしてからステージへ移る
-	/// </summary>
-	public void RequestStageStart()
-	{
-		RequestSceneChange(stageSceneName);
-	}
-
-	/// <summary>
-	/// 戻るボタンとAndroidのバックキーから呼ばれる
-	/// </summary>
-	public void RequestTitle()
-	{
-		RequestSceneChange(titleSceneName);
-	}
-
-	/// <summary>
-	/// ボーナスステージボタンから呼ばれる
-	/// </summary>
-	public void RequestBonusStageStart()
-	{
-		RequestSceneChange(bonusStageSceneName);
-	}
-
-	private void RequestSceneChange(string sceneName)
-	{
-		//連打で二重に遷移しないようにする
-		if (isFadeOut == true || string.IsNullOrEmpty(sceneName) == true)
-		{
-			return;
-		}
-
-		nextSceneName = sceneName;
-		fadeOutAlfa = 0.0f;
-		isFadeOut = true;
+		ScoreRecord.SetPlayingStageDisplayName(displayName);
 	}
 
 	/// <summary>
@@ -346,7 +261,7 @@ public class StageSelectManager : MonoBehaviour
 	/// 今遊べるステージまで上がって下線を光らせる
 	/// </summary>
 	/// <returns></returns>
-	private IEnumerator Direction()
+	IEnumerator Direction()
 	{
 		scrollRect.verticalNormalizedPosition = 0 / Total_Stage;
 
@@ -385,5 +300,101 @@ public class StageSelectManager : MonoBehaviour
 		}
 
 		yield return null;
+	}
+
+	void Update()
+	{
+		FadeIn();
+		FadeOut();
+
+		//Androidのバックキーとエディタ・PCのEscapeはどちらもKeyCode.Escapeで拾える
+		if (Input.GetKeyDown(KeyCode.Escape) == true)
+		{
+			RequestTitle();
+		}
+	}
+
+	public void FadeIn()
+	{
+		if (isFadeInEnd == true)
+		{
+			return;
+		}
+
+		fadeInAlfa -= fadeSpeed * Time.deltaTime;
+
+		const float min = 0.0f;
+		if (fadeInAlfa <= min)
+		{
+			fadeInAlfa = min;
+			isFadeInEnd = true;
+		}
+
+		fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeInAlfa);
+	}
+
+	/// <summary>
+	/// ステージボタンから呼ばれる。フェードアウトしてからステージへ移る
+	/// </summary>
+	public void RequestStageStart()
+	{
+		RequestSceneChange(stageSceneName);
+	}
+
+	/// <summary>
+	/// 戻るボタンとAndroidのバックキーから呼ばれる
+	/// </summary>
+	public void RequestTitle()
+	{
+		RequestSceneChange(Title_SceneName);
+	}
+
+	/// <summary>
+	/// ボーナスステージボタンから呼ばれる
+	/// </summary>
+	public void RequestBonusStageStart()
+	{
+		RequestSceneChange(bonusStageSceneName);
+	}
+
+	/// <summary>
+	/// 行き先を決めてフェードアウトを始める
+	/// </summary>
+	void RequestSceneChange(string sceneName)
+	{
+		//連打で二重に遷移しないようにする
+		if (isFadeOutStart == true)
+		{
+			return;
+		}
+
+		nextSceneName = sceneName;
+		isFadeOutStart = true;
+
+		if (audioSource != null && audioClip != null)
+		{
+			audioSource.PlayOneShot(audioClip);
+		}
+	}
+
+	public void FadeOut()
+	{
+		if (isFadeOutStart == true)
+		{
+			fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeOutAlfa);
+			fadeOutAlfa += fadeSpeed * Time.deltaTime;
+		}
+
+		const float max = 1.0f;
+		if (max <= fadeOutAlfa)
+		{
+			isFadeOutStart = false;
+			SceneChange(nextSceneName);
+		}
+	}
+
+	public void SceneChange(string name)
+	{
+		SceneManager.LoadScene(name);
 	}
 }

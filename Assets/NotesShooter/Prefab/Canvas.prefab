@@ -3341,6 +3341,7 @@ GameObject:
   - component: {fileID: 4484678115582514042}
   - component: {fileID: 1016067818672671463}
   - component: {fileID: 8062536021127755534}
+  - component: {fileID: 3341991095458021422}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3615,6 +3616,19 @@ MonoBehaviour:
   textBulletAndroid: {fileID: 1759664224563024257}
   leftShotButton: {fileID: 897158544110214079}
   leftReloadButton: {fileID: 1066821979644815442}
+--- !u!114 &3341991095458021422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989917019572285324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eefd763a8085014d8953887684431de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeImage: {fileID: 3304704917056552879}
 --- !u!1 &9016603814918810665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3626,9 +3640,8 @@ GameObject:
   - component: {fileID: 2984618739585935584}
   - component: {fileID: 4963606275090948746}
   - component: {fileID: 3304704917056552879}
-  - component: {fileID: 4196283094972822146}
   m_Layer: 5
-  m_Name: Image_FadeGamePlay
+  m_Name: Image_Fade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3691,22 +3704,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4196283094972822146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9016603814918810665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eefd763a8085014d8953887684431de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 3304704917056552879}
-  audioClip: {fileID: 0}
-  audioSource: {fileID: 0}
-  sceneName: Result
 --- !u!1001 &4367409512731803380
 PrefabInstance:
   m_ObjectHideFlags: 0

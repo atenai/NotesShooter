@@ -1,0 +1,365 @@
+{
+  "ExportTimestamp": "2026-09-01 21:48:56",
+  "Context": {
+    "sceneType": "editor",
+    "sceneName": "Result",
+    "nodeCount": 24,
+    "maxDepth": 1
+  },
+  "Hierarchy": [
+    {
+      "sceneName": "Result",
+      "stats": {
+        "rootCount": 5,
+        "nodeCount": 24,
+        "maxDepth": 1
+      },
+      "componentsLut": [
+        "Transform",
+        "Camera",
+        "AudioListener",
+        "UniversalAdditionalCameraData",
+        "Light",
+        "UniversalAdditionalLightData",
+        "RectTransform",
+        "Canvas",
+        "CanvasScaler",
+        "GraphicRaycaster",
+        "AudioSource",
+        "ResultScore",
+        "CanvasRenderer",
+        "Image",
+        "LiquidGlassRect",
+        "Text",
+        "Outline",
+        "ResultManager",
+        "EventSystem",
+        "StandaloneInputModule",
+        "ScreenSetting"
+      ],
+      "roots": [
+        {
+          "name": "Main Camera",
+          "isActive": true,
+          "componentsIdx": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "siblingIndex": 0,
+          "tag": "MainCamera",
+          "layer": 0,
+          "children": []
+        },
+        {
+          "name": "Directional Light",
+          "isActive": true,
+          "componentsIdx": [
+            0,
+            4,
+            5
+          ],
+          "siblingIndex": 1,
+          "tag": "Untagged",
+          "layer": 0,
+          "children": []
+        },
+        {
+          "name": "Canvas",
+          "isActive": true,
+          "componentsIdx": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "siblingIndex": 2,
+          "tag": "Untagged",
+          "layer": 5,
+          "children": [
+            {
+              "name": "Image_Back",
+              "isActive": false,
+              "componentsIdx": [
+                6,
+                12,
+                13
+              ],
+              "siblingIndex": 0,
+              "tag": "Untagged",
+              "layer": 5,
+              "children": []
+            },
+            {
+              "name": "Image_Result",
+              "isActive": false,
+              "componentsIdx": [
+                6,
+                12,
+                13
+              ],
+              "siblingIndex": 1,
+              "tag": "Untagged",
+              "layer": 5,
+              "children": []
+            },
+            {
+              "name": "Image_Background",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                13
+              ],
+              "siblingIndex": 2,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Panel_Glass",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                13,
+                14
+              ],
+              "siblingIndex": 3,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Line_GlassTop",
+              "isActive": false,
+              "componentsIdx": [
+                6,
+                12,
+                13
+              ],
+              "siblingIndex": 4,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Line_GlassBottom",
+              "isActive": false,
+              "componentsIdx": [
+                6,
+                12,
+                13
+              ],
+              "siblingIndex": 5,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Line_GlassLeft",
+              "isActive": false,
+              "componentsIdx": [
+                6,
+                12,
+                13
+              ],
+              "siblingIndex": 6,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Line_GlassRight",
+              "isActive": false,
+              "componentsIdx": [
+                6,
+                12,
+                13
+              ],
+              "siblingIndex": 7,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Panel_Header",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                13
+              ],
+              "siblingIndex": 8,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Line_Header",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                13
+              ],
+              "siblingIndex": 9,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Text_Title",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                15
+              ],
+              "siblingIndex": 10,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Text_StageName",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                15
+              ],
+              "siblingIndex": 11,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Text_ScoreLabel",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                15
+              ],
+              "siblingIndex": 12,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Text_Score",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                15,
+                16
+              ],
+              "siblingIndex": 13,
+              "tag": "Untagged",
+              "layer": 5,
+              "children": []
+            },
+            {
+              "name": "Text_NewRecord",
+              "isActive": false,
+              "componentsIdx": [
+                6,
+                12,
+                15
+              ],
+              "siblingIndex": 14,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Line_Footer",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                13
+              ],
+              "siblingIndex": 15,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Text_HighScore",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                15
+              ],
+              "siblingIndex": 16,
+              "tag": "Untagged",
+              "layer": 0,
+              "children": []
+            },
+            {
+              "name": "Text_GameQuit",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                15,
+                16
+              ],
+              "siblingIndex": 17,
+              "tag": "Untagged",
+              "layer": 5,
+              "children": []
+            },
+            {
+              "name": "Image_FadeResult",
+              "isActive": true,
+              "componentsIdx": [
+                6,
+                12,
+                13,
+                10,
+                17
+              ],
+              "siblingIndex": 18,
+              "tag": "Untagged",
+              "layer": 5,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "EventSystem",
+          "isActive": true,
+          "componentsIdx": [
+            0,
+            18,
+            19
+          ],
+          "siblingIndex": 3,
+          "tag": "Untagged",
+          "layer": 0,
+          "children": []
+        },
+        {
+          "name": "GameObject_ScreenSetting",
+          "isActive": true,
+          "componentsIdx": [
+            0,
+            20
+          ],
+          "siblingIndex": 4,
+          "tag": "Untagged",
+          "layer": 0,
+          "children": []
+        }
+      ]
+    }
+  ]
+}

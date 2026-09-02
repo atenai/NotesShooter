@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 92577450}
   - component: {fileID: 92577449}
   - component: {fileID: 92577448}
+  - component: {fileID: 92577451}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -357,6 +358,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &92577451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92577447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &95190963
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,7 +879,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u3058\u3087\u3046\u305F\u3044"
+  m_Text: "\u72B6\u614B"
 --- !u!222 &690965305
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -921,85 +966,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804152744}
-  m_CullTransparentMesh: 1
---- !u!1 &804938568
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 804938569}
-  - component: {fileID: 804938571}
-  - component: {fileID: 804938570}
-  m_Layer: 5
-  m_Name: Text_Hint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &804938569
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804938568}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 862456815}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 64, y: 54}
-  m_SizeDelta: {x: 1100, y: 48}
-  m_Pivot: {x: 0, y: 0}
---- !u!114 &804938570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804938568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.804, g: 0.906, b: 0.965, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 3
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: "\u5149\u3063\u3066\u3044\u308B\u30B9\u30C6\u30FC\u30B8\u306E\u30B9\u30BF\u30FC\u30C8\u3092\u62BC\u3059\u3068\u306F\u3058\u307E\u308A\u307E\u3059"
---- !u!222 &804938571
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804938568}
   m_CullTransparentMesh: 1
 --- !u!1 &830456208
 GameObject:
@@ -1088,6 +1054,7 @@ GameObject:
   - component: {fileID: 862456814}
   - component: {fileID: 862456813}
   - component: {fileID: 862456812}
+  - component: {fileID: 862456816}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1183,7 +1150,6 @@ RectTransform:
   - {fileID: 1309922302}
   - {fileID: 491415855}
   - {fileID: 95190964}
-  - {fileID: 804938569}
   - {fileID: 1111002152}
   - {fileID: 1683959173}
   m_Father: {fileID: 0}
@@ -1193,6 +1159,55 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &862456816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862456811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79d81b49a2598542a4cd5cb4beeb17c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 50d885d821f431545a7b16dc7f5b2821, type: 3}
+  audioSource: {fileID: 1683959176}
+  stageSceneName: Stage2
+  bonusStageSceneName: MasterStage
+  fadeImage: {fileID: 1683959174}
+  scrollRect: {fileID: 1934589597}
+  content: {fileID: 330042657}
+  stageSelectButtonPrefab: {fileID: 2876003156051555001, guid: 902ee8ee8f24432488a5bb9166ff8859,
+    type: 3}
+  bonusStageSelectButtonPrefab: {fileID: 2876003156051555001, guid: db8b82f88b299f94da41b85f1c188f45,
+    type: 3}
+  verticalLayoutGroup: {fileID: 330042660}
+  textStageName: {fileID: 864514770}
+  textStageSubName: {fileID: 2134035850}
+  textDescription: {fileID: 1309922303}
+  textProgress: {fileID: 804152746}
+  textInfoHighScore: {fileID: 1120570093}
+  textInfoState: {fileID: 1335420051}
+  textInfoDifficulty: {fileID: 895212212}
+  textVersion: {fileID: 1111002153}
+  stageInformations:
+  - stageName: "\u30B9\u30C6\u30FC\u30B8 1"
+    subName: STAGE 01
+    description: "\u307E\u305A\u306F\u3053\u3053\u304B\u3089\u3002\u30EA\u30BA\u30E0\u306B\u5408\u308F\u305B\u3066\u7684\u3092\u6483\u3061\u306C\u3053\u3046\u3002"
+    difficulty: "\u2605\u2606\u2606"
+  - stageName: "\u30B9\u30C6\u30FC\u30B8 2"
+    subName: STAGE 02
+    description: "\u7684\u306E\u52D5\u304D\u304C\u901F\u304F\u306A\u308B\u3002\u306D\u3089\u3044\u3092\u5B9A\u3081\u3066\u7D20\u65E9\u304F\u6483\u3068\u3046\u3002"
+    difficulty: "\u2605\u2605\u2606"
+  - stageName: "\u30B9\u30C6\u30FC\u30B8 3"
+    subName: STAGE 03
+    description: "\u7684\u304C\u5165\u308A\u4E71\u308C\u308B\u7D42\u76E4\u3002\u96C6\u4E2D\u529B\u304C\u8A66\u3055\u308C\u308B\u30B9\u30C6\u30FC\u30B8\u3002"
+    difficulty: "\u2605\u2605\u2605"
+  - stageName: "\u30DC\u30FC\u30CA\u30B9\u30B9\u30C6\u30FC\u30B8"
+    subName: BONUS STAGE
+    description: "\u7684\u3092\u3059\u3079\u3066\u6483\u3061\u306C\u3044\u3066\u30B9\u30B3\u30A2\u3092\u7A3C\u3054\u3046\u3002"
+    difficulty: "\u2605\u2605\u2605"
 --- !u!1 &864297354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,7 +1278,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u306A\u3093\u3044\u3069"
+  m_Text: "\u96E3\u6613\u5EA6"
 --- !u!222 &864297357
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2504,8 +2519,9 @@ GameObject:
   - component: {fileID: 1683959173}
   - component: {fileID: 1683959175}
   - component: {fileID: 1683959174}
+  - component: {fileID: 1683959176}
   m_Layer: 0
-  m_Name: Image_FadeStageSelect
+  m_Name: Image_Fade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2568,6 +2584,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683959172}
   m_CullTransparentMesh: 1
+--- !u!82 &1683959176
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683959172}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1711380765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,13 +2778,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934589600}
+      - m_Target: {fileID: 862456816}
         m_TargetAssemblyTypeName: StageSelectManager, Assembly-CSharp
         m_MethodName: RequestTitle
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3071,7 +3183,6 @@ GameObject:
   - component: {fileID: 1934589599}
   - component: {fileID: 1934589598}
   - component: {fileID: 1934589597}
-  - component: {fileID: 1934589600}
   - component: {fileID: 1934589601}
   m_Layer: 5
   m_Name: Scroll View
@@ -3169,54 +3280,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934589595}
   m_CullTransparentMesh: 1
---- !u!114 &1934589600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934589595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79d81b49a2598542a4cd5cb4beeb17c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeImage: {fileID: 1683959174}
-  stageSceneName: Stage2
-  bonusStageSceneName: MasterStage
-  titleSceneName: Title
-  scrollRect: {fileID: 1934589597}
-  content: {fileID: 330042657}
-  stageSelectButtonPrefab: {fileID: 2876003156051555001, guid: 902ee8ee8f24432488a5bb9166ff8859,
-    type: 3}
-  bonusStageSelectButtonPrefab: {fileID: 2876003156051555001, guid: db8b82f88b299f94da41b85f1c188f45,
-    type: 3}
-  verticalLayoutGroup: {fileID: 330042660}
-  textStageName: {fileID: 864514770}
-  textStageSubName: {fileID: 2134035850}
-  textDescription: {fileID: 1309922303}
-  textProgress: {fileID: 804152746}
-  textInfoHighScore: {fileID: 1120570093}
-  textInfoState: {fileID: 1335420051}
-  textInfoDifficulty: {fileID: 895212212}
-  textVersion: {fileID: 1111002153}
-  stageInformations:
-  - stageName: "\u30B9\u30C6\u30FC\u30B8 1"
-    subName: STAGE 01
-    description: "\u307E\u305A\u306F\u3053\u3053\u304B\u3089\u3002\u30EA\u30BA\u30E0\u306B\u5408\u308F\u305B\u3066\u7684\u3092\u6483\u3061\u306C\u3053\u3046\u3002"
-    difficulty: "\u2605\u2606\u2606"
-  - stageName: "\u30B9\u30C6\u30FC\u30B8 2"
-    subName: STAGE 02
-    description: "\u7684\u306E\u52D5\u304D\u304C\u901F\u304F\u306A\u308B\u3002\u306D\u3089\u3044\u3092\u5B9A\u3081\u3066\u7D20\u65E9\u304F\u6483\u3068\u3046\u3002"
-    difficulty: "\u2605\u2605\u2606"
-  - stageName: "\u30B9\u30C6\u30FC\u30B8 3"
-    subName: STAGE 03
-    description: "\u7684\u304C\u5165\u308A\u4E71\u308C\u308B\u7D42\u76E4\u3002\u96C6\u4E2D\u529B\u304C\u8A66\u3055\u308C\u308B\u30B9\u30C6\u30FC\u30B8\u3002"
-    difficulty: "\u2605\u2605\u2605"
-  - stageName: "\u30DC\u30FC\u30CA\u30B9\u30B9\u30C6\u30FC\u30B8"
-    subName: BONUS STAGE
-    description: "\u7684\u3092\u3059\u3079\u3066\u6483\u3061\u306C\u3044\u3066\u30B9\u30B3\u30A2\u3092\u7A3C\u3054\u3046\u3002"
-    difficulty: "\u2605\u2605\u2605"
 --- !u!114 &1934589601
 MonoBehaviour:
   m_ObjectHideFlags: 0
