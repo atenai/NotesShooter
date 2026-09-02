@@ -10,11 +10,12 @@ using UnityEditor.SceneManagement;
 /// </summary>
 public static class LensFlareBuilder
 {
-	const string flareFolder = "Assets/NotesShooter/VFX/LensFlare/";
 	const string prefabFolder = "Assets/NotesShooter/Prefab/Target/";
 
-	const string hitDataPath = flareFolder + "LFD_TargetHit.asset";
-	const string spawnDataPath = flareFolder + "LFD_TargetSpawn.asset";
+	//プロジェクトに入っているURP_Flares_Packのアセットを使う。
+	//破壊は光条のある明るい閃光、スポーンはくっきりした小さめの輝きを選んだ
+	const string hitDataPath = "Assets/URP_Flares_Pack/Prefabs/Point/Point_Light_Flare_4.asset";
+	const string spawnDataPath = "Assets/URP_Flares_Pack/Prefabs/Point/Point_Light_Flare_2.asset";
 	const string hitPrefabPath = prefabFolder + "LensFlare_TargetHit.prefab";
 	const string spawnPrefabPath = prefabFolder + "LensFlare_TargetSpawn.prefab";
 
@@ -26,11 +27,18 @@ public static class LensFlareBuilder
 	[MenuItem("Tools/NotesShooter/的のレンズフレアを用意する")]
 	public static void Build()
 	{
-		LensFlareDataSRP hitData = CreateHitData();
-		LensFlareDataSRP spawnData = CreateSpawnData();
+		LensFlareDataSRP hitData = AssetDatabase.LoadAssetAtPath<LensFlareDataSRP>(hitDataPath);
+		LensFlareDataSRP spawnData = AssetDatabase.LoadAssetAtPath<LensFlareDataSRP>(spawnDataPath);
 
-		GameObject hitPrefab = CreateFlarePrefab(hitPrefabPath, "LensFlare_TargetHit", hitData, 1.0f, 0.30f);
-		GameObject spawnPrefab = CreateFlarePrefab(spawnPrefabPath, "LensFlare_TargetSpawn", spawnData, 0.7f, 0.45f);
+		if (hitData == null || spawnData == null)
+		{
+			Debug.LogError("レンズフレアのアセットが見つかりませんでした。" + hitDataPath + " / " + spawnDataPath);
+			return;
+		}
+
+		//このパックのフレアは太陽光源向けで大きいので、scaleで小さく絞る
+		GameObject hitPrefab = CreateFlarePrefab(hitPrefabPath, "LensFlare_TargetHit", hitData, 0.7f, 0.30f, 0.16f);
+		GameObject spawnPrefab = CreateFlarePrefab(spawnPrefabPath, "LensFlare_TargetSpawn", spawnData, 0.45f, 0.45f, 0.11f);
 
 		AssignToTargets(hitPrefab, spawnPrefab);
 		AssignToScenes(hitPrefab, spawnPrefab);
@@ -40,78 +48,10 @@ public static class LensFlareBuilder
 	}
 
 	// ------------------------------------------------------------
-	// フレアのデータ
-	// ------------------------------------------------------------
-
-	static LensFlareDataSRP CreateHitData()
-	{
-		//壊した時は白から橙。爆発の閃光に寄せる
-		LensFlareDataElementSRP core = CreateCircle(new Color(1.0f, 0.96f, 0.88f, 1.0f), 0.55f, 1.8f, 0.0f);
-		LensFlareDataElementSRP halo = CreateCircle(new Color(1.0f, 0.72f, 0.40f, 0.30f), 1.4f, 0.6f, 0.0f);
-		LensFlareDataElementSRP ghost = CreatePolygon(new Color(1.0f, 0.85f, 0.60f, 0.35f), 0.7f, 0.4f, 0.35f, 6);
-
-		return SaveData(hitDataPath, new LensFlareDataElementSRP[] { halo, core, ghost });
-	}
-
-	static LensFlareDataSRP CreateSpawnData()
-	{
-		//出てくる時は水色。ゲームの他の画面と同じ色に合わせる
-		LensFlareDataElementSRP core = CreateCircle(new Color(0.75f, 0.94f, 1.0f, 1.0f), 0.40f, 1.3f, 0.0f);
-		LensFlareDataElementSRP halo = CreateCircle(new Color(0.40f, 0.83f, 1.0f, 0.28f), 1.1f, 0.5f, 0.0f);
-
-		return SaveData(spawnDataPath, new LensFlareDataElementSRP[] { halo, core });
-	}
-
-	static LensFlareDataElementSRP CreateCircle(Color tint, float scale, float intensity, float position)
-	{
-		//テクスチャを持たない手続き的な円。絵を用意しなくて済む
-		LensFlareDataElementSRP element = new LensFlareDataElementSRP();
-		element.flareType = SRPLensFlareType.Circle;
-		element.tint = tint;
-		element.uniformScale = scale;
-		element.localIntensity = intensity;
-		element.position = position;
-		element.blendMode = SRPLensFlareBlendMode.Additive;
-		element.fallOff = 0.9f;
-		element.edgeOffset = 0.1f;
-		return element;
-	}
-
-	static LensFlareDataElementSRP CreatePolygon(Color tint, float scale, float intensity, float position, int sideCount)
-	{
-		LensFlareDataElementSRP element = new LensFlareDataElementSRP();
-		element.flareType = SRPLensFlareType.Polygon;
-		element.tint = tint;
-		element.uniformScale = scale;
-		element.localIntensity = intensity;
-		element.position = position;
-		element.blendMode = SRPLensFlareBlendMode.Additive;
-		element.sideCount = sideCount;
-		element.fallOff = 0.7f;
-		element.edgeOffset = 0.2f;
-		return element;
-	}
-
-	static LensFlareDataSRP SaveData(string path, LensFlareDataElementSRP[] elements)
-	{
-		LensFlareDataSRP data = AssetDatabase.LoadAssetAtPath<LensFlareDataSRP>(path);
-		if (data == null)
-		{
-			data = ScriptableObject.CreateInstance<LensFlareDataSRP>();
-			AssetDatabase.CreateAsset(data, path);
-		}
-
-		data.elements = elements;
-		EditorUtility.SetDirty(data);
-
-		return data;
-	}
-
-	// ------------------------------------------------------------
 	// フレアのプレハブ
 	// ------------------------------------------------------------
 
-	static GameObject CreateFlarePrefab(string path, string name, LensFlareDataSRP data, float peakIntensity, float decayTime)
+	static GameObject CreateFlarePrefab(string path, string name, LensFlareDataSRP data, float peakIntensity, float decayTime, float scale)
 	{
 		GameObject root = new GameObject(name);
 
@@ -123,6 +63,8 @@ public static class LensFlareBuilder
 		//遮蔽の判定は深度を何度も読むので、短く光るだけのこの用途では切る
 		flare.useOcclusion = false;
 		flare.allowOffScreen = false;
+		//このパックは大きめに作られているので、ここで絞って的の演出に合う大きさにする
+		flare.scale = scale;
 		//距離で暗くならないようにしておく。的はプレイヤーのすぐ前に出る
 		flare.distanceAttenuationCurve = AnimationCurve.Constant(0.0f, 1.0f, 1.0f);
 		flare.scaleByDistanceCurve = AnimationCurve.Constant(0.0f, 1.0f, 1.0f);
