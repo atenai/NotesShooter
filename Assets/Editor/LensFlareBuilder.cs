@@ -13,9 +13,9 @@ public static class LensFlareBuilder
 	const string prefabFolder = "Assets/NotesShooter/Prefab/Target/";
 
 	//プロジェクトに入っているURP_Flares_Packのアセットを使う。
-	//破壊は光条のある明るい閃光、スポーンはくっきりした小さめの輝きを選んだ
+	//破壊は光条のある明るい閃光、スポーンは星に横の光条が伸びるものを選んだ
 	const string hitDataPath = "Assets/URP_Flares_Pack/Prefabs/Point/Point_Light_Flare_4.asset";
-	const string spawnDataPath = "Assets/URP_Flares_Pack/Prefabs/Point/Point_Light_Flare_2.asset";
+	const string spawnDataPath = "Assets/URP_Flares_Pack/Prefabs/Point/Point_Light_Flare_7.asset";
 	const string hitPrefabPath = prefabFolder + "LensFlare_TargetHit.prefab";
 	const string spawnPrefabPath = prefabFolder + "LensFlare_TargetSpawn.prefab";
 

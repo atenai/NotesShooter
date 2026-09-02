@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4d76f733087744991913c9d19d5274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LensFlareData: {fileID: 11400000, guid: 989e444eb84de77488479c3abd4a845c, type: 2}
+  m_LensFlareData: {fileID: 11400000, guid: a7a25c7704411b2458c48d6ed2569012, type: 2}
   intensity: 0
   maxAttenuationDistance: 100
   maxAttenuationScale: 100
