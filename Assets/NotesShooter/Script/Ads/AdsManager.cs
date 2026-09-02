@@ -145,11 +145,26 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
 
 	public void ShowAdsInterstitialCount()
 	{
+		if (adsInterstitial == null)
+		{
+			return;
+		}
+
 		adsInterstitialCount++;
-		if (adsInterstitialInterval <= adsInterstitialCount)
+		if (adsInterstitialCount < adsInterstitialInterval)
+		{
+			return;
+		}
+
+		//まだ準備できていなくて出せなかった時は数を戻さない。
+		//戻してしまうと、次に出せる状態になっても規定回数ぶん待たされてしまう
+		if (adsInterstitial.ShowAd() == true)
 		{
 			adsInterstitialCount = 0;
-			adsInterstitial.ShowAd();
+		}
+		else
+		{
+			adsInterstitialCount = adsInterstitialInterval;
 		}
 	}
 }
