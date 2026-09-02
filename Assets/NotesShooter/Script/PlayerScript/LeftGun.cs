@@ -13,6 +13,8 @@ public class LeftGun : MonoBehaviour
     [SerializeField] GameObject reloadSEPrefab;
     [SerializeField] GameObject shootPoint;
     public GameObject ShootPoint => shootPoint;
+    [Tooltip("撃った瞬間に銃口で光らせるプレハブ")]
+    [SerializeField] GameObject muzzleFlashPrefab;
     [SerializeField] GameObject cartridgePoint;
     public GameObject CartridgePoint => cartridgePoint;
 
@@ -21,7 +23,7 @@ public class LeftGun : MonoBehaviour
 
     void Awake()
     {
-        SetGun(new BlueGun(bullet, bulletSEPrefab, gunCartridgePrefab, reloadSEPrefab));
+        SetGun(new BlueGun(bullet, bulletSEPrefab, gunCartridgePrefab, reloadSEPrefab, muzzleFlashPrefab));
     }
 
     void SetGun(IGun newGun)

@@ -19,6 +19,11 @@ public class RedGun : IGun
 	GameObject gunCartridgePrefab;
 	float gunCartridgeDestroyTime = 3.0f;
 
+	[Header("マズルフラッシュ")]
+	GameObject muzzleFlashPrefab;
+	[Tooltip("自分で消えなかった時に、念の為に消すまでの秒数")]
+	float muzzleFlashDestroyTime = 1.0f;
+
 	[Header("リロード")]
 	[Tooltip("リロード後の弾のリセットした際の数")]
 	int resetBulletNumber = 20;
@@ -35,12 +40,13 @@ public class RedGun : IGun
 	float reloadSeEndtime = 1.0f;
 	bool isReloadSE = false;
 
-	public RedGun(RedBullet bullet, GameObject bulletSEPrefab, GameObject gunCartridgePrefab, GameObject reloadSEPrefab)
+	public RedGun(RedBullet bullet, GameObject bulletSEPrefab, GameObject gunCartridgePrefab, GameObject reloadSEPrefab, GameObject muzzleFlashPrefab)
 	{
 		this.bullet = bullet;
 		this.bulletSEPrefab = bulletSEPrefab;
 		this.gunCartridgePrefab = gunCartridgePrefab;
 		this.reloadSEPrefab = reloadSEPrefab;
+		this.muzzleFlashPrefab = muzzleFlashPrefab;
 
 		currentBullet = resetBulletNumber;//残弾数をリセット
 		reloadTime = reloadTimeReset;//リロードタイムをリセット
@@ -67,6 +73,7 @@ public class RedGun : IGun
 		//SEオブジェクトを生成する
 		BulletSE(gunObject.transform);
 		CreateBullet(shootPoint.transform);
+		MuzzleFlash(shootPoint.transform);
 		CreateGunCartridge(cartridgePoint.transform);
 
 		//撃った手応えを出す為にカメラを少しだけ跳ね上げる（跳ね上げた分は自動で戻る）
@@ -96,6 +103,21 @@ public class RedGun : IGun
 		newCartridge.GetComponent<Rigidbody>().AddForce(cartridgeTransform.forward * 250.0f);//速すぎるとすり抜けてしまう
 		newCartridge.GetComponent<Rigidbody>().AddForce(cartridgeTransform.up * 100.0f);//速すぎるとすり抜けてしまう
 		newCartridge.GetComponent<Rigidbody>().AddForce(cartridgeTransform.right * 200.0f);//速すぎるとすり抜けてしまう
+	}
+
+	/// <summary>
+	/// 銃口の光を出す。
+	/// 銃は毎フレーム狙う方向へ向き直るので、銃口の子にして一緒に動かす
+	/// </summary>
+	void MuzzleFlash(Transform shootTransform)
+	{
+		if (muzzleFlashPrefab == null)
+		{
+			return;
+		}
+
+		GameObject muzzleFlash = UnityEngine.Object.Instantiate(muzzleFlashPrefab, shootTransform.position, shootTransform.rotation, shootTransform);
+		UnityEngine.Object.Destroy(muzzleFlash, muzzleFlashDestroyTime);
 	}
 
 	/// <summary>
