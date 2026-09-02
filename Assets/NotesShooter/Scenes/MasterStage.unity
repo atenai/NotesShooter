@@ -748,6 +748,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[9]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7318873332454010260, guid: 05e896ab2eb2dbd4c8ac4bbc9d9dbda7,
+        type: 3}
+      propertyPath: hitLensFlarePrefab
+      value: 
+      objectReference: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+        type: 3}
+    - target: {fileID: 7318873332454010260, guid: 05e896ab2eb2dbd4c8ac4bbc9d9dbda7,
+        type: 3}
+      propertyPath: spawnLensFlarePrefab
+      value: 
+      objectReference: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1174,6 +1186,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[9]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7318873332454010260, guid: 05e896ab2eb2dbd4c8ac4bbc9d9dbda7,
+        type: 3}
+      propertyPath: hitLensFlarePrefab
+      value: 
+      objectReference: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+        type: 3}
+    - target: {fileID: 7318873332454010260, guid: 05e896ab2eb2dbd4c8ac4bbc9d9dbda7,
+        type: 3}
+      propertyPath: spawnLensFlarePrefab
+      value: 
+      objectReference: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1613,6 +1637,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MigiSameLevelDesign3GameObject_Fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 5947979113046383350, guid: ce8957b3921d03140940a56461b321ee,
+        type: 3}
+      propertyPath: hitLensFlarePrefab
+      value: 
+      objectReference: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+        type: 3}
+    - target: {fileID: 5947979113046383350, guid: ce8957b3921d03140940a56461b321ee,
+        type: 3}
+      propertyPath: spawnLensFlarePrefab
+      value: 
+      objectReference: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4880,6 +4916,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[9]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7318873332454010260, guid: 05e896ab2eb2dbd4c8ac4bbc9d9dbda7,
+        type: 3}
+      propertyPath: hitLensFlarePrefab
+      value: 
+      objectReference: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+        type: 3}
+    - target: {fileID: 7318873332454010260, guid: 05e896ab2eb2dbd4c8ac4bbc9d9dbda7,
+        type: 3}
+      propertyPath: spawnLensFlarePrefab
+      value: 
+      objectReference: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5440,6 +5488,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1929750986}
     m_Modifications:
+    - target: {fileID: 5059297175596825219, guid: 6fadaa21e5966444086021f6f9274164,
+        type: 3}
+      propertyPath: hitLensFlarePrefab
+      value: 
+      objectReference: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+        type: 3}
+    - target: {fileID: 5059297175596825219, guid: 6fadaa21e5966444086021f6f9274164,
+        type: 3}
+      propertyPath: spawnLensFlarePrefab
+      value: 
+      objectReference: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
+        type: 3}
     - target: {fileID: 8441568560379511933, guid: 6fadaa21e5966444086021f6f9274164,
         type: 3}
       propertyPath: m_Name
@@ -8205,6 +8265,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[9]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7318873332454010260, guid: 05e896ab2eb2dbd4c8ac4bbc9d9dbda7,
+        type: 3}
+      propertyPath: hitLensFlarePrefab
+      value: 
+      objectReference: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+        type: 3}
+    - target: {fileID: 7318873332454010260, guid: 05e896ab2eb2dbd4c8ac4bbc9d9dbda7,
+        type: 3}
+      propertyPath: spawnLensFlarePrefab
+      value: 
+      objectReference: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9250,6 +9322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696965199564642832, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7384673036588287666, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
         type: 3}

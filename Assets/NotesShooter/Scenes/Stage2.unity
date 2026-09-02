@@ -6462,6 +6462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -6469,6 +6470,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &159316958532081110
 GameObject:
@@ -27860,6 +27862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -27867,6 +27870,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &387513258361126374
 BoxCollider:
@@ -27937,6 +27941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -27944,6 +27949,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &420483185763619136
 MonoBehaviour:
@@ -27958,6 +27964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -27965,6 +27972,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &423622620182880935
 BoxCollider:
@@ -28383,6 +28391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -28390,6 +28399,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &520116353094811335
 MonoBehaviour:
@@ -28404,6 +28414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -28411,6 +28422,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &526712571958619591
 GameObject:
@@ -29278,6 +29290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -29285,6 +29298,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &790885119439765505
 MeshRenderer:
@@ -29768,6 +29782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -29775,6 +29790,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &943685687509642548
 MeshFilter:
@@ -29895,6 +29911,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -29903,6 +29921,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -29974,6 +29994,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -29982,6 +30004,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -30047,6 +30071,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -30055,6 +30081,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -30134,6 +30162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -30141,6 +30170,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &1025273253824408060
 Transform:
@@ -30198,6 +30228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -30206,6 +30238,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -30265,6 +30299,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -30273,6 +30309,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -30338,6 +30376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -30346,6 +30386,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -30516,6 +30558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -30523,6 +30566,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &1075426513053827400
 GameObject:
@@ -31452,6 +31496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -31459,6 +31504,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &1528815036923392946
 Transform:
@@ -31837,6 +31883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -31844,6 +31891,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &1733127675248557596
 MeshRenderer:
@@ -31921,6 +31969,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -31929,6 +31979,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -31946,6 +31998,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -31954,6 +32008,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -31971,6 +32027,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -31979,6 +32037,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -31996,6 +32056,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -32004,6 +32066,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -32330,6 +32394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -32337,6 +32402,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &1787279218899095126
 GameObject:
@@ -32427,6 +32493,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -32435,6 +32503,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -32493,6 +32563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -32500,6 +32571,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &1876549563462066442
 MeshRenderer:
@@ -32633,6 +32705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -32640,6 +32713,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &1955917185831269587
 GameObject:
@@ -33568,6 +33642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -33575,6 +33650,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &2317666882558196639
 MeshFilter:
@@ -33683,6 +33759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -33690,6 +33767,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &2357766242118393758
 GameObject:
@@ -33724,6 +33802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -33731,6 +33810,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &2372104296325485395
 Transform:
@@ -33874,6 +33954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -33881,6 +33962,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &2427488326498480880
 GameObject:
@@ -76697,6 +76779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -76704,6 +76787,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &2509885040394438226
 Transform:
@@ -77027,6 +77111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -77035,6 +77121,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -77148,6 +77236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -77156,6 +77246,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -77173,6 +77265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -77181,6 +77275,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -77495,6 +77591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -77502,6 +77599,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &2705276868624172148
 MeshRenderer:
@@ -77700,6 +77798,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -77708,6 +77808,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -77746,6 +77848,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -77754,6 +77858,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -77846,6 +77952,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -77854,6 +77962,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -77940,6 +78050,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -77948,6 +78060,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -78013,6 +78127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -78021,6 +78137,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -78038,6 +78156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -78046,6 +78166,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -78111,6 +78233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -78119,6 +78243,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -78232,6 +78358,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -78240,6 +78368,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -78284,6 +78414,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -78292,6 +78424,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -78351,6 +78485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -78359,6 +78495,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -78601,6 +78739,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -78609,6 +78749,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -78813,6 +78955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -78820,6 +78963,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!54 &3026368267119269853
 Rigidbody:
@@ -79224,6 +79368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -79231,6 +79376,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &3241641629368517685
 Transform:
@@ -79260,6 +79406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -79267,6 +79414,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &3278490277938661056
 Transform:
@@ -79411,6 +79559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -79418,6 +79567,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &3308581273043291942
 Transform:
@@ -79447,6 +79597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -79454,6 +79605,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &3318720471291676643
 MonoBehaviour:
@@ -79468,6 +79620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -79475,6 +79628,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &3324667916465384294
 Transform:
@@ -79576,6 +79730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -79583,6 +79738,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &3357126904548031557
 Transform:
@@ -79612,6 +79768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -79619,6 +79776,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &3370556007135546537
 GameObject:
@@ -111979,6 +112137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -111986,6 +112145,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &3474822157573269962
 BoxCollider:
@@ -112273,6 +112433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -112280,6 +112441,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &3506810319683797932
 Transform:
@@ -112502,6 +112664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -112509,6 +112672,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &3613746171746774225
 MeshFilter:
@@ -112794,6 +112958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -112801,6 +112966,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &3822300496115573231
 MonoBehaviour:
@@ -112815,6 +112981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -112822,6 +112989,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &3824125652765832670
 GameObject:
@@ -112988,6 +113156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -112996,6 +113166,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -113013,6 +113185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -113021,6 +113195,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -113038,6 +113214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -113046,6 +113224,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -113063,6 +113243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -113071,6 +113253,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -113193,6 +113377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -113200,6 +113385,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &3897658368612450977
 GameObject:
@@ -113273,6 +113459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -113280,6 +113467,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &3944892468287914812
 MeshFilter:
@@ -113532,6 +113720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -113539,6 +113728,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &3985184799746930815
 MeshFilter:
@@ -113666,6 +113856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -113673,6 +113864,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &4012077333020299922
 BoxCollider:
@@ -113738,6 +113930,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -113746,6 +113940,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -113763,6 +113959,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -113771,6 +113969,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -113788,6 +113988,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -113796,6 +113998,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -113813,6 +114017,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -113821,6 +114027,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -113838,6 +114046,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -113846,6 +114056,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -113863,6 +114075,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -113871,6 +114085,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -113902,6 +114118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -113909,6 +114126,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &4055310403267603269
 MeshFilter:
@@ -113951,6 +114169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -113958,6 +114177,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &4067041910994036621
 MeshRenderer:
@@ -114184,6 +114404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -114192,6 +114414,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -114284,6 +114508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -114292,6 +114518,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -114308,6 +114536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -114315,6 +114544,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &4165790955318984017
 GameObject:
@@ -114483,6 +114713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -114490,6 +114721,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!54 &4258233317027077511
 Rigidbody:
@@ -114903,6 +115135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 1000
@@ -114911,6 +115145,8 @@ MonoBehaviour:
   scoreUITextPosX: 4
   scoreUITextPosY: 4
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -115378,6 +115614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -115385,6 +115622,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &4398393582907080249
 MonoBehaviour:
@@ -115399,6 +115637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -115406,6 +115645,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &4412556376845975851
 GameObject:
@@ -115539,6 +115779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -115546,6 +115787,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &4473366352444138969
 GameObject:
@@ -115608,6 +115850,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -115616,6 +115860,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -115717,6 +115963,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -115725,6 +115973,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -115790,6 +116040,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -115798,6 +116050,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -116411,6 +116665,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -116419,6 +116675,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -116669,6 +116927,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -116677,6 +116937,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -117112,6 +117374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -117120,6 +117384,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -117164,6 +117430,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -117172,6 +117440,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -117209,6 +117479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -117216,6 +117487,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &4522219661408331665
 MeshFilter:
@@ -127946,6 +128218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -127953,6 +128226,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &4688548692838811360
 MeshFilter:
@@ -128177,6 +128451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -128184,6 +128459,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &4733681117288271624
 BoxCollider:
@@ -128220,6 +128496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -128228,6 +128506,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -128245,6 +128525,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -128253,6 +128535,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -128270,6 +128554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -128278,6 +128564,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -128295,6 +128583,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -128303,6 +128593,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -128942,6 +129234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -128949,6 +129242,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &4877605358965701066
 MonoBehaviour:
@@ -128963,6 +129257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -128970,6 +129265,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &4880476612402821014
 BoxCollider:
@@ -129091,6 +129387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -129098,6 +129395,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &4926576206760681324
 GameObject:
@@ -129172,6 +129470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -129179,6 +129478,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &4979958558280454515
 Transform:
@@ -129229,6 +129529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -129236,6 +129537,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &5004464830853194880
 Transform:
@@ -129461,6 +129763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -129468,6 +129771,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &5088958407309559138
 MonoBehaviour:
@@ -129483,6 +129787,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -129491,6 +129797,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -129508,6 +129816,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -129516,6 +129826,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -129533,6 +129845,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -129541,6 +129855,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -129558,6 +129874,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -129566,6 +129884,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -129583,6 +129903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -129591,6 +129913,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -129608,6 +129932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -129616,6 +129942,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -129633,6 +129961,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -129641,6 +129971,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -129658,6 +129990,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -129666,6 +130000,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -129683,6 +130019,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -129691,6 +130029,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -129708,6 +130048,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -129716,6 +130058,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -129753,6 +130097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -129760,6 +130105,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &5131531310793406495
 Transform:
@@ -129846,6 +130192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -129853,6 +130200,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &5188303990588877838
 GameObject:
@@ -130191,6 +130539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -130198,6 +130547,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &5273270399923243355
 BoxCollider:
@@ -130263,6 +130613,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -130271,6 +130623,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -130577,6 +130931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -130584,6 +130939,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &5373426065692737672
 GameObject:
@@ -130758,6 +131114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -130765,6 +131122,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &5438948224311526756
 MonoBehaviour:
@@ -130779,6 +131137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -130786,6 +131145,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &5468518334366841098
 Transform:
@@ -131483,6 +131843,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5696965199564642832, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7384673036588287666, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
         type: 3}
       propertyPath: m_Name
@@ -131711,6 +132076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -131718,6 +132084,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &5655265210607636145
 BoxCollider:
@@ -131969,6 +132336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -131976,6 +132344,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &5758644860055911483
 MonoBehaviour:
@@ -131990,6 +132359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -131997,6 +132367,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &5761638099640328837
 GameObject:
@@ -132047,6 +132418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -132054,6 +132426,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &5781593814491240658
 MeshRenderer:
@@ -172199,6 +172572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -172206,6 +172580,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &5812030696856468427
 GameObject:
@@ -172291,6 +172666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -172298,6 +172674,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &5836000748195473316
 MeshFilter:
@@ -172320,6 +172697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -172327,6 +172705,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &5838817740365904761
 BoxCollider:
@@ -172514,6 +172893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -172521,6 +172901,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &5991232194859362184
 MeshFilter:
@@ -172552,6 +172933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -172560,6 +172943,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -172605,6 +172990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -172612,6 +172998,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &6024016339999426195
 BoxCollider:
@@ -172840,6 +173227,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -172848,6 +173237,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -172865,6 +173256,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -172873,6 +173266,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -172890,6 +173285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -172898,6 +173295,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -172915,6 +173314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -172923,6 +173324,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -172981,6 +173384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -172988,6 +173392,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &6121823264920179063
 MeshFilter:
@@ -173061,6 +173466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -173068,6 +173474,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &6133119167322603264
 MeshFilter:
@@ -173090,6 +173497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -173097,6 +173505,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &6138999529808718343
 MonoBehaviour:
@@ -173111,6 +173520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -173118,6 +173528,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &6145124538592312862
 MeshFilter:
@@ -173651,6 +174062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -173658,6 +174070,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &6182283697726896674
 MonoBehaviour:
@@ -173672,6 +174085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -173679,6 +174093,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &6187324089683448893
 Transform:
@@ -173716,6 +174131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -173723,6 +174139,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &6248514962379191120
 Transform:
@@ -173859,6 +174276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -173866,6 +174284,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &6376911220166746164
 MonoBehaviour:
@@ -173880,6 +174299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -173887,6 +174307,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &6377720050717177347
 MeshFilter:
@@ -173959,6 +174380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -173966,6 +174388,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &6440466526431797710
 MonoBehaviour:
@@ -173980,6 +174403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -173987,6 +174411,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &6444939234654193793
 MonoBehaviour:
@@ -174001,6 +174426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -174008,6 +174434,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &6447293819021869481
 MonoBehaviour:
@@ -174023,6 +174450,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -174031,6 +174460,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -174048,6 +174479,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -174056,6 +174489,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -174072,6 +174507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -174079,6 +174515,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &6453650175739644485
 Transform:
@@ -174229,6 +174666,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -174237,6 +174676,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -174504,6 +174945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -174511,6 +174953,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!54 &6539652998196635180
 Rigidbody:
@@ -174553,6 +174996,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -174561,6 +175006,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -174598,6 +175045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -174605,6 +175053,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &6557574797702379070
 Transform:
@@ -174723,6 +175172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -174730,6 +175180,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &6632006882725703452
 MeshFilter:
@@ -176869,6 +177320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -176876,6 +177328,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &6867671362811379832
 MeshFilter:
@@ -176898,6 +177351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -176905,6 +177359,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &6871232317682022183
 BoxCollider:
@@ -177007,6 +177462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -177014,6 +177470,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &6893809263315884372
 Transform:
@@ -177224,6 +177681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -177231,6 +177689,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &6996926499189100584
 MeshRenderer:
@@ -177418,6 +177877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -177425,6 +177885,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &7065297648076014251
 BoxCollider:
@@ -177905,6 +178366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -177912,6 +178374,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &7162797413924293758
 BoxCollider:
@@ -178307,6 +178770,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 6717044111185450015, guid: 38b90465201e92e4981a22912040b829,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 1770336899112142468, guid: c4a15df76cb2ac54fbe1cbc2f2f99723,
     type: 3}
   scoreNum: 0
@@ -178314,6 +178779,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
+    type: 3}
   spawnSEPrefab: {fileID: 0}
   doramuColliderPrefab: {fileID: 3630428680462284048, guid: b5489b785d1174d499ad9f0960d1bc8f,
     type: 3}
@@ -178354,6 +178821,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 6717044111185450015, guid: 38b90465201e92e4981a22912040b829,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 1770336899112142468, guid: c4a15df76cb2ac54fbe1cbc2f2f99723,
     type: 3}
   scoreNum: 0
@@ -178361,6 +178830,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
+    type: 3}
   spawnSEPrefab: {fileID: 0}
   doramuColliderPrefab: {fileID: 3630428680462284048, guid: b5489b785d1174d499ad9f0960d1bc8f,
     type: 3}
@@ -178891,6 +179362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 500
@@ -178899,6 +179372,8 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
@@ -179065,6 +179540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -179072,6 +179548,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &7588938511892774608
 MeshRenderer:
@@ -179579,6 +180056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -179586,6 +180064,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &7776693926951671643
 BoxCollider:
@@ -179781,6 +180260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -179788,6 +180268,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &7883107237877657398
 BoxCollider:
@@ -179906,6 +180387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -179913,6 +180395,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &7961663045858693175
 MeshRenderer:
@@ -180272,6 +180755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -180279,6 +180763,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &8038685600567952079
 MonoBehaviour:
@@ -180293,6 +180778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -180300,6 +180786,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!4 &8048233708271551086
 Transform:
@@ -180329,6 +180816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -180336,6 +180824,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &8052243482982025829
 MonoBehaviour:
@@ -180350,6 +180839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -180357,6 +180847,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &8058243190342269014
 GameObject:
@@ -180551,6 +181042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -180558,6 +181050,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &8146968900649048179
 MeshFilter:
@@ -180982,6 +181475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -180989,6 +181483,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &8255367305514454036
 BoxCollider:
@@ -181062,6 +181557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -181069,6 +181565,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &8291256016176927693
 BoxCollider:
@@ -181304,6 +181801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -181311,6 +181809,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &8361095670580300355
 MeshRenderer:
@@ -181470,6 +181969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -181477,6 +181977,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &8430134200532434588
 MonoBehaviour:
@@ -181491,6 +181992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -181498,6 +182000,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &8430271007157724424
 BoxCollider:
@@ -181618,6 +182121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -181625,6 +182129,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &8489291522728323250
 BoxCollider:
@@ -181836,6 +182341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -181843,6 +182349,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &8608344929826553180
 MeshRenderer:
@@ -181941,6 +182448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -181948,6 +182456,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &8636691591597263546
 MeshRenderer:
@@ -182075,6 +182584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -182082,6 +182592,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &8674179540996588757
 MonoBehaviour:
@@ -182096,6 +182607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -182103,6 +182615,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &8686177544160965426
 MonoBehaviour:
@@ -182117,6 +182630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -182124,6 +182638,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &8686281741266577520
 GameObject:
@@ -182263,6 +182778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -182270,6 +182786,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &8729882187857208564
 GameObject:
@@ -182596,6 +183113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -182603,6 +183121,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &8829828814881043761
 BoxCollider:
@@ -182661,6 +183180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -182668,6 +183188,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &8887517650688490899
 MonoBehaviour:
@@ -182682,6 +183203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -182689,6 +183211,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!23 &8915515026258285298
 MeshRenderer:
@@ -182892,6 +183415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -182899,6 +183423,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!114 &8946009731007978953
 MonoBehaviour:
@@ -182913,6 +183438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -182920,6 +183446,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!65 &8946949857975214456
 BoxCollider:
@@ -182975,6 +183502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -182982,6 +183510,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &8985122259815235840
 GameObject:
@@ -183046,6 +183575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -183053,6 +183583,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!33 &9013704812941838980
 MeshFilter:
@@ -183318,6 +183849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
+  hitLensFlarePrefab: {fileID: 0}
   hitSEPrefab: {fileID: 5364107793281267709, guid: 19c232b159626a441be29e2abfa19b24,
     type: 3}
   scoreNum: 0
@@ -183325,6 +183857,7 @@ MonoBehaviour:
   scoreUITextPosX: 2
   scoreUITextPosY: 2
   spawnParticleEffectPrefab: {fileID: 0}
+  spawnLensFlarePrefab: {fileID: 0}
   spawnSEPrefab: {fileID: 0}
 --- !u!1 &9189116390243276190
 GameObject:

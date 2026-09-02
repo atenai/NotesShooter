@@ -321,6 +321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 8037620956996283182, guid: 1e11830460b910f4dbf8f59ad3d72c25,
     type: 3}
+  hitLensFlarePrefab: {fileID: 4137229602837033660, guid: b9bd41452ddd61140a77736e4879b6af,
+    type: 3}
   hitSEPrefab: {fileID: 8655972115866543310, guid: 937a5f6762a8ae749b707d9f5bb78860,
     type: 3}
   scoreNum: 1000
@@ -329,6 +331,8 @@ MonoBehaviour:
   scoreUITextPosX: 4
   scoreUITextPosY: 4
   spawnParticleEffectPrefab: {fileID: 2001418791141135833, guid: bc7509ccd7049e9499a5b1202c933919,
+    type: 3}
+  spawnLensFlarePrefab: {fileID: 5053663040465350544, guid: 49d8726aa77dd264c9c8f5f407e20342,
     type: 3}
   spawnSEPrefab: {fileID: 1809339120121314791, guid: eec736b97f244f14cbcf552e0b19c851,
     type: 3}
