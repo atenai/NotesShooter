@@ -978,10 +978,10 @@ RectTransform:
   - {fileID: 1289436441}
   - {fileID: 805369364}
   - {fileID: 556719194}
-  - {fileID: 768107095}
-  - {fileID: 589691384}
   - {fileID: 1839049385}
   - {fileID: 2131928405}
+  - {fileID: 589691384}
+  - {fileID: 768107095}
   - {fileID: 61384593}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1388,7 +1388,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 455647686}
         m_TargetAssemblyTypeName: ResultManager, Assembly-CSharp
-        m_MethodName: RequestTitle
+        m_MethodName: TitleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1706,7 +1706,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 455647686}
         m_TargetAssemblyTypeName: ResultManager, Assembly-CSharp
-        m_MethodName: RequestStageSelect
+        m_MethodName: StageSelectButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2211,6 +2211,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2531794777038649646, guid: 12236e799f944ed47a543e74767fa55b,
+        type: 3}
+      propertyPath: isCursor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5319206806614504862, guid: 12236e799f944ed47a543e74767fa55b,
         type: 3}
       propertyPath: m_LocalPosition.x

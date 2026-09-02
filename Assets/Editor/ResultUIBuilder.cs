@@ -272,8 +272,8 @@ public static class ResultUIBuilder
 			return;
 		}
 
-		SetOnClick(buttonStageSelect, new UnityAction(manager.RequestStageSelect));
-		SetOnClick(buttonTitle, new UnityAction(manager.RequestTitle));
+		SetOnClick(buttonStageSelect, new UnityAction(manager.StageSelectButton));
+		SetOnClick(buttonTitle, new UnityAction(manager.TitleButton));
 	}
 
 	static void SetOnClick(Button button, UnityAction action)

@@ -91,7 +91,7 @@ public class BonusStageSelectButton : StageSelectButtonBase
 	/// </summary>
 	/// <param name="x">横幅</param>
 	/// <param name="y">縦幅</param>
-	public void SetBonusStageSelectButtonSize(float x = 520, float y = 320)
+	public void SetBonusStageSelectButtonSize(float x = 700, float y = 320)
 	{
 		bonusStageSelectButton.GetComponent<RectTransform>().sizeDelta = new Vector2(x, y);
 	}
@@ -152,7 +152,7 @@ public class BonusStageSelectButton : StageSelectButtonBase
 		StageSelectManager manager = FindObjectOfType<StageSelectManager>();
 		if (manager != null)
 		{
-			manager.RequestBonusStageStart();
+			manager.BonusStageButton();
 		}
 	}
 }

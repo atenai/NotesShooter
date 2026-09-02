@@ -9,8 +9,6 @@ public class TitleManager : MonoBehaviour, IFadeSceneManager
 	[SerializeField] AudioSource audioSource;
 
 	[Header("シーン遷移")]
-	[Tooltip("ステージセレクト")]
-	const string StageSelect_SceneName = "StageSelect";
 	[Tooltip("次のシーン名")]
 	string nextSceneName = "";
 
@@ -65,14 +63,6 @@ public class TitleManager : MonoBehaviour, IFadeSceneManager
 		FadeIn();
 		FadeOut();
 		PulseUnderline();
-
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN//Unityエディター上または端末がPCだった場合の処理
-		//ESCキーでゲームを終了する
-		if (Input.GetKeyDown(KeyCode.Escape) == true)
-		{
-			RequestQuit();
-		}
-#endif//終了
 	}
 
 	public void FadeIn()
@@ -158,10 +148,11 @@ public class TitleManager : MonoBehaviour, IFadeSceneManager
 	}
 
 	/// <summary>
-	/// 「ゲームスタート」から呼ばれる。フェードアウトしてステージセレクトへ移る
+	/// ステージセレクトへ遷移ボタン
 	/// </summary>
-	public void RequestGameStart()
+	public void StageSelectButton()
 	{
+		const string StageSelect_SceneName = "StageSelect";
 		RequestSceneChange(StageSelect_SceneName);
 	}
 
@@ -186,9 +177,9 @@ public class TitleManager : MonoBehaviour, IFadeSceneManager
 	}
 
 	/// <summary>
-	/// 「ゲーム終了」から呼ばれる
+	/// ゲーム終了ボタン
 	/// </summary>
-	public void RequestQuit()
+	public void QuitButton()
 	{
 #if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;

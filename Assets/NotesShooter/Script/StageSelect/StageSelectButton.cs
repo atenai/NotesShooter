@@ -141,7 +141,7 @@ public class StageSelectButton : StageSelectButtonBase
 		StageSelectManager manager = FindObjectOfType<StageSelectManager>();
 		if (manager != null)
 		{
-			manager.RequestStageStart();
+			manager.StageButton();
 		}
 	}
 }

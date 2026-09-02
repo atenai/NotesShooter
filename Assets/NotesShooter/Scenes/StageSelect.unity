@@ -1139,7 +1139,6 @@ RectTransform:
   m_Children:
   - {fileID: 1933626746}
   - {fileID: 1934589596}
-  - {fileID: 1711380766}
   - {fileID: 1175732503}
   - {fileID: 1566809575}
   - {fileID: 24935237}
@@ -1151,6 +1150,7 @@ RectTransform:
   - {fileID: 491415855}
   - {fileID: 95190964}
   - {fileID: 1111002152}
+  - {fileID: 1711380766}
   - {fileID: 1683959173}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2559,7 +2559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2780,7 +2780,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 862456816}
         m_TargetAssemblyTypeName: StageSelectManager, Assembly-CSharp
-        m_MethodName: RequestTitle
+        m_MethodName: TitleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

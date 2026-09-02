@@ -9,10 +9,6 @@ public class ResultManager : MonoBehaviour, IFadeSceneManager
 	[SerializeField] AudioSource audioSource;
 
 	[Header("シーン遷移")]
-	[Tooltip("タイトル")]
-	const string Title_SceneName = "Title";
-	[Tooltip("ステージセレクト")]
-	const string StageSelect_SceneName = "StageSelect";
 	[Tooltip("次のシーン名")]
 	string nextSceneName = "";
 
@@ -79,18 +75,20 @@ public class ResultManager : MonoBehaviour, IFadeSceneManager
 	}
 
 	/// <summary>
-	/// 「タイトルへ」ボタンから呼ばれる
+	/// タイトルへ遷移ボタン
 	/// </summary>
-	public void RequestTitle()
+	public void TitleButton()
 	{
+		const string Title_SceneName = "Title";
 		RequestSceneChange(Title_SceneName);
 	}
 
 	/// <summary>
-	/// 「ステージセレクト」ボタンから呼ばれる
+	/// ステージセレクトへ遷移ボタン
 	/// </summary>
-	public void RequestStageSelect()
+	public void StageSelectButton()
 	{
+		const string StageSelect_SceneName = "StageSelect";
 		RequestSceneChange(StageSelect_SceneName);
 	}
 

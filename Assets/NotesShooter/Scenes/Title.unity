@@ -640,11 +640,11 @@ RectTransform:
   - {fileID: 4096892172629917943}
   - {fileID: 2025950010}
   - {fileID: 236612071}
-  - {fileID: 664249995}
   - {fileID: 1695986370}
-  - {fileID: 1454871013}
   - {fileID: 443657411}
   - {fileID: 1492511539}
+  - {fileID: 664249995}
+  - {fileID: 1454871013}
   - {fileID: 1147840942}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -943,11 +943,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 451758449}
         m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
-        m_MethodName: RequestGameStart
-        m_Mode: 0
+        m_MethodName: StageSelectButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1682,11 +1682,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 451758449}
         m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
-        m_MethodName: RequestQuit
-        m_Mode: 0
+        m_MethodName: QuitButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

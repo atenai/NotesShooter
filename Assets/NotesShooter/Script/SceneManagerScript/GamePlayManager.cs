@@ -4,10 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class GamePlayManager : MonoBehaviour, IFadeSceneManager
 {
-    [Header("シーン遷移")]
-    [Tooltip("タイトル")]
-    const string Result_SceneName = "Result";
-
     [Header("フェード")]
     [Tooltip("フェード用の黒画像")]
     [SerializeField] Image fadeImage;
@@ -173,6 +169,7 @@ public class GamePlayManager : MonoBehaviour, IFadeSceneManager
         if (max <= fadeOutAlfa)
         {
             isFadeOutStart = false;
+            const string Result_SceneName = "Result";
             SceneChange(Result_SceneName);
         }
     }

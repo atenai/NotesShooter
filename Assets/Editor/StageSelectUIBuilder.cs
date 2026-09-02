@@ -435,7 +435,7 @@ public static class StageSelectUIBuilder
 		{
 			UnityEventTools.RemovePersistentListener(backButton.onClick, i);
 		}
-		UnityEventTools.AddPersistentListener(backButton.onClick, new UnityAction(manager.RequestTitle));
+		UnityEventTools.AddPersistentListener(backButton.onClick, new UnityAction(manager.TitleButton));
 
 		//背景を全面に描くので、カメラは空を描かなくて良い
 		Camera camera = Camera.main;

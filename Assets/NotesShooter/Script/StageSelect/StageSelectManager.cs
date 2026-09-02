@@ -32,8 +32,6 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	[SerializeField] string stageSceneName = "Stage2";
 	[Tooltip("ボーナスステージボタンから飛ぶシーン名")]
 	[SerializeField] string bonusStageSceneName = "MasterStage";
-	[Tooltip("タイトル")]
-	const string Title_SceneName = "Title";
 	[Tooltip("次のシーン名")]
 	string nextSceneName = "";
 
@@ -170,7 +168,6 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	private void DisplayCurrentStage()
 	{
 		int currentStage = Mathf.Clamp(playCount, First_Stage, Total_Stage);
-		bool isBonusStage = currentStage == Total_Stage;
 
 		StageInformation information = null;
 		if (stageInformations != null && currentStage - 1 < stageInformations.Length)
@@ -195,6 +192,7 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 
 		//playCountはアプリを閉じると1に戻るが、ハイスコアは記録に残る。
 		//「まだ遊んでいない」かどうかは記録の方で判断する
+		bool isBonusStage = currentStage == Total_Stage;
 		string sceneName = isBonusStage == true ? bonusStageSceneName : stageSceneName;
 		int highScore = ScoreRecord.GetHighScore(sceneName);
 
@@ -306,12 +304,6 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	{
 		FadeIn();
 		FadeOut();
-
-		//Androidのバックキーとエディタ・PCのEscapeはどちらもKeyCode.Escapeで拾える
-		if (Input.GetKeyDown(KeyCode.Escape) == true)
-		{
-			RequestTitle();
-		}
 	}
 
 	public void FadeIn()
@@ -334,25 +326,26 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	}
 
 	/// <summary>
-	/// ステージボタンから呼ばれる。フェードアウトしてからステージへ移る
+	/// タイトルへ遷移ボタン
 	/// </summary>
-	public void RequestStageStart()
+	public void TitleButton()
+	{
+		const string Title_SceneName = "Title";
+		RequestSceneChange(Title_SceneName);
+	}
+
+	/// <summary>
+	/// ステージへ遷移ボタン
+	/// </summary>
+	public void StageButton()
 	{
 		RequestSceneChange(stageSceneName);
 	}
 
 	/// <summary>
-	/// 戻るボタンとAndroidのバックキーから呼ばれる
+	/// ボーナスステージへ遷移ボタン
 	/// </summary>
-	public void RequestTitle()
-	{
-		RequestSceneChange(Title_SceneName);
-	}
-
-	/// <summary>
-	/// ボーナスステージボタンから呼ばれる
-	/// </summary>
-	public void RequestBonusStageStart()
+	public void BonusStageButton()
 	{
 		RequestSceneChange(bonusStageSceneName);
 	}
