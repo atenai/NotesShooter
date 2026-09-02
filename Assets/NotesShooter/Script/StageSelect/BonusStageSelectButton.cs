@@ -33,7 +33,8 @@ public class BonusStageSelectButton : StageSelectButtonBase
 
 		if (buttonNumber < playCount)
 		{
-			//遊び終わったステージ
+			//遊び終わったステージ。スコアを伸ばしにもう一度遊べる
+			Expansion();
 			SetVerticalBarGauge(100);
 			SetFrameLineColor(clearedColor);
 			SetBackgroundColor(Color.white);
@@ -146,7 +147,7 @@ public class BonusStageSelectButton : StageSelectButtonBase
 
 	void OnClick()
 	{
-		StageSelectManager.AdvancePlayCount();
+		StageSelectManager.AdvancePlayCount(buttonNumber);
 
 		//シーン遷移はフェードを持っているStageSelectManagerに任せる
 		StageSelectManager manager = FindObjectOfType<StageSelectManager>();

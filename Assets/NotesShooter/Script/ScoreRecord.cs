@@ -22,6 +22,8 @@ public static class ScoreRecord
     const string playingStageDisplayNameKey = "PLAYING_STAGE_DISPLAY_NAME";
     [Tooltip("直前のプレイを始める前のハイスコア。更新するとハイスコアは上書きされてしまうので、比べる相手を残しておく")]
     const string lastPreviousHighScoreKey = "LAST_PREVIOUS_HIGHSCORE";
+    [Tooltip("何ステージ目まで進んだか")]
+    const string playCountKey = "PLAY_COUNT";
 
     /// <summary>
     /// 直前に遊んだステージ名
@@ -71,6 +73,20 @@ public static class ScoreRecord
     public static void SetPlayingStageDisplayName(string displayName)
     {
         PlayerPrefs.SetString(playingStageDisplayNameKey, displayName == null ? string.Empty : displayName);
+        PlayerPrefs.Save();
+    }
+
+    /// <summary>
+    /// 何ステージ目まで進んだか。まだ一度も遊んでいなければ1
+    /// </summary>
+    public static int PlayCount => PlayerPrefs.GetInt(playCountKey, 1);
+
+    /// <summary>
+    /// 進んだステージ数を記録する
+    /// </summary>
+    public static void SavePlayCount(int playCount)
+    {
+        PlayerPrefs.SetInt(playCountKey, playCount);
         PlayerPrefs.Save();
     }
 

@@ -81,15 +81,30 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	[Tooltip("ステージごとの紹介文。1番目のステージから順に入れる")]
 	[SerializeField] private StageInformation[] stageInformations;
 
-	[Tooltip("何ステージ目まで遊んだか。アプリを起動している間だけ覚えている")]
-	public static int playCount = 1;
+	/// <summary>
+	/// 何ステージ目まで進んだか。
+	/// 以前はstaticな変数に持つだけで、アプリを閉じると必ず最初に戻っていた。
+	/// 記録に残して、次に起動した時も続きから遊べるようにしている
+	/// </summary>
+	public static int playCount
+	{
+		get { return Mathf.Clamp(ScoreRecord.PlayCount, First_Stage, Total_Stage); }
+		private set { ScoreRecord.SavePlayCount(Mathf.Clamp(value, First_Stage, Total_Stage)); }
+	}
 
 	/// <summary>
-	/// 遊んだ回数を1つ進める。ステージ数を超えると該当するボタンが無くなり、
-	/// 強調表示もスクロール演出も行われなくなるので上限で止める
+	/// 進んだステージ数を1つ進める。
+	/// 一度クリアしたステージをもう一度遊んだ時は進めない。
+	/// ステージ数を超えると該当するボタンが無くなるので上限で止める
 	/// </summary>
-	public static void AdvancePlayCount()
+	/// <param name="playedStageNumber">今から遊ぶステージの番号</param>
+	public static void AdvancePlayCount(int playedStageNumber)
 	{
+		if (playedStageNumber < playCount)
+		{
+			return;
+		}
+
 		playCount = Mathf.Min(playCount + 1, Total_Stage);
 	}
 
