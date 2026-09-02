@@ -1,8 +1,13 @@
+using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
-/// ステージごとのスコアをPlayerPrefsに記録するクラス。
+/// ステージごとのスコアと進行状況をEasy Save 3で記録するクラス。
 /// キーは「SCORE_ステージ名」「HIGHSCORE_ステージ名」のようにステージ名を付けて分けている。
+///
+/// 以前はPlayerPrefsに保存していた。既に遊んでいる人の記録が消えないよう、
+/// 最初に読み書きする時に一度だけPlayerPrefsから引き継ぐ。
 /// </summary>
 public static class ScoreRecord
 {
@@ -25,32 +30,94 @@ public static class ScoreRecord
     [Tooltip("何ステージ目まで進んだか")]
     const string playCountKey = "PLAY_COUNT";
 
+    [Tooltip("PlayerPrefsからの引き継ぎが済んだかの目印")]
+    const string migratedKey = "MIGRATED_FROM_PLAYERPREFS";
+
+    [Tooltip("引き継ぎの確認を、アプリを動かしている間に一度だけにする為の覚え")]
+    static bool isMigrationChecked = false;
+
     /// <summary>
     /// 直前に遊んだステージ名
     /// </summary>
-    public static string LastStageName => PlayerPrefs.GetString(lastStageNameKey, string.Empty);
+    public static string LastStageName
+    {
+        get
+        {
+            EnsureMigrated();
+            return LoadString(lastStageNameKey, string.Empty);
+        }
+    }
 
     /// <summary>
     /// 直前のプレイのスコア
     /// </summary>
-    public static int LastScore => PlayerPrefs.GetInt(scoreKey, 0);
+    public static int LastScore
+    {
+        get
+        {
+            EnsureMigrated();
+            return ES3.Load<int>(scoreKey, 0);
+        }
+    }
 
     /// <summary>
     /// 直前のプレイでハイスコアを更新したか
     /// </summary>
-    public static bool LastPlayIsNewRecord => PlayerPrefs.GetInt(lastPlayIsNewRecordKey, 0) != 0;
+    public static bool LastPlayIsNewRecord
+    {
+        get
+        {
+            EnsureMigrated();
+            return ES3.Load<int>(lastPlayIsNewRecordKey, 0) != 0;
+        }
+    }
 
     /// <summary>
     /// 直前のプレイで倒した的の数
     /// </summary>
-    public static int LastTargetCount => PlayerPrefs.GetInt(lastTargetCountKey, 0);
+    public static int LastTargetCount
+    {
+        get
+        {
+            EnsureMigrated();
+            return ES3.Load<int>(lastTargetCountKey, 0);
+        }
+    }
 
     /// <summary>
     /// 直前のプレイを始める前のハイスコア。
     /// ハイスコアを更新した時、GetHighScoreは今回の点を返すようになるので、
     /// 「どれだけ伸びたか」を出すにはこちらを見る
     /// </summary>
-    public static int LastPreviousHighScore => PlayerPrefs.GetInt(lastPreviousHighScoreKey, 0);
+    public static int LastPreviousHighScore
+    {
+        get
+        {
+            EnsureMigrated();
+            return ES3.Load<int>(lastPreviousHighScoreKey, 0);
+        }
+    }
+
+    /// <summary>
+    /// 何ステージ目まで進んだか。まだ一度も遊んでいなければ1
+    /// </summary>
+    public static int PlayCount
+    {
+        get
+        {
+            EnsureMigrated();
+            return ES3.Load<int>(playCountKey, 1);
+        }
+    }
+
+    /// <summary>
+    /// 進んだステージ数を記録する
+    /// </summary>
+    public static void SavePlayCount(int playCount)
+    {
+        EnsureMigrated();
+        ES3.Save<int>(playCountKey, playCount);
+    }
 
     /// <summary>
     /// 画面に出すステージ名。ステージセレクトから始めた時に覚える。
@@ -58,7 +125,9 @@ public static class ScoreRecord
     /// </summary>
     public static string GetStageDisplayName(string stageName)
     {
-        string displayName = PlayerPrefs.GetString(playingStageDisplayNameKey, string.Empty);
+        EnsureMigrated();
+
+        string displayName = LoadString(playingStageDisplayNameKey, string.Empty);
         if (string.IsNullOrEmpty(displayName) == false)
         {
             return displayName;
@@ -72,22 +141,8 @@ public static class ScoreRecord
     /// </summary>
     public static void SetPlayingStageDisplayName(string displayName)
     {
-        PlayerPrefs.SetString(playingStageDisplayNameKey, displayName == null ? string.Empty : displayName);
-        PlayerPrefs.Save();
-    }
-
-    /// <summary>
-    /// 何ステージ目まで進んだか。まだ一度も遊んでいなければ1
-    /// </summary>
-    public static int PlayCount => PlayerPrefs.GetInt(playCountKey, 1);
-
-    /// <summary>
-    /// 進んだステージ数を記録する
-    /// </summary>
-    public static void SavePlayCount(int playCount)
-    {
-        PlayerPrefs.SetInt(playCountKey, playCount);
-        PlayerPrefs.Save();
+        EnsureMigrated();
+        ES3.Save<string>(playingStageDisplayNameKey, displayName == null ? string.Empty : displayName);
     }
 
     /// <summary>
@@ -100,7 +155,8 @@ public static class ScoreRecord
             return 0;
         }
 
-        return PlayerPrefs.GetInt(stageHighScoreKeyPrefix + stageName, 0);
+        EnsureMigrated();
+        return ES3.Load<int>(stageHighScoreKeyPrefix + stageName, 0);
     }
 
     /// <summary>
@@ -113,7 +169,8 @@ public static class ScoreRecord
             return 0;
         }
 
-        return PlayerPrefs.GetInt(stageScoreKeyPrefix + stageName, 0);
+        EnsureMigrated();
+        return ES3.Load<int>(stageScoreKeyPrefix + stageName, 0);
     }
 
     /// <summary>
@@ -128,25 +185,113 @@ public static class ScoreRecord
             return false;
         }
 
+        EnsureMigrated();
+
         //ハイスコアの判定と、比べる相手の保存は上書きする前に済ませておく
         int previousHighScore = GetHighScore(stageName);
         bool isNewRecord = previousHighScore < score;
 
-        PlayerPrefs.SetInt(stageScoreKeyPrefix + stageName, score);
-        PlayerPrefs.SetString(lastStageNameKey, stageName);
-        //リザルト画面が読む「直前のスコア」
-        PlayerPrefs.SetInt(scoreKey, score);
-        PlayerPrefs.SetInt(lastPlayIsNewRecordKey, isNewRecord == true ? 1 : 0);
-        PlayerPrefs.SetInt(lastTargetCountKey, targetCount);
-        PlayerPrefs.SetInt(lastPreviousHighScoreKey, previousHighScore);
-
-        if (isNewRecord == true)
+        //1つずつ保存するとその都度ファイルへ書きに行くので、まとめて一度で書く
+        using (ES3Writer writer = ES3Writer.Create(new ES3Settings()))
         {
-            PlayerPrefs.SetInt(stageHighScoreKeyPrefix + stageName, score);
+            if (writer == null)
+            {
+                Debug.LogError("セーブファイルを開けなかったのでスコアを記録できませんでした");
+                return false;
+            }
+
+            writer.Write<int>(stageScoreKeyPrefix + stageName, score);
+            writer.Write<string>(lastStageNameKey, stageName);
+            //リザルト画面が読む「直前のスコア」
+            writer.Write<int>(scoreKey, score);
+            writer.Write<int>(lastPlayIsNewRecordKey, isNewRecord == true ? 1 : 0);
+            writer.Write<int>(lastTargetCountKey, targetCount);
+            writer.Write<int>(lastPreviousHighScoreKey, previousHighScore);
+
+            if (isNewRecord == true)
+            {
+                writer.Write<int>(stageHighScoreKeyPrefix + stageName, score);
+            }
+
+            //書いていないキーは消えずに残る
+            writer.Save();
         }
 
-        PlayerPrefs.Save();
-
         return isNewRecord;
+    }
+
+    /// <summary>
+    /// PlayerPrefsに残っている記録をEasy Save 3へ引き継ぐ。
+    /// アプリを動かしている間に一度だけ実行する。
+    /// PlayerPrefs側は消さずに残しておく。引き継ぎに何かあっても元に戻せるようにする為
+    /// </summary>
+    static void EnsureMigrated()
+    {
+        if (isMigrationChecked == true)
+        {
+            return;
+        }
+        isMigrationChecked = true;
+
+        if (ES3.KeyExists(migratedKey) == true)
+        {
+            return;
+        }
+
+        MigrateInt(scoreKey);
+        MigrateInt(lastPlayIsNewRecordKey);
+        MigrateInt(lastTargetCountKey);
+        MigrateInt(lastPreviousHighScoreKey);
+        MigrateInt(playCountKey);
+        MigrateString(lastStageNameKey);
+        MigrateString(playingStageDisplayNameKey);
+
+        //ステージ別の記録は、ビルドに含まれているシーン名から総当たりで拾う
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+        for (int i = 0; i < sceneCount; i++)
+        {
+            string sceneName = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
+            MigrateInt(stageScoreKeyPrefix + sceneName);
+            MigrateInt(stageHighScoreKeyPrefix + sceneName);
+        }
+
+        ES3.Save<bool>(migratedKey, true);
+    }
+
+    /// <summary>
+    /// 文字列を読む。
+    /// ES3.Load&lt;string&gt;(key, 既定値) と書くと、第2引数が文字列なので
+    /// 「ファイルパス指定のオーバーロード」の方に解決されてしまい、
+    /// 存在しないファイルを開こうとして例外になる。
+    /// 曖昧さの無い呼び方に分けておく
+    /// </summary>
+    static string LoadString(string key, string defaultValue)
+    {
+        if (ES3.KeyExists(key) == false)
+        {
+            return defaultValue;
+        }
+
+        return ES3.Load<string>(key);
+    }
+
+    static void MigrateInt(string key)
+    {
+        if (PlayerPrefs.HasKey(key) == false)
+        {
+            return;
+        }
+
+        ES3.Save<int>(key, PlayerPrefs.GetInt(key));
+    }
+
+    static void MigrateString(string key)
+    {
+        if (PlayerPrefs.HasKey(key) == false)
+        {
+            return;
+        }
+
+        ES3.Save<string>(key, PlayerPrefs.GetString(key));
     }
 }
