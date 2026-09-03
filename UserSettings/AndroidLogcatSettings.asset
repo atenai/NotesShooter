@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "354962112054336",
         "name": "com.YuutaKashiwabara.NotesShooter",
-        "processId": 27080,
+        "processId": 26039,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -36,6 +36,12 @@
             "deviceId": "354962112054336",
             "name": "com.YuutaKashiwabara.NotesShooter",
             "processId": 27080,
+            "exited": false
+        },
+        {
+            "deviceId": "354962112054336",
+            "name": "com.YuutaKashiwabara.NotesShooter",
+            "processId": 26039,
             "exited": false
         }
     ],
