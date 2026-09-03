@@ -10,12 +10,12 @@ using UnityEngine;
 public static class HapticFeedback
 {
 	[Tooltip("的を壊した時の長さ(ミリ秒)")]
-	public const long DestroyMilliseconds = 40;
+	public const long DestroyMilliseconds = 60;
 	[Tooltip("壊れなかった時の長さ(ミリ秒)。壊した時より弱くして手応えを分ける")]
-	public const long DamageMilliseconds = 22;
+	public const long DamageMilliseconds = 30;
 
-	[Tooltip("振動の強さ。1から255まで。API26以上でのみ効く")]
-	const int amplitude = 160;
+	[Tooltip("振動の強さ。1から255まで。API26以上、かつ強さを変えられる端末でのみ効く")]
+	const int amplitude = 255;
 	[Tooltip("VibrationEffectが使えるAndroidのバージョン")]
 	const int vibrationEffectApiLevel = 26;
 
@@ -24,10 +24,8 @@ public static class HapticFeedback
 	[Tooltip("振動できる端末か")]
 	static bool canVibrate = false;
 
-	[Tooltip("続けて振動させる時の最短の間隔(秒)。連射で震えっぱなしになるのを防ぐ")]
-	const float minimumInterval = 0.06f;
-	[Tooltip("最後に振動させた時刻")]
-	static float lastPlayedTime = -1.0f;
+	[Tooltip("最後に振動させたフレーム。同じフレームの重複だけをまとめる為に見る")]
+	static int lastPlayedFrame = -1;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 	static AndroidJavaObject vibrator = null;
@@ -45,12 +43,14 @@ public static class HapticFeedback
 			return;
 		}
 
-		//的が並んでいると一度に何発も当たる。そのまま全部鳴らすと震えっぱなしになる
-		if (Time.unscaledTime - lastPlayedTime < minimumInterval)
+		//同じフレームに複数当たる事がある。その分まで鳴らしても、
+		//後から呼んだ振動が前の振動を打ち切るだけで手応えは増えないので一度にまとめる。
+		//逆に時間で間引くと、続けて壊した分の振動まで消えて当たった感じがしなくなる
+		if (Time.frameCount == lastPlayedFrame)
 		{
 			return;
 		}
-		lastPlayedTime = Time.unscaledTime;
+		lastPlayedFrame = Time.frameCount;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 		Prepare();
