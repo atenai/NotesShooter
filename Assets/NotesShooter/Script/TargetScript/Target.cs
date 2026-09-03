@@ -22,6 +22,9 @@ public class Target : MonoBehaviour
         Destroy(hitEffect, hitEffectDestroyTime);//エフェクトをEffectDestroyTime後削除
 
         LensFlareEffect(hitLensFlarePrefab);
+
+        //当たった手応えを端末の振動でも返す
+        HapticFeedback.Play(HapticFeedback.DestroyMilliseconds);
     }
 
     [Tooltip("レンズフレアが自分で消えなかった時に、念の為に消すまでの秒数")]

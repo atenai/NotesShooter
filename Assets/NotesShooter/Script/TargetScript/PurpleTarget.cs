@@ -35,6 +35,12 @@ public class PurpleTarget : Target
 
             UIPresenter.SingletonInstance.CommonUIView.IsHitReticule = true;
 
+            //まだ壊れていないので、壊した時より短く振動させる
+            if (0 < life)
+            {
+                HapticFeedback.Play(HapticFeedback.DamageMilliseconds);
+            }
+
             //SEオブジェクトを生成する
             GameObject lifeDamageSE = Instantiate(lifeDamageSEPrefab, this.gameObject.transform.position, Quaternion.identity);
             Destroy(lifeDamageSE, lifeDamageSeEndtime);//SEをSE_Endtime後削除
