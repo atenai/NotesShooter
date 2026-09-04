@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /// <summary>
 /// 赤弾クラス
 /// </summary>
-public class RedBullet : MonoBehaviour
+public class RedBullet : Bullet
 {
 	[SerializeField] float destroyTime = 3.0f;
 
@@ -14,9 +14,15 @@ public class RedBullet : MonoBehaviour
 
 	void OnTriggerEnter(Collider hit)
 	{
-		if (hit.CompareTag("RedTarget") || hit.CompareTag("PurpleTarget") || hit.CompareTag("Wall") || hit.CompareTag("Drum"))
+		if (IsHitTarget(hit) == true)
 		{
 			Destroy(this.gameObject);
 		}
+	}
+
+	protected override bool IsHitTarget(Collider other)
+	{
+		return other.CompareTag("RedTarget") || other.CompareTag("PurpleTarget")
+			|| other.CompareTag("Wall") || other.CompareTag("Drum");
 	}
 }
