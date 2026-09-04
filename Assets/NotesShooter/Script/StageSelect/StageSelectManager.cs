@@ -123,8 +123,15 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 		//ここで選んでいるステージの表示名を覚えさせておく
 		RememberStageDisplayName();
 
-		//以下演出
-		StartCoroutine(Direction());
+		//以下演出。一度見せた解除の演出は繰り返さない
+		if (IsDirectionAlreadySeen() == true)
+		{
+			StartCoroutine(SkipDirection());
+		}
+		else
+		{
+			StartCoroutine(Direction());
+		}
 	}
 
 	public void InitFade()
@@ -270,6 +277,48 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	}
 
 	/// <summary>
+	/// 今遊べるステージの解除の演出を、もう見せたか。
+	/// playCountは最後のステージで止まるので、覚えておかないと
+	/// ボーナスステージの演出をここへ来る度に毎回見せてしまう
+	/// </summary>
+	bool IsDirectionAlreadySeen()
+	{
+		return playCount <= ScoreRecord.DirectedStageNumber;
+	}
+
+	/// <summary>
+	/// 演出を飛ばして、演出が終わった後と同じ見た目にする。
+	/// ゲージを満たし、今遊べるステージの下線を光らせ、その位置に合わせておく
+	/// </summary>
+	IEnumerator SkipDirection()
+	{
+		StageSelectButtonBase oldButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount - 1);
+		if (oldButton != null)
+		{
+			//演出で伸ばすはずだったゲージ
+			oldButton.SetVerticalBarGauge(100);
+		}
+
+		StageSelectButtonBase currentButton = stageSelectButtons.FirstOrDefault(button => button.ButtonNumber == playCount);
+		if (currentButton != null)
+		{
+			currentButton.SetFrameLineToCurrent();
+		}
+
+		//ボタンを並べた直後は、スクロール量の計算に使う高さがまだ決まっていない。
+		//1フレーム待ってレイアウトを確定させてから位置を合わせる
+		yield return null;
+		Canvas.ForceUpdateCanvases();
+
+		if (currentButton != null)
+		{
+			//見せる演出ではないので、動かさずにその位置から始める
+			const float immediately = 0.0f;
+			scrollRect.ScrollToCentering(currentButton.gameObject, immediately);
+		}
+	}
+
+	/// <summary>
 	/// 演出。1つ前のステージまでスクロールしてゲージを伸ばし、
 	/// 今遊べるステージまで上がって下線を光らせる
 	/// </summary>
@@ -311,6 +360,9 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 
 			yield return new WaitForSeconds(1.0f);
 		}
+
+		//ここまで見せたので、次に来た時は繰り返さない
+		ScoreRecord.SaveDirectedStageNumber(playCount);
 
 		yield return null;
 	}

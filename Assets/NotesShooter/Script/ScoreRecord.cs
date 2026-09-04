@@ -29,6 +29,8 @@ public static class ScoreRecord
     const string lastPreviousHighScoreKey = "LAST_PREVIOUS_HIGHSCORE";
     [Tooltip("何ステージ目まで進んだか")]
     const string playCountKey = "PLAY_COUNT";
+    [Tooltip("解除の演出を見せたステージ番号")]
+    const string directedStageNumberKey = "DIRECTED_STAGE_NUMBER";
 
     [Tooltip("PlayerPrefsからの引き継ぎが済んだかの目印")]
     const string migratedKey = "MIGRATED_FROM_PLAYERPREFS";
@@ -117,6 +119,35 @@ public static class ScoreRecord
     {
         EnsureMigrated();
         ES3.Save<int>(playCountKey, playCount);
+    }
+
+    /// <summary>
+    /// 解除の演出を見せたステージ番号。まだ一度も見せていなければ0。
+    /// PlayerPrefsの頃には無かったキーなので引き継ぎは要らない
+    /// </summary>
+    public static int DirectedStageNumber
+    {
+        get
+        {
+            EnsureMigrated();
+            return ES3.Load<int>(directedStageNumberKey, 0);
+        }
+    }
+
+    /// <summary>
+    /// 解除の演出を見せたステージ番号を記録する。
+    /// 番号が戻ると一度見た演出をまた見せてしまうので、大きい方だけを残す
+    /// </summary>
+    public static void SaveDirectedStageNumber(int stageNumber)
+    {
+        EnsureMigrated();
+
+        if (stageNumber <= DirectedStageNumber)
+        {
+            return;
+        }
+
+        ES3.Save<int>(directedStageNumberKey, stageNumber);
     }
 
     /// <summary>
