@@ -252,6 +252,52 @@ public static class ScoreRecord
     }
 
     /// <summary>
+    /// 記録を全て消す。デバッグ用。
+    ///
+    /// Easy Save 3のファイルを消すだけでは足りない。引き継ぎ済みの目印も
+    /// 一緒に消えてしまい、次に起動した時にPlayerPrefsからの引き継ぎが
+    /// 走って、消したはずの記録が戻ってくる。
+    /// 古い方も消した上で、目印だけ書き直しておく
+    /// </summary>
+    public static void DeleteAll()
+    {
+        ES3.DeleteFile();
+
+        DeletePlayerPrefs(scoreKey);
+        DeletePlayerPrefs(lastPlayIsNewRecordKey);
+        DeletePlayerPrefs(lastTargetCountKey);
+        DeletePlayerPrefs(lastPreviousHighScoreKey);
+        DeletePlayerPrefs(playCountKey);
+        DeletePlayerPrefs(lastStageNameKey);
+        DeletePlayerPrefs(playingStageDisplayNameKey);
+
+        //ステージ別の記録は、ビルドに含まれているシーン名から総当たりで消す
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+        for (int i = 0; i < sceneCount; i++)
+        {
+            string sceneName = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
+            DeletePlayerPrefs(stageScoreKeyPrefix + sceneName);
+            DeletePlayerPrefs(stageHighScoreKeyPrefix + sceneName);
+        }
+
+        PlayerPrefs.Save();
+
+        //消した直後に引き継ぎが走らないようにする
+        isMigrationChecked = true;
+        ES3.Save<bool>(migratedKey, true);
+    }
+
+    static void DeletePlayerPrefs(string key)
+    {
+        if (PlayerPrefs.HasKey(key) == false)
+        {
+            return;
+        }
+
+        PlayerPrefs.DeleteKey(key);
+    }
+
+    /// <summary>
     /// PlayerPrefsに残っている記録をEasy Save 3へ引き継ぐ。
     /// アプリを動かしている間に一度だけ実行する。
     /// PlayerPrefs側は消さずに残しておく。引き継ぎに何かあっても元に戻せるようにする為
