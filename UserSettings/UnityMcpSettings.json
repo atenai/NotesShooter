@@ -1,7 +1,7 @@
 {
     "customPort": 8707,
     "projectRootPath": "C:\\Users\\alfam\\Documents\\NotesShooter_Git",
-    "serverSessionId": "23ef5244f1f24432842db87418b3ba52",
+    "serverSessionId": "",
     "showDeveloperTools": false,
     "enableMcpLogs": false,
     "enableCommunicationLogs": false,
@@ -13,7 +13,7 @@
     "showToolSettings": true,
     "addRepositoryRoot": false,
     "installSkillsFlat": true,
-    "isServerRunning": true,
+    "isServerRunning": false,
     "isAfterCompile": false,
     "isDomainReloadInProgress": false,
     "isReconnecting": false,

@@ -1175,8 +1175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 50d885d821f431545a7b16dc7f5b2821, type: 3}
   audioSource: {fileID: 1683959176}
-  stageSceneName: Stage2
-  bonusStageSceneName: MasterStage
   fadeImage: {fileID: 1683959174}
   scrollRect: {fileID: 1934589597}
   content: {fileID: 330042657}
