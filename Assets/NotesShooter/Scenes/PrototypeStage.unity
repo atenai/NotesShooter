@@ -97,7 +97,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: cdca301b3df157c4c9a0b3ee8d030812,
+  m_LightingSettings: {fileID: 4890085278179872738, guid: a403edb7a4ad2d649bdc5de99bb62bd1,
     type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -9321,6 +9321,26 @@ PrefabInstance:
     - target: {fileID: 781467261988496064, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364110523292569550, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
+        type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364110523292569550, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364110523292569550, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364110523292569550, guid: 7a98734c0bb2f0c46bb70db0c748ed13,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5696965199564642832, guid: 7a98734c0bb2f0c46bb70db0c748ed13,

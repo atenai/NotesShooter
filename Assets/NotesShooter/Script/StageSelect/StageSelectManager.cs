@@ -29,9 +29,9 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 
 	[Header("シーン遷移")]
 	[Tooltip("ステージボタンから飛ぶシーン名")]
-	[SerializeField] string stageSceneName = "Stage2";
+	const string Stage_SceneName = "Stage2";
 	[Tooltip("ボーナスステージボタンから飛ぶシーン名")]
-	[SerializeField] string bonusStageSceneName = "MasterStage";
+	const string BonusStage_SceneName = "PrototypeStage";
 	[Tooltip("次のシーン名")]
 	string nextSceneName = "";
 
@@ -187,7 +187,7 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	/// <summary>
 	/// 今遊べるステージの見出しと説明とステージ情報を左側に出す
 	/// </summary>
-	private void DisplayCurrentStage()
+	void DisplayCurrentStage()
 	{
 		int currentStage = Mathf.Clamp(playCount, First_Stage, Total_Stage);
 
@@ -212,10 +212,7 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 			textDescription.text = information != null ? information.description : string.Empty;
 		}
 
-		//playCountはアプリを閉じると1に戻るが、ハイスコアは記録に残る。
-		//「まだ遊んでいない」かどうかは記録の方で判断する
-		bool isBonusStage = currentStage == Total_Stage;
-		string sceneName = isBonusStage == true ? bonusStageSceneName : stageSceneName;
+		string sceneName = currentStage == Total_Stage ? BonusStage_SceneName : Stage_SceneName;
 		int highScore = ScoreRecord.GetHighScore(sceneName);
 
 		if (textInfoHighScore != null)
@@ -239,7 +236,7 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	/// playCountはTotal_Stageで頭打ちにしているので、クリア数として出すと
 	/// 全部遊んでも「3 / 4」までしか進まず正しくない
 	/// </summary>
-	private void DisplayProgress()
+	void DisplayProgress()
 	{
 		if (textProgress == null)
 		{
@@ -250,7 +247,7 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 		textProgress.text = currentStage.ToString() + " / " + Total_Stage.ToString();
 	}
 
-	private void DisplayVersion()
+	void DisplayVersion()
 	{
 		if (textVersion == null)
 		{
@@ -263,7 +260,7 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	/// <summary>
 	/// 今遊ぼうとしているステージの表示名を、リザルト画面の為に覚えておく
 	/// </summary>
-	private void RememberStageDisplayName()
+	void RememberStageDisplayName()
 	{
 		int currentStage = Mathf.Clamp(playCount, First_Stage, Total_Stage);
 
@@ -406,7 +403,7 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	/// </summary>
 	public void StageButton()
 	{
-		RequestSceneChange(stageSceneName);
+		RequestSceneChange(Stage_SceneName);
 	}
 
 	/// <summary>
@@ -414,7 +411,7 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	/// </summary>
 	public void BonusStageButton()
 	{
-		RequestSceneChange(bonusStageSceneName);
+		RequestSceneChange(BonusStage_SceneName);
 	}
 
 	/// <summary>
