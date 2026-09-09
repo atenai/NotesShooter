@@ -58,6 +58,13 @@ public class RedGun : IGun
 	/// </summary>
 	public void ShotSystem(GameObject gunObject, GameObject shootPoint, GameObject cartridgePoint)
 	{
+		//ポーズや再開待ちで時間が止まっている間は撃たせない。
+		//撃てると弾が銃口に溜まり、再開した瞬間にまとめて飛んでしまう
+		if (GameManager.SingletonInstance != null && GameManager.SingletonInstance.IsTimeStopped == true)
+		{
+			return;
+		}
+
 		if (currentBullet == 0)
 		{
 			return;
