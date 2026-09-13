@@ -20,6 +20,26 @@ public static class AndroidBuilder
 	const string Start_Marker = "NS_BUILD_START";
 	const string Done_Marker = "NS_BUILD_DONE";
 
+	/// <summary>
+	/// versionCodeを1つ進める。
+	/// 同じversionCodeのまま配信すると端末が「更新」と見なさず、
+	/// DeployGateのテスターに更新通知が届かないので、ビルドの度に上げる。
+	/// 同じ番号のまま焼き直したい時は -keepVersionCode を付ける。
+	/// ビルドが失敗した回の番号は欠番になるが、増えてさえいれば問題無い
+	/// </summary>
+	static void AdvanceBundleVersionCode()
+	{
+		if (HasCommandLineFlag("-keepVersionCode") == true)
+		{
+			return;
+		}
+
+		PlayerSettings.Android.bundleVersionCode = PlayerSettings.Android.bundleVersionCode + 1;
+
+		//ProjectSettings.assetへ書き出しておかないと、バッチモードが終わった時に元の番号へ戻ってしまう
+		AssetDatabase.SaveAssets();
+	}
+
 	public static void BuildAndroid()
 	{
 		string outputPath = GetCommandLineArg("-buildOutput");
@@ -43,8 +63,12 @@ public static class AndroidBuilder
 			}
 		}
 
+		AdvanceBundleVersionCode();
+
 		Debug.Log(Start_Marker + " scenes=" + scenes.Count + " out=" + outputPath
-			+ " cleanBuild=" + HasCommandLineFlag("-cleanBuild"));
+			+ " cleanBuild=" + HasCommandLineFlag("-cleanBuild")
+			+ " versionCode=" + PlayerSettings.Android.bundleVersionCode
+			+ " version=" + PlayerSettings.bundleVersion);
 
 		if (scenes.Count == 0)
 		{

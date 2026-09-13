@@ -100,8 +100,9 @@ MonoBehaviour:
   adsInterstitial: {fileID: 6416431504108454168}
   adsBanner: {fileID: 8562912561734880955}
   bannerHiddenSceneNames:
-  - MasterStage
+  - PrototypeStage
   - Stage2
+  - Stage3
   adsInterstitialInterval: 1
 --- !u!1 &2737466751065243759
 GameObject:

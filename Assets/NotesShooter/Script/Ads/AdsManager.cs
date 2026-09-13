@@ -25,7 +25,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
 	public AdsInterstitial AdsInterstitial => adsInterstitial;
 	[SerializeField] AdsBanner adsBanner;
 	[Tooltip("バナー広告を出さないシーン名。プレイ中は画面を隠してしまうので出さない")]
-	[SerializeField] string[] bannerHiddenSceneNames = { "MasterStage", "Stage2" };
+	[SerializeField] string[] bannerHiddenSceneNames = { "PrototypeStage", "Stage2", "Stage3" };
 
 	int adsInterstitialCount = 0;
 	[Tooltip("インターステーシャル広告を何回に1回出すか。1なら毎回出す")]
