@@ -28,8 +28,8 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	[SerializeField] AudioSource audioSource;
 
 	[Header("シーン遷移")]
-	[Tooltip("ステージボタンから飛ぶシーン名")]
-	const string Stage_SceneName = "Stage2";
+	[Tooltip("ステージボタンから飛ぶシーン名。1番目のステージから順に入れる")]
+	static readonly string[] Stage_SceneNames = { "Stage2", "Stage2", "Stage3" };
 	[Tooltip("ボーナスステージボタンから飛ぶシーン名")]
 	const string BonusStage_SceneName = "PrototypeStage";
 	[Tooltip("次のシーン名")]
@@ -106,6 +106,29 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 		}
 
 		playCount = Mathf.Min(playCount + 1, Total_Stage);
+	}
+
+	/// <summary>
+	/// ステージ番号から、そのステージのシーン名を返す。
+	/// スコアはシーン名で分けて記録しているので、見せる時も飛ぶ時もここを通す
+	/// </summary>
+	/// <param name="stageNumber">何ステージ目か</param>
+	static string GetStageSceneName(int stageNumber)
+	{
+		//最後の番号はボーナスステージ
+		if (stageNumber == Total_Stage)
+		{
+			return BonusStage_SceneName;
+		}
+
+		int index = stageNumber - First_Stage;
+		if (index < 0 || Stage_SceneNames.Length <= index)
+		{
+			//まだシーンを用意していない番号は、最初のステージへ送っておく
+			return Stage_SceneNames[0];
+		}
+
+		return Stage_SceneNames[index];
 	}
 
 	void Start()
@@ -212,7 +235,7 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 			textDescription.text = information != null ? information.description : string.Empty;
 		}
 
-		string sceneName = currentStage == Total_Stage ? BonusStage_SceneName : Stage_SceneName;
+		string sceneName = GetStageSceneName(currentStage);
 		int highScore = ScoreRecord.GetHighScore(sceneName);
 
 		if (textInfoHighScore != null)
@@ -401,9 +424,10 @@ public class StageSelectManager : MonoBehaviour, IFadeSceneManager
 	/// <summary>
 	/// ステージへ遷移ボタン
 	/// </summary>
-	public void StageButton()
+	/// <param name="stageNumber">選んだステージの番号</param>
+	public void StageButton(int stageNumber)
 	{
-		RequestSceneChange(Stage_SceneName);
+		RequestSceneChange(GetStageSceneName(stageNumber));
 	}
 
 	/// <summary>

@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/NotesShooter/Scenes/Stage2.unity
     guid: 4e6ecc95953ff7749a4306756c85dcee
   - enabled: 1
+    path: Assets/NotesShooter/Scenes/Stage3.unity
+    guid: 6905f1cec126ad34892e291764e544cf
+  - enabled: 1
     path: Assets/NotesShooter/Scenes/Result.unity
     guid: 21bac835b48ca3e4d8cfacc11636819e
   m_configObjects: {}

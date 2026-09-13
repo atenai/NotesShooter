@@ -11,10 +11,13 @@ public class Goal : MonoBehaviour
     //シングルトンで作成（ゲーム中に１つのみにする）
     public static Goal singletonInstance = null;
 
+    [Tooltip("ゴールになる音楽の時間（秒）。0以下の場合は、このオブジェクトのワールドZ座標から自動計算する（Z / PlayerMove.ForwardSpeed）")]
+    [SerializeField] float goalTime = 0f;
+
     bool isGoal = false;
     public bool IsGoal => isGoal;
 
-    [Tooltip("スコアを登録済みか。OnTriggerEnterが複数回呼ばれても1回だけ登録する為のフラグ")]
+    [Tooltip("スコアを登録済みか。毎フレーム判定するので、1回だけ登録する為のフラグ")]
     bool isScoreRegistered = false;
 
     void Awake()
@@ -28,6 +31,12 @@ public class Goal : MonoBehaviour
         {
             Destroy(this.gameObject);//中身がすでに入っていた場合、自身のインスタンスがくっついているゲームオブジェクトを破棄します。
         }
+
+        if (goalTime <= 0f)
+        {
+            //置いた場所から、プレイヤーがそこへ着く時間を出す
+            goalTime = this.transform.position.z / PlayerMove.ForwardSpeed;
+        }
     }
 
     void Start()
@@ -36,15 +45,34 @@ public class Goal : MonoBehaviour
         //StartCoroutine(RegisterScore(777));
     }
 
-    void OnTriggerEnter(Collider hit)
+    void Update()
     {
-        //接触対象はPlayerタグですか？
-        if (hit.CompareTag("Player") == false)
+        //当たり判定で拾っていた頃は、処理落ちでプレイヤーの位置が飛ぶと薄い判定をすり抜ける心配があった。
+        //的と同じ音楽の時間で見て、曲の決まった所で必ずゴールになるようにしている
+        if (isScoreRegistered == true)
         {
             return;
         }
 
-        //プレイヤーのコライダーが複数あると何度も呼ばれてスコアが多重登録されるので、最初の1回だけ処理する
+        if (MusicManager.SingletonInstance == null)
+        {
+            return;
+        }
+
+        if (MusicManager.SingletonInstance.CurrentMusicTime < goalTime)
+        {
+            return;
+        }
+
+        ReachGoal();
+    }
+
+    /// <summary>
+    /// ゴールした時の処理。スコアを記録してリザルトへ進める
+    /// </summary>
+    void ReachGoal()
+    {
+        //毎フレーム見ているので、多重登録しないよう最初の1回だけ処理する
         if (isScoreRegistered == true)
         {
             return;
