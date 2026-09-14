@@ -1245,9 +1245,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2af9ffff
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 28d2ffff20f9ffffdcfaffff
+      m_ExpandedIDs: d6bffeff4ccffeffccf7feff0e14ffff8e14ffff4e20ffff2622ffff9626ffffaa26ffff7a27ffff9c6bffffd692ffffa2b6ffff1ac3ffff06c5ffffc6d0ffff9ed2ffff4cd5ffff62d5ffffa6d6ffffdcfaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1670,8 +1670,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 660
+    x: -16000
+    y: -15382
     width: 264.5
     height: 251
   m_SerializedDataModeController:
@@ -1761,8 +1761,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 72
+    x: -16000
+    y: -15970
     width: 986
     height: 567
   m_SerializedDataModeController:
