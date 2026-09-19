@@ -69,13 +69,13 @@ public class FPSCamera : MonoBehaviour
 	[Tooltip("エイムアシストを使うか")]
 	[SerializeField] private bool useAimAssist = true;
 	[Tooltip("照準の中心から何度以内の的をアシスト対象にするか")]
-	[Range(1.0f, 20.0f)][SerializeField] private float aimAssistAngle = 11.0f;
+	[Range(1.0f, 20.0f)][SerializeField] private float aimAssistAngle = 9.0f;
 	[Tooltip("アシスト対象を探す距離")]
 	[SerializeField] private float aimAssistRange = 100.0f;
 	[Tooltip("的の真ん中を狙っている時にカメラの速さを何倍にするか。小さいほど的の上で止まりやすく、行き過ぎにくくなる（1.0で減速なし）")]
 	[Range(0.1f, 1.0f)][SerializeField] private float aimAssistSlowDown = 0.28f;
 	[Tooltip("的の方向へ引き寄せる速さ（度/秒）。的が動いても照準が離れにくくなる（0で吸い付きなし）")]
-	[Range(0.0f, 150.0f)][SerializeField] private float aimAssistTrackSpeed = 45.0f;
+	[Range(0.0f, 150.0f)][SerializeField] private float aimAssistTrackSpeed = 30.0f;
 	[Tooltip("壁などに隠れている的をアシスト対象から外すか")]
 	[SerializeField] private bool useAimAssistLineOfSight = true;
 	[Tooltip("照準が少し外れていても銃だけ的へ向けて当たるようにするか")]

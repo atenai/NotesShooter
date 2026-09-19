@@ -374,10 +374,10 @@ MonoBehaviour:
   recoilKick: 0.6
   recoilRecoverSpeed: 6
   useAimAssist: 1
-  aimAssistAngle: 11
+  aimAssistAngle: 9
   aimAssistRange: 100
   aimAssistSlowDown: 0.28
-  aimAssistTrackSpeed: 45
+  aimAssistTrackSpeed: 30
   useAimAssistLineOfSight: 1
   useBulletMagnetism: 1
   bulletMagnetismAngle: 3
