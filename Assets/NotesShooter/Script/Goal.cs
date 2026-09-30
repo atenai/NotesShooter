@@ -89,9 +89,12 @@ public class Goal : MonoBehaviour
         //待つようにすると、通信できない環境では最大10秒（www.timeout）ゴール地点で止まってしまう
         isGoal = true;
 
+#if UNITY_EDITOR //Unityエディター上だった場合の処理
         StartCoroutine(RegisterScore(score));
+#endif //終了
     }
 
+#if UNITY_EDITOR //Unityエディター上だった場合の処理
     /// <summary>
     /// スコアをサーバーへ登録する。結果を待たずにリザルトへ進むので、失敗してもゲーム進行には影響しない
     /// </summary>
@@ -168,4 +171,5 @@ public class Goal : MonoBehaviour
             }
         }
     }
+#endif //終了
 }
